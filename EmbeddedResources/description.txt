@@ -1,0 +1,70 @@
+This mod adds <color='#65BD00FF'>31 new powers</color> in a new PowerBox tab.
+
+
+There are <color='#65BD00FF'>11</color> new spawn powers:
+    <color='#65BD00FF'>- Greg</color>
+    <color='#65BD00FF'>- Tumor unit and animal</color>
+    <color='#65BD00FF'>- Mush unit and animal</color>
+    <color='#65BD00FF'>- Boats</color>
+with <color='#65BD00FF'>3</color> new creatures:
+    <color='#65BD00FF'>- Maxim</color>
+    <color='#65BD00FF'>- Mastef</color>
+    <color='#65BD00FF'>- Burger-spider</color>(<color='yellow'>pug bread#2872</color> and <color='yellow'>community</color> - idea, <color='yellow'>Arson Eel#0808</color>  - art concept, <color='yellow'>quicklast</color> - sprites)!
+
+<color='#65BD00FF'>3</color> powers for creatures:
+    <color='#65BD00FF'>- Editing creatures items</color> in bulk by using new god powers, or for specific creatures by clicking the new button in the creature inspection window.
+    <color='#65BD00FF'>- Editing creatures favorite food</color> for specific creatures by clicking the icon of the current favorite food in the creature inspection window.
+
+<color='#65BD00FF'>8</color> new powers and improvements for kingdoms and cities:
+    <color='#65BD00FF'>- Whisper of peace!</color> Now you can choose which war of a kingdom to end!
+    <color='#65BD00FF'>- Whisper of alliance!</color> Now you can choose who should be allied!
+    <color='#65BD00FF'>- Upgrade and downgrade buildings!</color>
+    <color='#65BD00FF'>- Make new cities!</color> If you drag creatures (using native Divine Magnet power) which are already citizens of one kingdom onto unoccupied ground, and then use this power on them, a new city is founded! Also, you can transfer citizens between cities using this power, all what you need is just put them to new city and then use Make Colony power on them, and they will join new city as citizens!
+    <color='#65BD00FF'>- Editing city resources!</color>
+    <color='#65BD00FF'>- Editing city borders!</color>
+    
+<color='#65BD00FF'>5</color> new powers and improvements for cultures:
+    <color='#65BD00FF'>- Find culture members!</color> Now you can view a list of all members that a culture has by clicking the new button in the culture inspection window!
+    <color='#65BD00FF'>- Editing culture borders!</color>
+    <color='#65BD00FF'>- Creating new cultures!</color>
+    <color='#65BD00FF'>- Adding units to cultures!</color>
+    
+<color='#65BD00FF'>1</color> new power for clans:
+    <color='#65BD00FF'>- Adding units to clans!</color>
+    
+<color='#65BD00FF'>1</color> new power for items:
+    <color='#65BD00FF'>- Favorite items!</color> Now you can click an item in inspection windows to favorite/unfavorite it, and then find it again at a later point with the Find Favorite Iteams button!
+
+<color='#65BD00FF'>2</color> new fan powers:
+    <color='#65BD00FF'>- Blood rain cloud spawning!</color>
+    <color='#65BD00FF'>- Burger-spider cloud spawning!</color>
+
+
+Special thanks to <color='yellow'>quicklast</color> for making sprites for new creatures and god powers buttons.
+
+Special thanks to beta-testers: 
+    <color='yellow'>quicklast</color>
+    <color='yellow'>OzzDeni#9151</color>
+    <color='yellow'>Unununium#0666</color>
+    <color='yellow'>Purple Haze#2477</color>
+    <color='yellow'>Ares#0303</color>
+    <color='yellow'>juanchiz#8905</color>
+    <color='yellow'>Санёк 🐌#1503</color>
+    <color='yellow'>brisketandchad</color>
+    <color='yellow'>lord_schrott</color>
+    <color='yellow'>Tuxxego</color>
+    <color='yellow'>mr.p.4466</color>
+    <color='yellow'>ita_player</color>
+    
+Special thanks to translators:
+    <color='yellow'>le_ombre</color>: Russian
+    <color='yellow'>daybreak1929</color>: Chinese
+    <color='yellow'>imemiwarcraft</color>: Romanian
+    <color='yellow'>lord_schrott</color>: German
+    <color='yellow'>jupeowl</color>: Finnish
+    <color='yellow'>betogamer.</color>: Ukrainian
+    <color='yellow'>ln_luascripts</color>: Spanish
+    <color='yellow'>irinisikai</color>: Japanese
+
+Original Mod author: <color='yellow'>don_nikon</color>
+Current Mod owner/maintainer: <color='yellow'>keymasterer</color>

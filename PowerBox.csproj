@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{2CEB3F5E-05DF-49CB-9156-92FBDA5138B8}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>PowerBox</RootNamespace>
+        <AssemblyName>PowerBox</AssemblyName>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Include="Code\GameWindows\EditCultureTechWindow.cs" />
+      <Compile Include="Code\GameWindows\EditFavoriteFoodWindow.cs" />
+      <Compile Include="Code\GameWindows\EditItemsWindow.cs" />
+      <Compile Include="Code\GameWindows\EditResourcesWindow.cs" />
+      <Compile Include="Code\GameWindows\FindCultureMembersWindow.cs" />
+      <Compile Include="Code\GameWindows\FindFavouriteItemsWindow.cs" />
+      <Compile Include="Code\MapIconAssets.cs" />
+      <Compile Include="Code\Patches.cs" />
+      <Compile Include="Code\Scheduling\Schedule.cs" />
+      <Compile Include="Code\Scheduling\Scheduler.cs" />
+      <Compile Include="Code\Tab.cs" />
+      <Compile Include="Code\Actors.cs" />
+      <Compile Include="Code\GodPowers.cs" />
+      <Compile Include="Code\PowerBox.cs" />
+      <Compile Include="Code\Buttons.cs" />
+      <Compile Include="Code\Utils\AssetUtils.cs" />
+      <Compile Include="Code\Utils\PowerButtonUtils.cs" />
+      <Compile Include="Code\Windows.cs" />
+      <Compile Include="Code\WindowBase.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include=".gitignore" />
+      <Content Include="EmbeddedResources\description.txt" />
+      <Content Include="Locales\en.json" />
+      <Content Include="mod.json" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>..\Libraries\0Harmony.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>..\Libraries\Assembly-CSharp.dll</HintPath>
+      </Reference>
+      <Reference Include="DOTween">
+        <HintPath>..\Libraries\DOTween.dll</HintPath>
+      </Reference>
+      <Reference Include="NeoModLoader">
+        <HintPath>..\Libraries\NeoModLoader.dll</HintPath>
+      </Reference>
+      <Reference Include="Newtonsoft.Json">
+        <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine">
+        <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.ImageConversionModule">
+        <HintPath>..\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.IMGUIModule">
+        <HintPath>..\Libraries\UnityEngine.IMGUIModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.InputLegacyModule">
+        <HintPath>..\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.TextRenderingModule">
+        <HintPath>..\Libraries\UnityEngine.TextRenderingModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+        <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UIModule">
+        <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>
