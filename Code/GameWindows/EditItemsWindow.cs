@@ -101,6 +101,7 @@ namespace PowerBox.Code.GameWindows {
       }
     }
 
+    [Obsolete("TODO: Rewrite this abomination to not be a dysfunctional piece of garbage")]
     internal void InitEditItems(ScrollWindow window, Action<EquipmentButton> callback, PowerType powType = PowerType.Unset) {
       PowType = powType;
 
