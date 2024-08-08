@@ -142,7 +142,6 @@ namespace PowerBox.Code.GameWindows {
 
       XStep = 24.75f;
       CountInRow = 8;
-      window.resetScroll();
 
       int index = 0;
 
@@ -152,6 +151,11 @@ namespace PowerBox.Code.GameWindows {
       
       Dictionary<ItemData, bool> addItemSelectionFound = ChosenForAddSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
       Dictionary<ItemData, bool> removeItemSelectionFound = ChosenForRemoveSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
+
+
+      RectTransform rect = content.GetComponent<RectTransform>();
+      rect.pivot = new Vector2(0, 1);
+      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Count + materials.Count).y) + 100);
 
       foreach (ItemAsset item in itemsList.Where(item => !skipList.Contains(item.id))) {
         foreach (ItemAsset material in materials) {
@@ -254,9 +258,6 @@ namespace PowerBox.Code.GameWindows {
           index++;
         }
       }
-      RectTransform rect = content.GetComponent<RectTransform>();
-      rect.pivot = new Vector2(0, 0);
-      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(index).y));
     }
 
     private static void LoadItemButton(ItemData item, EquipmentButton itemButtonPref, Transform parent, Action<EquipmentButton> callback) {
