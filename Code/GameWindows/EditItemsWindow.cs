@@ -142,6 +142,7 @@ namespace PowerBox.Code.GameWindows {
 
       XStep = 24.75f;
       CountInRow = 8;
+      window.resetScroll();
 
       int index = 0;
 
