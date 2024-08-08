@@ -152,10 +152,6 @@ namespace PowerBox.Code.GameWindows {
       Dictionary<ItemData, bool> addItemSelectionFound = ChosenForAddSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
       Dictionary<ItemData, bool> removeItemSelectionFound = ChosenForRemoveSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
 
-
-      RectTransform rect = content.GetComponent<RectTransform>();
-      rect.pivot = new Vector2(0, 1);
-
       foreach (ItemAsset item in itemsList.Where(item => !skipList.Contains(item.id))) {
         foreach (ItemAsset material in materials) {
           ItemData itemData = new ItemData {
@@ -257,6 +253,8 @@ namespace PowerBox.Code.GameWindows {
           index++;
         }
       }
+      RectTransform rect = content.GetComponent<RectTransform>();
+      rect.pivot = new Vector2(0, 0);
       rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(index).y));
     }
 
