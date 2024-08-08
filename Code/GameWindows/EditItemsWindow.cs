@@ -155,7 +155,6 @@ namespace PowerBox.Code.GameWindows {
 
       RectTransform rect = content.GetComponent<RectTransform>();
       rect.pivot = new Vector2(0, 1);
-      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Count(item => !skipList.Contains(item.id)) * materials.Count).y));
 
       foreach (ItemAsset item in itemsList.Where(item => !skipList.Contains(item.id))) {
         foreach (ItemAsset material in materials) {
@@ -258,6 +257,7 @@ namespace PowerBox.Code.GameWindows {
           index++;
         }
       }
+      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(index).y));
     }
 
     private static void LoadItemButton(ItemData item, EquipmentButton itemButtonPref, Transform parent, Action<EquipmentButton> callback) {
