@@ -5,7 +5,11 @@ using UnityEngine;
 
 namespace PowerBox.Code.LoadingSystem {
   public abstract class Section {
-    internal Feature[] LoadFeatures() {
+    private List<Feature> _cachedFeatures;
+    internal Feature[] GetFeatures() {
+      if (!(_cachedFeatures is null)) {
+        return _cachedFeatures.ToArray();
+      }
       List<Feature> features = new List<Feature>();
       foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => (t.Namespace ?? "").Contains((GetType().Namespace ?? throw new Exception($"Can't get namespace of Section type {GetType().FullName}")) + ".Features")).Where(t => typeof(Feature).IsAssignableFrom(t)).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => !constructor.IsPublic && constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[]{}) as Feature))) {
         if (instance is null) {
@@ -14,8 +18,7 @@ namespace PowerBox.Code.LoadingSystem {
           features.Add(instance);
         }
       }
-      foreach (Feature feature in features.ToList()) {
-      }
+      _cachedFeatures = features;
       return features.ToArray();
     }
   }

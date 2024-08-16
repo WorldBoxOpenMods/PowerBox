@@ -108,7 +108,7 @@ namespace PowerBox.Code.LoadingSystem {
     }
     internal void Init() {
       _sections.AddRange(GetType().Module.GetTypes().Where(type => type.IsSubclassOf(typeof(Section))).Select(type => Activator.CreateInstance(type) as Section));
-      (Feature feature, Section section)[] features = _sections.SelectMany(section => section.LoadFeatures().Select(f => (f, section))).ToArray();
+      (Feature feature, Section section)[] features = _sections.SelectMany(section => section.GetFeatures().Select(f => (f, section))).ToArray();
       _foundFeatures.AddRange(features.Select(t => t.feature));
       FeatureTreeNode[] featureTrees = FeatureTreeNode.CreateFeatureTrees(features);
       FeatureLoadPathNode featureLoadPath = FeatureLoadPathNode.CreateFeatureLoadPath(featureTrees);
