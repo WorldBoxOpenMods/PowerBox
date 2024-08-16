@@ -42,6 +42,9 @@
       <Compile Include="Code\GameWindows\EditResourcesWindow.cs" />
       <Compile Include="Code\GameWindows\FindCultureMembersWindow.cs" />
       <Compile Include="Code\GameWindows\FindFavouriteItemsWindow.cs" />
+      <Compile Include="Code\LoadingSystem\Feature.cs" />
+      <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
+      <Compile Include="Code\LoadingSystem\Section.cs" />
       <Compile Include="Code\MapIconAssets.cs" />
       <Compile Include="Code\Patches.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
