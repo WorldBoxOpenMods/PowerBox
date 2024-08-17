@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace PowerBox.Code.LoadingSystem {
@@ -67,6 +68,7 @@ namespace PowerBox.Code.LoadingSystem {
       internal FeatureLoadPathNode(Feature feature) {
         Feature = feature;
       }
+      [CanBeNull]
       internal static FeatureLoadPathNode CreateFeatureLoadPath(FeatureTreeNode[] featureTrees) {
         List<FeatureLoadPathNode> featurePathRootNodes = new List<FeatureLoadPathNode>();
         foreach (FeatureTreeNode featureTree in featureTrees) {
@@ -90,6 +92,9 @@ namespace PowerBox.Code.LoadingSystem {
             nodesToProcess.AddRange(treeNode.DependentFeatures);
           }
         }
+        if (featurePathRootNodes.Count < 1) {
+          return null;
+        }
         FeatureLoadPathNode finalRootNode = featurePathRootNodes.Pop();
         while (featurePathRootNodes.Count > 0) {
           FeatureLoadPathNode rootNode = featurePathRootNodes.Pop();
@@ -105,7 +110,7 @@ namespace PowerBox.Code.LoadingSystem {
 
     internal void Init() {
       List<Feature> features = new List<Feature>();
-      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => typeof(Feature).IsAssignableFrom(t)).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => !constructor.IsPublic && constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
+      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => typeof(Feature).IsAssignableFrom(t)).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
         if (instance is null) {
           Debug.LogError($"Instance of Feature {featureType.FullName} couldn't be created due to missing non public 0 param constructor!");
         } else {
