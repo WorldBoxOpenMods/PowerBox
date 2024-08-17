@@ -45,7 +45,6 @@
       <Compile Include="Code\LoadingSystem\Feature.cs" />
       <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
       <Compile Include="Code\MapIconAssets.cs" />
-      <Compile Include="Code\Patches.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
       <Compile Include="Code\Scheduling\Scheduler.cs" />
       <Compile Include="Code\Tab.cs" />

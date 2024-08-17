@@ -24,7 +24,6 @@ namespace PowerBox.Code {
   public class PowerBox : BasicMod<PowerBox> {
     protected override void OnModLoad() {
       Config.disableLocaleLogs = true;
-      Patches.Init();
       Actors.Init();
       GodPowers.Init();
       MapIconAssets.Init();
