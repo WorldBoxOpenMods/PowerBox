@@ -44,7 +44,6 @@
       <Compile Include="Code\GameWindows\FindFavouriteItemsWindow.cs" />
       <Compile Include="Code\LoadingSystem\Feature.cs" />
       <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
-      <Compile Include="Code\LoadingSystem\Section.cs" />
       <Compile Include="Code\MapIconAssets.cs" />
       <Compile Include="Code\Patches.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
@@ -105,6 +104,13 @@
       <Reference Include="UnityEngine.UIModule">
         <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Code\Actors\" />
+      <Folder Include="Code\Buttons\" />
+      <Folder Include="Code\GodPowers\" />
+      <Folder Include="Code\MapIconAssets\" />
+      <Folder Include="Code\Windows\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

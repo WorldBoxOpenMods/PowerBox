@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace PowerBox.Code.LoadingSystem {
   public class FeatureManager {
-    private readonly List<Section> _sections = new List<Section>();
     private readonly List<Feature> _foundFeatures = new List<Feature>();
     private readonly List<Feature> _loadedFeatures = new List<Feature>();
     private FeatureManager() { }
@@ -13,33 +12,32 @@ namespace PowerBox.Code.LoadingSystem {
     public bool IsFeatureLoaded<T>() where T : Feature {
       return IsFeatureLoaded(typeof(T));
     }
-    
+
     public bool IsFeatureLoaded(Type featureType) {
       return _loadedFeatures.Any(feature => feature.GetType() == featureType);
     }
-    
+
     public T GetFeature<T>(Feature askingFeature) where T : Feature {
       if (!IsFeatureLoaded<T>()) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not loaded.");
       if (!askingFeature.RequiredFeatures.Contains(typeof(T))) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not set as a requirement for feature {askingFeature.GetType().FullName}.");
       return (T)GetFeature(typeof(T));
     }
+    
     private Feature GetFeature(Type featureType) {
       return _foundFeatures.FirstOrDefault(feature => feature.GetType() == featureType);
     }
 
     private class FeatureTreeNode {
-      internal Section Section { get; }
       internal Feature Feature { get; }
       internal List<FeatureTreeNode> DependentFeatures { get; } = new List<FeatureTreeNode>();
-      internal FeatureTreeNode(Section section, Feature feature) {
-        Section = section;
+      internal FeatureTreeNode(Feature feature) {
         Feature = feature;
       }
-      internal static FeatureTreeNode[] CreateFeatureTrees((Feature feature, Section section)[] features) {
+      internal static FeatureTreeNode[] CreateFeatureTrees(Feature[] features) {
         Dictionary<Type, FeatureTreeNode> featureNodes = new Dictionary<Type, FeatureTreeNode>();
         List<FeatureTreeNode> roots = new List<FeatureTreeNode>();
-        foreach ((Feature feature, Section section) in features) {
-          FeatureTreeNode featureTreeNode = new FeatureTreeNode(section, feature);
+        foreach (Feature feature in features) {
+          FeatureTreeNode featureTreeNode = new FeatureTreeNode(feature);
           featureNodes.Add(feature.GetType(), featureTreeNode);
           foreach (FeatureTreeNode root in roots.ToList()) {
             if (featureTreeNode.Feature.RequiredFeatures.Contains(root.Feature.GetType())) {
@@ -63,18 +61,16 @@ namespace PowerBox.Code.LoadingSystem {
     }
 
     private class FeatureLoadPathNode {
-      internal Section Section { get; }
       internal Feature Feature { get; }
       internal FeatureLoadPathNode DependentFeature { get; private set; }
       internal FeatureLoadPathNode DependencyFeature { get; private set; }
-      internal FeatureLoadPathNode(Section section, Feature feature) {
-        Section = section;
+      internal FeatureLoadPathNode(Feature feature) {
         Feature = feature;
       }
       internal static FeatureLoadPathNode CreateFeatureLoadPath(FeatureTreeNode[] featureTrees) {
         List<FeatureLoadPathNode> featurePathRootNodes = new List<FeatureLoadPathNode>();
         foreach (FeatureTreeNode featureTree in featureTrees) {
-          FeatureLoadPathNode rootLoadPathNode = new FeatureLoadPathNode(featureTree.Section, featureTree.Feature);
+          FeatureLoadPathNode rootLoadPathNode = new FeatureLoadPathNode(featureTree.Feature);
           FeatureLoadPathNode newestLoadPathNode = rootLoadPathNode;
           featurePathRootNodes.Add(rootLoadPathNode);
           List<FeatureTreeNode> nodesToProcess = new List<FeatureTreeNode>(featureTree.DependentFeatures);
@@ -87,7 +83,7 @@ namespace PowerBox.Code.LoadingSystem {
               }
               currentLoadPathNode = currentLoadPathNode.DependencyFeature;
             }
-            FeatureLoadPathNode newLoadPathNode = new FeatureLoadPathNode(treeNode.Section, treeNode.Feature);
+            FeatureLoadPathNode newLoadPathNode = new FeatureLoadPathNode(treeNode.Feature);
             newestLoadPathNode.DependentFeature = newLoadPathNode;
             newLoadPathNode.DependencyFeature = newestLoadPathNode;
             newestLoadPathNode = newLoadPathNode;
@@ -106,11 +102,18 @@ namespace PowerBox.Code.LoadingSystem {
         return finalRootNode;
       }
     }
+
     internal void Init() {
-      _sections.AddRange(GetType().Module.GetTypes().Where(type => type.IsSubclassOf(typeof(Section))).Select(type => Activator.CreateInstance(type) as Section));
-      (Feature feature, Section section)[] features = _sections.SelectMany(section => section.GetFeatures().Select(f => (f, section))).ToArray();
-      _foundFeatures.AddRange(features.Select(t => t.feature));
-      FeatureTreeNode[] featureTrees = FeatureTreeNode.CreateFeatureTrees(features);
+      List<Feature> features = new List<Feature>();
+      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => typeof(Feature).IsAssignableFrom(t)).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => !constructor.IsPublic && constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
+        if (instance is null) {
+          Debug.LogError($"Instance of Feature {featureType.FullName} couldn't be created due to missing non public 0 param constructor!");
+        } else {
+          features.Add(instance);
+        }
+      }
+      _foundFeatures.AddRange(features);
+      FeatureTreeNode[] featureTrees = FeatureTreeNode.CreateFeatureTrees(features.ToArray());
       FeatureLoadPathNode featureLoadPath = FeatureLoadPathNode.CreateFeatureLoadPath(featureTrees);
       FeatureLoadPathNode currentLoadPathNode = featureLoadPath;
       while (currentLoadPathNode != null) {
@@ -120,7 +123,7 @@ namespace PowerBox.Code.LoadingSystem {
         currentLoadPathNode = currentLoadPathNode.DependentFeature;
       }
     }
-    
+
     private bool InitFeature(Feature feature) {
       Debug.Log($"Loading feature {feature.GetType().FullName}...");
       try {
