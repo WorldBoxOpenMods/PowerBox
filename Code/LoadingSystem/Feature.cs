@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PowerBox.Code.LoadingSystem {
   public abstract class Feature {
-    internal abstract List<Type> RequiredFeatures { get; }
+    internal virtual List<Type> RequiredFeatures { get; } = new List<Type>();
     internal abstract bool Init();
   }
 }
