@@ -110,7 +110,7 @@ namespace PowerBox.Code.LoadingSystem {
 
     internal void Init() {
       List<Feature> features = new List<Feature>();
-      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => t.IsSubclassOf(typeof(Feature))).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
+      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => t.IsSubclassOf(typeof(Feature)) && !t.IsAbstract).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
         if (instance is null) {
           Debug.LogError($"Instance of Feature {featureType.FullName} couldn't be created due to missing 0 param constructor!");
         } else {
