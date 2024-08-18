@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace PowerBox.Code.LoadingSystem {
       if (!askingFeature.RequiredFeatures.Contains(typeof(T))) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not set as a requirement for feature {askingFeature.GetType().FullName}.");
       return (T)GetFeature(typeof(T));
     }
-    
+
     private Feature GetFeature(Type featureType) {
       return _foundFeatures.FirstOrDefault(feature => feature.GetType() == featureType);
     }
@@ -35,25 +36,19 @@ namespace PowerBox.Code.LoadingSystem {
         Feature = feature;
       }
       internal static FeatureTreeNode[] CreateFeatureTrees(Feature[] features) {
-        Dictionary<Type, FeatureTreeNode> featureNodes = new Dictionary<Type, FeatureTreeNode>();
+        Dictionary<string, FeatureTreeNode> featureNodes = new Dictionary<string, FeatureTreeNode>();
         List<FeatureTreeNode> roots = new List<FeatureTreeNode>();
         foreach (Feature feature in features) {
           FeatureTreeNode featureTreeNode = new FeatureTreeNode(feature);
-          featureNodes.Add(feature.GetType(), featureTreeNode);
-          foreach (FeatureTreeNode root in roots.ToList()) {
-            if (featureTreeNode.Feature.RequiredFeatures.Contains(root.Feature.GetType())) {
-              root.DependentFeatures.Add(featureTreeNode);
-            } else if (root.Feature.RequiredFeatures.Contains(featureTreeNode.Feature.GetType())) {
-              featureTreeNode.DependentFeatures.Add(root);
-              roots.Remove(root);
-              roots.Add(featureTreeNode);
-            }
+          featureNodes.Add(feature.GetType().AssemblyQualifiedName ?? throw new Exception("AssemblyQualifiedName is null, apparently."), featureTreeNode);
+          if (feature.RequiredFeatures.Count < 1) {
+            roots.Add(featureTreeNode);
           }
-          foreach (FeatureTreeNode node in featureNodes.Values.Where(node => node != featureTreeNode && !roots.Contains(node))) {
-            if (node.Feature.RequiredFeatures.Contains(featureTreeNode.Feature.GetType())) {
-              node.DependentFeatures.Add(featureTreeNode);
-            } else if (featureTreeNode.Feature.RequiredFeatures.Contains(node.Feature.GetType())) {
-              featureTreeNode.DependentFeatures.Add(node);
+        }
+        foreach (FeatureTreeNode node in featureNodes.Values) {
+          foreach (Type requirement in node.Feature.RequiredFeatures) {
+            if (featureNodes.TryGetValue(requirement.AssemblyQualifiedName ?? throw new Exception("AssemblyQualifiedName is null, apparently."), out FeatureTreeNode requiredNode)) {
+              requiredNode.DependentFeatures.Add(node);
             }
           }
         }
@@ -62,6 +57,12 @@ namespace PowerBox.Code.LoadingSystem {
     }
 
     private class FeatureLoadPathNode {
+      private class PlaceholderRootFeature : Feature {
+        internal override List<Type> RequiredFeatures => new List<Type>();
+        internal override bool Init() {
+          return true;
+        }
+      }
       internal Feature Feature { get; }
       internal FeatureLoadPathNode DependentFeature { get; private set; }
       internal FeatureLoadPathNode DependencyFeature { get; private set; }
@@ -70,83 +71,82 @@ namespace PowerBox.Code.LoadingSystem {
       }
       [CanBeNull]
       internal static FeatureLoadPathNode CreateFeatureLoadPath(FeatureTreeNode[] featureTrees) {
-        List<FeatureLoadPathNode> featurePathRootNodes = new List<FeatureLoadPathNode>();
+        FeatureTreeNode rootTreeNode = new FeatureTreeNode(new PlaceholderRootFeature());
         foreach (FeatureTreeNode featureTree in featureTrees) {
-          FeatureLoadPathNode rootLoadPathNode = new FeatureLoadPathNode(featureTree.Feature);
-          FeatureLoadPathNode newestLoadPathNode = rootLoadPathNode;
-          featurePathRootNodes.Add(rootLoadPathNode);
-          List<FeatureTreeNode> nodesToProcess = new List<FeatureTreeNode>(featureTree.DependentFeatures);
-          foreach (FeatureTreeNode treeNode in nodesToProcess.ToList()) {
-            nodesToProcess.Remove(treeNode);
-            FeatureLoadPathNode currentLoadPathNode = newestLoadPathNode;
-            while (currentLoadPathNode.DependencyFeature != null) {
-              if (currentLoadPathNode.Feature == treeNode.Feature) {
-                continue;
+          rootTreeNode.DependentFeatures.Add(featureTree);
+        }
+        FeatureLoadPathNode rootLoadPathNode = new FeatureLoadPathNode(rootTreeNode.Feature);
+        FeatureLoadPathNode newestLoadPathNode = rootLoadPathNode;
+        List<FeatureTreeNode> nodesToProcess = new List<FeatureTreeNode>(rootTreeNode.DependentFeatures);
+        while (nodesToProcess.Count > 0) {
+          FeatureTreeNode treeNode = nodesToProcess.Pop();
+          FeatureLoadPathNode currentLoadPathNode = newestLoadPathNode;
+          while (currentLoadPathNode != null) {
+            if (currentLoadPathNode.Feature == treeNode.Feature) {
+              if (currentLoadPathNode.DependentFeature != null) {
+                currentLoadPathNode.DependentFeature.DependencyFeature = currentLoadPathNode.DependencyFeature;
               }
-              currentLoadPathNode = currentLoadPathNode.DependencyFeature;
+              if (currentLoadPathNode.DependencyFeature != null) {
+                currentLoadPathNode.DependencyFeature.DependentFeature = currentLoadPathNode.DependentFeature;
+              }
             }
-            FeatureLoadPathNode newLoadPathNode = new FeatureLoadPathNode(treeNode.Feature);
-            newestLoadPathNode.DependentFeature = newLoadPathNode;
-            newLoadPathNode.DependencyFeature = newestLoadPathNode;
-            newestLoadPathNode = newLoadPathNode;
-            nodesToProcess.AddRange(treeNode.DependentFeatures);
+            currentLoadPathNode = currentLoadPathNode.DependencyFeature;
           }
+          FeatureLoadPathNode newLoadPathNode = new FeatureLoadPathNode(treeNode.Feature);
+          newestLoadPathNode.DependentFeature = newLoadPathNode;
+          newLoadPathNode.DependencyFeature = newestLoadPathNode;
+          newestLoadPathNode = newLoadPathNode;
+          nodesToProcess.AddRange(treeNode.DependentFeatures);
         }
-        if (featurePathRootNodes.Count < 1) {
-          return null;
-        }
-        FeatureLoadPathNode finalRootNode = featurePathRootNodes.Pop();
-        while (featurePathRootNodes.Count > 0) {
-          FeatureLoadPathNode rootNode = featurePathRootNodes.Pop();
-          FeatureLoadPathNode lastNode = finalRootNode;
-          while (lastNode.DependentFeature != null) {
-            lastNode = lastNode.DependentFeature;
-          }
-          lastNode.DependentFeature = rootNode;
-        }
-        return finalRootNode;
+        return rootLoadPathNode.DependentFeature;
       }
     }
 
     internal void Init() {
       List<Feature> features = new List<Feature>();
-      foreach ((Type featureType, Feature instance) in GetType().Module.GetTypes().Where(t => t.IsSubclassOf(typeof(Feature)) && !t.IsAbstract).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => constructor.GetParameters().Length < 1))).Select(tc => (tc.featureType, tc.Item2?.Invoke(new object[] { }) as Feature))) {
-        if (instance is null) {
-          Debug.LogError($"Instance of Feature {featureType.FullName} couldn't be created due to missing 0 param constructor!");
-        } else {
-          features.Add(instance);
+      foreach ((Type featureType, ConstructorInfo instanceConstructor) in GetType().Module.GetTypes().Where(t => t.IsSubclassOf(typeof(Feature))).Where(ft => !ft.IsAbstract).Where(ft => !ft.IsNestedPrivate).Select(featureType => (featureType, featureType.GetConstructors().FirstOrDefault(constructor => constructor.GetParameters().Length < 1)))) {
+        Debug.Log($"Creating instance of Feature {featureType.FullName}...");
+        if (instanceConstructor is null) {
+          Debug.LogError($"No suitable constructor found for Feature {featureType.FullName}.");
+          continue;
         }
+        Feature instance;
+        try {
+          instance = instanceConstructor.Invoke(new object[] { }) as Feature;
+        } catch (Exception e) {
+          Debug.LogError($"An error occurred while trying to create an instance of Feature {featureType.FullName}:\n{e}");
+          continue;
+        }
+        features.Add(instance);
+        Debug.Log($"Successfully created instance of Feature {featureType.FullName}.");
       }
       _foundFeatures.AddRange(features);
       FeatureTreeNode[] featureTrees = FeatureTreeNode.CreateFeatureTrees(features.ToArray());
       FeatureLoadPathNode featureLoadPath = FeatureLoadPathNode.CreateFeatureLoadPath(featureTrees);
       FeatureLoadPathNode currentLoadPathNode = featureLoadPath;
       while (currentLoadPathNode != null) {
-        if (currentLoadPathNode.DependentFeature == null) {
-          InitFeature(currentLoadPathNode.Feature);
-        }
+        InitFeature(currentLoadPathNode.Feature);
         currentLoadPathNode = currentLoadPathNode.DependentFeature;
       }
     }
 
-    private bool InitFeature(Feature feature) {
+    private void InitFeature(Feature feature) {
       Debug.Log($"Loading feature {feature.GetType().FullName}...");
       try {
-        if (feature.RequiredFeatures.Any(requiredFeature => !IsFeatureLoaded(requiredFeature))) {
-          Debug.LogError($"Loading feature {feature.GetType().FullName} failed due a missing requirement feature.");
-          return false;
+        List<Type> missingRequirement = feature.RequiredFeatures.Where(requiredFeature => !IsFeatureLoaded(requiredFeature)).ToList();
+        if (missingRequirement.Count > 0) {
+          Debug.LogError($"Loading feature {feature.GetType().FullName} failed due missing requirement features:\n{string.Join("\n", missingRequirement.Select(type => type.FullName))}");
+          return;
         }
         bool successfulInit = feature.Init();
         if (!successfulInit) {
           Debug.LogError($"Loading feature {feature.GetType().FullName} failed due to a failing condition.");
-          return false;
+          return;
         }
         Debug.Log($"Successfully loaded feature {feature.GetType().FullName}.");
         _loadedFeatures.Add(feature);
-        return true;
       } catch (Exception e) {
         Debug.LogError($"An error occurred while trying to load feature {feature.GetType().FullName}:\n{e}");
-        return false;
       }
     }
   }
