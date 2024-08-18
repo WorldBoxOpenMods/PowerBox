@@ -36,26 +36,57 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Include="Code\GameWindows\EditCultureTechWindow.cs" />
-      <Compile Include="Code\GameWindows\EditFavoriteFoodWindow.cs" />
-      <Compile Include="Code\GameWindows\EditItemsWindow.cs" />
-      <Compile Include="Code\GameWindows\EditResourcesWindow.cs" />
-      <Compile Include="Code\GameWindows\FindCultureMembersWindow.cs" />
-      <Compile Include="Code\GameWindows\FindFavouriteItemsWindow.cs" />
+      <Compile Include="Code\Actors\BurgerSpider.cs" />
+      <Compile Include="Code\Actors\Developers.cs" />
+      <Compile Include="Code\Buttons\Tab.cs" />
+      <Compile Include="Code\Drops\CommonItemDrop.cs" />
+      <Compile Include="Code\GodPowers\AllianceCreationPower.cs" />
+      <Compile Include="Code\GodPowers\BloodRainCloudSpawnPower.cs" />
+      <Compile Include="Code\GodPowers\BuildingDowngradePower.cs" />
+      <Compile Include="Code\GodPowers\BuildingUpgradePower.cs" />
+      <Compile Include="Code\GodPowers\BurgerSpiderCloudSpawnPower.cs" />
+      <Compile Include="Code\GodPowers\CityBorderExpansionPower.cs" />
+      <Compile Include="Code\GodPowers\CityBorderReductionPower.cs" />
+      <Compile Include="Code\GodPowers\ClanAdditionPower.cs" />
+      <Compile Include="Code\GodPowers\ColonyCreationPower.cs" />
+      <Compile Include="Code\GodPowers\CultureAdditionPower.cs" />
+      <Compile Include="Code\GodPowers\CultureBorderExpansionPower.cs" />
+      <Compile Include="Code\GodPowers\CultureBorderReductionPower.cs" />
+      <Compile Include="Code\GodPowers\CultureCreationPower.cs" />
+      <Compile Include="Code\GodPowers\CultureDuplicationPower.cs" />
+      <Compile Include="Code\GodPowers\FishingBoatSpawnPower.cs" />
+      <Compile Include="Code\GodPowers\FriendshipPower.cs" />
+      <Compile Include="Code\GodPowers\ItemAdditionPower.cs" />
+      <Compile Include="Code\GodPowers\ItemRemovalPower.cs" />
+      <Compile Include="Code\GodPowers\TradingBoatSpawnPower.cs" />
+      <Compile Include="Code\GodPowers\TransportBoatSpawnPower.cs" />
+      <Compile Include="Code\GodPowers\UnitSpawnPowers.cs" />
+      <Compile Include="Code\Kingdoms\BurgerKingdom.cs" />
+      <Compile Include="Code\Kingdoms\Developers.cs" />
       <Compile Include="Code\LoadingSystem\Feature.cs" />
       <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
-      <Compile Include="Code\MapIconAssets.cs" />
+      <Compile Include="Code\MapIconAssets\WhisperOfAllianceLine.cs" />
+      <Compile Include="Code\MapIconAssets\WhisperOfPeaceLine.cs" />
+      <Compile Include="Code\NameGenerators\BurgerSpider.cs" />
+      <Compile Include="Code\NameGenerators\Developers.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
       <Compile Include="Code\Scheduling\Scheduler.cs" />
       <Compile Include="Code\Tab.cs" />
-      <Compile Include="Code\Actors.cs" />
-      <Compile Include="Code\GodPowers.cs" />
       <Compile Include="Code\PowerBox.cs" />
       <Compile Include="Code\Buttons.cs" />
       <Compile Include="Code\Utils\AssetUtils.cs" />
+      <Compile Include="Code\Utils\BoatUtils.cs" />
+      <Compile Include="Code\Utils\CloudUtils.cs" />
       <Compile Include="Code\Utils\PowerButtonUtils.cs" />
-      <Compile Include="Code\Windows.cs" />
+      <Compile Include="Code\Utils\WhisperUtils.cs" />
       <Compile Include="Code\WindowBase.cs" />
+      <Compile Include="Code\Windows\AboutPowerboxWindow.cs" />
+      <Compile Include="Code\Windows\EditCultureTechWindow.cs" />
+      <Compile Include="Code\Windows\EditFavoriteFoodWindow.cs" />
+      <Compile Include="Code\Windows\EditItemsWindow.cs" />
+      <Compile Include="Code\Windows\EditResourcesWindow.cs" />
+      <Compile Include="Code\Windows\FindCultureMembersWindow.cs" />
+      <Compile Include="Code\Windows\FindFavouriteItemsWindow.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />
@@ -105,11 +136,7 @@
       </Reference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Code\Actors\" />
-      <Folder Include="Code\Buttons\" />
-      <Folder Include="Code\GodPowers\" />
-      <Folder Include="Code\MapIconAssets\" />
-      <Folder Include="Code\Windows\" />
+      <Folder Include="Code\GameWindows\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,16 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Scheduling;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace PowerBox.Code.GameWindows {
-  public class FindCultureMembersWindow : WindowBase {
-    private readonly ScrollWindow _findCultureMembersWindow;
-    public FindCultureMembersWindow(Transform inspectCultureContent) {
+namespace PowerBox.Code.Windows {
+  public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
+    private ScrollWindow _findCultureMembersWindow;
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
+      if (!base.Init()) return false;
+      ScrollWindow.checkWindowExist("culture");
+      GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
+      Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
+      cultureObject.SetActive(false);
+      Init(cultureContent);
+      return true;
+    }
+    private void Init(Transform inspectCultureContent) {
       _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;

@@ -1,17 +1,26 @@
 using System;
-using System.Threading;
 using NeoModLoader.General;
 using NeoModLoader.General.UI.Prefabs;
-using PowerBox.Code.Scheduling;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace PowerBox.Code.GameWindows {
-  public class EditCultureTechWindow : WindowBase {
-    private readonly ScrollWindow _editCultureTechWindow;
-    public EditCultureTechWindow(Transform inspectCultureContent) {
+namespace PowerBox.Code.Windows {
+  public class EditCultureTechWindow : WindowBase<EditCultureTechWindow> {
+    private ScrollWindow _editCultureTechWindow;
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
+      if (!base.Init()) return false;
+      ScrollWindow.checkWindowExist("culture");
+      GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
+      Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
+      cultureObject.SetActive(false);
+      Init(cultureContent);
+      return true;
+    }
+    private void Init(Transform inspectCultureContent) {
       _editCultureTechWindow = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
       _editCultureTechWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
       _editCultureTechWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;

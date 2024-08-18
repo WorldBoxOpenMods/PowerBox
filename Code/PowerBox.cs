@@ -1,5 +1,7 @@
-﻿using NeoModLoader.api;
+﻿using System;
+using NeoModLoader.api;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
 
@@ -23,13 +25,19 @@ using UnityEngine;
 namespace PowerBox.Code {
   public class PowerBox : BasicMod<PowerBox> {
     protected override void OnModLoad() {
+      try {
+        DisableLocaleLogs();
+      } catch (MissingFieldException) {
+        // this is fine
+      }
+      Debug.Log("Loading PowerBox...");
+      FeatureManager.Instance.Init();
+      Debug.Log("PowerBox loaded!");
+    }
+    
+    private static void DisableLocaleLogs() {
+      // this needs to be a separate method so that a potential MissingFieldException can be caught
       Config.disableLocaleLogs = true;
-      Actors.Init();
-      GodPowers.Init();
-      MapIconAssets.Init();
-      Tab.Init();
-      Buttons.Init();
-      Windows.Init();
     }
 
     #region CollectionMod compatibility

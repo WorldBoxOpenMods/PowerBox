@@ -4,18 +4,22 @@ using System.Linq;
 using System.Threading;
 using HarmonyLib;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace PowerBox.Code.GameWindows {
-  public class FindFavouriteItemsWindow : WindowBase {
+namespace PowerBox.Code.Windows {
+  public class FindFavouriteItemsWindow : WindowBase<FindFavouriteItemsWindow> {
+    internal override List<Type> RequiredFeatures => new List<Type> {typeof(Buttons.Tab)};
+
     private static Thread _itemCacheCheckThread;
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
-    private readonly ScrollWindow _findCultureMembersWindow;
-    public FindFavouriteItemsWindow() {
+    private ScrollWindow _findCultureMembersWindow;
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
       _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
@@ -37,6 +41,7 @@ namespace PowerBox.Code.GameWindows {
         AccessTools.Method(typeof(EquipmentButton), nameof(EquipmentButton.Start)),
         new HarmonyMethod(AccessTools.Method(typeof(FindFavouriteItemsWindow), nameof(EquipmentButton_Start_Postfix)))
       );
+      return true;
     }
     internal static void AddButtonToNotAttachTo(EquipmentButton button) {
       ButtonsToNotAttachTo.Add(button);

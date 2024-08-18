@@ -1,18 +1,22 @@
 using System.Linq;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PowerBox.Code.GameWindows {
-  public class EditFavoriteFoodWindow : WindowBase {
-    private readonly ScrollWindow _findCultureMembersWindow;
+namespace PowerBox.Code.Windows {
+  public class EditFavoriteFoodWindow : WindowBase<EditFavoriteFoodWindow> {
+    private ScrollWindow _editFavoriteFoodWindow;
     private Actor _targetUnit;
-    public EditFavoriteFoodWindow() {
-      _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
+      ScrollWindow.checkWindowExist("inspect_unit");
 
-      _findCultureMembersWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      _editFavoriteFoodWindow = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
+      _editFavoriteFoodWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
+      _editFavoriteFoodWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+
+      _editFavoriteFoodWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject inspectUnitHungerStatBar = ResourcesFinder.FindResource<GameObject>("HungerBar");
       if (inspectUnitHungerStatBar != null) {
@@ -22,13 +26,15 @@ namespace PowerBox.Code.GameWindows {
         }
       }
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_findCultureMembersWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editFavoriteFoodWindow.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
+      
+      return true;
     }
     private void EditFavoriteFoodButtonClick() {
-      InitEditFavoriteFood(_findCultureMembersWindow);
-      _findCultureMembersWindow.clickShow();
+      InitEditFavoriteFood(_editFavoriteFoodWindow);
+      _editFavoriteFoodWindow.clickShow();
     }
 
     private void InitEditFavoriteFood(ScrollWindow window) {

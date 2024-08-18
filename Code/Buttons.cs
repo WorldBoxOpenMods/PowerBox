@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using NeoModLoader.General;
+using PowerBox.Code.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code {
-  internal static class Buttons {
+  internal static class ButtonsOld {
     internal static void Init() {
       Tab.CreateClickButton(
         "AboutMod",
@@ -213,7 +214,7 @@ namespace PowerBox.Code {
 
     private static void ItemsButtonClick(PowerType type) {
       if (ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow editItemsWindow)) {
-        Windows.EditItemsWindow.InitEditItems(editItemsWindow, null, type);
+        EditItemsWindow.Instance.InitEditItems(editItemsWindow, null, type);
         editItemsWindow.clickShow();
       }
     }

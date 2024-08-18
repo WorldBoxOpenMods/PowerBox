@@ -45,7 +45,7 @@ namespace PowerBox.Code {
     private static void AlignButtonInTab(PowerButton newButton) {
 
       float x = StartX + (_createdButtons != 0 ? (PlusX * (_createdButtons % 2 == 0 ? _createdButtons : _createdButtons - 1)) : 0) + _horizontalPadding;
-      float y = (_createdButtons % 2 == 0 ? EvenY : OddY);
+      float y = _createdButtons % 2 == 0 ? EvenY : OddY;
       newButton.transform.localPosition = new Vector3(x, y);
       _createdButtons++;
     }

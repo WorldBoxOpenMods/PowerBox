@@ -1,31 +1,36 @@
+using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code {
-  public class WindowBase {
-    internal static PowerType PowType;
+  public abstract class WindowBase<T> : Feature where T : WindowBase<T> {
+    internal PowerType PowType;
 
-    protected readonly GameObject SpriteHighlighter;
+    protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
     protected const float Green = 0.78f;
     protected const float Blue = 0;
     protected const float Alpha = 0.565f;
 
+    public static T Instance { get; private set; }
     public WindowBase() {
+      Instance = (T)this;
+    }
+
+    internal override bool Init() {
       SpriteHighlighter = new GameObject("spriteHighlighter") {
         transform = {
           localScale = new Vector2(1.0f, 1.0f)
         },
         layer = 5
       };
-
-      Image imageH = this.SpriteHighlighter.AddComponent<Image>();
+      Image imageH = SpriteHighlighter.AddComponent<Image>();
       Texture2D texture = Resources.Load<Texture2D>("ui/icons/iconbrush_circ_5");
       imageH.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1f);
       imageH.color = new Color(Red, Green, Blue, Alpha);
       imageH.raycastTarget = false;
-
       SpriteHighlighter.SetActive(false);
+      return true;
     }
 
     protected GameObject AddHighLight(int index, GameObject content, bool enabled = false) {

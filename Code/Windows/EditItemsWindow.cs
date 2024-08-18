@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.General;
 using NeoModLoader.services;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace PowerBox.Code.GameWindows {
-  internal class EditItemsWindow : WindowBase {
-    private readonly GameObject _changeItemType;
-    private readonly ScrollWindow _editItemsWindow;
-    private readonly GameObject _changeItemModifierF;
-    private readonly GameObject _changeItemModifierS;
-    private readonly GameObject _changeItemModifierT;
-    public EditItemsWindow(Transform inspectUnitContent) {
+namespace PowerBox.Code.Windows {
+  internal class EditItemsWindow : WindowBase<EditItemsWindow> {
+    internal override List<Type> RequiredFeatures => new List<Type> { typeof(GodPowers.ItemAdditionPower), typeof(GodPowers.ItemRemovalPower) };
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
+      if (!base.Init()) return false;
+      ScrollWindow.checkWindowExist("inspect_unit");
+      GameObject inspectUnitObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit");
+      Transform inspectUnitContent = inspectUnitObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit/Background");
+      inspectUnitObject.SetActive(false);
+      Init(inspectUnitContent);
+      return true;
+    }
+
+    private GameObject _changeItemType;
+    private ScrollWindow _editItemsWindow;
+    private GameObject _changeItemModifierF;
+    private GameObject _changeItemModifierS;
+    private GameObject _changeItemModifierT;
+    private void Init(Transform inspectUnitContent) {
       InitAddRemoveChosen();
 
       _editItemsWindow = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
@@ -149,14 +162,14 @@ namespace PowerBox.Code.GameWindows {
       List<string> skipList = new List<string> {
         "_equipment", "_accessory", "_weapon", "_melee", "_range", "base", "hands", "jaws", "claws"
       };
-      
+
       Dictionary<ItemData, bool> addItemSelectionFound = ChosenForAddSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
       Dictionary<ItemData, bool> removeItemSelectionFound = ChosenForRemoveSlots.Where(selection => selection.Value != null).ToDictionary(selection => selection.Value, _ => false);
 
 
       RectTransform rect = content.GetComponent<RectTransform>();
       rect.pivot = new Vector2(0, 1);
-      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Where(item => !skipList.Contains(item.id)).SelectMany(item => item.materials.Select(material => (item, new ItemData() {id = item.id, material = material}))).Count(itemTuple => itemTuple.Item1.getSprite(itemTuple.Item2) != null)).y));
+      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Where(item => !skipList.Contains(item.id)).SelectMany(item => item.materials.Select(material => (item, new ItemData() { id = item.id, material = material }))).Count(itemTuple => itemTuple.Item1.getSprite(itemTuple.Item2) != null)).y));
 
       foreach (ItemAsset item in itemsList.Where(item => !skipList.Contains(item.id))) {
         foreach (ItemAsset material in materials) {
@@ -226,11 +239,11 @@ namespace PowerBox.Code.GameWindows {
             _chosenModifierId[1],
             _chosenModifierId[2]
           }.Where(mod => mod != null).Where(mod => mod != "").Where(mod => mod != "normal").ToList();
-          
+
           if (!item.materials.Contains(material.id) && !ringAndAmulet) {
             continue;
           }
-          
+
           if (item.getSprite(itemData) == null) {
             continue;
           }
@@ -264,13 +277,13 @@ namespace PowerBox.Code.GameWindows {
     private static void LoadItemButton(ItemData item, EquipmentButton itemButtonPref, Transform parent, Action<EquipmentButton> callback) {
       EquipmentButton itemButton = Object.Instantiate(itemButtonPref, parent);
       FindFavouriteItemsWindow.AddButtonToNotAttachTo(itemButton);
-      
+
       try {
         itemButton.load(item);
       } catch (Exception e) {
         Debug.LogWarning("Failed to load button for item " + item.id + ", it might show up in an unintended way. Error that caused this:\n\n" + e);
       }
-      
+
       itemButton.transform.localPosition = Vector3.zero;
 
       Button button = itemButton.gameObject.GetComponent<Button>();
@@ -476,14 +489,14 @@ namespace PowerBox.Code.GameWindows {
       ChosenForRemoveSlots.Add(EquipmentType.Weapon, null);
     }
 
-    private static void ItemsSaveButtonClick() {
+    private void ItemsSaveButtonClick() {
       ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow addRemoveItemsWindow);
       if (addRemoveItemsWindow is null) {
         return;
       }
       addRemoveItemsWindow.clickHide();
 
-      if ((PowType == PowerType.Add && ChosenForAddSlots.Count > 0) || (PowType == PowerType.Remove && ChosenForRemoveSlots.Count > 0)) {
+      if (PowType == PowerType.Add && ChosenForAddSlots.Count > 0 || PowType == PowerType.Remove && ChosenForRemoveSlots.Count > 0) {
         GameObject pButtonO = ResourcesFinder.FindResource<GameObject>(PowType == PowerType.Add ? "addItems" : "removeItems");
         if (pButtonO is null) {
           LogService.LogError("Power button object not found");

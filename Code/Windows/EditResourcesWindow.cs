@@ -4,16 +4,27 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace PowerBox.Code.GameWindows {
+namespace PowerBox.Code.Windows {
 
-  internal class EditResourcesWindow : WindowBase {
+  internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
     private static ScrollWindow _editResourcesWindow;
-    public EditResourcesWindow(Transform inspectVillageContent) {
+    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
+    internal override bool Init() {
+      if (!base.Init()) return false;
+      ScrollWindow.checkWindowExist("village");
+      GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
+      inspectVillage.SetActive(false);
+      Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
+      Init(inspectVillageBackground);
+      return true;
+    }
+    public void Init(Transform inspectVillageContent) {
 
       _editResourcesWindow = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
       _editResourcesWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
@@ -64,7 +75,7 @@ namespace PowerBox.Code.GameWindows {
     }
     public static void EditResourcesButtonClick() {
       _editResourcesWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
-      Windows.EditResourcesWindow.InitEditResources();
+      Instance.InitEditResources();
       _editResourcesWindow.clickShow();
     }
 
