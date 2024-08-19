@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class EditFavoriteFoodWindow : WindowBase<EditFavoriteFoodWindow> {
-    private ScrollWindow _editFavoriteFoodWindow;
     private Actor _targetUnit;
     internal override bool Init() {
       ScrollWindow.checkWindowExist("inspect_unit");
 
-      _editFavoriteFoodWindow = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
-      _editFavoriteFoodWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
-      _editFavoriteFoodWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      _editFavoriteFoodWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject inspectUnitHungerStatBar = ResourcesFinder.FindResource<GameObject>("HungerBar");
       if (inspectUnitHungerStatBar != null) {
@@ -24,15 +23,15 @@ namespace PowerBox.Code.Features.Windows {
         }
       }
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editFavoriteFoodWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
       
       return true;
     }
     private void EditFavoriteFoodButtonClick() {
-      InitEditFavoriteFood(_editFavoriteFoodWindow);
-      _editFavoriteFoodWindow.clickShow();
+      InitEditFavoriteFood(Window);
+      Window.clickShow();
     }
 
     private void InitEditFavoriteFood(ScrollWindow window) {

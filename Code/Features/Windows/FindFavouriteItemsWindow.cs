@@ -15,15 +15,14 @@ namespace PowerBox.Code.Features.Windows {
     private static Thread _itemCacheCheckThread;
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
-    private ScrollWindow _findCultureMembersWindow;
     internal override bool Init() {
-      _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      _findCultureMembersWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_findCultureMembersWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -55,8 +54,8 @@ namespace PowerBox.Code.Features.Windows {
       }
     }
     public void FindFavoriteItemsButtonClick() {
-      InitFindFavouriteItems(_findCultureMembersWindow);
-      _findCultureMembersWindow.clickShow();
+      InitFindFavouriteItems(Window);
+      Window.clickShow();
     }
     private void CheckFavoriteItemsStatus() {
       bool itemGone = false;
@@ -70,7 +69,7 @@ namespace PowerBox.Code.Features.Windows {
         }
       }
       if (itemGone) {
-        InitFindFavouriteItems(_findCultureMembersWindow);
+        InitFindFavouriteItems(Window);
       }
     }
     private static (Actor actor, City city) GetItemOwner(ItemData itemData) {

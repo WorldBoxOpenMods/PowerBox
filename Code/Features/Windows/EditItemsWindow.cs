@@ -24,22 +24,21 @@ namespace PowerBox.Code.Features.Windows {
     }
 
     private GameObject _changeItemType;
-    private ScrollWindow _editItemsWindow;
     private GameObject _changeItemModifierF;
     private GameObject _changeItemModifierS;
     private GameObject _changeItemModifierT;
     private void Init(Transform inspectUnitContent) {
       InitAddRemoveChosen();
 
-      _editItemsWindow = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
-      _editItemsWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_items");
-      _editItemsWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_items");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      _editItemsWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject editItems = PowerButtonCreator.CreateSimpleButton("EditItems", EditItemsButtonClick, AssetUtils.LoadEmbeddedSprite("powers/items"), inspectUnitContent).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editItemsWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -55,7 +54,7 @@ namespace PowerBox.Code.Features.Windows {
       editItems.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editItems.GetComponent<Button>().transition = Selectable.Transition.None;
 
-      Transform bg = _editItemsWindow.transform.Find("Background");
+      Transform bg = Window.transform.Find("Background");
       
       GameObject saveButton = PowerButtonCreator.CreateSimpleButton(
         "DoneItems",
@@ -312,9 +311,9 @@ namespace PowerBox.Code.Features.Windows {
         LM.AddToCurrentLocale("ChangeType", LM.Get("ArmorChangeType"));
       }
       if (PowType == PowerType.Unset) {
-        InitEditItems(_editItemsWindow, EditItemsButtonCallBack);
+        InitEditItems(Window, EditItemsButtonCallBack);
       } else {
-        InitEditItems(_editItemsWindow, null, PowType);
+        InitEditItems(Window, null, PowType);
       }
     }
     private int[] _inactiveChosenModifierIndex = { 0, 0, 0 };
@@ -395,16 +394,16 @@ namespace PowerBox.Code.Features.Windows {
       }
       itemModifierButton.GetComponent<PowerButton>().showTooltip();
       if (PowType == PowerType.Unset) {
-        InitEditItems(_editItemsWindow, EditItemsButtonCallBack);
+        InitEditItems(Window, EditItemsButtonCallBack);
       } else {
-        InitEditItems(_editItemsWindow, null, PowType);
+        InitEditItems(Window, null, PowType);
       }
     }
 
     private void EditItemsButtonClick() {
       if (Config.selectedUnit != null && Config.selectedUnit.asset.use_items) {
-        InitEditItems(_editItemsWindow, EditItemsButtonCallBack);
-        _editItemsWindow.clickShow();
+        InitEditItems(Window, EditItemsButtonCallBack);
+        Window.clickShow();
       } else {
         WorldTip.showNow("cant_use_items_error", true, "top");
       }

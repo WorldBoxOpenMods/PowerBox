@@ -10,7 +10,6 @@ using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
-    private ScrollWindow _findCultureMembersWindow;
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("culture");
@@ -21,15 +20,15 @@ namespace PowerBox.Code.Features.Windows {
       return true;
     }
     private void Init(Transform inspectCultureContent) {
-      _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
-      _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      _findCultureMembersWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), inspectCultureContent).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_findCultureMembersWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -46,8 +45,8 @@ namespace PowerBox.Code.Features.Windows {
       findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
     }
     private void FindCultureMembersButtonClick() {
-      InitFindCultureMembers(_findCultureMembersWindow);
-      _findCultureMembersWindow.clickShow();
+      InitFindCultureMembers(Window);
+      Window.clickShow();
     }
     private static List<Actor> GetCultureFollowers(Culture selectedCulture) {
       return World.world.units.getSimpleList().Where(unit => unit.data.culture == selectedCulture.data.id).ToList();

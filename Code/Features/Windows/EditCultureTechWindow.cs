@@ -8,7 +8,6 @@ using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class EditCultureTechWindow : WindowBase<EditCultureTechWindow> {
-    private ScrollWindow _editCultureTechWindow;
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("culture");
@@ -19,11 +18,11 @@ namespace PowerBox.Code.Features.Windows {
       return true;
     }
     private void Init(Transform inspectCultureContent) {
-      _editCultureTechWindow = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
-      _editCultureTechWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
-      _editCultureTechWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      _editCultureTechWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject editItems = PowerButtonCreator.CreateSimpleButton(
         "EditCultureTech",
@@ -32,7 +31,7 @@ namespace PowerBox.Code.Features.Windows {
         inspectCultureContent
       ).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editCultureTechWindow.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -55,8 +54,8 @@ namespace PowerBox.Code.Features.Windows {
         WorldTip.showNow("no_culture_selected_error", true, "top");
         return;
       }
-      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + _editCultureTechWindow.name + "/Background/Scroll View/Viewport/Content");
-      _editCultureTechWindow.resetScroll();
+      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + Window.name + "/Background/Scroll View/Viewport/Content");
+      Window.resetScroll();
       for (int i = 0; i < content.transform.childCount; i++) {
         Object.Destroy(content.transform.GetChild(i).gameObject);
       }
@@ -71,7 +70,7 @@ namespace PowerBox.Code.Features.Windows {
           }
         });
       }
-      _editCultureTechWindow.clickShow();
+      Window.clickShow();
     }
     
     private void LoadTechButton(Culture culture, CultureTechAsset tech, Transform parent, int index, Action<SwitchButton> callback) {

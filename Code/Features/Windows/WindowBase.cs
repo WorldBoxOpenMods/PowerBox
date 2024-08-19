@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public abstract class WindowBase<T> : Feature where T : WindowBase<T> {
+    protected ScrollWindow Window { get; set; }
     protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
     protected const float Green = 0.78f;

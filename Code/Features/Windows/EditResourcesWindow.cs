@@ -12,16 +12,15 @@ using Object = UnityEngine.Object;
 namespace PowerBox.Code.Features.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
-    private static ScrollWindow _editResourcesWindow;
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("village");
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
       Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
-      _editResourcesWindow = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
-      _editResourcesWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
-      _editResourcesWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      Window = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
+      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       GameObject editResources = PowerButtonCreator.CreateSimpleButton("EditResources", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
       editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
       Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
@@ -54,10 +53,10 @@ namespace PowerBox.Code.Features.Windows {
         yield return instruction;
       }
     }
-    public static void EditResourcesButtonClick() {
-      _editResourcesWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+    public void EditResourcesButtonClick() {
+      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
       Instance.InitEditResources();
-      _editResourcesWindow.clickShow();
+      Window.clickShow();
     }
 
     private void InitEditResources() {
@@ -65,7 +64,7 @@ namespace PowerBox.Code.Features.Windows {
 
       rt.sizeDelta = new Vector2(60f, 60f);
 
-      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + _editResourcesWindow.name + "/Background/Scroll View/Viewport/Content");
+      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + Window.name + "/Background/Scroll View/Viewport/Content");
 
       List<ResourceAsset> resourceArray = AssetManager.resources.dict.Values.ToList();
 
