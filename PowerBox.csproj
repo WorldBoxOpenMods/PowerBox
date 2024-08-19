@@ -98,6 +98,7 @@
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
       <Compile Include="Code\Features\Windows\FindFavouriteItemsWindow.cs" />
+      <Compile Include="Code\Features\Windows\WindowBase.cs" />
       <Compile Include="Code\LoadingSystem\Feature.cs" />
       <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
@@ -108,7 +109,6 @@
       <Compile Include="Code\Utils\CloudUtils.cs" />
       <Compile Include="Code\Utils\PowerButtonUtils.cs" />
       <Compile Include="Code\Utils\WhisperUtils.cs" />
-      <Compile Include="Code\WindowBase.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />

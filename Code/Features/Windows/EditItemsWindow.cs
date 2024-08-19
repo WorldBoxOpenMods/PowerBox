@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   internal class EditItemsWindow : WindowBase<EditItemsWindow> {
+    internal PowerType PowType;
     internal override List<Type> RequiredFeatures => new List<Type> { typeof(ItemAdditionPower), typeof(ItemRemovalPower) };
     internal override bool Init() {
       if (!base.Init()) return false;
@@ -513,5 +514,11 @@ namespace PowerBox.Code.Features.Windows {
         PowerButtonSelector.instance.clickPowerButton(pButton);
       }
     }
+  }
+  
+  public enum PowerType {
+    Add,
+    Remove,
+    Unset
   }
 }

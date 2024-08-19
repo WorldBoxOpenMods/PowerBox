@@ -2,10 +2,8 @@ using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PowerBox.Code {
+namespace PowerBox.Code.Features.Windows {
   public abstract class WindowBase<T> : Feature where T : WindowBase<T> {
-    internal PowerType PowType;
-
     protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
     protected const float Green = 0.78f;
@@ -76,11 +74,5 @@ namespace PowerBox.Code {
       StartYPos = -22.5f;
       YStep = -22.5f;
     }
-  }
-
-  public enum PowerType {
-    Add,
-    Remove,
-    Unset
   }
 }
