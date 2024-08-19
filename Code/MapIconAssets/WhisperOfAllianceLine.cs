@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
 using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 
 namespace PowerBox.Code.MapIconAssets {
   public class WhisperOfAllianceLine : Feature {
+    internal override List<Type> RequiredFeatures => new List<Type>{ typeof(GodPowers.AllianceCreationPower) };
     internal override bool Init() {
       AssetManager.map_icons.add(new MapIconAsset {
         id = "whisper_of_alliance_line",

@@ -38,6 +38,30 @@
     <ItemGroup>
       <Compile Include="Code\Actors\BurgerSpider.cs" />
       <Compile Include="Code\Actors\Developers.cs" />
+      <Compile Include="Code\Buttons\AboutModButton.cs" />
+      <Compile Include="Code\Buttons\AllianceCreationButton.cs" />
+      <Compile Include="Code\Buttons\BloodRainCloudSpawnButton.cs" />
+      <Compile Include="Code\Buttons\BuildingDowngradeButton.cs" />
+      <Compile Include="Code\Buttons\BuildingUpgradeButton.cs" />
+      <Compile Include="Code\Buttons\BurgerSpiderCloudSpawnButton.cs" />
+      <Compile Include="Code\Buttons\ButtonFeature.cs" />
+      <Compile Include="Code\Buttons\CityBorderExpansionButton.cs" />
+      <Compile Include="Code\Buttons\CityBorderReductionButton.cs" />
+      <Compile Include="Code\Buttons\ClanAdditionButton.cs" />
+      <Compile Include="Code\Buttons\ColonyCreationButton.cs" />
+      <Compile Include="Code\Buttons\CultureAdditionButton.cs" />
+      <Compile Include="Code\Buttons\CultureBorderExpansionButton.cs" />
+      <Compile Include="Code\Buttons\CultureBorderReductionButton.cs" />
+      <Compile Include="Code\Buttons\CultureCreationButton.cs" />
+      <Compile Include="Code\Buttons\CultureDuplicationButton.cs" />
+      <Compile Include="Code\Buttons\DebugMenuButton.cs" />
+      <Compile Include="Code\Buttons\FindFavoriteItemsButton.cs" />
+      <Compile Include="Code\Buttons\FishingBoatSpawnButton.cs" />
+      <Compile Include="Code\Buttons\ItemModificationButtons.cs" />
+      <Compile Include="Code\Buttons\NonRandomFriendshipButton.cs" />
+      <Compile Include="Code\Buttons\TradingBoatSpawnButton.cs" />
+      <Compile Include="Code\Buttons\TransportBoatSpawnButton.cs" />
+      <Compile Include="Code\Buttons\UnitSpawnButtons.cs" />
       <Compile Include="Code\Buttons\Tab.cs" />
       <Compile Include="Code\Drops\CommonItemDrop.cs" />
       <Compile Include="Code\GodPowers\AllianceCreationPower.cs" />
@@ -55,7 +79,7 @@
       <Compile Include="Code\GodPowers\CultureCreationPower.cs" />
       <Compile Include="Code\GodPowers\CultureDuplicationPower.cs" />
       <Compile Include="Code\GodPowers\FishingBoatSpawnPower.cs" />
-      <Compile Include="Code\GodPowers\FriendshipPower.cs" />
+      <Compile Include="Code\GodPowers\NonRandomFriendshipPower.cs" />
       <Compile Include="Code\GodPowers\ItemAdditionPower.cs" />
       <Compile Include="Code\GodPowers\ItemRemovalPower.cs" />
       <Compile Include="Code\GodPowers\TradingBoatSpawnPower.cs" />
@@ -73,7 +97,6 @@
       <Compile Include="Code\Scheduling\Scheduler.cs" />
       <Compile Include="Code\Tab.cs" />
       <Compile Include="Code\PowerBox.cs" />
-      <Compile Include="Code\Buttons.cs" />
       <Compile Include="Code\Utils\AssetUtils.cs" />
       <Compile Include="Code\Utils\BoatUtils.cs" />
       <Compile Include="Code\Utils\CloudUtils.cs" />

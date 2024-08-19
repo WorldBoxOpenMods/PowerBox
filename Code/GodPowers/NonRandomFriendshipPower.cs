@@ -3,7 +3,7 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.GodPowers {
-  public class FriendshipPower : Feature {
+  public class NonRandomFriendshipPower : Feature {
     internal override bool Init() {
       GodPower friendshipNotRandom = new GodPower() {
         id = "friendshipNR",

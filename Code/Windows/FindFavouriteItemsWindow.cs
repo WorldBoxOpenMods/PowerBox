@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading;
 using HarmonyLib;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
-using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -18,20 +16,12 @@ namespace PowerBox.Code.Windows {
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
     private ScrollWindow _findCultureMembersWindow;
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       _findCultureMembersWindow = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
       _findCultureMembersWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       _findCultureMembersWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
-      
-      Tab.CreateClickButton(
-        "find_favorite_items",
-        AssetUtils.LoadEmbeddedSprite("powers/favourite_items_list"),
-        Tab.PowerboxTabObject.transform,
-        FindFavoriteItemsButtonClick
-      );
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_findCultureMembersWindow.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
@@ -64,7 +54,7 @@ namespace PowerBox.Code.Windows {
         WorldTip.showNow("item_favorited_message", true, "top");
       }
     }
-    private void FindFavoriteItemsButtonClick() {
+    public void FindFavoriteItemsButtonClick() {
       InitFindFavouriteItems(_findCultureMembersWindow);
       _findCultureMembersWindow.clickShow();
     }
