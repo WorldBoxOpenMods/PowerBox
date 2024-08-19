@@ -65,7 +65,7 @@ namespace PowerBox.Code.Features.Windows {
       }
       RectTransform rect = content.GetComponent<RectTransform>();
       rect.pivot = new Vector2(0, 1);
-      rect.sizeDelta = new Vector2(0, AssetManager.culture_tech.list.Count * YStep);
+      rect.sizeDelta = new Vector2(0, AssetManager.culture_tech.list.Count * YStep + GetPosByIndex(AssetManager.culture_tech.list.Count - 1).y);
       int index = 0;
       foreach (CultureTechAsset tech in AssetManager.culture_tech.list) {
         LoadTechButton(selectedCulture, tech, content.transform, index++, (button) => {
@@ -84,6 +84,7 @@ namespace PowerBox.Code.Features.Windows {
       parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, index * YStep);
       SwitchButton techButton = Object.Instantiate(SwitchButton.Prefab, parent);
       techButton.transform.localPosition = GetPosByIndex(index);
+      techButton.transform.localPosition = new Vector3(techButton.transform.localPosition.x, techButton.transform.localPosition.y - (AssetManager.culture_tech.list.Count - 1) * YStep + 10.0f, techButton.transform.localPosition.z);
       try {
         techButton.Setup(culture.hasTech(tech.id), () => callback(techButton));
       } catch (Exception e) {
