@@ -1,7 +1,6 @@
 using System;
 using NeoModLoader.General;
 using NeoModLoader.General.UI.Prefabs;
-using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,6 @@ using Object = UnityEngine.Object;
 namespace PowerBox.Code.Windows {
   public class EditCultureTechWindow : WindowBase<EditCultureTechWindow> {
     private ScrollWindow _editCultureTechWindow;
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("culture");
@@ -27,12 +25,12 @@ namespace PowerBox.Code.Windows {
 
       _editCultureTechWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject editItems = Tab.CreateClickButton(
+      GameObject editItems = PowerButtonCreator.CreateSimpleButton(
         "EditCultureTech",
+        EditCultureTechButtonClick,
         AssetUtils.LoadEmbeddedSprite("powers/items"),
-        inspectCultureContent,
-        EditCultureTechButtonClick
-      );
+        inspectCultureContent
+      ).gameObject;
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editCultureTechWindow.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();

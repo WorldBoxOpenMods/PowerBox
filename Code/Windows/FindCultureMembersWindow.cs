@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Scheduling;
 using PowerBox.Code.Utils;
 using UnityEngine;
@@ -12,7 +11,6 @@ using Object = UnityEngine.Object;
 namespace PowerBox.Code.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
     private ScrollWindow _findCultureMembersWindow;
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("culture");
@@ -29,12 +27,7 @@ namespace PowerBox.Code.Windows {
 
       _findCultureMembersWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject findCultureMembers = Tab.CreateClickButton(
-        "find_culture_members",
-        Resources.Load<Sprite>("ui/icons/iconculturezones"),
-        inspectCultureContent,
-        FindCultureMembersButtonClick
-      );
+      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), inspectCultureContent).gameObject;
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_findCultureMembersWindow.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
@@ -106,13 +99,13 @@ namespace PowerBox.Code.Windows {
           localScale = new Vector3(0.9f, 0.9f, 0.9f)
         }
       };
-      GameObject followerInfoChild = Tab.CreateClickButton("follower_" + index, null, followerInfo.transform, () => {
+      GameObject followerInfoChild = PowerButtonCreator.CreateSimpleButton("follower_" + index, () => {
         if (follower is null || follower.isAlive() == false) {
           return;
         }
         Config.selectedUnit = follower;
         ScrollWindow.showWindow("inspect_unit");
-      });
+      }, null, followerInfo.transform).gameObject;
       followerInfoChild.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
       UiUnitAvatarElement creatureInfo = followerInfoChild.AddComponent<UiUnitAvatarElement>();
       GameObject garbage = new GameObject();

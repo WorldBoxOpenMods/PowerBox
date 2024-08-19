@@ -1,6 +1,5 @@
 using System.Linq;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,6 @@ namespace PowerBox.Code.Windows {
   public class EditFavoriteFoodWindow : WindowBase<EditFavoriteFoodWindow> {
     private ScrollWindow _editFavoriteFoodWindow;
     private Actor _targetUnit;
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       ScrollWindow.checkWindowExist("inspect_unit");
 
@@ -41,7 +39,7 @@ namespace PowerBox.Code.Windows {
       GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + window.name + "/Background/Scroll View/Viewport/Content");
       _targetUnit = Config.selectedUnit;
       if (content.transform.childCount <= 0) {
-        foreach (GameObject foodSelectButton in AssetManager.resources.list.Where(r => r.type == ResType.Food).Where(r => r.id != "honey" /* for some reason, honey seems to not have localized text and a sprite */).Select(food => Tab.CreateClickButton(food.id, food.getSprite(), content.transform, () => SetFavoriteFood(food.id)))) {
+        foreach (GameObject foodSelectButton in AssetManager.resources.list.Where(r => r.type == ResType.Food).Where(r => r.id != "honey" /* for some reason, honey seems to not have localized text and a sprite */).Select(food => PowerButtonCreator.CreateSimpleButton(food.id, () => SetFavoriteFood(food.id), food.getSprite(), content.transform)).Select(pb => pb.gameObject)) {
           int i = content.transform.childCount - 1;
           // ReSharper disable once PossibleLossOfFraction
           foodSelectButton.transform.localPosition = new Vector3(50.0f + 40 * (i % 5), -20.0f + (i / 5) * -40.0f, 0.0f);

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.General;
 using NeoModLoader.services;
-using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +11,6 @@ using Object = UnityEngine.Object;
 namespace PowerBox.Code.Windows {
   internal class EditItemsWindow : WindowBase<EditItemsWindow> {
     internal override List<Type> RequiredFeatures => new List<Type> { typeof(GodPowers.ItemAdditionPower), typeof(GodPowers.ItemRemovalPower) };
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("inspect_unit");
@@ -37,12 +35,7 @@ namespace PowerBox.Code.Windows {
 
       _editItemsWindow.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject editItems = Tab.CreateClickButton(
-        "EditItems",
-        AssetUtils.LoadEmbeddedSprite("powers/items"),
-        inspectUnitContent,
-        EditItemsButtonClick
-      );
+      GameObject editItems = PowerButtonCreator.CreateSimpleButton("EditItems", EditItemsButtonClick, AssetUtils.LoadEmbeddedSprite("powers/items"), inspectUnitContent).gameObject;
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{_editItemsWindow.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
@@ -61,46 +54,45 @@ namespace PowerBox.Code.Windows {
       editItems.GetComponent<Button>().transition = Selectable.Transition.None;
 
       Transform bg = _editItemsWindow.transform.Find("Background");
-
-
-      GameObject saveButton = Tab.CreateClickButton(
+      
+      GameObject saveButton = PowerButtonCreator.CreateSimpleButton(
         "DoneItems",
+        ItemsSaveButtonClick,
         Resources.Load<Sprite>("ui/icons/iconsavelocal"),
-        bg.transform,
-        ItemsSaveButtonClick
-      );
+        bg.transform
+      ).gameObject;
       saveButton.transform.localPosition = new Vector2(70.00f, -150.00f);
 
-      _changeItemType = Tab.CreateClickButton(
+      _changeItemType = PowerButtonCreator.CreateSimpleButton(
         "ChangeType",
+        ChangeTypeButtonClick,
         AssetUtils.LoadEmbeddedSprite("powers/weapons"),
-        bg,
-        ChangeTypeButtonClick
-      );
+        bg
+      ).gameObject;
       _changeItemType.transform.localPosition = new Vector2(35.00f, -150.00f);
 
-      _changeItemModifierF = Tab.CreateClickButton(
+      _changeItemModifierF = PowerButtonCreator.CreateSimpleButton(
         "ChangeModifier0",
+        () => ChangeModifierButtonClick(0, _changeItemModifierF),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
-        bg,
-        () => ChangeModifierButtonClick(0, _changeItemModifierF)
-      );
+        bg
+      ).gameObject;
       _changeItemModifierF.transform.localPosition = new Vector2(-70.00f, -150.00f);
 
-      _changeItemModifierS = Tab.CreateClickButton(
+      _changeItemModifierS = PowerButtonCreator.CreateSimpleButton(
         "ChangeModifier1",
+        () => ChangeModifierButtonClick(1, _changeItemModifierS),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
-        bg,
-        () => ChangeModifierButtonClick(1, _changeItemModifierS)
-      );
+        bg
+      ).gameObject;
       _changeItemModifierS.transform.localPosition = new Vector2(-35.00f, -150.00f);
 
-      _changeItemModifierT = Tab.CreateClickButton(
+      _changeItemModifierT = PowerButtonCreator.CreateSimpleButton(
         "ChangeModifier2",
+        () => ChangeModifierButtonClick(2, _changeItemModifierT),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
-        bg,
-        () => ChangeModifierButtonClick(2, _changeItemModifierT)
-      );
+        bg
+      ).gameObject;
       _changeItemModifierT.transform.localPosition = new Vector2(0.00f, -150.00f);
       for (int i = 0; i < _chosenModifierIndex.Length; i++) {
         string localeKey = $"ChangeModifier{i}";

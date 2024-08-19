@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,51 +13,33 @@ namespace PowerBox.Code.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
     private static ScrollWindow _editResourcesWindow;
-    private Buttons.Tab Tab => FeatureManager.Instance.GetFeature<Buttons.Tab>(this);
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("village");
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
       Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
-      Init(inspectVillageBackground);
-      return true;
-    }
-    public void Init(Transform inspectVillageContent) {
-
       _editResourcesWindow = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
       _editResourcesWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
       _editResourcesWindow.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
-
-      GameObject editResources = Tab.CreateClickButton(
-        "EditResources",
-        AssetUtils.LoadEmbeddedSprite("powers/res_clear"),
-        inspectVillageContent,
-        EditResourcesButtonClick
-      );
-
-
+      GameObject editResources = PowerButtonCreator.CreateSimpleButton("EditResources", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
       editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
-
-
       Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
       editResourcesBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
       editResourcesBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
-
       RectTransform editResourcesRect = editResources.GetComponent<RectTransform>();
       editResourcesRect.sizeDelta = new Vector2(32f, 36f);
-
       editResources.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editResources.GetComponent<Button>().transition = Selectable.Transition.None;
-
       new Harmony("key.worldbox.powerbox").Patch(
         AccessTools.Method(typeof(CityWindow), nameof(CityWindow.OnDisable)),
         null,
         null,
         new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
       );
+      return true;
     }
-
+    
     private static IEnumerable<CodeInstruction> StopOnDisableFromSettingSelectedCityToNull(IEnumerable<CodeInstruction> instructions) {
       bool foundNullSet = false;
       foreach (CodeInstruction instruction in instructions) {
