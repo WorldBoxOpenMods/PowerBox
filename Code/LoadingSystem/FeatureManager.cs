@@ -41,12 +41,12 @@ namespace PowerBox.Code.LoadingSystem {
         foreach (Feature feature in features) {
           FeatureTreeNode featureTreeNode = new FeatureTreeNode(feature);
           featureNodes.Add(feature.GetType().AssemblyQualifiedName ?? throw new Exception("AssemblyQualifiedName is null, apparently."), featureTreeNode);
-          if (feature.RequiredFeatures.Count < 1) {
+          if (feature.LoadAfterFeatures.Count < 1) {
             roots.Add(featureTreeNode);
           }
         }
         foreach (FeatureTreeNode node in featureNodes.Values) {
-          foreach (Type requirement in node.Feature.RequiredFeatures) {
+          foreach (Type requirement in node.Feature.LoadAfterFeatures) {
             if (featureNodes.TryGetValue(requirement.AssemblyQualifiedName ?? throw new Exception("AssemblyQualifiedName is null, apparently."), out FeatureTreeNode requiredNode)) {
               requiredNode.DependentFeatures.Add(node);
             }
