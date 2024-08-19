@@ -31,8 +31,7 @@ namespace PowerBox.Code.LoadingSystem {
     
     public bool TryGetFeature<T>(Feature askingFeature, out T feature) where T : Feature {
       if (!askingFeature.RequiredFeatures.Contains(typeof(T)) && !askingFeature.OptionalFeatures.Contains(typeof(T))) {
-        feature = default;
-        return false;
+        throw new InvalidOperationException($"Feature {typeof(T).FullName} is not set as a requirement or optional feature for feature {askingFeature.GetType().FullName}.");
       }
       if (!IsFeatureLoaded<T>()) {
         feature = default;
