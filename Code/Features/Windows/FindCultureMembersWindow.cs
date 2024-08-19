@@ -33,7 +33,7 @@ namespace PowerBox.Code.Features.Windows {
       viewportRect.sizeDelta = new Vector2(0, 17);
 
 
-      findCultureMembers.transform.localPosition = new Vector3(117.0f, 16.0f, findCultureMembers.transform.localPosition.z);
+      findCultureMembers.transform.localPosition = new Vector3(116.5f, 16.0f, findCultureMembers.transform.localPosition.z);
 
       Transform editItemsBtnIcon = findCultureMembers.transform.Find("Icon");
       editItemsBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
