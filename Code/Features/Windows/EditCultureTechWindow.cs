@@ -63,6 +63,9 @@ namespace PowerBox.Code.Features.Windows {
       for (int i = 0; i < content.transform.childCount; i++) {
         Object.Destroy(content.transform.GetChild(i).gameObject);
       }
+      RectTransform rect = content.GetComponent<RectTransform>();
+      rect.pivot = new Vector2(0, 1);
+      rect.sizeDelta = new Vector2(0, AssetManager.culture_tech.list.Count * YStep);
       int index = 0;
       foreach (CultureTechAsset tech in AssetManager.culture_tech.list) {
         LoadTechButton(selectedCulture, tech, content.transform, index++, (button) => {
