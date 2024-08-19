@@ -67,13 +67,5 @@ namespace PowerBox.Code.Features.Windows {
 
       return new Vector2(x, y);
     }
-
-    protected void ResetWrapValues() {
-      StartXPos = 40f;
-      XStep = 22f;
-      CountInRow = 9;
-      StartYPos = -22.5f;
-      YStep = -22.5f;
-    }
   }
 }

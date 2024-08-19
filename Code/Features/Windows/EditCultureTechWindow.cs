@@ -46,6 +46,10 @@ namespace PowerBox.Code.Features.Windows {
       editItemsRect.sizeDelta = new Vector2(32f, 36f);
       editItems.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editItems.GetComponent<Button>().transition = Selectable.Transition.None;
+      StartXPos = 60.0f;
+      CountInRow = 1;
+      XStep = 0.0f;
+      YStep = 15.0f;
     }
 
     private void EditCultureTechButtonClick() {
@@ -74,9 +78,9 @@ namespace PowerBox.Code.Features.Windows {
     }
     
     private void LoadTechButton(Culture culture, CultureTechAsset tech, Transform parent, int index, Action<SwitchButton> callback) {
-      parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, index * 15);
+      parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, index * YStep);
       SwitchButton techButton = Object.Instantiate(SwitchButton.Prefab, parent);
-      techButton.transform.localPosition = new Vector3(60, StartYPos * AssetManager.culture_tech.list.Count + index * 15, 0);
+      techButton.transform.localPosition = GetPosByIndex(index);
       try {
         techButton.Setup(culture.hasTech(tech.id), () => callback(techButton));
       } catch (Exception e) {

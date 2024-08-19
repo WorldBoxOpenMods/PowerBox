@@ -89,7 +89,11 @@ namespace PowerBox.Code.Features.Windows {
         LoadResourceButton(resourceArray[i], resourceButton, hl.transform);
       }
 
-      ResetWrapValues();
+      StartXPos = 40f;
+      XStep = 22f;
+      CountInRow = 9;
+      StartYPos = -22.5f;
+      YStep = -22.5f;
     }
 
     private static void LoadResourceButton(ResourceAsset asset, ButtonResource resourceButtonPref, Transform parent) {
