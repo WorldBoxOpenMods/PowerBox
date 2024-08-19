@@ -27,7 +27,7 @@ namespace PowerBox.Code.Features.Windows {
       GameObject editItems = PowerButtonCreator.CreateSimpleButton(
         "EditCultureTech",
         EditCultureTechButtonClick,
-        AssetUtils.LoadEmbeddedSprite("powers/items"),
+        Resources.Load<Sprite>("ui/icons/iconculture"),
         inspectCultureContent
       ).gameObject;
 
