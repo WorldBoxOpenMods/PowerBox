@@ -34,7 +34,7 @@ namespace PowerBox.Code.Features.GodPowers {
       MapBox.instance.getObjectsInChunks(pTile, 4, MapObjectType.Actor);
       List<BaseSimObject> tempMapObjects = MapBox.instance.temp_map_objects;
 
-      foreach (Actor tempMapObject in from Actor tempMapObject in tempMapObjects where tempMapObject.base_data.alive && tempMapObject.kingdom.isCiv() let ai = tempMapObject.ai select tempMapObject) {
+      foreach (Actor tempMapObject in from Actor tempMapObject in tempMapObjects where tempMapObject.base_data.alive && tempMapObject.kingdom.isCiv() && !tempMapObject.asset.isBoat select tempMapObject) {
         tempMapObject.startShake();
         tempMapObject.startColorEffect();
 
