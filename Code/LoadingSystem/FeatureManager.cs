@@ -28,6 +28,19 @@ namespace PowerBox.Code.LoadingSystem {
     private Feature GetFeature(Type featureType) {
       return _foundFeatures.FirstOrDefault(feature => feature.GetType() == featureType);
     }
+    
+    public bool TryGetFeature<T>(Feature askingFeature, out T feature) where T : Feature {
+      if (!askingFeature.RequiredFeatures.Contains(typeof(T)) && !askingFeature.OptionalFeatures.Contains(typeof(T))) {
+        feature = default;
+        return false;
+      }
+      if (!IsFeatureLoaded<T>()) {
+        feature = default;
+        return false;
+      }
+      feature = (T)GetFeature(typeof(T));
+      return true;
+    }
 
     private class FeatureTreeNode {
       internal Feature Feature { get; }
