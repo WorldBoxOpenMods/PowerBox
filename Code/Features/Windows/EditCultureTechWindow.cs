@@ -83,19 +83,20 @@ namespace PowerBox.Code.Features.Windows {
     
     private void LoadTechButton(Culture culture, CultureTechAsset tech, Transform parent, int index, Action<SwitchButton> callback) {
       SwitchButton techButton = Object.Instantiate(SwitchButton.Prefab, parent);
+      techButton.name = $"{tech.id} TechButtonToggle";
       techButton.transform.localPosition = new Vector3(StartXPos, StartYPos + YStep * index + 10.0f, techButton.transform.localPosition.z);
       try {
         techButton.Setup(culture.hasTech(tech.id), () => callback(techButton));
       } catch (Exception e) {
         Debug.LogWarning("Failed to load button for tech " + tech.id + ", it might show up in an unintended way. Error that caused this:\n\n" + e);
       }
-      GameObject buttonLabel = new GameObject("TechButtonLabel", typeof(Text));
+      GameObject buttonLabel = new GameObject($"{tech.id} TechButtonLabel", typeof(Text));
       buttonLabel.GetComponent<Text>().text = LM.Get($"tech_{tech.id}");
       buttonLabel.GetComponent<Text>().font = techButton.GetComponentInChildren<Text>().font;
       buttonLabel.GetComponent<Text>().fontSize = 60;
       buttonLabel.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
       buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + 850.0f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
-      GameObject buttonImage = new GameObject("TechButtonImage", typeof(Image));
+      GameObject buttonImage = new GameObject($"{tech.id} TechButtonImage", typeof(Image));
       buttonImage.GetComponent<Image>().sprite = SpriteTextureLoader.getSprite("ui/Icons/" + tech.path_icon);
       buttonImage.transform.SetParent(parent);
       buttonLabel.transform.SetParent(parent);
