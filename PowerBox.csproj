@@ -40,6 +40,9 @@
       <Compile Include="Code\Features\Actors\Developers.cs" />
       <Compile Include="Code\Features\Buttons\AboutModButton.cs" />
       <Compile Include="Code\Features\Buttons\AllianceCreationButton.cs" />
+      <Compile Include="Code\Features\Buttons\AssignCapitalButton.cs" />
+      <Compile Include="Code\Features\Buttons\AssignKingButton.cs" />
+      <Compile Include="Code\Features\Buttons\AssignLeaderButton.cs" />
       <Compile Include="Code\Features\Buttons\BloodRainCloudSpawnButton.cs" />
       <Compile Include="Code\Features\Buttons\BuildingDowngradeButton.cs" />
       <Compile Include="Code\Features\Buttons\BuildingUpgradeButton.cs" />
@@ -65,6 +68,9 @@
       <Compile Include="Code\Features\Buttons\UnitSpawnButtons.cs" />
       <Compile Include="Code\Features\Drops\CommonItemDrop.cs" />
       <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs" />
+      <Compile Include="Code\Features\GodPowers\AssignCapitalPower.cs" />
+      <Compile Include="Code\Features\GodPowers\AssignKingPower.cs" />
+      <Compile Include="Code\Features\GodPowers\AssignLeaderPower.cs" />
       <Compile Include="Code\Features\GodPowers\BloodRainCloudSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\BuildingDowngradePower.cs" />
       <Compile Include="Code\Features\GodPowers\BuildingUpgradePower.cs" />
