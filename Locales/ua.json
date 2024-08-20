@@ -86,5 +86,9 @@
   "create_alliance Description": "Створити союз між двома королівствами",
   "create_alliance_same_kingdom_selected_twice_error": "Вибрано одне й теж саме королівство, спробуй ще раз.",
   "create_alliance_already_allied_error": "Вибрані королівства вже є союзниками, спробуй ще раз.",
-  "create_alliance_success": "Королівства успішно уклали союз."
+  "create_alliance_success": "Королівства успішно уклали союз.",
+
+  "duplicateCulture": "Duplicate culture",
+  "duplicateCulture Description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
+  "edit_culture_tech": "Edit Culture Tech"
 }

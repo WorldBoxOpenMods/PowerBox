@@ -86,5 +86,9 @@
   "create_alliance Description": "Crează o alianță între două regate",
   "create_alliance_same_kingdom_selected_twice_error": "Ai selectat aceași regat de două ori, încearcă iarăși.",
   "create_alliance_already_allied_error": "Regatele selectate sunt deja aliate, încearcă iarăși.",
-  "create_alliance_success": "Regatele selectate au format o alianță cu succes."
+  "create_alliance_success": "Regatele selectate au format o alianță cu succes.",
+
+  "duplicateCulture": "Duplicate culture",
+  "duplicateCulture Description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
+  "edit_culture_tech": "Edit Culture Tech"
 }

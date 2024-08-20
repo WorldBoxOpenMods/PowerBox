@@ -86,5 +86,9 @@
   "create_alliance Description": "Crear una alianza entre dos reinos",
   "create_alliance_same_kingdom_selected_twice_error": "Seleccionado el mismo reino dos veces, inténtelo de nuevo.",
   "create_alliance_already_allied_error": "Los reinos seleccionados ya están aliados, inténtalo de nuevo.",
-  "create_alliance_success": "Los reinos han logrado una alianza."
+  "create_alliance_success": "Los reinos han logrado una alianza.",
+
+  "duplicateCulture": "Duplicate culture",
+  "duplicateCulture Description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
+  "edit_culture_tech": "Edit Culture Tech"
 }
