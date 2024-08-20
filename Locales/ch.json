@@ -86,5 +86,15 @@
   "create_alliance Description": "選擇兩個國家，让它們進行結盟",
   "create_alliance_same_kingdom_selected_twice_error": "嘿，國家不能和自己結盟",
   "create_alliance_already_allied_error": "這兩個國家已經結盟了",
-  "create_alliance_success": "已成功創建或加入聯盟"
+  "create_alliance_success": "已成功創建或加入聯盟",
+
+  "duplicateCulture": "Duplicate culture",
+  "duplicateCulture Description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
+  "edit_culture_tech": "Edit Culture Tech",
+  "assign_king": "Assign King",
+  "assign_king Description": "Make a specific unit the king of its kingdom",
+  "assign_leader": "Assign Leader",
+  "assign_leader Description": "Make a specific unit the leader of its city",
+  "assign_capital": "Assign Capital",
+  "assign_capital Description": "Make a specific city the capital of its kingdom"
 }
