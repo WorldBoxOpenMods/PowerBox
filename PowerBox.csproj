@@ -113,7 +113,16 @@
     <ItemGroup>
       <Content Include=".gitignore" />
       <Content Include="EmbeddedResources\description.txt" />
+      <Content Include="Locales\ch.json" />
+      <Content Include="Locales\cz.json" />
+      <Content Include="Locales\de.json" />
       <Content Include="Locales\en.json" />
+      <Content Include="Locales\es.json" />
+      <Content Include="Locales\fi.json" />
+      <Content Include="Locales\ja.json" />
+      <Content Include="Locales\ro.json" />
+      <Content Include="Locales\ru.json" />
+      <Content Include="Locales\ua.json" />
       <Content Include="mod.json" />
     </ItemGroup>
     <ItemGroup>
