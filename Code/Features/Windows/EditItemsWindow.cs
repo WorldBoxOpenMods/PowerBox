@@ -162,7 +162,7 @@ namespace PowerBox.Code.Features.Windows {
 
       RectTransform rect = content.GetComponent<RectTransform>();
       rect.pivot = new Vector2(0, 1);
-      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Where(item => !skipList.Contains(item.id)).SelectMany(item => item.materials.Select(material => (item, new ItemData() { id = item.id, material = material }))).Count(itemTuple => itemTuple.Item1.getSprite(itemTuple.Item2) != null)).y));
+      rect.sizeDelta = new Vector2(0, Mathf.Abs(GetPosByIndex(itemsList.Where(item => !skipList.Contains(item.id)).SelectMany(item => item.materials.Select(material => (item, new ItemData { id = item.id, material = material }))).Count(itemTuple => itemTuple.Item1.getSprite(itemTuple.Item2) != null)).y));
 
       foreach (ItemAsset item in itemsList.Where(item => !skipList.Contains(item.id))) {
         foreach (ItemAsset material in materials) {
