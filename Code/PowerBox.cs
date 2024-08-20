@@ -29,7 +29,7 @@ namespace PowerBox.Code {
     protected override void OnModLoad() {
       try {
         DisableLocaleLogs();
-      } catch (MissingFieldException) {
+      } catch (Exception) {
         // this is fine
       }
       Debug.Log("Loading PowerBox...");
@@ -38,7 +38,7 @@ namespace PowerBox.Code {
     }
     
     private static void DisableLocaleLogs() {
-      // this needs to be a separate method so that a potential MissingFieldException can be caught
+      // this needs to be a separate method so that potential exceptions caused by changes to the WorldBox Assembly can be caught
       Config.disableLocaleLogs = true;
     }
 
