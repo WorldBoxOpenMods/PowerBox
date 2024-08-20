@@ -90,12 +90,18 @@ namespace PowerBox.Code.Features.Windows {
         Debug.LogWarning("Failed to load button for tech " + tech.id + ", it might show up in an unintended way. Error that caused this:\n\n" + e);
       }
       GameObject buttonLabel = new GameObject("TechButtonLabel", typeof(Text));
-      buttonLabel.GetComponent<Text>().text = tech.id;
+      buttonLabel.GetComponent<Text>().text = LM.Get($"tech_{tech.id}");
+      buttonLabel.GetComponent<Text>().font = techButton.GetComponentInChildren<Text>().font;
+      buttonLabel.GetComponent<Text>().fontSize = 60;
+      buttonLabel.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+      buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + 850.0f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
       GameObject buttonImage = new GameObject("TechButtonImage", typeof(Image));
       buttonImage.GetComponent<Image>().sprite = SpriteTextureLoader.getSprite("ui/Icons/" + tech.path_icon);
-      buttonImage.transform.SetParent(techButton.transform);
-      buttonLabel.transform.SetParent(techButton.transform);
+      buttonImage.transform.SetParent(parent);
+      buttonLabel.transform.SetParent(parent);
       techButton.transform.SetParent(parent);
+      buttonImage.transform.localPosition = new Vector3(techButton.transform.localPosition.x + 35.0f, techButton.transform.localPosition.y + 0.0f, buttonImage.transform.localPosition.z);
+      buttonLabel.transform.localPosition = new Vector3(techButton.transform.localPosition.x + 120.0f, techButton.transform.localPosition.y + 0.0f, buttonLabel.transform.localPosition.z);
     }
   }
 }
