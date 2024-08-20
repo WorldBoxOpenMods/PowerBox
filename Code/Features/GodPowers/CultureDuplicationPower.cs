@@ -5,7 +5,7 @@ namespace PowerBox.Code.Features.GodPowers {
     internal override bool Init() {
       GodPower duplicateCulture = new GodPower {
         id = "duplicateCulture",
-        name = "createCulture",
+        name = "duplicateCulture",
         forceBrush = "circ_0",
         fallingChance = 0.03f,
         holdAction = false,
