@@ -117,6 +117,7 @@
       <Compile Include="Code\Utils\WhisperUtils.cs" />
     </ItemGroup>
     <ItemGroup>
+      <Content Include=".editorconfig" />
       <Content Include=".gitignore" />
       <Content Include="EmbeddedResources\description.txt" />
       <Content Include="Locales\ch.json" />
