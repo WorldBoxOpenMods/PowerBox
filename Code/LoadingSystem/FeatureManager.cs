@@ -20,8 +20,8 @@ namespace PowerBox.Code.LoadingSystem {
     }
 
     public T GetFeature<T>(Feature askingFeature) where T : Feature {
-      if (!IsFeatureLoaded<T>()) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not loaded.");
       if (!askingFeature.RequiredFeatures.Contains(typeof(T))) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not set as a requirement for feature {askingFeature.GetType().FullName}.");
+      if (!IsFeatureLoaded<T>()) throw new InvalidOperationException($"Feature {typeof(T).FullName} is not loaded.");
       return (T)GetFeature(typeof(T));
     }
 
