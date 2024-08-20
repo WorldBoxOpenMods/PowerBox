@@ -82,7 +82,6 @@
   "item_not_found_message": "The selected item could not be found anywhere in this world! It will be removed from the favorites list.",
   "edit_favorite_food": "Edit Favorite Food",
   "favorite_food_set": "Favorite food set!",
-  
   "create_alliance": "Create Alliance",
   "create_alliance Description": "Create an alliance between two kingdoms",
   "create_alliance_same_kingdom_selected_twice_error": "Selected the same kingdom twice, try again.",

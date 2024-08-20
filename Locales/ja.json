@@ -82,7 +82,6 @@
   "item_not_found_message": "選択された装備品は、この世界のどこにも見つかりませんでした！お気に入りリストから削除されます。",
   "edit_favorite_food": "好物変更",
   "favorite_food_set": "大好物を変更します!",
-  
   "create_alliance": "同盟結成",
   "create_alliance Description": "2つの王国間で同盟を結びます。",
   "create_alliance_same_kingdom_selected_twice_error": "同じ王国を2度選択しました。",

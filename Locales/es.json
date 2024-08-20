@@ -82,7 +82,6 @@
   "item_not_found_message": "El item seleccionado no se encuentra en ninguna parte del mundo. Será eliminado de la lista de favoritos.",
   "edit_favorite_food": "Editar comida favorita",
   "favorite_food_set": "Comida favorita puesta!",
-  
   "create_alliance": "Crear Alianza",
   "create_alliance Description": "Crear una alianza entre dos reinos",
   "create_alliance_same_kingdom_selected_twice_error": "Seleccionado el mismo reino dos veces, inténtelo de nuevo.",
