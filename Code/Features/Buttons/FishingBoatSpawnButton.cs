@@ -7,7 +7,7 @@ using UnityEngine;
 namespace PowerBox.Code.Features.Buttons {
   public class FishingBoatSpawnButton : ButtonFeature {
     internal override List<Type> RequiredFeatures => base.RequiredFeatures.Concat(new []{ typeof(FishingBoatSpawnPower) }).ToList();
-    internal override List<Type> OptionalFeatures => new List<Type>{ typeof(ClanAdditionButton) };
+    internal override List<Type> OptionalFeatures => new List<Type>{ typeof(NonRandomFriendshipButton) };
     internal override bool Init() {
       Tab.CreateGodPowerButton(
         "spawn_boat_fishing",

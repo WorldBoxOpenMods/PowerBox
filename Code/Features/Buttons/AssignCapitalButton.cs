@@ -8,7 +8,7 @@ namespace PowerBox.Code.Features.Buttons {
     internal override List<Type> RequiredFeatures => base.RequiredFeatures.Concat(new List<Type> {
       typeof(GodPowers.AssignCapitalPower)
     }).ToList();
-    internal override List<Type> OptionalFeatures => new List<Type>{ typeof(NonRandomFriendshipButton) };
+    internal override List<Type> OptionalFeatures => new List<Type>{ typeof(CityConversionButton) };
     internal override bool Init() {
       Tab.CreateGodPowerButton(
         "assign_capital",
