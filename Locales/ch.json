@@ -98,5 +98,13 @@
   "assign_capital": "Assign Capital",
   "assign_capital Description": "Make a specific city the capital of its kingdom",
   "create_clan": "Create Clan",
-  "create_clan Description": "Create a new clan with the selected unit as the leader"
+  "create_clan Description": "Create a new clan with the selected unit as the leader",
+  "convert_city": "Convert City",
+  "convert_city Description": "Convert a city to a different kingdom",
+  "convert_city_select_city": "Select a city to convert.",
+  "convert_city_select_kingdom": "Select a kingdom to convert the city to.",
+  "convert_city_no_city_selected_error": "No city on the selected tile, try again.",
+  "convert_city_no_kingdom_selected_error": "No kingdom on the selected tile, try again.",
+  "convert_city_same_kingdom_error": "The city is already part of the selected kingdom, try again.",
+  "convert_city_different_races_error": "You can't transfer a city to a kingdom of a different race, try again."
 }
