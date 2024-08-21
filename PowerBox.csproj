@@ -51,6 +51,7 @@
       <Compile Include="Code\Features\Buttons\CityBorderExpansionButton.cs" />
       <Compile Include="Code\Features\Buttons\CityBorderReductionButton.cs" />
       <Compile Include="Code\Features\Buttons\ClanAdditionButton.cs" />
+      <Compile Include="Code\Features\Buttons\ClanCreationButton.cs" />
       <Compile Include="Code\Features\Buttons\ColonyCreationButton.cs" />
       <Compile Include="Code\Features\Buttons\CultureAdditionButton.cs" />
       <Compile Include="Code\Features\Buttons\CultureBorderExpansionButton.cs" />
@@ -78,6 +79,7 @@
       <Compile Include="Code\Features\GodPowers\CityBorderExpansionPower.cs" />
       <Compile Include="Code\Features\GodPowers\CityBorderReductionPower.cs" />
       <Compile Include="Code\Features\GodPowers\ClanAdditionPower.cs" />
+      <Compile Include="Code\Features\GodPowers\ClanCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs" />
       <Compile Include="Code\Features\GodPowers\CultureBorderExpansionPower.cs" />
