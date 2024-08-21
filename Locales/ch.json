@@ -96,5 +96,7 @@
   "assign_leader": "Assign Leader",
   "assign_leader Description": "Make a specific unit the leader of its city",
   "assign_capital": "Assign Capital",
-  "assign_capital Description": "Make a specific city the capital of its kingdom"
+  "assign_capital Description": "Make a specific city the capital of its kingdom",
+  "create_clan": "Create Clan",
+  "create_clan Description": "Create a new clan with the selected unit as the leader"
 }
