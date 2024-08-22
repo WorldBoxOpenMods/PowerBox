@@ -16,6 +16,9 @@ namespace PowerBox.Code.Features.Windows {
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
     internal override bool Init() {
+      if (!base.Init()) {
+        return false;
+      }
       Window = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
       Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
       Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
