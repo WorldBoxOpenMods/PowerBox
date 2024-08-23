@@ -17,6 +17,7 @@ using UnityEngine;
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1234635618634436670
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241195995824390204
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241282748132622357
+// https://canary.discord.com/channels/522561390330904585/1232422556301000764/1276563175919194234
 // TODO: window for viewing every creature in a world
 
 // Later version TODOs
