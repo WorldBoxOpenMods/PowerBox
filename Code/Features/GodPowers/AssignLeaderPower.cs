@@ -24,6 +24,11 @@ namespace PowerBox.Code.Features.GodPowers {
       if (newLeader == null) {
         return false;
       }
+      if (newLeader.isKing()) {
+        newLeader.setProfession(UnitProfession.Unit);
+        newLeader.kingdom.king = null;
+        newLeader.kingdom.data.kingID = null;
+      }
       city.removeLeader();
       city.leader = newLeader;
       city.data.leaderID = newLeader.data.id;
