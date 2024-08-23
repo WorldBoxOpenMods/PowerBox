@@ -67,5 +67,8 @@ Special thanks to translators:
     <color='yellow'>ln_luascripts</color>: Spanish
     <color='yellow'>irinisikai</color>: Japanese
 
+Special thanks to other bug reporters:
+    <color='yellow'>shadowblade6567</color>
+
 Original Mod author: <color='yellow'>don_nikon</color>
 Current Mod owner/maintainer: <color='yellow'>keymasterer</color>
