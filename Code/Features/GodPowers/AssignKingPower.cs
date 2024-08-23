@@ -24,7 +24,9 @@ namespace PowerBox.Code.Features.GodPowers {
       if (newKing == null) {
         return false;
       }
-      kingdom.king.setProfession(UnitProfession.Unit);
+      if (kingdom.king != null) {
+        kingdom.king.setProfession(UnitProfession.Unit);
+      }
       kingdom.setKing(newKing);
       newKing.startShake();
       newKing.startColorEffect();
