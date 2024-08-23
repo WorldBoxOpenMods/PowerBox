@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class BurgerSpiderCloudSpawnPower : Feature {
-    internal override List<Type> RequiredFeatures => new List<Type> { typeof(BurgerSpider) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(BurgerSpider) };
 
     internal override bool Init() {
       GodPower spawnBurgerSpiderCloud = new GodPower {

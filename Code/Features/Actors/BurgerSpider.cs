@@ -5,7 +5,7 @@ using PowerBox.Code.LoadingSystem;
 namespace PowerBox.Code.Features.Actors {
   public class BurgerSpider : Feature {
 
-    internal override List<Type> RequiredFeatures => new List<Type> { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
 
     internal override bool Init() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("burgerSpider", "wolf");

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading;
 using HarmonyLib;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindFavouriteItemsWindow : WindowBase<FindFavouriteItemsWindow> {
-    internal override List<Type> RequiredFeatures => new List<Type> {typeof(Buttons.Tab)};
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> {typeof(Buttons.Tab)};
 
     private static Thread _itemCacheCheckThread;
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();

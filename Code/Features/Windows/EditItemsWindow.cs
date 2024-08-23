@@ -4,6 +4,7 @@ using System.Linq;
 using NeoModLoader.General;
 using NeoModLoader.services;
 using PowerBox.Code.Features.GodPowers;
+using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ using Object = UnityEngine.Object;
 namespace PowerBox.Code.Features.Windows {
   internal class EditItemsWindow : WindowBase<EditItemsWindow> {
     internal PowerType PowType;
-    internal override List<Type> RequiredFeatures => new List<Type> { typeof(ItemAdditionPower), typeof(ItemRemovalPower) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(ItemAdditionPower), typeof(ItemRemovalPower) };
     internal override bool Init() {
       if (!base.Init()) return false;
       ScrollWindow.checkWindowExist("inspect_unit");

@@ -4,8 +4,8 @@ using System.Linq;
 
 namespace PowerBox.Code.LoadingSystem {
   public abstract class Feature {
-    internal virtual List<Type> RequiredFeatures { get; } = new List<Type>();
-    internal virtual List<Type> OptionalFeatures { get; } = new List<Type>();
+    internal virtual FeatureRequirementList RequiredFeatures { get; } = new List<Type>();
+    internal virtual FeatureRequirementList OptionalFeatures { get; } = new List<Type>();
     internal List<Type> LoadAfterFeatures => RequiredFeatures.Concat(OptionalFeatures).ToList();
     
     internal abstract bool Init();

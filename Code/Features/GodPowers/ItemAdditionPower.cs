@@ -5,7 +5,7 @@ using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class ItemAdditionPower : Feature {
-    internal override List<Type> RequiredFeatures => new List<Type> { typeof(CommonItemDrop) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(CommonItemDrop) };
 
     internal override bool Init() {
       GodPower addItems = new GodPower {

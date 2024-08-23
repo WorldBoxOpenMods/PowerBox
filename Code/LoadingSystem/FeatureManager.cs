@@ -70,7 +70,7 @@ namespace PowerBox.Code.LoadingSystem {
 
     private class FeatureLoadPathNode {
       private class PlaceholderRootFeature : Feature {
-        internal override List<Type> RequiredFeatures => new List<Type>();
+        internal override FeatureRequirementList RequiredFeatures => new List<Type>();
         internal override bool Init() {
           return true;
         }

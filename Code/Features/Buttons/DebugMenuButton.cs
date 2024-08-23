@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.General;
+using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Buttons {
   public class DebugMenuButton : ButtonFeature {
-    internal override List<Type> OptionalFeatures => new List<Type>{ typeof(AboutModButton) };
+    internal override FeatureRequirementList OptionalFeatures => new List<Type>{ typeof(AboutModButton) };
     internal override bool Init() {
       GameObject dbgBtn = Tab.CreateClickButton(
         "DebugButtonAdd",

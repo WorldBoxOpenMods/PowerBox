@@ -5,7 +5,7 @@ using PowerBox.Code.LoadingSystem;
 namespace PowerBox.Code.Features.Actors {
   public class Developers : Feature {
 
-    internal override List<Type> RequiredFeatures => new List<Type> { typeof(Kingdoms.Developers), typeof(NameGenerators.Developers) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(Kingdoms.Developers), typeof(NameGenerators.Developers) };
 
     internal override bool Init() {
       ActorAsset maximCreature = AssetManager.actor_library.clone("MaximCreature", "whiteMage");

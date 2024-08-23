@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PowerBox.Code.Features.MapIconAssets {
   public class WhisperOfPeaceLine : Feature {
-    internal override List<Type> RequiredFeatures => new List<Type>{ typeof(GodPowers.NonRandomFriendshipPower) };
+    internal override FeatureRequirementList RequiredFeatures => new List<Type>{ typeof(GodPowers.NonRandomFriendshipPower) };
     internal override bool Init() {
       AssetManager.map_icons.add(new MapIconAsset {
         id = "whisper_of_peace_line",
