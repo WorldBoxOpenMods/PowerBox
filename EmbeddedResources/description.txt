@@ -55,6 +55,7 @@ Special thanks to beta-testers:
     <color='yellow'>Tuxxego</color>
     <color='yellow'>mr.p.4466</color>
     <color='yellow'>ita_player</color>
+    <color='yellow'>floatingball</color>
     
 Special thanks to translators:
     <color='yellow'>le_ombre</color>: Russian
