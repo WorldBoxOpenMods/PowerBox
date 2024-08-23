@@ -87,7 +87,6 @@
   "create_alliance_same_kingdom_selected_twice_error": "嘿，國家不能和自己結盟",
   "create_alliance_already_allied_error": "這兩個國家已經結盟了",
   "create_alliance_success": "已成功創建或加入聯盟",
-  
   "duplicateCulture": "創建新文化(復刻)",
   "duplicateCulture Description": "選擇一個城市作為新文化的發源地，選定後該城市所有市民將歸屬於此文化\n注意:新文化等級繼承于原文化",
   "edit_culture_tech": "編輯文化知识",
