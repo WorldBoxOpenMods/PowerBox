@@ -60,6 +60,7 @@
       <Compile Include="Code\Features\Buttons\CultureCreationButton.cs" />
       <Compile Include="Code\Features\Buttons\CultureDuplicationButton.cs" />
       <Compile Include="Code\Features\Buttons\DebugMenuButton.cs" />
+      <Compile Include="Code\Features\Buttons\FindAllCreaturesButton.cs" />
       <Compile Include="Code\Features\Buttons\FindFavoriteItemsButton.cs" />
       <Compile Include="Code\Features\Buttons\FishingBoatSpawnButton.cs" />
       <Compile Include="Code\Features\Buttons\ItemModificationButtons.cs" />
@@ -106,6 +107,7 @@
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
       <Compile Include="Code\Features\Windows\EditItemsWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
+      <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
       <Compile Include="Code\Features\Windows\FindFavouriteItemsWindow.cs" />
       <Compile Include="Code\Features\Windows\WindowBase.cs" />
