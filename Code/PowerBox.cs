@@ -18,7 +18,7 @@ using UnityEngine;
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241195995824390204
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241282748132622357
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1276563175919194234
-// TODO: window for viewing every creature in a world
+// window for viewing every creature in a world
 
 // Later version TODOs
 // TODO: make favorite items persistent, see https://canary.discord.com/channels/@me/1188525491297194044/1235623580402978886 for method
