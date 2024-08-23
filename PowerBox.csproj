@@ -123,6 +123,7 @@
     <ItemGroup>
       <Content Include=".editorconfig" />
       <Content Include=".gitignore" />
+      <Content Include="assemble_mod_distributable.sh" />
       <Content Include="EmbeddedResources\description.txt" />
       <Content Include="Locales\ch.json" />
       <Content Include="Locales\cz.json" />
@@ -188,4 +189,7 @@
     <Target Name="AfterBuild">
     </Target>
     -->
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="sh ./assemble_mod_distributable.sh" Condition=" '$(OS)' == 'UNIX' " />
+    </Target>
 </Project>
