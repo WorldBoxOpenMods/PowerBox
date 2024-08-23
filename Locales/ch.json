@@ -105,5 +105,7 @@
   "convert_city_no_city_selected_error": "這地方可沒有城市,請重新選擇",
   "convert_city_no_kingdom_selected_error": "這地方可沒有國家,請重新選擇",
   "convert_city_same_kingdom_error": "选定城市已是此國家的一部分,請重新選擇",
-  "convert_city_different_races_error": "城市不能移交給外族,請重新選擇"
+  "convert_city_different_races_error": "城市不能移交給外族,請重新選擇",
+  "find_all_creatures": "Find All Creatures",
+  "find_all_creatures Description": "Find all creatures in your world"
 }

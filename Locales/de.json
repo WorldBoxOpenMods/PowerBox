@@ -106,5 +106,7 @@
   "convert_city_no_city_selected_error": "No city on the selected tile, try again.",
   "convert_city_no_kingdom_selected_error": "No kingdom on the selected tile, try again.",
   "convert_city_same_kingdom_error": "The city is already part of the selected kingdom, try again.",
-  "convert_city_different_races_error": "You can't transfer a city to a kingdom of a different race, try again."
+  "convert_city_different_races_error": "You can't transfer a city to a kingdom of a different race, try again.",
+  "find_all_creatures": "Find All Creatures",
+  "find_all_creatures Description": "Find all creatures in your world"
 }
