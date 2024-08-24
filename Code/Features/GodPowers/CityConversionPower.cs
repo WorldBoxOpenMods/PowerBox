@@ -1,18 +1,16 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CityConversionPower : Feature {
-    public GodPower Power { get; private set; }
-    internal override bool Init() {
-      Power = new GodPower() {
+  public class CityConversionPower : AssetFeature<GodPower> {
+    public GodPower Power => Object;
+    protected override GodPower InitObject() {
+      return new GodPower() {
         id = "convert_city",
         name = "convert_city",
         force_map_text = MapMode.Cities,
         select_button_action = _ => !ResetPower(),
         click_special_action = CityConversionAction
       };
-      AssetManager.powers.add(Power);
-      return true;
     }
     private City _targetCity;
     private Kingdom _targetKingdom;

@@ -1,8 +1,8 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CityBorderReductionPower : Feature {
-    internal override bool Init() {
+  public class CityBorderReductionPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       GodPower reduceCitiesBorders = new GodPower {
         id = "reduceCitiesBorders",
         name = "reduceCitiesBorders",
@@ -13,8 +13,7 @@ namespace PowerBox.Code.Features.GodPowers {
         unselectWhenWindow = true,
         click_special_action = CityBorderReductionAction
       };
-      AssetManager.powers.add(reduceCitiesBorders);
-      return true;
+      return reduceCitiesBorders;
     }
     
     private static bool CityBorderReductionAction(WorldTile pTile = null, string pPowerId = null) {

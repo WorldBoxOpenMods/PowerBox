@@ -7,9 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class Tab : Feature {
+  public class Tab : PowerTabFeature {
     public GameObject PowerboxTabObject;
-    public PowersTab PowerboxTab;
 
     private int _createdButtons;
     private const float StartX = 72f;
@@ -18,9 +17,13 @@ namespace PowerBox.Code.Features.Buttons {
     private const float OddY = -18f;
     private float _horizontalPadding;
     
-    internal override bool Init() {
-      PowerboxTab = TabManager.CreateTab("PowerBox", "tab_additional", "tab_additional_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
-      PowerboxTabObject = PowerboxTab.gameObject;
+    protected override PowersTab InitObject() {
+      PowersTab tab = TabManager.CreateTab("PowerBox", "tab_additional", "tab_additional_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
+      PowerboxTabObject = tab.gameObject;
+      return tab;
+    }
+    public override bool PositionButton(PowerButton button) {
+      AlignButtonInTab(button);
       return true;
     }
 
@@ -46,7 +49,6 @@ namespace PowerBox.Code.Features.Buttons {
     }
 
     private void AlignButtonInTab(PowerButton newButton) {
-
       float x = StartX + (_createdButtons != 0 ? PlusX * (_createdButtons % 2 == 0 ? _createdButtons : _createdButtons - 1) : 0) + _horizontalPadding;
       float y = _createdButtons % 2 == 0 ? EvenY : OddY;
       newButton.transform.localPosition = new Vector3(x, y);

@@ -2,23 +2,8 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class FishingBoatSpawnPower : Feature {
-    internal override bool Init() {
-      GodPower spawnFishingBoat = new GodPower {
-        id = "spawn_boat_fishing",
-        name = "spawn_boat_fishing",
-        showSpawnEffect = true,
-        showToolSizes = false,
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        actor_asset_id = "boat_fishing",
-        dropID = "spawn_boat_fishing",
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
-      };
-      AssetManager.powers.add(spawnFishingBoat);
-
+  public class FishingBoatSpawnPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset spawnFishingBoatDrop = new DropAsset {
         id = "spawn_boat_fishing",
         path_texture = "drops/drop_metal",
@@ -29,7 +14,22 @@ namespace PowerBox.Code.Features.GodPowers {
         sound_drop = "event:/SFX/DROPS/DropRainGamma"
       };
       AssetManager.drops.add(spawnFishingBoatDrop);
-      return true;
+      
+      GodPower spawnFishingBoat = new GodPower {
+        id = spawnFishingBoatDrop.id,
+        name = spawnFishingBoatDrop.id,
+        showSpawnEffect = true,
+        showToolSizes = false,
+        forceBrush = "circ_0",
+        fallingChance = 0.03f,
+        holdAction = true,
+        unselectWhenWindow = true,
+        actor_asset_id = "boat_fishing",
+        dropID = spawnFishingBoatDrop.id,
+        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
+      };
+
+      return spawnFishingBoat;
     }
   }
 }

@@ -2,23 +2,8 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class TransportBoatSpawnPower : Feature {
-    internal override bool Init() {
-      GodPower spawnTransportBoat = new GodPower {
-        id = "spawn_boat_transport",
-        name = "spawn_boat_transport",
-        showSpawnEffect = true,
-        showToolSizes = false,
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        actor_asset_id = "boat_transport",
-        dropID = "spawn_boat_transport",
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
-      };
-      AssetManager.powers.add(spawnTransportBoat);
-
+  public class TransportBoatSpawnPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset spawnTransportBoatDrop = new DropAsset {
         id = "spawn_boat_transport",
         path_texture = "drops/drop_metal",
@@ -29,7 +14,20 @@ namespace PowerBox.Code.Features.GodPowers {
         sound_drop = "event:/SFX/DROPS/DropRainGamma"
       };
       AssetManager.drops.add(spawnTransportBoatDrop);
-      return true;
+      
+      return new GodPower {
+        id = spawnTransportBoatDrop.id,
+        name = spawnTransportBoatDrop.id,
+        showSpawnEffect = true,
+        showToolSizes = false,
+        forceBrush = "circ_0",
+        fallingChance = 0.03f,
+        holdAction = true,
+        unselectWhenWindow = true,
+        actor_asset_id = "boat_transport",
+        dropID = spawnTransportBoatDrop.id,
+        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
+      };
     }
   }
 }

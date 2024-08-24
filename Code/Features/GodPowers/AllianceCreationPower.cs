@@ -4,8 +4,8 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class AllianceCreationPower : Feature {
-    internal override bool Init() {
+  public class AllianceCreationPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       GodPower createAlliance = new GodPower() {
         id = "create_alliance",
         name = "create_alliance",
@@ -13,8 +13,7 @@ namespace PowerBox.Code.Features.GodPowers {
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = AllianceCreationAction
       };
-      AssetManager.powers.add(createAlliance);
-      return true;
+      return createAlliance;
     }
     
     private static bool AllianceCreationAction(WorldTile pTile, string pPowerID) {

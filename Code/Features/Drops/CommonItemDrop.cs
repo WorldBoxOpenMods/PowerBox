@@ -6,9 +6,9 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.Drops {
-  public class CommonItemDrop : Feature {
-    internal override bool Init() {
-      DropAsset changeItemsDrop = new DropAsset {
+  public class CommonItemDrop : AssetFeature<DropAsset> {
+    protected override DropAsset InitObject() {
+      return new DropAsset {
         id = "change_items",
         path_texture = "drops/drop_fireworks",
         animated = true,
@@ -16,8 +16,6 @@ namespace PowerBox.Code.Features.Drops {
         default_scale = 0.1f,
         action_landed = ItemChangeAction
       };
-      AssetManager.drops.add(changeItemsDrop);
-      return true;
     }
 
     private static void ItemChangeAction(WorldTile pTile = null, string pDropID = null) {

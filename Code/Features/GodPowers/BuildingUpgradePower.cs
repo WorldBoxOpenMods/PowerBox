@@ -1,21 +1,8 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BuildingUpgradePower : Feature {
-    internal override bool Init() {
-      GodPower upgradeBuildingAdd = new GodPower {
-        id = "upgradeBuildingAdd",
-        holdAction = true,
-        showToolSizes = true,
-        unselectWhenWindow = true,
-        name = "upgradeBuildingAdd",
-        dropID = "upgradeBuildingAdd",
-        fallingChance = 0.01f,
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
-        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
-      };
-      AssetManager.powers.add(upgradeBuildingAdd);
-
+  public class BuildingUpgradePower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset upgradeBuildingAddDrop = new DropAsset {
         id = "upgradeBuildingAdd",
         path_texture = "drops/drop_snow",
@@ -26,7 +13,19 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       AssetManager.drops.add(upgradeBuildingAddDrop);
 
-      return true;
+      GodPower upgradeBuildingAdd = new GodPower {
+        id = upgradeBuildingAddDrop.id,
+        holdAction = true,
+        showToolSizes = true,
+        unselectWhenWindow = true,
+        name = upgradeBuildingAddDrop.id,
+        dropID = upgradeBuildingAddDrop.id,
+        fallingChance = 0.01f,
+        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
+        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
+      };
+
+      return upgradeBuildingAdd;
     }
     
     private static void BuildingUpgradeAction(WorldTile pTile = null, string pDropID = null) {

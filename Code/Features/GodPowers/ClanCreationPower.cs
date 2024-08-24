@@ -2,15 +2,13 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class ClanCreationPower : Feature {
-    internal override bool Init() {
-      GodPower createClan = new GodPower() {
+  public class ClanCreationPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
+      return new GodPower() {
         id = "create_clan",
         name = "create_clan",
         click_special_action = ClanCreationAction
       };
-      AssetManager.powers.add(createClan);
-      return true;
     }
     private static bool ClanCreationAction(WorldTile pTile, string pPowerId) {
       MapBox.instance.getObjectsInChunks(pTile, 3, MapObjectType.Actor);

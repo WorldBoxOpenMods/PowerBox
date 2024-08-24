@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using PowerBox.Code.Features.GodPowers;
 using PowerBox.Code.Features.Windows;
 using PowerBox.Code.LoadingSystem;
@@ -8,8 +5,8 @@ using UnityEngine;
 
 namespace PowerBox.Code.Features.Buttons {
   public class ItemModificationButtons : ButtonFeature {
-    internal override FeatureRequirementList RequiredFeatures => base.RequiredFeatures.Concat(new []{ typeof(ItemAdditionPower), typeof(ItemRemovalPower), typeof(EditItemsWindow) }).ToList();
-    internal override FeatureRequirementList OptionalFeatures => new List<Type>{ typeof(UnitSpawnButtons) };
+    internal override FeatureRequirementList RequiredFeatures => base.RequiredFeatures + typeof(ItemAdditionPower) + typeof(ItemRemovalPower) + typeof(EditItemsWindow);
+    internal override FeatureRequirementList OptionalFeatures => typeof(MushAnimalSpawnButton);
     internal override bool Init() {
       Tab.CreateClickButton(
         "addItems",
@@ -32,10 +29,8 @@ namespace PowerBox.Code.Features.Buttons {
       ItemsButtonClick(PowerType.Remove);
     }
     private void ItemsButtonClick(PowerType type) {
-      if (ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow editItemsWindow)) {
-        GetFeature<EditItemsWindow>().InitEditItems(editItemsWindow, null, type);
-        editItemsWindow.clickShow();
-      }
+      GetFeature<EditItemsWindow>().InitEditItems(GetFeature<EditItemsWindow>().Object, null, type);
+      GetFeature<EditItemsWindow>().Object.clickShow();
     }
   }
 }

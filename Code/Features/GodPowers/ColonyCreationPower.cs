@@ -3,22 +3,8 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class ColonyCreationPower : Feature {
-    internal override bool Init() {
-      GodPower makeColony = new GodPower {
-        id = "makeColony",
-        name = "makeColony",
-        showToolSizes = false,
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = "makeColony",
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
-      };
-      AssetManager.powers.add(makeColony);
-
-
+  public class ColonyCreationPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset makeColonyDrop = new DropAsset {
         id = "makeColony",
         path_texture = "drops/drop_gold",
@@ -27,8 +13,19 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = ColonyCreationAction
       };
       AssetManager.drops.add(makeColonyDrop);
-
-      return true;
+      
+      GodPower makeColony = new GodPower {
+        id = makeColonyDrop.id,
+        name = makeColonyDrop.id,
+        showToolSizes = false,
+        forceBrush = "circ_0",
+        fallingChance = 0.03f,
+        holdAction = true,
+        unselectWhenWindow = true,
+        dropID = makeColonyDrop.id,
+        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
+      };
+      return makeColony;
     }
     private static void ColonyCreationAction(WorldTile pTile = null, string pDropID = null) {
       MapBox.instance.getObjectsInChunks(pTile, 4, MapObjectType.Actor);

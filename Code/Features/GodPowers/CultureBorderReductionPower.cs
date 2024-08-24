@@ -1,10 +1,9 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureBorderReductionPower : Feature {
-
-    internal override bool Init() {
-      GodPower reduceCultureBorders = new GodPower {
+  public class CultureBorderReductionPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
+      return new GodPower {
         id = "reduceCultureBorders",
         name = "reduceCultureBorders",
         forceBrush = "circ_0",
@@ -14,8 +13,6 @@ namespace PowerBox.Code.Features.GodPowers {
         unselectWhenWindow = true,
         click_special_action = CultureBorderReductionAction
       };
-      AssetManager.powers.add(reduceCultureBorders);
-      return true;
     }
     
     private static bool CultureBorderReductionAction(WorldTile pTile = null, string pPowerId = null) {

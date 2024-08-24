@@ -1,9 +1,9 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureCreationPower : Feature {
-    internal override bool Init() {
-      GodPower createCulture = new GodPower {
+  public class CultureCreationPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
+      return new GodPower {
         id = "createCulture",
         name = "createCulture",
         forceBrush = "circ_0",
@@ -13,8 +13,6 @@ namespace PowerBox.Code.Features.GodPowers {
         unselectWhenWindow = true,
         click_special_action = CultureCreationAction
       };
-      AssetManager.powers.add(createCulture);
-      return true;
     }
     
     private static bool CultureCreationAction(WorldTile pTile = null, string pPowerId = null) {

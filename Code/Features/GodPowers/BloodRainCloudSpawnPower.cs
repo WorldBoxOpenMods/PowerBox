@@ -5,10 +5,9 @@ using PowerBox.Code.Utils;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BloodRainCloudSpawnPower : Feature {
+  public class BloodRainCloudSpawnPower : AssetFeature<GodPower> {
 
-    internal override bool Init() {
-      
+    protected override GodPower InitObject() {
       GodPower spawnBloodRainCloud = new GodPower {
         id = "bloodRainCloudSpawn",
         name = "bloodRainCloudSpawn",
@@ -20,7 +19,6 @@ namespace PowerBox.Code.Features.GodPowers {
         dropID = "cloudBloodRainD",
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
-      AssetManager.powers.add(spawnBloodRainCloud);
 
       DropAsset cloudBloodRainD = new DropAsset {
         id = "cloudBloodRainD",
@@ -58,7 +56,7 @@ namespace PowerBox.Code.Features.GodPowers {
       foreach (Sprite sprite in bloodRainCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null)) {
         bloodRainCloud.cached_sprites.Add(sprite);
       }
-      return true;
+      return spawnBloodRainCloud;
     }
   }
 }

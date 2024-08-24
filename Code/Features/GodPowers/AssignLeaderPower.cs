@@ -2,16 +2,15 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class AssignLeaderPower : Feature {
-    internal override bool Init() {
+  public class AssignLeaderPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       GodPower assignLeader = new GodPower() {
         id = "assign_leader",
         name = "assign_leader",
         force_map_text = MapMode.Cities,
         click_special_action = LeaderAssignationAction
       };
-      AssetManager.powers.add(assignLeader);
-      return true;
+      return assignLeader;
     }
 
     private static bool LeaderAssignationAction(WorldTile pTile, string pPowerID) {

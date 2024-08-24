@@ -1,16 +1,15 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class AssignCapitalPower : Feature {
-    internal override bool Init() {
+  public class AssignCapitalPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       GodPower assignCapital = new GodPower() {
         id = "assign_capital",
         name = "assign_capital",
         force_map_text = MapMode.Cities,
         click_special_action = CapitalAssignationAction
       };
-      AssetManager.powers.add(assignCapital);
-      return true;
+      return assignCapital;
     }
     private static bool CapitalAssignationAction(WorldTile pTile, string pPowerId) {
       City city = pTile.zone.city;

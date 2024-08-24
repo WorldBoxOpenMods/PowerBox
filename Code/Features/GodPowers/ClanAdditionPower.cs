@@ -2,22 +2,8 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class ClanAdditionPower : Feature {
-    internal override bool Init() {
-      GodPower addToClan = new GodPower {
-        id = "addToClan",
-        name = "addToClan",
-        showToolSizes = true,
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = "addToClan",
-        force_map_text = MapMode.Clans,
-        click_power_action = (pTile, pPower) => _targetClan != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetClan(pTile, pPower),
-        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
-      };
-      AssetManager.powers.add(addToClan);
-
+  public class ClanAdditionPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset addToClanDrop = new DropAsset {
         id = "addToClan",
         path_texture = "drops/drop_friendship",
@@ -26,8 +12,21 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = AddUnitToClanAction
       };
       AssetManager.drops.add(addToClanDrop);
+      
+      GodPower addToClan = new GodPower {
+        id = addToClanDrop.id,
+        name = addToClanDrop.id,
+        showToolSizes = true,
+        fallingChance = 0.03f,
+        holdAction = true,
+        unselectWhenWindow = true,
+        dropID = addToClanDrop.id,
+        force_map_text = MapMode.Clans,
+        click_power_action = (pTile, pPower) => _targetClan != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetClan(pTile, pPower),
+        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
+      };
 
-      return true;
+      return addToClan;
     }
     
     private static Clan _targetClan;

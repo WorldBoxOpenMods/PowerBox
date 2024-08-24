@@ -3,17 +3,15 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class NonRandomFriendshipPower : Feature {
-    internal override bool Init() {
-      GodPower friendshipNotRandom = new GodPower() {
+  public class NonRandomFriendshipPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
+      return new GodPower() {
         id = "friendshipNR",
         name = "friendshipNR",
         force_map_text = MapMode.Kingdoms,
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = NonRandomFriendshipAction
       };
-      AssetManager.powers.add(friendshipNotRandom);
-      return true;
     }
     
     private static bool NonRandomFriendshipAction(WorldTile pTile = null, string pDropID = null) {

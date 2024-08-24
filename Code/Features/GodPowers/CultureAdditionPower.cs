@@ -2,22 +2,8 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureAdditionPower : Feature {
-    internal override bool Init() {
-      GodPower addToCulture = new GodPower {
-        id = "addToCulture",
-        name = "addToCulture",
-        showToolSizes = true,
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = "addToCulture",
-        force_map_text = MapMode.Cultures,
-        click_power_action = (pTile, pPower) => _targetCulture != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetCulture(pTile, pPower),
-        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
-      };
-      AssetManager.powers.add(addToCulture);
-
+  public class CultureAdditionPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset addToCultureDrop = new DropAsset {
         id = "addToCulture",
         path_texture = "drops/drop_friendship",
@@ -26,7 +12,21 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = AddUnitToCultureAction
       };
       AssetManager.drops.add(addToCultureDrop);
-      return true;
+      
+      GodPower addToCulture = new GodPower {
+        id = addToCultureDrop.id,
+        name = addToCultureDrop.id,
+        showToolSizes = true,
+        fallingChance = 0.03f,
+        holdAction = true,
+        unselectWhenWindow = true,
+        dropID = addToCultureDrop.id,
+        force_map_text = MapMode.Cultures,
+        click_power_action = (pTile, pPower) => _targetCulture != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetCulture(pTile, pPower),
+        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
+      };
+
+      return addToCulture;
     }
     
     private static Culture _targetCulture;

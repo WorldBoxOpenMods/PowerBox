@@ -1,21 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using PowerBox.Code.Features.GodPowers;
 using PowerBox.Code.LoadingSystem;
-using UnityEngine;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class BuildingUpgradeButton : ButtonFeature {
-    internal override FeatureRequirementList RequiredFeatures => base.RequiredFeatures.Concat(new []{ typeof(BuildingUpgradePower) }).ToList();
-    internal override FeatureRequirementList OptionalFeatures => new List<Type>{ typeof(ItemModificationButtons) };
-    internal override bool Init() {
-      Tab.CreateGodPowerButton(
-        "upgradeBuildingAdd",
-        Resources.Load<Sprite>("powers/upgrade_building_icon"),
-        Tab.PowerboxTabObject.transform
-      );
-      return true;
-    }
+  public class BuildingUpgradeButton : GodPowerButtonFeature<BuildingUpgradePower, Tab> {
+    internal override FeatureRequirementList OptionalFeatures => typeof(ItemModificationButtons);
+    public override string SpritePath => "powers/upgrade_building_icon";
   }
 }

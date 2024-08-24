@@ -1,16 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PowerBox.Code.Features.Actors;
 using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BurgerSpiderCloudSpawnPower : Feature {
-    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(BurgerSpider) };
+  public class BurgerSpiderCloudSpawnPower : AssetFeature<GodPower> {
+    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(BurgerSpiderSpawnPower) };
 
-    internal override bool Init() {
+    protected override GodPower InitObject() {
       GodPower spawnBurgerSpiderCloud = new GodPower {
         id = "burgerSpiderCloudSpawn",
         name = "burgerSpiderCloudSpawn",
@@ -22,7 +21,6 @@ namespace PowerBox.Code.Features.GodPowers {
         dropID = "cloudBurgerSpiderD",
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
-      AssetManager.powers.add(spawnBurgerSpiderCloud);
 
       DropAsset cloudBurgerSpiderD = new DropAsset {
         id = "cloudBurgerSpiderD",
@@ -60,12 +58,11 @@ namespace PowerBox.Code.Features.GodPowers {
       foreach (Sprite sprite in burgerSpiderCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null)) {
         burgerSpiderCloud.cached_sprites.Add(sprite);
       }
-      return true;
+      return spawnBurgerSpiderCloud;
     }
     
-    private static void BurgerSpiderSpawnAction(WorldTile pTile = null, string pDropID = null) {
-      GodPower godPower = AssetManager.powers.get("spawnBurgerSpider");
-      godPower.click_action(pTile, godPower.id);
+    private void BurgerSpiderSpawnAction(WorldTile pTile = null, string pDropID = null) {
+      GetFeature<BurgerSpiderSpawnPower>().Object.click_action(pTile, GetFeature<BurgerSpiderSpawnPower>().Object.id);
     }
   }
 }

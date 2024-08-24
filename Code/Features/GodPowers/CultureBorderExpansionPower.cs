@@ -1,10 +1,9 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureBorderExpansionPower : Feature {
-
-    internal override bool Init() {
-      GodPower expandCultureBorders = new GodPower {
+  public class CultureBorderExpansionPower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
+      return new GodPower {
         id = "expandCultureBorders",
         name = "expandCultureBorders",
         forceBrush = "circ_0",
@@ -14,8 +13,6 @@ namespace PowerBox.Code.Features.GodPowers {
         unselectWhenWindow = true,
         click_special_action = CultureBorderExpansionAction
       };
-      AssetManager.powers.add(expandCultureBorders);
-      return true;
     }
     
     private static Culture _toCultureZone;

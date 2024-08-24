@@ -2,21 +2,8 @@ using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BuildingDowngradePower : Feature {
-    internal override bool Init() {
-      GodPower downgradeBuildingAdd = new GodPower {
-        id = "downgradeBuildingAdd",
-        holdAction = true,
-        showToolSizes = true,
-        unselectWhenWindow = true,
-        name = "downgradeBuildingAdd",
-        dropID = "downgradeBuildingAdd",
-        fallingChance = 0.01f,
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
-        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
-      };
-      AssetManager.powers.add(downgradeBuildingAdd);
-
+  public class BuildingDowngradePower : AssetFeature<GodPower> {
+    protected override GodPower InitObject() {
       DropAsset downgradeBuildingAddDrop = new DropAsset {
         id = "downgradeBuildingAdd",
         path_texture = "drops/drop_snow",
@@ -26,8 +13,20 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = BuildingDowngradeAction
       };
       AssetManager.drops.add(downgradeBuildingAddDrop);
+      
+      GodPower downgradeBuildingAdd = new GodPower {
+        id = downgradeBuildingAddDrop.id,
+        holdAction = true,
+        showToolSizes = true,
+        unselectWhenWindow = true,
+        name = downgradeBuildingAddDrop.id,
+        dropID = downgradeBuildingAddDrop.id,
+        fallingChance = 0.01f,
+        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
+        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
+      };
 
-      return true;
+      return downgradeBuildingAdd;
     }
     
     private static void BuildingDowngradeAction(WorldTile pTile = null, string pDropID = null) {
