@@ -6,14 +6,14 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class EditFavoriteFoodWindow : WindowBase<EditFavoriteFoodWindow> {
     private Actor _targetUnit;
-    internal override bool Init() {
+    protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("inspect_unit");
 
-      Window = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject inspectUnitHungerStatBar = ResourcesFinder.FindResource<GameObject>("HungerBar");
       if (inspectUnitHungerStatBar != null) {
@@ -23,11 +23,11 @@ namespace PowerBox.Code.Features.Windows {
         }
       }
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
       
-      return true;
+      return window;
     }
     private void EditFavoriteFoodButtonClick() {
       InitEditFavoriteFood(Window);

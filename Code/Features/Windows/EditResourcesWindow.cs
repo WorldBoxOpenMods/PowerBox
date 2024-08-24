@@ -7,20 +7,18 @@ using NeoModLoader.General;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
-    internal override bool Init() {
-      if (!base.Init()) return false;
+    protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("village");
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
       Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
-      Window = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       GameObject editResources = PowerButtonCreator.CreateSimpleButton("EditResources", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
       editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
       Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
@@ -36,7 +34,7 @@ namespace PowerBox.Code.Features.Windows {
         null,
         new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
       );
-      return true;
+      return window;
     }
     
     private static IEnumerable<CodeInstruction> StopOnDisableFromSettingSelectedCityToNull(IEnumerable<CodeInstruction> instructions) {
@@ -55,7 +53,7 @@ namespace PowerBox.Code.Features.Windows {
     }
     public void EditResourcesButtonClick() {
       Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
-      Instance.InitEditResources();
+      InitEditResources();
       Window.clickShow();
     }
 
@@ -97,14 +95,14 @@ namespace PowerBox.Code.Features.Windows {
     }
 
     private static void LoadResourceButton(ResourceAsset asset, ButtonResource resourceButtonPref, Transform parent) {
-      ButtonResource resourceButton = Object.Instantiate(resourceButtonPref, parent);
+      ButtonResource resourceButton = UnityEngine.Object.Instantiate(resourceButtonPref, parent);
 
       CityData data = Config.selectedCity.data;
       resourceButton.load(asset, data.storage.get(asset.id));
       resourceButton.transform.Find("Text").gameObject.SetActive(false);
       resourceButton.transform.localPosition = Vector3.zero;
 
-      GameObject nameInputElement = Object.Instantiate(GameObject.Find("NameInputElement"), parent);
+      GameObject nameInputElement = UnityEngine.Object.Instantiate(GameObject.Find("NameInputElement"), parent);
       nameInputElement.transform.localPosition = new Vector2(50f, 0);
       nameInputElement.transform.localScale = new Vector2(0.75f, 0.75f);
       NameInput inputComponent = nameInputElement.GetComponent<NameInput>();

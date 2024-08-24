@@ -7,7 +7,6 @@ using NeoModLoader.General;
 using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindFavouriteItemsWindow : WindowBase<FindFavouriteItemsWindow> {
@@ -16,17 +15,14 @@ namespace PowerBox.Code.Features.Windows {
     private static Thread _itemCacheCheckThread;
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
-    internal override bool Init() {
-      if (!base.Init()) {
-        return false;
-      }
-      Window = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+    protected override ScrollWindow InitObject() {
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -34,7 +30,7 @@ namespace PowerBox.Code.Features.Windows {
         AccessTools.Method(typeof(EquipmentButton), nameof(EquipmentButton.Start)),
         new HarmonyMethod(AccessTools.Method(typeof(FindFavouriteItemsWindow), nameof(EquipmentButton_Start_Postfix)))
       );
-      return true;
+      return window;
     }
     internal static void AddButtonToNotAttachTo(EquipmentButton button) {
       ButtonsToNotAttachTo.Add(button);
@@ -107,7 +103,7 @@ namespace PowerBox.Code.Features.Windows {
 
       GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + window.name + "/Background/Scroll View/Viewport/Content");
       for (int i = 0; i < content.transform.childCount; i++) {
-        Object.Destroy(content.transform.GetChild(i).gameObject);
+        UnityEngine.Object.Destroy(content.transform.GetChild(i).gameObject);
       }
       window.resetScroll();
       ScrollWindow.allWindows.TryGetValue("inspect_unit", out ScrollWindow inspectUnit);
@@ -157,7 +153,7 @@ namespace PowerBox.Code.Features.Windows {
         return null;
       }
 
-      EquipmentButton itemButton = Object.Instantiate(itemButtonPref, parent);
+      EquipmentButton itemButton = UnityEngine.Object.Instantiate(itemButtonPref, parent);
       ButtonsToNotAttachTo.Add(itemButton);
 
       itemButton.load(item);

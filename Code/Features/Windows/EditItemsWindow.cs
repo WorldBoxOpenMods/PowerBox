@@ -8,42 +8,31 @@ using PowerBox.Code.LoadingSystem;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   internal class EditItemsWindow : WindowBase<EditItemsWindow> {
     internal PowerType PowType;
     internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(ItemAdditionPower), typeof(ItemRemovalPower) };
-    internal override bool Init() {
-      if (!base.Init()) return false;
+    protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("inspect_unit");
       GameObject inspectUnitObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit");
       Transform inspectUnitContent = inspectUnitObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/inspect_unit/Background");
       inspectUnitObject.SetActive(false);
-      Init(inspectUnitContent);
-      return true;
-    }
-
-    private GameObject _changeItemType;
-    private GameObject _changeItemModifierF;
-    private GameObject _changeItemModifierS;
-    private GameObject _changeItemModifierT;
-    private void Init(Transform inspectUnitContent) {
       InitAddRemoveChosen();
 
-      Window = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_items");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject editItems = PowerButtonCreator.CreateSimpleButton("EditItems", EditItemsButtonClick, AssetUtils.LoadEmbeddedSprite("powers/items"), inspectUnitContent).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
-
-
+      
+      
       editItems.transform.localPosition = new Vector3(117.0f, -35.0f, editItems.transform.localPosition.z);
 
       Transform editItemsBtnIcon = editItems.transform.Find("Icon");
@@ -55,8 +44,8 @@ namespace PowerBox.Code.Features.Windows {
       editItems.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editItems.GetComponent<Button>().transition = Selectable.Transition.None;
 
-      Transform bg = Window.transform.Find("Background");
-      
+      Transform bg = window.transform.Find("Background");
+
       GameObject saveButton = PowerButtonCreator.CreateSimpleButton(
         "DoneItems",
         ItemsSaveButtonClick,
@@ -106,7 +95,13 @@ namespace PowerBox.Code.Features.Windows {
           LM.AddToCurrentLocale($"ChangeModifier{i}", string.Format(templateLocale, pool[_chosenModifierIndex[i]].id));
         }
       }
+      return window;
     }
+
+    private GameObject _changeItemType;
+    private GameObject _changeItemModifierF;
+    private GameObject _changeItemModifierS;
+    private GameObject _changeItemModifierT;
 
     [Obsolete("TODO: Rewrite this abomination to not be a dysfunctional piece of garbage")]
     internal void InitEditItems(ScrollWindow window, Action<EquipmentButton> callback, PowerType powType = PowerType.Unset) {
@@ -121,7 +116,7 @@ namespace PowerBox.Code.Features.Windows {
 
       GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + window.name + "/Background/Scroll View/Viewport/Content");
       for (int i = 0; i < content.transform.childCount; i++) {
-        Object.Destroy(content.transform.GetChild(i).gameObject);
+        UnityEngine.Object.Destroy(content.transform.GetChild(i).gameObject);
       }
       ScrollWindow.allWindows.TryGetValue("inspect_unit", out ScrollWindow inspectUnit);
       if (inspectUnit is null) {
@@ -269,7 +264,7 @@ namespace PowerBox.Code.Features.Windows {
     }
 
     private static void LoadItemButton(ItemData item, EquipmentButton itemButtonPref, Transform parent, Action<EquipmentButton> callback) {
-      EquipmentButton itemButton = Object.Instantiate(itemButtonPref, parent);
+      EquipmentButton itemButton = UnityEngine.Object.Instantiate(itemButtonPref, parent);
       FindFavouriteItemsWindow.AddButtonToNotAttachTo(itemButton);
 
       try {
@@ -515,7 +510,7 @@ namespace PowerBox.Code.Features.Windows {
       }
     }
   }
-  
+
   public enum PowerType {
     Add,
     Remove,

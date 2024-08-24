@@ -6,29 +6,23 @@ using PowerBox.Code.Scheduling;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
-    internal override bool Init() {
-      if (!base.Init()) return false;
+    protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("culture");
       GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
       Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
       cultureObject.SetActive(false);
-      Init(cultureContent);
-      return true;
-    }
-    private void Init(Transform inspectCultureContent) {
-      Window = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), inspectCultureContent).gameObject;
+      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -43,6 +37,7 @@ namespace PowerBox.Code.Features.Windows {
       editItemsRect.sizeDelta = new Vector2(32f, 36f);
       findCultureMembers.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
+      return window;
     }
     private void FindCultureMembersButtonClick() {
       InitFindCultureMembers(Window);
@@ -116,7 +111,7 @@ namespace PowerBox.Code.Features.Windows {
       creatureInfo.Start();
       creatureInfo.show(follower);
       creatureInfo.unit_type_bg = null;
-      Object.Destroy(garbage);
+      UnityEngine.Object.Destroy(garbage);
       followerInfoChild.transform.GetChild(0).name = "follower_" + index + "_avatar";
       followerInfoChild.transform.GetChild(0).localPosition = new Vector3(0.0f, -10.0f, 0.0f);
       if (follower.asset.isBoat) {
@@ -125,7 +120,7 @@ namespace PowerBox.Code.Features.Windows {
         followerInfoChild.transform.GetChild(0).localScale = new Vector3(2.2f, 2.2f, 2.2f);
       }
       for (int j = 1; j < followerInfoChild.transform.childCount; j++) {
-        Object.Destroy(followerInfoChild.transform.GetChild(j).gameObject);
+        UnityEngine.Object.Destroy(followerInfoChild.transform.GetChild(j).gameObject);
       }
       LM.AddToCurrentLocale(followerInfoChild.name, follower.coloredName);
       creatureInfo.gameObject.SetActive(true);

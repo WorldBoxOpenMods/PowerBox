@@ -3,17 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
-  public abstract class WindowBase<T> : Feature where T : WindowBase<T> {
-    protected ScrollWindow Window { get; set; }
+  public abstract class WindowBase<TWindow> : ObjectFeature<ScrollWindow> where TWindow : WindowBase<TWindow> {
+    protected ScrollWindow Window => Object;
     protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
     protected const float Green = 0.78f;
     protected const float Blue = 0;
     protected const float Alpha = 0.565f;
 
-    public static T Instance { get; private set; }
+    public static TWindow Instance { get; private set; }
     public WindowBase() {
-      Instance = (T)this;
+      Instance = this as TWindow;
     }
 
     internal override bool Init() {
@@ -29,11 +29,11 @@ namespace PowerBox.Code.Features.Windows {
       imageH.color = new Color(Red, Green, Blue, Alpha);
       imageH.raycastTarget = false;
       SpriteHighlighter.SetActive(false);
-      return true;
+      return base.Init();
     }
 
     protected GameObject AddHighLight(int index, GameObject content, bool enabled = false) {
-      GameObject spriteHl = Object.Instantiate(SpriteHighlighter, content.transform);
+      GameObject spriteHl = UnityEngine.Object.Instantiate(SpriteHighlighter, content.transform);
       spriteHl.transform.localPosition = GetPosByIndex(index);
       spriteHl.SetActive(true);
 

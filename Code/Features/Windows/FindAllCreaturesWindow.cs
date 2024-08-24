@@ -5,23 +5,21 @@ using NeoModLoader.General;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
-    internal override bool Init() {
-      if (!base.Init()) return false;
-      Window = WindowCreator.CreateEmptyWindow("find_all_creatures", "find_all_creatures");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_all_creatures");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+    protected override ScrollWindow InitObject() {
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_all_creatures", "find_all_creatures");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_all_creatures");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
       
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
       
-      return true;
+      return window;
     }
     
     public void FindAllCreaturesButtonClick() {
@@ -90,7 +88,7 @@ namespace PowerBox.Code.Features.Windows {
       creatureInfo.Start();
       creatureInfo.show(unit);
       creatureInfo.unit_type_bg = null;
-      Object.Destroy(garbage);
+      UnityEngine.Object.Destroy(garbage);
       followerInfoChild.transform.GetChild(0).name = "unit_" + index + "_avatar";
       followerInfoChild.transform.GetChild(0).localPosition = new Vector3(0.0f, -10.0f, 0.0f);
       if (unit.asset.isBoat) {
@@ -99,7 +97,7 @@ namespace PowerBox.Code.Features.Windows {
         followerInfoChild.transform.GetChild(0).localScale = new Vector3(2.2f, 2.2f, 2.2f);
       }
       for (int j = 1; j < followerInfoChild.transform.childCount; j++) {
-        Object.Destroy(followerInfoChild.transform.GetChild(j).gameObject);
+        UnityEngine.Object.Destroy(followerInfoChild.transform.GetChild(j).gameObject);
       }
       LM.AddToCurrentLocale(followerInfoChild.name, unit.coloredName);
       creatureInfo.gameObject.SetActive(true);

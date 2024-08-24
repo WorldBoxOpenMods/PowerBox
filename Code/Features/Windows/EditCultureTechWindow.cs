@@ -4,34 +4,28 @@ using NeoModLoader.General.UI.Prefabs;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
 
 namespace PowerBox.Code.Features.Windows {
   public class EditCultureTechWindow : WindowBase<EditCultureTechWindow> {
-    internal override bool Init() {
-      if (!base.Init()) return false;
+    protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("culture");
       GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
       Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
       cultureObject.SetActive(false);
-      Init(cultureContent);
-      return true;
-    }
-    private void Init(Transform inspectCultureContent) {
-      Window = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
-      Window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
-      Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
+      window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
       GameObject editItems = PowerButtonCreator.CreateSimpleButton(
         "EditCultureTech",
         EditCultureTechButtonClick,
         Resources.Load<Sprite>("ui/icons/iconculture"),
-        inspectCultureContent
+        cultureContent
       ).gameObject;
 
-      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{Window.name}/Background/Scroll View/Viewport");
+      GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
@@ -50,6 +44,7 @@ namespace PowerBox.Code.Features.Windows {
       CountInRow = 1;
       XStep = 0.0f;
       YStep = -20.0f;
+      return window;
     }
 
     private void EditCultureTechButtonClick() {
@@ -61,7 +56,7 @@ namespace PowerBox.Code.Features.Windows {
       GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + Window.name + "/Background/Scroll View/Viewport/Content");
       Window.resetScroll();
       for (int i = 0; i < content.transform.childCount; i++) {
-        Object.Destroy(content.transform.GetChild(i).gameObject);
+        UnityEngine.Object.Destroy(content.transform.GetChild(i).gameObject);
       }
       RectTransform rect = content.GetComponent<RectTransform>();
       rect.pivot = new Vector2(0, 1);
@@ -82,7 +77,7 @@ namespace PowerBox.Code.Features.Windows {
     }
     
     private void LoadTechButton(Culture culture, CultureTechAsset tech, Transform parent, int index, Action<SwitchButton> callback) {
-      SwitchButton techButton = Object.Instantiate(SwitchButton.Prefab, parent);
+      SwitchButton techButton = UnityEngine.Object.Instantiate(SwitchButton.Prefab, parent);
       techButton.name = $"{tech.id} TechButtonToggle";
       techButton.transform.localPosition = new Vector3(StartXPos, StartYPos + YStep * index + 10.0f, techButton.transform.localPosition.z);
       try {
