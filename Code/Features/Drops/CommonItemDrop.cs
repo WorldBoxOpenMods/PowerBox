@@ -21,6 +21,9 @@ namespace PowerBox.Code.Features.Drops {
     }
 
     private static void ItemChangeAction(WorldTile pTile = null, string pDropID = null) {
+      if (EditItemsWindow.Instance is null) {
+        return;
+      }
       MapBox.instance.getObjectsInChunks(pTile, 4, MapObjectType.Actor);
       List<BaseSimObject> tempMapObjects = MapBox.instance.temp_map_objects;
       foreach (Actor tempMapObject in tempMapObjects.Cast<Actor>().Where(tempMapObject => tempMapObject.base_data.alive && tempMapObject.asset.use_items)) {
