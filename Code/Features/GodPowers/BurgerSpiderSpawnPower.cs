@@ -12,7 +12,7 @@ namespace PowerBox.Code.Features.GodPowers {
         actorSpawnHeight = 3f,
         name = "spawnBurgerSpider",
         spawnSound = "spawnAnt",
-        actor_asset_id = "burgerSpider",
+        actor_asset_id = GetFeature<Actors.BurgerSpider>().Object.id,
         click_action = (pTile, pPower) => AssetManager.powers.spawnUnit(pTile, pPower)
       };
     }

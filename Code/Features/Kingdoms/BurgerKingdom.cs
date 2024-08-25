@@ -1,8 +1,8 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.Kingdoms {
-  public class BurgerKingdom : Feature {
-    internal override bool Init() {
+  public class BurgerKingdom : AssetFeature<KingdomAsset> {
+    protected override KingdomAsset InitObject() {
       KingdomAsset burgerKingdom = new KingdomAsset {
         id = "burgers",
         mobs = true,
@@ -15,7 +15,6 @@ namespace PowerBox.Code.Features.Kingdoms {
       burgerKingdom.addEnemyTag("civ");
       burgerKingdom.addEnemyTag("bandits");
       burgerKingdom.addEnemyTag("developers");
-      AssetManager.kingdoms.add(burgerKingdom);
 
       MapBox.instance.kingdoms.newHiddenKingdom(burgerKingdom);
 
@@ -29,7 +28,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       orc.addEnemyTag("burgers");
       KingdomAsset bandit = AssetManager.kingdoms.get("bandits");
       bandit.addEnemyTag("burgers");
-      return true;
+      return burgerKingdom;
     }
   }
 }

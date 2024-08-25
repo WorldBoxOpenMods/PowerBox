@@ -1,8 +1,8 @@
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.NameGenerators {
-  public class BurgerSpider : Feature {
-    internal override bool Init() {
+  public class BurgerSpider : AssetFeature<NameGeneratorAsset> {
+    protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset burgerSpiderName = new NameGeneratorAsset {
         id = "burger_spider_name"
       };
@@ -10,8 +10,7 @@ namespace PowerBox.Code.Features.NameGenerators {
       burgerSpiderName.part_groups.Add("-");
       burgerSpiderName.part_groups.Add("spider,burger");
       burgerSpiderName.templates.Add("part_group");
-      AssetManager.nameGenerator.add(burgerSpiderName);
-      return true;
+      return burgerSpiderName;
     }
   }
 }

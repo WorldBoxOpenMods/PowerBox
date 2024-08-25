@@ -14,6 +14,7 @@ namespace PowerBox.Code.LoadingSystem {
     public static implicit operator FeatureRequirementList(List<Type> list) => new FeatureRequirementList(list.ToArray());
     public static implicit operator List<Type>(FeatureRequirementList list) => list.RequiredFeatureList;
     public static implicit operator FeatureRequirementList(Type type) => new FeatureRequirementList(type);
+    public static implicit operator FeatureRequirementList(Type[] list) => new FeatureRequirementList(list);
     public IEnumerator<Type> GetEnumerator() => RequiredFeatureList.GetEnumerator();
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
   }

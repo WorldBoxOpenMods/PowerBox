@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.Actors {
-  public class BurgerSpider : Feature {
-
-    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
-
-    internal override bool Init() {
+  public class BurgerSpider : AssetFeature<ActorAsset> {
+    internal override FeatureRequirementList RequiredFeatures => new[] { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
+    protected override bool AddToLibrary => false;
+    protected override ActorAsset InitObject() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("burgerSpider", "wolf");
-      burgerSpider.id = "burgerSpider";
-      burgerSpider.icon = "iconburgerSpider";
+      burgerSpider.icon = "iconBurgerSpider";
       burgerSpider.base_stats[S.max_age] = 250;
-      burgerSpider.race = "burgerSpider";
-      burgerSpider.kingdom = "burgers";
+      burgerSpider.race = burgerSpider.id;
+      burgerSpider.kingdom = GetFeature<Kingdoms.BurgerKingdom>().Object.id;
       burgerSpider.unit = false;
       burgerSpider.shadow = false;
       burgerSpider.canAttackBuildings = true;
@@ -33,8 +29,8 @@ namespace PowerBox.Code.Features.Actors {
       burgerSpider.traits.Add("regeneration");
       burgerSpider.traits.Add("ugly");
       burgerSpider.traits.Add("cursed");
-      burgerSpider.nameTemplate = "burger_spider_name";
-      return true;
+      burgerSpider.nameTemplate = GetFeature<NameGenerators.BurgerSpider>().Object.id;
+      return burgerSpider;
     }
   }
 }

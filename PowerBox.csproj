@@ -37,7 +37,8 @@
     </PropertyGroup>
     <ItemGroup>
       <Compile Include="Code\Features\Actors\BurgerSpider.cs" />
-      <Compile Include="Code\Features\Actors\Developers.cs" />
+      <Compile Include="Code\Features\Actors\Mastef.cs" />
+      <Compile Include="Code\Features\Actors\Maxim.cs" />
       <Compile Include="Code\Features\Buttons\AboutModButton.cs" />
       <Compile Include="Code\Features\Buttons\AllianceCreationButton.cs" />
       <Compile Include="Code\Features\Buttons\AssignCapitalButton.cs" />
@@ -115,7 +116,8 @@
       <Compile Include="Code\Features\MapIconAssets\WhisperOfAllianceLine.cs" />
       <Compile Include="Code\Features\MapIconAssets\WhisperOfPeaceLine.cs" />
       <Compile Include="Code\Features\NameGenerators\BurgerSpider.cs" />
-      <Compile Include="Code\Features\NameGenerators\Developers.cs" />
+      <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
+      <Compile Include="Code\Features\NameGenerators\Maxim.cs" />
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
       <Compile Include="Code\Features\Windows\EditCultureTechWindow.cs" />
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />

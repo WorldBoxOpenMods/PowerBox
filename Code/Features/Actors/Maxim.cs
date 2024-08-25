@@ -1,19 +1,16 @@
-using System;
 using System.Collections.Generic;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.Actors {
-  public class Developers : Feature {
-
-    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(Kingdoms.Developers), typeof(NameGenerators.Developers) };
-
-    internal override bool Init() {
+  public class Maxim : AssetFeature<ActorAsset> {
+    internal override FeatureRequirementList RequiredFeatures => new[] { typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim) };
+    protected override bool AddToLibrary => false;
+    protected override ActorAsset InitObject() {
       ActorAsset maximCreature = AssetManager.actor_library.clone("MaximCreature", "whiteMage");
-      maximCreature.id = "MaximCreature";
       maximCreature.base_stats[S.max_age] = 1000;
       maximCreature.icon = "iconMaximCreature";
       maximCreature.race = "good";
-      maximCreature.kingdom = "developers";
+      maximCreature.kingdom = GetFeature<Kingdoms.Developers>().Object.id;
       maximCreature.unit = false;
       maximCreature.canAttackBuildings = false;
       maximCreature.canTurnIntoZombie = false;
@@ -38,22 +35,8 @@ namespace PowerBox.Code.Features.Actors {
         "blessed",
         "wise"
       };
-      maximCreature.nameTemplate = "maxim_creature_name";
-
-      ActorAsset mastefCreature = AssetManager.actor_library.clone("MastefCreature", "MaximCreature");
-      mastefCreature.id = "MastefCreature";
-      mastefCreature.icon = "iconMastefCreature";
-      mastefCreature.texture_path = "t_MastefCreature";
-      mastefCreature.unit = false;
-      mastefCreature.shadow = false;
-      mastefCreature.traits = new List<string> {
-        "immortal",
-        "blessed",
-        "fast"
-      };
-      mastefCreature.nameTemplate = "mastef_creature_name";
-
-      return true;
+      maximCreature.nameTemplate = GetFeature<NameGenerators.Maxim>().Object.id;
+      return maximCreature;
     }
   }
 }
