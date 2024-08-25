@@ -71,7 +71,7 @@ namespace PowerBox.Code.Features.Windows {
         }
       };
       GameObject followerInfoChild = PowerButtonCreator.CreateSimpleButton("unit_" + index, () => {
-        if (unit is null || unit.isAlive() == false) {
+        if (unit is null || unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
         Config.selectedUnit = unit;

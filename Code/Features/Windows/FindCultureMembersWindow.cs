@@ -94,7 +94,7 @@ namespace PowerBox.Code.Features.Windows {
         }
       };
       GameObject followerInfoChild = PowerButtonCreator.CreateSimpleButton("follower_" + index, () => {
-        if (follower is null || follower.isAlive() == false) {
+        if (follower is null || follower.isAlive() == false || World.world.units.getSimpleList().Contains(follower) == false) {
           return;
         }
         Config.selectedUnit = follower;
