@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
 using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.MapIconAssets {
-  public class WhisperOfAllianceLine : Feature {
-    internal override FeatureRequirementList RequiredFeatures => new List<Type>{ typeof(GodPowers.AllianceCreationPower) };
-    internal override bool Init() {
-      AssetManager.map_icons.add(new MapIconAsset {
+  public class WhisperOfAllianceLine : AssetFeature<MapIconAsset> {
+    internal override FeatureRequirementList RequiredFeatures => typeof(GodPowers.AllianceCreationPower);
+    protected override MapIconAsset InitObject() {
+      return new MapIconAsset {
         id = "whisper_of_alliance_line",
         id_prefab = "p_mapArrow_line",
         base_scale = 0.5f,
@@ -15,12 +13,11 @@ namespace PowerBox.Code.Features.MapIconAssets {
         render_on_map = true,
         render_in_game = true,
         color = new Color(0.4f, 0.4f, 1f, 0.9f)
-      });
-      return true;
+      };
     }
     
-    private static void DrawWhisperOfAllianceLine(MapIconAsset pAsset) {
-      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower("create_alliance")) {
+    private void DrawWhisperOfAllianceLine(MapIconAsset pAsset) {
+      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<GodPowers.AllianceCreationPower>().Object.id)) {
         return;
       }
       Kingdom whisperA = Config.whisperA;
