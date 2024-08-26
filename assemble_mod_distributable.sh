@@ -7,6 +7,7 @@ NML_MODS_FOLDER_PATH=~/Library/Application\ Support/Steam/steamapps/common/world
 cd "$NML_MODS_FOLDER_PATH" || exit
 rm "./PowerBox.zip"
 rm -rf "./PowerBox"
+rm -rf "./KEYMASTERER__DON_NIKON_POWERBOX" # mod folder that NML auto generates if PowerBox.zip is unzipped by it
 mkdir "./PowerBox"
 
 # Copy built files into distributable folder
