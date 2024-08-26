@@ -5,7 +5,7 @@ namespace PowerBox.Code.Features.Actors {
     internal override FeatureRequirementList RequiredFeatures => new[] { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
-      ActorAsset burgerSpider = AssetManager.actor_library.clone("burgerSpider", "wolf");
+      ActorAsset burgerSpider = AssetManager.actor_library.clone("powerbox_burger_spider", "wolf");
       burgerSpider.icon = "iconBurgerSpider";
       burgerSpider.base_stats[S.max_age] = 250;
       burgerSpider.race = burgerSpider.id;

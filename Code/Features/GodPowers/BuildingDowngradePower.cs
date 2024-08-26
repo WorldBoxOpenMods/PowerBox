@@ -5,7 +5,7 @@ namespace PowerBox.Code.Features.GodPowers {
   public class BuildingDowngradePower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset downgradeBuildingAddDrop = new DropAsset {
-        id = "downgradeBuildingAdd",
+        id = "powerbox_downgrade_building",
         path_texture = "drops/drop_snow",
         animated = true,
         animation_speed = 0.03f,

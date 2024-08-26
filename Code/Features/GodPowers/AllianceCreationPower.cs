@@ -7,8 +7,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class AllianceCreationPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower createAlliance = new GodPower() {
-        id = "create_alliance",
-        name = "create_alliance",
+        id = "powerbox_create_alliance",
+        name = "powerbox_create_alliance",
         force_map_text = MapMode.Kingdoms,
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = AllianceCreationAction
@@ -29,7 +29,7 @@ namespace PowerBox.Code.Features.GodPowers {
       }
 
       if (Config.whisperB == null && Config.whisperA == kingdom) {
-        WorldTip.showNow("create_alliance_same_kingdom_selected_twice_error", true, "top");
+        WorldTip.showNow("powerbox_create_alliance_same_kingdom_selected_twice_error", true, "top");
         return false;
       }
 
@@ -40,7 +40,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (Config.whisperB != Config.whisperA) {
 
         if (Alliance.isSame(Config.whisperA.getAlliance(), Config.whisperB.getAlliance())) {
-          WorldTip.showNow("create_alliance_already_allied_error", true, "top");
+          WorldTip.showNow("powerbox_create_alliance_already_allied_error", true, "top");
           Config.whisperB = null;
           return false;
         }
@@ -69,7 +69,7 @@ namespace PowerBox.Code.Features.GodPowers {
             ForceIntoAlliance(allianceB, Config.whisperA);
           }
         }
-        WorldTip.showNow("create_alliance_success", true, "top");
+        WorldTip.showNow("powerbox_create_alliance_success", true, "top");
         Config.whisperA = null;
         Config.whisperB = null;
       }

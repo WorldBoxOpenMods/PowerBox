@@ -4,30 +4,30 @@ namespace PowerBox.Code.Features.Kingdoms {
   public class BurgerKingdom : AssetFeature<KingdomAsset> {
     protected override KingdomAsset InitObject() {
       KingdomAsset burgerKingdom = new KingdomAsset {
-        id = "burgers",
+        id = "powerbox_burger_kingdom",
         mobs = true,
         default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor()
       };
-      burgerKingdom.addTag("burgers");
+      burgerKingdom.addTag(burgerKingdom.id);
       burgerKingdom.addTag("nature_creature");
       burgerKingdom.addFriendlyTag("nature_creature");
       burgerKingdom.addFriendlyTag("neutral");
       burgerKingdom.addEnemyTag("civ");
       burgerKingdom.addEnemyTag("bandits");
-      burgerKingdom.addEnemyTag("developers");
+      burgerKingdom.addEnemyTag("powerbox_developer_kingdom");
 
       MapBox.instance.kingdoms.newHiddenKingdom(burgerKingdom);
 
       KingdomAsset human = AssetManager.kingdoms.get("human");
-      human.addEnemyTag("burgers");
+      human.addEnemyTag(burgerKingdom.id);
       KingdomAsset elf = AssetManager.kingdoms.get("elf");
-      elf.addEnemyTag("burgers");
+      elf.addEnemyTag(burgerKingdom.id);
       KingdomAsset dwarf = AssetManager.kingdoms.get("dwarf");
-      dwarf.addEnemyTag("burgers");
+      dwarf.addEnemyTag(burgerKingdom.id);
       KingdomAsset orc = AssetManager.kingdoms.get("orc");
-      orc.addEnemyTag("burgers");
+      orc.addEnemyTag(burgerKingdom.id);
       KingdomAsset bandit = AssetManager.kingdoms.get("bandits");
-      bandit.addEnemyTag("burgers");
+      bandit.addEnemyTag(burgerKingdom.id);
       return burgerKingdom;
     }
   }

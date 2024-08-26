@@ -5,8 +5,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class AssignKingPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower assignKing = new GodPower() {
-        id = "assign_king",
-        name = "assign_king",
+        id = "powerbox_assign_king",
+        name = "powerbox_assign_king",
         force_map_text = MapMode.Kingdoms,
         click_special_action = KingAssignationAction
       };

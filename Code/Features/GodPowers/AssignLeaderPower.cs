@@ -5,8 +5,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class AssignLeaderPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower assignLeader = new GodPower() {
-        id = "assign_leader",
-        name = "assign_leader",
+        id = "powerbox_assign_leader",
+        name = "powerbox_assign_leader",
         force_map_text = MapMode.Cities,
         click_special_action = LeaderAssignationAction
       };

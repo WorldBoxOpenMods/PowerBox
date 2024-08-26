@@ -9,8 +9,8 @@ namespace PowerBox.Code.Features.Windows {
     protected override ScrollWindow InitObject() {
       ScrollWindow.checkWindowExist("inspect_unit");
 
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_favorite_food", "edit_favorite_food");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_favorite_food");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_favorite_food", "powerbox_edit_favorite_food");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_favorite_food");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
@@ -50,7 +50,7 @@ namespace PowerBox.Code.Features.Windows {
     
     private void SetFavoriteFood(string foodId) {
       _targetUnit.data.favoriteFood = foodId;
-      WorldTip.showNow("favorite_food_set", true, "top");
+      WorldTip.showNow("powerbox_favorite_food_set", true, "top");
     }
   }
 }

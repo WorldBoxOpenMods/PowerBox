@@ -5,8 +5,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class ClanCreationPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower() {
-        id = "create_clan",
-        name = "create_clan",
+        id = "powerbox_create_clan",
+        name = "powerbox_create_clan",
         click_special_action = ClanCreationAction
       };
     }

@@ -6,8 +6,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class NonRandomFriendshipPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower() {
-        id = "friendshipNR",
-        name = "friendshipNR",
+        id = "powerbox_non_random_friendship",
+        name = "powerbox_non_random_friendship",
         force_map_text = MapMode.Kingdoms,
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = NonRandomFriendshipAction

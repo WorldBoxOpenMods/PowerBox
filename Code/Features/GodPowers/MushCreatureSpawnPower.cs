@@ -4,8 +4,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class MushCreatureSpawnPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "spawnMushCreatureUnit",
-        name = "spawnMushCreatureUnit",
+        id = "powerbox_spawn_mush_creature",
+        name = "powerbox_spawn_mush_creature",
         rank = PowerRank.Rank0_free,
         unselectWhenWindow = true,
         showSpawnEffect = true,

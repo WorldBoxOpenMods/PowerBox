@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.GodPowers {
   public class ColonyCreationPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset makeColonyDrop = new DropAsset {
-        id = "makeColony",
+        id = "powerbox_create_colony",
         path_texture = "drops/drop_gold",
         random_frame = true,
         default_scale = 0.1f,

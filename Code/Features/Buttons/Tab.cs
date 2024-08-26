@@ -18,7 +18,7 @@ namespace PowerBox.Code.Features.Buttons {
     private float _horizontalPadding;
     
     protected override PowersTab InitObject() {
-      PowersTab tab = TabManager.CreateTab("PowerBox", "tab_additional", "tab_additional_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
+      PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
       PowerboxTabObject = tab.gameObject;
       return tab;
     }

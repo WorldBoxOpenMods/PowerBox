@@ -17,7 +17,7 @@ namespace PowerBox.Code.Features.Windows {
     }
 
     internal override bool Init() {
-      SpriteHighlighter = new GameObject("spriteHighlighter") {
+      SpriteHighlighter = new GameObject("sprite_highlighter") {
         transform = {
           localScale = new Vector2(1.0f, 1.0f)
         },

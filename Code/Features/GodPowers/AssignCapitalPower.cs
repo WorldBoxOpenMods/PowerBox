@@ -4,8 +4,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class AssignCapitalPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower assignCapital = new GodPower() {
-        id = "assign_capital",
-        name = "assign_capital",
+        id = "powerbox_assign_capital",
+        name = "powerbox_assign_capital",
         force_map_text = MapMode.Cities,
         click_special_action = CapitalAssignationAction
       };

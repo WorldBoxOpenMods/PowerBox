@@ -4,7 +4,7 @@ namespace PowerBox.Code.Features.NameGenerators {
   public class Maxim : AssetFeature<NameGeneratorAsset> {
     protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset maximCreatureName = new NameGeneratorAsset {
-        id = "maxim_creature_name"
+        id = "powerbox_maxim_creature_name"
       };
       maximCreatureName.part_groups.Add("Maxim,Max,Greg,dev");
       maximCreatureName.part_groups.Add(" ");

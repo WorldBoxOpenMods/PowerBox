@@ -14,13 +14,13 @@ namespace PowerBox.Code.Features.Windows {
       GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
       Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
       cultureObject.SetActive(false);
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_culture_members", "find_culture_members");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_culture_members");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_culture_members", "powerbox_find_culture_members");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_culture_members");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
+      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("powerbox_find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();

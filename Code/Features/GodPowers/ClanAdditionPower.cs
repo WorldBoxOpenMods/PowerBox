@@ -5,7 +5,7 @@ namespace PowerBox.Code.Features.GodPowers {
   public class ClanAdditionPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset addToClanDrop = new DropAsset {
-        id = "addToClan",
+        id = "powerbox_add_unit_to_clan",
         path_texture = "drops/drop_friendship",
         random_frame = true,
         default_scale = 0.1f,

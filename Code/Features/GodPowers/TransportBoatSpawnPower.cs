@@ -5,7 +5,7 @@ namespace PowerBox.Code.Features.GodPowers {
   public class TransportBoatSpawnPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset spawnTransportBoatDrop = new DropAsset {
-        id = "spawn_boat_transport",
+        id = "powerbox_spawn_boat_transport",
         path_texture = "drops/drop_metal",
         random_frame = true,
         default_scale = 0.1f,

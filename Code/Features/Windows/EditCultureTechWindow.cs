@@ -12,8 +12,8 @@ namespace PowerBox.Code.Features.Windows {
       GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
       Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
       cultureObject.SetActive(false);
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_culture_tech", "edit_culture_tech");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_culture_tech");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_culture_tech", "powerbox_edit_culture_tech");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_culture_tech");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);

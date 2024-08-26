@@ -9,13 +9,13 @@ namespace PowerBox.Code.Features.Buttons {
     internal override FeatureRequirementList OptionalFeatures => typeof(MushAnimalSpawnButton);
     internal override bool Init() {
       Tab.CreateClickButton(
-        "addItems",
+        GetFeature<ItemAdditionPower>().Object.id,
         Resources.Load<Sprite>("powers/items_plus"),
         Tab.PowerboxTabObject.transform,
         AddItemsButtonClick
       );
       Tab.CreateClickButton(
-        "removeItems",
+        GetFeature<ItemRemovalPower>().Object.id,
         Resources.Load<Sprite>("powers/items_minus"),
         Tab.PowerboxTabObject.transform,
         RemoveItemsButtonCLick

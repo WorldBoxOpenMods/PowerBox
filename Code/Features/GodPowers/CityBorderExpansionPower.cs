@@ -3,9 +3,9 @@ using PowerBox.Code.LoadingSystem;
 namespace PowerBox.Code.Features.GodPowers {
   public class CityBorderExpansionPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      GodPower expandCitiesBorders = new GodPower {
-        id = "expandCitiesBorders",
-        name = "expandCitiesBorders",
+      GodPower expandCityBorders = new GodPower {
+        id = "powerbox_expand_city_borders",
+        name = "powerbox_expand_city_borders",
         forceBrush = "circ_0",
         fallingChance = 0.03f,
         holdAction = true,
@@ -13,7 +13,7 @@ namespace PowerBox.Code.Features.GodPowers {
         unselectWhenWindow = true,
         click_special_action = CityBorderExpansionAction
       };
-      return expandCitiesBorders;
+      return expandCityBorders;
     }
     
     private static City _toCityZone;

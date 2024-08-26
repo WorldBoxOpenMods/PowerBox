@@ -9,7 +9,7 @@ namespace PowerBox.Code.Features.Drops {
   public class CommonItemDrop : AssetFeature<DropAsset> {
     protected override DropAsset InitObject() {
       return new DropAsset {
-        id = "change_items",
+        id = "powerbox_change_items",
         path_texture = "drops/drop_fireworks",
         animated = true,
         animation_speed = 0.03f,

@@ -4,8 +4,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class CultureBorderExpansionPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "expandCultureBorders",
-        name = "expandCultureBorders",
+        id = "powerbox_expand_culture_borders",
+        name = "powerbox_expand_culture_borders",
         forceBrush = "circ_0",
         fallingChance = 0.03f,
         holdAction = true,

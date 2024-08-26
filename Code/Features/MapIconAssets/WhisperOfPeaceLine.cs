@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.MapIconAssets {
     internal override FeatureRequirementList RequiredFeatures => typeof(GodPowers.NonRandomFriendshipPower);
     protected override MapIconAsset InitObject() {
       return new MapIconAsset {
-        id = "whisper_of_peace_line",
+        id = "powerbox_whisper_of_peace_line",
         id_prefab = "p_mapArrow_line",
         base_scale = 0.5f,
         draw_call = DrawWhisperOfPeaceLine,

@@ -16,8 +16,8 @@ namespace PowerBox.Code.Features.Windows {
     private static readonly List<ItemData> FavoriteItems = new List<ItemData>();
     private static readonly Dictionary<ItemData, (Actor actor, City city)> ItemOwnerCache = new Dictionary<ItemData, (Actor actor, City city)>();
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_favorite_items", "find_favorite_items");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_favorite_items");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_favorite_items", "powerbox_find_favorite_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_favorite_items");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
@@ -47,10 +47,10 @@ namespace PowerBox.Code.Features.Windows {
     private static void ToggleFavoriteItem(ItemData itemData) {
       if (FavoriteItems.Contains(itemData)) {
         FavoriteItems.Remove(itemData);
-        WorldTip.showNow("item_unfavorited_message", true, "top");
+        WorldTip.showNow("powerbox_item_unfavorited_message", true, "top");
       } else {
         FavoriteItems.Add(itemData);
-        WorldTip.showNow("item_favorited_message", true, "top");
+        WorldTip.showNow("powerbox_item_favorited_message", true, "top");
       }
     }
     public void FindFavoriteItemsButtonClick() {
@@ -122,7 +122,7 @@ namespace PowerBox.Code.Features.Windows {
             Config.selectedCity = owner.city;
             ScrollWindow.showWindow("village");
           } else if (FavoriteItems.Contains(itemData)) {
-            WorldTip.showNow("item_not_found_message", true, "top");
+            WorldTip.showNow("powerbox_item_not_found_message", true, "top");
             FavoriteItems.Remove(itemData);
           }
         });

@@ -20,13 +20,13 @@ namespace PowerBox.Code.Features.Windows {
       inspectUnitObject.SetActive(false);
       InitAddRemoveChosen();
 
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("edit_items", "edit_items");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_items");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_items", "powerbox_edit_items");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_items");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject editItems = PowerButtonCreator.CreateSimpleButton("EditItems", EditItemsButtonClick, AssetUtils.LoadEmbeddedSprite("powers/items"), inspectUnitContent).gameObject;
+      GameObject editItems = PowerButtonCreator.CreateSimpleButton("powerbox_edit_items_button", EditItemsButtonClick, AssetUtils.LoadEmbeddedSprite("powers/items"), inspectUnitContent).gameObject;
 
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
@@ -47,7 +47,7 @@ namespace PowerBox.Code.Features.Windows {
       Transform bg = window.transform.Find("Background");
 
       GameObject saveButton = PowerButtonCreator.CreateSimpleButton(
-        "DoneItems",
+        "powerbox_save_item_selection",
         ItemsSaveButtonClick,
         Resources.Load<Sprite>("ui/icons/iconsavelocal"),
         bg.transform
@@ -55,7 +55,7 @@ namespace PowerBox.Code.Features.Windows {
       saveButton.transform.localPosition = new Vector2(70.00f, -150.00f);
 
       _changeItemType = PowerButtonCreator.CreateSimpleButton(
-        "ChangeType",
+        "powerbox_change_item_type",
         ChangeTypeButtonClick,
         AssetUtils.LoadEmbeddedSprite("powers/weapons"),
         bg
@@ -63,7 +63,7 @@ namespace PowerBox.Code.Features.Windows {
       _changeItemType.transform.localPosition = new Vector2(35.00f, -150.00f);
 
       _changeItemModifierF = PowerButtonCreator.CreateSimpleButton(
-        "ChangeModifier0",
+        "powerbox_change_modifier_0",
         () => ChangeModifierButtonClick(0, _changeItemModifierF),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
         bg
@@ -71,7 +71,7 @@ namespace PowerBox.Code.Features.Windows {
       _changeItemModifierF.transform.localPosition = new Vector2(-70.00f, -150.00f);
 
       _changeItemModifierS = PowerButtonCreator.CreateSimpleButton(
-        "ChangeModifier1",
+        "powerbox_change_modifier_1",
         () => ChangeModifierButtonClick(1, _changeItemModifierS),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
         bg
@@ -79,20 +79,20 @@ namespace PowerBox.Code.Features.Windows {
       _changeItemModifierS.transform.localPosition = new Vector2(-35.00f, -150.00f);
 
       _changeItemModifierT = PowerButtonCreator.CreateSimpleButton(
-        "ChangeModifier2",
+        "powerbox_change_modifier_2",
         () => ChangeModifierButtonClick(2, _changeItemModifierT),
         AssetUtils.LoadEmbeddedSprite("powers/prefix"),
         bg
       ).gameObject;
       _changeItemModifierT.transform.localPosition = new Vector2(0.00f, -150.00f);
       for (int i = 0; i < _chosenModifierIndex.Length; i++) {
-        string localeKey = $"ChangeModifier{i}";
+        string localeKey = $"powerbox_change_modifier_{i}";
         List<ItemAsset> pool = AssetManager.items_modifiers.list.Where(a => a.pool.Contains("weapon")).ToList();
         if (!_modifierLocalesStorage.TryGetValue(localeKey, out string templateLocale)) {
           _modifierLocalesStorage.Add(localeKey, LM.Get(localeKey));
           LM.AddToCurrentLocale(localeKey, string.Format(LM.Get(localeKey), pool[_chosenModifierIndex[i]].id));
         } else {
-          LM.AddToCurrentLocale($"ChangeModifier{i}", string.Format(templateLocale, pool[_chosenModifierIndex[i]].id));
+          LM.AddToCurrentLocale($"powerbox_change_modifier_{i}", string.Format(templateLocale, pool[_chosenModifierIndex[i]].id));
         }
       }
       return window;
@@ -301,10 +301,10 @@ namespace PowerBox.Code.Features.Windows {
       SwapModifiers();
       if (_chosenType == EquipmentType.Weapon) {
         _changeItemType.transform.Find("Icon").GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("powers/weapons");
-        LM.AddToCurrentLocale("ChangeType", LM.Get("WeaponsChangeType"));
+        LM.AddToCurrentLocale("powerbox_change_item_type", LM.Get("powerbox_weapons_change_type"));
       } else {
         _changeItemType.transform.Find("Icon").GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("powers/armor");
-        LM.AddToCurrentLocale("ChangeType", LM.Get("ArmorChangeType"));
+        LM.AddToCurrentLocale("powerbox_change_item_type", LM.Get("powerbox_armor_change_type"));
       }
       if (PowType == PowerType.Unset) {
         InitEditItems(Window, EditItemsButtonCallBack);
@@ -340,12 +340,12 @@ namespace PowerBox.Code.Features.Windows {
       }
       List<ItemAsset> pool = poolName.Split(',').SelectMany(n => AssetManager.items_modifiers.list.Where(i => i.pool.Contains(n))).ToList();
       for (int i = 0; i < _chosenModifierIndex.Length; i++) {
-        string localeKey = $"ChangeModifier{i}";
+        string localeKey = $"powerbox_change_modifier_{i}";
         if (!_modifierLocalesStorage.TryGetValue(localeKey, out string templateLocale)) {
           _modifierLocalesStorage.Add(localeKey, LM.Get(localeKey));
           LM.AddToCurrentLocale(localeKey, string.Format(LM.Get(localeKey), pool[_chosenModifierIndex[i]].id));
         } else {
-          LM.AddToCurrentLocale($"ChangeModifier{i}", string.Format(templateLocale, pool[_chosenModifierIndex[i]].id));
+          LM.AddToCurrentLocale($"powerbox_change_modifier_{i}", string.Format(templateLocale, pool[_chosenModifierIndex[i]].id));
         }
       }
     }
@@ -381,12 +381,12 @@ namespace PowerBox.Code.Features.Windows {
         }
       }
 
-      string localeKey = $"ChangeModifier{modifierIndexNumber}";
+      string localeKey = $"powerbox_change_modifier_{modifierIndexNumber}";
       if (!_modifierLocalesStorage.TryGetValue(localeKey, out string templateLocale)) {
         _modifierLocalesStorage.Add(localeKey, LM.Get(localeKey));
         LM.AddToCurrentLocale(localeKey, string.Format(LM.Get(localeKey), pool[_chosenModifierIndex[modifierIndexNumber]].id));
       } else {
-        LM.AddToCurrentLocale($"ChangeModifier{modifierIndexNumber}", string.Format(templateLocale, pool[_chosenModifierIndex[modifierIndexNumber]].id));
+        LM.AddToCurrentLocale($"powerbox_change_modifier_{modifierIndexNumber}", string.Format(templateLocale, pool[_chosenModifierIndex[modifierIndexNumber]].id));
       }
       itemModifierButton.GetComponent<PowerButton>().showTooltip();
       if (PowType == PowerType.Unset) {
@@ -401,7 +401,7 @@ namespace PowerBox.Code.Features.Windows {
         InitEditItems(Window, EditItemsButtonCallBack);
         Window.clickShow();
       } else {
-        WorldTip.showNow("cant_use_items_error", true, "top");
+        WorldTip.showNow("powerbox_cant_use_items_error", true, "top");
       }
     }
 
@@ -422,12 +422,7 @@ namespace PowerBox.Code.Features.Windows {
 
       Config.selectedUnit.setStatsDirty();
 
-
-      ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow window);
-      if (window is null) {
-        return;
-      }
-      InitEditItems(window, EditItemsButtonCallBack);
+      InitEditItems(Window, EditItemsButtonCallBack);
     }
 
     internal static readonly Dictionary<EquipmentType, ItemData> ChosenForAddSlots = new Dictionary<EquipmentType, ItemData>();
@@ -456,7 +451,7 @@ namespace PowerBox.Code.Features.Windows {
         default:
           throw new ArgumentOutOfRangeException();
       }
-      ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow window);
+      ScrollWindow.allWindows.TryGetValue("powerbox_edit_items", out ScrollWindow window);
       if (window is null) {
         return;
       }
@@ -479,14 +474,14 @@ namespace PowerBox.Code.Features.Windows {
     }
 
     private void ItemsSaveButtonClick() {
-      ScrollWindow.allWindows.TryGetValue("edit_items", out ScrollWindow addRemoveItemsWindow);
+      ScrollWindow.allWindows.TryGetValue("powerbox_edit_items", out ScrollWindow addRemoveItemsWindow);
       if (addRemoveItemsWindow is null) {
         return;
       }
       addRemoveItemsWindow.clickHide();
 
       if (PowType == PowerType.Add && ChosenForAddSlots.Count > 0 || PowType == PowerType.Remove && ChosenForRemoveSlots.Count > 0) {
-        GameObject pButtonO = ResourcesFinder.FindResource<GameObject>(PowType == PowerType.Add ? "addItems" : "removeItems");
+        GameObject pButtonO = ResourcesFinder.FindResource<GameObject>(PowType == PowerType.Add ? GetFeature<ItemAdditionPower>().Object.id : GetFeature<ItemRemovalPower>().Object.id);
         if (pButtonO is null) {
           LogService.LogError("Power button object not found");
           LogService.LogStackTraceAsError();
@@ -499,7 +494,7 @@ namespace PowerBox.Code.Features.Windows {
           return;
         }
         if (pButton.godPower is null) {
-          pButton.godPower = AssetManager.powers.get(PowType == PowerType.Add ? "addItems" : "removeItems");
+          pButton.godPower = AssetManager.powers.get(PowType == PowerType.Add ? GetFeature<ItemAdditionPower>().Object.id : GetFeature<ItemRemovalPower>().Object.id);
         }
         if (pButton.godPower is null) {
           LogService.LogError("Power button godPower not found");

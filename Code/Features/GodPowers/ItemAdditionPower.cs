@@ -8,11 +8,11 @@ namespace PowerBox.Code.Features.GodPowers {
     internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(CommonItemDrop) };
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "addItems",
+        id = "powerbox_add_items",
         holdAction = true,
         showToolSizes = true,
         unselectWhenWindow = true,
-        name = "addItems",
+        name = "powerbox_add_items",
         dropID = GetFeature<CommonItemDrop>().Object.id,
         fallingChance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),

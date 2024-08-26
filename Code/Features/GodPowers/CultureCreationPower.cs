@@ -4,8 +4,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class CultureCreationPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "createCulture",
-        name = "createCulture",
+        id = "powerbox_create_new_culture",
+        name = "powerbox_create_new_culture",
         forceBrush = "circ_0",
         fallingChance = 0.03f,
         holdAction = false,

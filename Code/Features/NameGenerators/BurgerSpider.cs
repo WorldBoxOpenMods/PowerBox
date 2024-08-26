@@ -4,7 +4,7 @@ namespace PowerBox.Code.Features.NameGenerators {
   public class BurgerSpider : AssetFeature<NameGeneratorAsset> {
     protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset burgerSpiderName = new NameGeneratorAsset {
-        id = "burger_spider_name"
+        id = "powerbox_burger_spider_name"
       };
       burgerSpiderName.part_groups.Add("Burger,Spider");
       burgerSpiderName.part_groups.Add("-");

@@ -5,8 +5,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class CultureAdditionPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset addToCultureDrop = new DropAsset {
-        id = "addToCulture",
-        path_texture = "drops/drop_friendship",
+        id = "powerbox_add_unit_to_culture",
+        path_texture = "drops/drop_unity",
         random_frame = true,
         default_scale = 0.1f,
         action_landed = AddUnitToCultureAction

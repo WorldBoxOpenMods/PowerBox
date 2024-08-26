@@ -4,27 +4,27 @@ namespace PowerBox.Code.Features.Kingdoms {
   public class Developers : AssetFeature<KingdomAsset> {
     protected override KingdomAsset InitObject() {
       KingdomAsset developersKingdom = new KingdomAsset {
-        id = "developers",
+        id = "powerbox_developer_kingdom",
         mobs = true,
         default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor()
       };
-      developersKingdom.addTag("developers");
+      developersKingdom.addTag(developersKingdom.id);
       developersKingdom.addTag("good");
       developersKingdom.addFriendlyTag("neutral");
       developersKingdom.addFriendlyTag("civ");
-      developersKingdom.addEnemyTag("burgers");
+      developersKingdom.addEnemyTag("powerbox_burger_kingdom");
       MapBox.instance.kingdoms.newHiddenKingdom(developersKingdom);
       
       KingdomAsset human = AssetManager.kingdoms.get("human");
-      human.addFriendlyTag("developers");
+      human.addFriendlyTag(developersKingdom.id);
       KingdomAsset elf = AssetManager.kingdoms.get("elf");
-      elf.addFriendlyTag("developers");
+      elf.addFriendlyTag(developersKingdom.id);
       KingdomAsset dwarf = AssetManager.kingdoms.get("dwarf");
-      dwarf.addFriendlyTag("developers");
+      dwarf.addFriendlyTag(developersKingdom.id);
       KingdomAsset orc = AssetManager.kingdoms.get("orc");
-      orc.addFriendlyTag("developers");
+      orc.addFriendlyTag(developersKingdom.id);
       KingdomAsset bandit = AssetManager.kingdoms.get("bandits");
-      bandit.addFriendlyTag("developers");
+      bandit.addFriendlyTag(developersKingdom.id);
       return developersKingdom;
     }
   }

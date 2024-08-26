@@ -9,8 +9,8 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("find_all_creatures", "find_all_creatures");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("find_all_creatures");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_all_creatures");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);

@@ -2,11 +2,10 @@ using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class TumorAnimalSpawnPower : AssetFeature<GodPower> {
-
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "spawnTumorCreatureAnimal",
-        name = "spawnTumorCreatureAnimal",
+        id = "powerbox_spawn_tumor_animal",
+        name = "powerbox_spawn_tumor_animal",
         rank = PowerRank.Rank0_free,
         unselectWhenWindow = true,
         showSpawnEffect = true,

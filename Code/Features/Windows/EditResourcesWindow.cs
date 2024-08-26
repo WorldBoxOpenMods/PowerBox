@@ -16,10 +16,10 @@ namespace PowerBox.Code.Features.Windows {
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
       Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("editResources", "edit_resources");
-      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("edit_resources");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_resources", "powerbox_edit_resources");
+      window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_resources");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
-      GameObject editResources = PowerButtonCreator.CreateSimpleButton("EditResources", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
+      GameObject editResources = PowerButtonCreator.CreateSimpleButton("powerbox_edit_resources_button", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
       editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
       Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
       editResourcesBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);

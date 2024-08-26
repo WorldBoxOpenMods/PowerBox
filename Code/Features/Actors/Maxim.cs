@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.Actors {
     internal override FeatureRequirementList RequiredFeatures => new[] { typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim) };
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
-      ActorAsset maximCreature = AssetManager.actor_library.clone("MaximCreature", "whiteMage");
+      ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", "whiteMage");
       maximCreature.base_stats[S.max_age] = 1000;
       maximCreature.icon = "iconMaximCreature";
       maximCreature.race = "good";

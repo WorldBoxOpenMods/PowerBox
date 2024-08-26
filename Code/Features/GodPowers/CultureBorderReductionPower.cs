@@ -4,8 +4,8 @@ namespace PowerBox.Code.Features.GodPowers {
   public class CultureBorderReductionPower : AssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
-        id = "reduceCultureBorders",
-        name = "reduceCultureBorders",
+        id = "powerbox_reduce_culture_borders",
+        name = "powerbox_reduce_culture_borders",
         forceBrush = "circ_0",
         fallingChance = 0.03f,
         holdAction = true,

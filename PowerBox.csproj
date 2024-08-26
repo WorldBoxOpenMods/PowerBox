@@ -142,7 +142,6 @@
       <Compile Include="Code\PowerBox.cs" />
       <Compile Include="Code\Utils\AssetUtils.cs" />
       <Compile Include="Code\Utils\BoatUtils.cs" />
-      <Compile Include="Code\Utils\CloudUtils.cs" />
       <Compile Include="Code\Utils\PowerButtonUtils.cs" />
       <Compile Include="Code\Utils\WhisperUtils.cs" />
     </ItemGroup>
