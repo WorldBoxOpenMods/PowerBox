@@ -15,16 +15,15 @@ namespace PowerBox.Code.Features.Buttons {
 
     protected override PowerButton InitObject() {
       PowerButton debugButton = PowerButtonCreator.CreateSimpleButton(
-        "DebugButton",
-        DebugButtonAddClick,
+        "powerbox_debug_button",
+        DebugButtonClick,
         Resources.Load<Sprite>("ui/icons/icondebug"),
         GetFeature<Tab>().PowerboxTabObject.transform
       );
-      UnityEngine.Object.Destroy(debugButton.transform.GetComponent<DebugButton>());
       return debugButton;
     }
 
-    private static void DebugButtonAddClick() {
+    private static void DebugButtonClick() {
       ResourcesFinder.FindResources<GameObject>("DebugButton").FirstOrDefault()?.GetComponent<Button>().onClick.Invoke();
     }
   }
