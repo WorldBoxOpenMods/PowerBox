@@ -88,9 +88,9 @@ namespace PowerBox.Code.Features.Windows {
       GameObject buttonLabel = new GameObject($"{tech.id} TechButtonLabel", typeof(Text));
       buttonLabel.GetComponent<Text>().text = LM.Get($"tech_{tech.id}");
       buttonLabel.GetComponent<Text>().font = techButton.GetComponentInChildren<Text>().font;
-      buttonLabel.GetComponent<Text>().fontSize = 60;
-      buttonLabel.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-      buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + 850.0f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
+      buttonLabel.GetComponent<Text>().fontSize = Screen.height / 40;
+      buttonLabel.GetComponent<Text>().alignment = TextAnchor.MiddleRight;
+      buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + Screen.width / 7.5f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
       GameObject buttonImage = new GameObject($"{tech.id} TechButtonImage", typeof(Image));
       buttonImage.GetComponent<Image>().sprite = SpriteTextureLoader.getSprite("ui/Icons/" + tech.path_icon);
       buttonImage.transform.SetParent(parent);
