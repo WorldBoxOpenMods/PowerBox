@@ -18,8 +18,8 @@ namespace PowerBox.Code.Features.Windows {
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
 
-      GameObject editItems = PowerButtonCreator.CreateSimpleButton(
-        "EditCultureTech",
+      GameObject editCultureTechButton = PowerButtonCreator.CreateSimpleButton(
+        "powerbox_edit_culture_tech_button",
         EditCultureTechButtonClick,
         Resources.Load<Sprite>("ui/icons/iconculture"),
         cultureContent
@@ -30,16 +30,16 @@ namespace PowerBox.Code.Features.Windows {
       viewportRect.sizeDelta = new Vector2(0, 17);
 
 
-      editItems.transform.localPosition = new Vector3(116.5f, -22.8f, editItems.transform.localPosition.z);
+      editCultureTechButton.transform.localPosition = new Vector3(116.5f, -22.8f, editCultureTechButton.transform.localPosition.z);
 
-      Transform editItemsBtnIcon = editItems.transform.Find("Icon");
+      Transform editItemsBtnIcon = editCultureTechButton.transform.Find("Icon");
       editItemsBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
       editItemsBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
 
-      RectTransform editItemsRect = editItems.GetComponent<RectTransform>();
+      RectTransform editItemsRect = editCultureTechButton.GetComponent<RectTransform>();
       editItemsRect.sizeDelta = new Vector2(32f, 36f);
-      editItems.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
-      editItems.GetComponent<Button>().transition = Selectable.Transition.None;
+      editCultureTechButton.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
+      editCultureTechButton.GetComponent<Button>().transition = Selectable.Transition.None;
       StartXPos = 60.0f;
       CountInRow = 1;
       XStep = 0.0f;

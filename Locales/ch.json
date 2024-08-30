@@ -107,5 +107,8 @@
   "powerbox_convert_city_same_kingdom_error": "选定城市已是此國家的一部分,請重新選擇",
   "powerbox_convert_city_different_races_error": "城市不能移交給外族,請重新選擇",
   "powerbox_find_all_creatures": "查找所有生物",
-  "powerbox_find_all_creatures Description": "可以查看到此世界中的所有生物"
+  "powerbox_find_all_creatures Description": "可以查看到此世界中的所有生物",
+  
+  "powerbox_edit_culture_tech_button": "Edit Culture Tech",
+  "powerbox_edit_culture_tech_button Description": "Edit the tech of a culture"
 }

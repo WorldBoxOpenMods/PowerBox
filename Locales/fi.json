@@ -108,5 +108,7 @@
   "powerbox_convert_city_same_kingdom_error": "The city is already part of the selected kingdom, try again.",
   "powerbox_convert_city_different_races_error": "You can't transfer a city to a kingdom of a different race, try again.",
   "powerbox_find_all_creatures": "Find All Creatures",
-  "powerbox_find_all_creatures Description": "Find all creatures in your world"
+  "powerbox_find_all_creatures Description": "Find all creatures in your world",
+  "powerbox_edit_culture_tech_button": "Edit Culture Tech",
+  "powerbox_edit_culture_tech_button Description": "Edit the tech of a culture"
 }
