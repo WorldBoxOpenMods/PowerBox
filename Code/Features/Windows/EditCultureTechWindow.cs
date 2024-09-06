@@ -90,7 +90,7 @@ namespace PowerBox.Code.Features.Windows {
       buttonLabel.GetComponent<Text>().font = techButton.GetComponentInChildren<Text>().font;
       buttonLabel.GetComponent<Text>().fontSize = Screen.height / 40;
       buttonLabel.GetComponent<Text>().alignment = TextAnchor.MiddleRight;
-      buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + Screen.width / 7.5f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
+      buttonLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonLabel.GetComponent<RectTransform>().sizeDelta.x + Screen.width / 10.0f, buttonLabel.GetComponent<RectTransform>().sizeDelta.y);
       GameObject buttonImage = new GameObject($"{tech.id} TechButtonImage", typeof(Image));
       buttonImage.GetComponent<Image>().sprite = SpriteTextureLoader.getSprite("ui/Icons/" + tech.path_icon);
       buttonImage.transform.SetParent(parent);
