@@ -99,7 +99,7 @@
   "powerbox_create_clan": "创建氏族",
   "powerbox_create_clan Description": "選擇生物,指定其創建一个新氏族",
   "powerbox_convert_city": "移交城市",
-  "powerbox_convert_city Description": "選擇城市,将其移交給其他國家",
+  "powerbox_convert_city Description": "選擇城市,將其移交給其他國家",
   "powerbox_convert_city_select_city": "選擇需要移交的城市",
   "powerbox_convert_city_select_kingdom": "選擇需要接收此城市的國家",
   "powerbox_convert_city_no_city_selected_error": "這地方可沒有城市,請重新選擇",
@@ -107,7 +107,7 @@
   "powerbox_convert_city_same_kingdom_error": "選定城市已是此國家的一部分,請重新選擇",
   "powerbox_convert_city_different_races_error": "城市不能移交給外族,請重新選擇",
   "powerbox_find_all_creatures": "查找所有生物",
-  "powerbox_find_all_creatures Description": "可以查看到此世界中的所有生物"，  
+  "powerbox_find_all_creatures Description": "可以查看到此世界中的所有生物",
   "powerbox_edit_culture_tech_button": "編輯文化知識",
   "powerbox_edit_culture_tech_button Description": "編輯該文化的知識"
 }
