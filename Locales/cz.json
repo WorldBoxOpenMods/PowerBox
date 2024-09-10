@@ -108,7 +108,6 @@
   "powerbox_convert_city_different_races_error": "城市不能移交给外族,请重新选择",
   "powerbox_find_all_creatures": "查找所有生物",
   "powerbox_find_all_creatures Description": "可以查看此世界的所有生物",
-  
-  "powerbox_edit_culture_tech_button": "Edit Culture Tech",
-  "powerbox_edit_culture_tech_button Description": "Edit the tech of a culture"
+  "powerbox_edit_culture_tech_button": "编辑文明知识",
+  "powerbox_edit_culture_tech_button Description": "为该文明选择知识"
 }
