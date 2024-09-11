@@ -21,8 +21,9 @@ cp -R "./Assemblies" "$NML_MODS_FOLDER_PATH/PowerBox/"
 cp -R "./EmbeddedResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
 cp -R "./GameResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
 cp -R "./Locales" "$NML_MODS_FOLDER_PATH/PowerBox/"
-cp "./icon.png" "$NML_MODS_FOLDER_PATH/PowerBox/icon.png"
+cp -R "./icon.png" "$NML_MODS_FOLDER_PATH/PowerBox/icon.png"
 cp -R "./mod.json" "$NML_MODS_FOLDER_PATH/PowerBox/mod.json"
+cp -R "./OutdatedNml.cs" "$NML_MODS_FOLDER_PATH/PowerBox/OutdatedNml.cs"
 
 # Compress distributable folder into zip file
 cd "$NML_MODS_FOLDER_PATH" || exit
