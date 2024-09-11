@@ -144,6 +144,7 @@
       <Compile Include="Code\Utils\BoatUtils.cs" />
       <Compile Include="Code\Utils\PowerButtonUtils.cs" />
       <Compile Include="Code\Utils\WhisperUtils.cs" />
+      <Compile Include="OutdatedNml.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".editorconfig" />
