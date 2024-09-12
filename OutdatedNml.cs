@@ -2,7 +2,7 @@ using NeoModLoader.api;
 using UnityEngine;
 
 namespace PowerBox {
-  public class OutdatedNml : IMod {
+  public class OutdatedNml : MonoBehaviour, IMod {
     private ModDeclare _modDeclare;
     public ModDeclare GetDeclaration() {
       return _modDeclare;
