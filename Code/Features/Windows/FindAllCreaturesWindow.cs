@@ -61,6 +61,9 @@ namespace PowerBox.Code.Features.Windows {
     }
     private static void CreateUnitButton(IReadOnlyList<Actor> units, int index, GameObject content) {
       Actor unit = units[index];
+      if (unit?.asset is null) {
+        return;
+      }
       GameObject unitInfo = new GameObject {
         name = "unit_" + index + "_info",
         transform = {
@@ -71,7 +74,7 @@ namespace PowerBox.Code.Features.Windows {
         }
       };
       GameObject followerInfoChild = PowerButtonCreator.CreateSimpleButton("unit_" + index, () => {
-        if (unit is null || unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
+        if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
         Config.selectedUnit = unit;
