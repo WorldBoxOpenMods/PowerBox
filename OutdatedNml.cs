@@ -33,7 +33,7 @@ namespace PowerBox {
     }
     public void TryDisplayUpdatePopup() {
       if (Config.gameLoaded) {
-        WorldTip.showNow(ERROR_MESSAGE, false);
+        WorldTip.showNow(ERROR_MESSAGE, false, "top");
       }
     }
   }
