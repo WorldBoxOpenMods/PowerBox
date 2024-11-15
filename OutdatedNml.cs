@@ -14,10 +14,27 @@ namespace PowerBox {
     public string GetUrl() {
       return "https://github.com/WorldBoxOpenMods/PowerBox";
     }
+    private const string ERROR_MESSAGE = "You're using an outdated NML version that doesn't support precompiled mods. Please get version 1.0.9 of NeoModLoader or later.";
     public void OnLoad(ModDeclare pModDecl, GameObject pGameObject) {
       _modDeclare = pModDecl;
       _gameObject = pGameObject;
-      Debug.LogError("You're using an outdated NML version that doesn't support precompiled mods. Please get version 1.0.9 of NeoModLoader or later.");
+      Debug.LogError(ERROR_MESSAGE);
+    }
+    private byte _updateCounter;
+    public void Update() {
+      if (_updateCounter++ == 120) {
+        Debug.LogError(ERROR_MESSAGE);
+        try {
+          TryDisplayUpdatePopup();
+        } catch (Exception) {
+          // this is fine
+        }
+      }
+    }
+    public void TryDisplayUpdatePopup() {
+      if (Config.gameLoaded) {
+        WorldTip.showNow(ERROR_MESSAGE, false);
+      }
     }
   }
 }
