@@ -26,7 +26,7 @@ namespace PowerBox {
         Debug.LogError(ERROR_MESSAGE);
         try {
           TryDisplayUpdatePopup();
-        } catch (Exception) {
+        } catch (System.Exception) {
           // this is fine
         }
       }
