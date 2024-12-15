@@ -21,7 +21,7 @@ using UnityEngine;
 // window for viewing every creature in a 
 
 // All v1.3.2 TODOs
-// TODO: https://gamebanana.com/posts/12164291
+// https://gamebanana.com/posts/12164291
 // TODO: https://canary.discord.com/channels/522561390330904585/1232422556301000764/1236953743434448906
 
 // Later version TODOs
