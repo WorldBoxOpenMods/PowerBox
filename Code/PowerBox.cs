@@ -18,7 +18,7 @@ using UnityEngine;
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241195995824390204
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1241282748132622357
 // https://canary.discord.com/channels/522561390330904585/1232422556301000764/1276563175919194234
-// window for viewing every creature in a 
+// window for viewing every creature in a world
 
 // All v1.3.2 TODOs
 // https://gamebanana.com/posts/12164291
