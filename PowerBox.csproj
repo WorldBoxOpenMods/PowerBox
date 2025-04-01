@@ -97,8 +97,6 @@
       <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs" />
       <Compile Include="Code\Features\GodPowers\FishingBoatSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\GregSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\ItemAdditionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\ItemRemovalPower.cs" />
       <Compile Include="Code\Features\GodPowers\MastefSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\MaximSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\MushAnimalSpawnPower.cs" />
@@ -118,11 +116,9 @@
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
       <Compile Include="Code\Features\Windows\EditCultureTechWindow.cs" />
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
-      <Compile Include="Code\Features\Windows\EditItemsWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
-      <Compile Include="Code\Features\Windows\FindFavouriteItemsWindow.cs" />
       <Compile Include="Code\Features\Windows\WindowBase.cs" />
       <Compile Include="Code\LoadingSystem\AssetFeature.cs" />
       <Compile Include="Code\LoadingSystem\ButtonFeature.cs" />
