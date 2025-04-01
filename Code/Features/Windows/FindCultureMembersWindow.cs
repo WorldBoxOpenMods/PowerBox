@@ -48,7 +48,7 @@ namespace PowerBox.Code.Features.Windows {
     }
     private void InitFindCultureMembers(ScrollWindow window, Culture selectedCulture = null, Action onFinishAction = null) {
       if (selectedCulture is null) {
-        selectedCulture = Config.selectedCulture;
+        selectedCulture = Config.selected_culture;
       }
       if (selectedCulture is null) {
         return;
@@ -97,7 +97,7 @@ namespace PowerBox.Code.Features.Windows {
         if (follower is null || follower.isAlive() == false || World.world.units.getSimpleList().Contains(follower) == false) {
           return;
         }
-        Config.selectedUnit = follower;
+        SelectedUnit.select(follower);
         ScrollWindow.showWindow("inspect_unit");
       }, null, followerInfo.transform).gameObject;
       followerInfoChild.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
@@ -114,7 +114,7 @@ namespace PowerBox.Code.Features.Windows {
       UnityEngine.Object.Destroy(garbage);
       followerInfoChild.transform.GetChild(0).name = "follower_" + index + "_avatar";
       followerInfoChild.transform.GetChild(0).localPosition = new Vector3(0.0f, -10.0f, 0.0f);
-      if (follower.asset.isBoat) {
+      if (follower.asset.is_boat) {
         followerInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
         followerInfoChild.transform.GetChild(0).localScale = new Vector3(2.2f, 2.2f, 2.2f);

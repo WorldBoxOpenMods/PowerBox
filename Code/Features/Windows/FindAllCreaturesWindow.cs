@@ -77,7 +77,7 @@ namespace PowerBox.Code.Features.Windows {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
-        Config.selectedUnit = unit;
+        SelectedUnit.select(unit);
         ScrollWindow.showWindow("inspect_unit");
       }, null, unitInfo.transform).gameObject;
       followerInfoChild.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
@@ -94,7 +94,7 @@ namespace PowerBox.Code.Features.Windows {
       UnityEngine.Object.Destroy(garbage);
       followerInfoChild.transform.GetChild(0).name = "unit_" + index + "_avatar";
       followerInfoChild.transform.GetChild(0).localPosition = new Vector3(0.0f, -10.0f, 0.0f);
-      if (unit.asset.isBoat) {
+      if (unit.asset.is_boat) {
         unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
         followerInfoChild.transform.GetChild(0).localScale = new Vector3(2.2f, 2.2f, 2.2f);

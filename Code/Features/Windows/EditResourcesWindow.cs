@@ -44,7 +44,7 @@ namespace PowerBox.Code.Features.Windows {
           foundNullSet = true;
           continue;
         }
-        if (foundNullSet && instruction.opcode == OpCodes.Stsfld && (FieldInfo)instruction.operand == typeof(Config).GetField(nameof(Config.selectedCity))) {
+        if (foundNullSet && instruction.opcode == OpCodes.Stsfld && (FieldInfo)instruction.operand == typeof(Config).GetField(nameof(Config.selected_city))) {
           continue;
         }
         foundNullSet = false;
@@ -97,8 +97,9 @@ namespace PowerBox.Code.Features.Windows {
     private static void LoadResourceButton(ResourceAsset asset, ButtonResource resourceButtonPref, Transform parent) {
       ButtonResource resourceButton = UnityEngine.Object.Instantiate(resourceButtonPref, parent);
 
-      CityData data = Config.selectedCity.data;
-      resourceButton.load(asset, data.storage.get(asset.id));
+      List<Building> storages = Config.selected_city.storages.Where(s => s.isUsable()).ToList();
+      
+      resourceButton.load(asset, storages.Select(s => s.resources.get(asset.id)).Sum());
       resourceButton.transform.Find("Text").gameObject.SetActive(false);
       resourceButton.transform.localPosition = Vector3.zero;
 
@@ -106,16 +107,22 @@ namespace PowerBox.Code.Features.Windows {
       nameInputElement.transform.localPosition = new Vector2(50f, 0);
       nameInputElement.transform.localScale = new Vector2(0.75f, 0.75f);
       NameInput inputComponent = nameInputElement.GetComponent<NameInput>();
-      inputComponent.setText(data.storage.get(asset.id).ToString());
+      inputComponent.setText(storages.Select(s => s.resources.get(asset.id)).Sum().ToString());
 
-      inputComponent.inputField.onEndEdit.AddListener(param1 => CheckInput(inputComponent, asset, data));
+      inputComponent.inputField.onEndEdit.AddListener(param1 => CheckInput(inputComponent, asset, storages));
     }
 
-    private static void CheckInput(NameInput text, Asset asset, CityData cityData) {
-      if (int.TryParse(text.textField.text, out int number)) {
-        cityData.storage.set(asset.id, Mathf.Clamp(number, 0, 999));
+    private static void CheckInput(NameInput text, Asset asset, List<Building> storages) {
+      if (storages.Count == 0) {
+        return;
       }
-      text.setText(cityData.storage.get(asset.id).ToString());
+      if (int.TryParse(text.textField.text, out int number)) {
+        storages.First().resources.set(asset.id, Mathf.Clamp(number, 0, 999));
+        foreach (Building storage in storages.Skip(1)) {
+          storage.resources.set(asset.id, 0);
+        }
+      }
+      text.setText(storages.Select(s => s.resources.get(asset.id)).Sum().ToString());
     }
   }
 }
