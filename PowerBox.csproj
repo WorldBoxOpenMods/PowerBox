@@ -110,7 +110,6 @@
       <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
       <Compile Include="Code\Features\NameGenerators\Maxim.cs" />
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
-      <Compile Include="Code\Features\Windows\EditCultureTechWindow.cs" />
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
