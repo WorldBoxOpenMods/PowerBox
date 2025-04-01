@@ -9,7 +9,7 @@ namespace PowerBox.Code.Features.NameGenerators {
       burgerSpiderName.part_groups.Add("Burger,Spider");
       burgerSpiderName.part_groups.Add("-");
       burgerSpiderName.part_groups.Add("spider,burger");
-      burgerSpiderName.templates.Add("part_group");
+      burgerSpiderName.addTemplate("part_group");
       return burgerSpiderName;
     }
   }

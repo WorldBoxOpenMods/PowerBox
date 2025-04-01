@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower assignCapital = new GodPower() {
         id = "powerbox_assign_capital",
         name = "powerbox_assign_capital",
-        force_map_text = MapMode.Cities,
+        force_map_mode = MetaType.City,
         click_special_action = CapitalAssignationAction
       };
       return assignCapital;

@@ -1,3 +1,4 @@
+using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
@@ -6,11 +7,11 @@ namespace PowerBox.Code.Features.GodPowers {
       return new GodPower {
         id = "powerbox_duplicate_culture",
         name = "powerbox_duplicate_culture",
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = false,
-        showToolSizes = false,
-        unselectWhenWindow = true,
+        force_brush = "circ_0",
+        falling_chance = 0.03f,
+        hold_action = false,
+        show_tool_sizes = false,
+        unselect_when_window = true,
         click_special_action = CultureDuplicationAction
       };
     }
@@ -19,11 +20,10 @@ namespace PowerBox.Code.Features.GodPowers {
       City targetCity = pTile?.zone?.city;
       Culture oldCulture = targetCity?.getCulture();
       if (oldCulture == null) return false;
-      Culture newCulture = World.world.cultures.newCulture(targetCity.race, targetCity);
-      oldCulture._list_tech.ForEach(t => newCulture.addFinishedTech(t.id));
-      foreach (TileZone zone in targetCity.zones) {
-        newCulture.addZone(zone);
-      }
+      Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
+      if (targetUnit == null) return false;
+      Culture newCulture = World.world.cultures.newCulture(targetUnit);
+      foreach(CultureTrait trait in oldCulture._traits) newCulture.addTrait(trait);
       foreach (Actor actor in targetCity.units) {
         actor.setCulture(newCulture);
       }

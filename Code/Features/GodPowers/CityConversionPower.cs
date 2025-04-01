@@ -7,7 +7,7 @@ namespace PowerBox.Code.Features.GodPowers {
       return new GodPower() {
         id = "powerbox_convert_city",
         name = "powerbox_convert_city",
-        force_map_text = MapMode.Cities,
+        force_map_mode = MetaType.City,
         select_button_action = _ => !ResetPower(),
         click_special_action = CityConversionAction
       };
@@ -21,7 +21,7 @@ namespace PowerBox.Code.Features.GodPowers {
           WorldTip.showNow("powerbox_convert_city_no_city_selected_error", true, "top");
           return false;
         }
-        Power.force_map_text = MapMode.Kingdoms;
+        Power.force_map_mode = MetaType.Kingdom;
         WorldTip.showNow("powerbox_convert_city_select_kingdom", true, "top");
         return false;
       }
@@ -34,10 +34,6 @@ namespace PowerBox.Code.Features.GodPowers {
         WorldTip.showNow("powerbox_convert_city_same_kingdom_error", true, "top");
         return false;
       }
-      if (_targetCity.kingdom.race != _targetKingdom.race) {
-        WorldTip.showNow("powerbox_convert_city_different_races_error", true, "top");
-        return false;
-      }
       _targetCity.joinAnotherKingdom(_targetKingdom);
       return ResetPower(false);
     }
@@ -45,7 +41,7 @@ namespace PowerBox.Code.Features.GodPowers {
     private bool ResetPower(bool printInstructions = true) {
       _targetCity = null;
       _targetKingdom = null;
-      Power.force_map_text = MapMode.Cities;
+      Power.force_map_mode = MetaType.City;
       if (printInstructions) {
         WorldTip.showNow("powerbox_convert_city_select_city", true, "top");
       }

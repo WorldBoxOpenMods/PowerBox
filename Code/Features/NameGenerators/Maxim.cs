@@ -9,7 +9,7 @@ namespace PowerBox.Code.Features.NameGenerators {
       maximCreatureName.part_groups.Add("Maxim,Max,Greg,dev");
       maximCreatureName.part_groups.Add(" ");
       maximCreatureName.part_groups.Add("Karpenko,dev,greg");
-      maximCreatureName.templates.Add("part_group");
+      maximCreatureName.addTemplate("part_group");
       return maximCreatureName;
     }
   }

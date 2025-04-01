@@ -15,25 +15,24 @@ namespace PowerBox.Code.Features.GodPowers {
 
       GodPower upgradeBuildingAdd = new GodPower {
         id = upgradeBuildingAddDrop.id,
-        holdAction = true,
-        showToolSizes = true,
-        unselectWhenWindow = true,
+        hold_action = true,
+        show_tool_sizes = true,
+        unselect_when_window = true,
         name = upgradeBuildingAddDrop.id,
-        dropID = upgradeBuildingAddDrop.id,
-        fallingChance = 0.01f,
+        drop_id = upgradeBuildingAddDrop.id,
+        falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
-        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
+        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
       };
 
       return upgradeBuildingAdd;
     }
     
     private static void BuildingUpgradeAction(WorldTile pTile = null, string pDropID = null) {
-      if (pTile?.building != null && pTile.building.canBeUpgraded() && !string.IsNullOrWhiteSpace(pTile.building.asset.upgradeTo)) {
-        BuildingAsset pTemplate = AssetManager.buildings.get(pTile.building.asset.upgradeTo);
-        pTile.building.city?.setBuildingDictID(pTile.building, false);
+      if (pTile?.building != null && pTile.building.canBeUpgraded() && !string.IsNullOrWhiteSpace(pTile.building.asset.upgrade_to)) {
+        BuildingAsset pTemplate = AssetManager.buildings.get(pTile.building.asset.upgrade_to);
+        pTile.building.city?.setBuildingDictID(pTile.building);
         pTile.building.setTemplate(pTemplate);
-        pTile.building.city?.setBuildingDictID(pTile.building, true);
         pTile.building.initAnimationData();
         pTile.building.updateStats();
         pTile.building.data.health = pTile.building.getMaxHealth();

@@ -77,7 +77,6 @@
       <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs" />
       <Compile Include="Code\Features\Buttons\TumorAnimalSpawnButton.cs" />
       <Compile Include="Code\Features\Buttons\TumorCreatureSpawnButton.cs" />
-      <Compile Include="Code\Features\Drops\CommonItemDrop.cs" />
       <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\AssignCapitalPower.cs" />
       <Compile Include="Code\Features\GodPowers\AssignKingPower.cs" />
@@ -94,8 +93,6 @@
       <Compile Include="Code\Features\GodPowers\ClanCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CultureBorderExpansionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CultureBorderReductionPower.cs" />
       <Compile Include="Code\Features\GodPowers\CultureCreationPower.cs" />
       <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs" />
       <Compile Include="Code\Features\GodPowers\FishingBoatSpawnPower.cs" />

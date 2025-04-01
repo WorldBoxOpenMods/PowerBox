@@ -9,7 +9,7 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower createAlliance = new GodPower() {
         id = "powerbox_create_alliance",
         name = "powerbox_create_alliance",
-        force_map_text = MapMode.Kingdoms,
+        force_map_mode = MetaType.Kingdom,
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = AllianceCreationAction
       };
@@ -23,35 +23,35 @@ namespace PowerBox.Code.Features.GodPowers {
       }
 
       Kingdom kingdom = city.kingdom;
-      if (Config.whisperA == null) {
-        Config.whisperA = kingdom;
+      if (Config.whisper_A == null) {
+        Config.whisper_A = kingdom;
         return false;
       }
 
-      if (Config.whisperB == null && Config.whisperA == kingdom) {
+      if (Config.whisper_B == null && Config.whisper_A == kingdom) {
         WorldTip.showNow("powerbox_create_alliance_same_kingdom_selected_twice_error", true, "top");
         return false;
       }
 
-      if (Config.whisperB == null) {
-        Config.whisperB = kingdom;
+      if (Config.whisper_B == null) {
+        Config.whisper_B = kingdom;
       }
 
-      if (Config.whisperB != Config.whisperA) {
+      if (Config.whisper_B != Config.whisper_A) {
 
-        if (Alliance.isSame(Config.whisperA.getAlliance(), Config.whisperB.getAlliance())) {
+        if (Alliance.isSame(Config.whisper_A.getAlliance(), Config.whisper_B.getAlliance())) {
           WorldTip.showNow("powerbox_create_alliance_already_allied_error", true, "top");
-          Config.whisperB = null;
+          Config.whisper_B = null;
           return false;
         }
 
-        foreach (War war in World.world.wars.getWars(Config.whisperA).Where(war => war.isInWarWith(Config.whisperA, Config.whisperB))) {
-          war.removeFromWar(Config.whisperA);
-          war.removeFromWar(Config.whisperB);
+        foreach (War war in World.world.wars.getWars(Config.whisper_A).Where(war => war.isInWarWith(Config.whisper_A, Config.whisper_B))) {
+          war.removeFromWar(Config.whisper_A, true);
+          war.removeFromWar(Config.whisper_B, true);
         }
 
-        Alliance allianceA = Config.whisperA.getAlliance();
-        Alliance allianceB = Config.whisperB.getAlliance();
+        Alliance allianceA = Config.whisper_A.getAlliance();
+        Alliance allianceB = Config.whisper_B.getAlliance();
         if (allianceA != null) {
           if (allianceB != null) {
             IEnumerable<Kingdom> kingdoms = allianceB.kingdoms_list;
@@ -60,18 +60,18 @@ namespace PowerBox.Code.Features.GodPowers {
               ForceIntoAlliance(allianceA, ally);
             }
           } else {
-            ForceIntoAlliance(allianceA, Config.whisperB);
+            ForceIntoAlliance(allianceA, Config.whisper_B);
           }
         } else {
           if (allianceB == null) {
-            ForceNewAlliance(Config.whisperA, Config.whisperB);
+            ForceNewAlliance(Config.whisper_A, Config.whisper_B);
           } else {
-            ForceIntoAlliance(allianceB, Config.whisperA);
+            ForceIntoAlliance(allianceB, Config.whisper_A);
           }
         }
         WorldTip.showNow("powerbox_create_alliance_success", true, "top");
-        Config.whisperA = null;
-        Config.whisperB = null;
+        Config.whisper_A = null;
+        Config.whisper_B = null;
       }
 
       return true;
@@ -86,10 +86,12 @@ namespace PowerBox.Code.Features.GodPowers {
 
     private static void ForceNewAlliance(Kingdom kingdomA, Kingdom kingdomB) {
       Alliance alliance = World.world.alliances.newObject();
-      alliance.createAlliance();
-      alliance.data.founder_kingdom_1 = kingdomA.data.name;
+      alliance.createNewAlliance();
+      alliance.data.founder_kingdom_id = kingdomA.data.id;
+      alliance.data.founder_kingdom_name = kingdomB.data.name;
       if (kingdomA.king != null) {
-        alliance.data.founder_name_1 = kingdomA.king.getName();
+        alliance.data.founder_actor_id = kingdomA.king.data.id;
+        alliance.data.founder_actor_name = kingdomA.king.getName();
       }
       ForceIntoAlliance(alliance, kingdomA);
       ForceIntoAlliance(alliance, kingdomB);

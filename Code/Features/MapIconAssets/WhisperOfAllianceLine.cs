@@ -2,10 +2,10 @@ using PowerBox.Code.LoadingSystem;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.MapIconAssets {
-  public class WhisperOfAllianceLine : AssetFeature<MapIconAsset> {
+  public class WhisperOfAllianceLine : AssetFeature<QuantumSpriteAsset> {
     internal override FeatureRequirementList RequiredFeatures => typeof(GodPowers.AllianceCreationPower);
-    protected override MapIconAsset InitObject() {
-      return new MapIconAsset {
+    protected override QuantumSpriteAsset InitObject() {
+      return new QuantumSpriteAsset {
         id = "powerbox_whisper_of_alliance_line",
         id_prefab = "p_mapArrow_line",
         base_scale = 0.5f,
@@ -16,18 +16,18 @@ namespace PowerBox.Code.Features.MapIconAssets {
       };
     }
     
-    private void DrawWhisperOfAllianceLine(MapIconAsset pAsset) {
+    private void DrawWhisperOfAllianceLine(QuantumSpriteAsset pAsset) {
       if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<GodPowers.AllianceCreationPower>().Object.id)) {
         return;
       }
-      Kingdom whisperA = Config.whisperA;
+      Kingdom whisperA = Config.whisper_A;
       if (whisperA == null) {
         return;
       }
       Vector2 mousePos = World.world.getMousePos();
       foreach (City city in whisperA.cities) {
         Color pColor = whisperA.getColor().getColorMain2();
-        MapIconLibrary.drawArrowMark(pAsset, city.getTile().posV, mousePos, ref pColor);
+        QuantumSpriteLibrary.drawArrowQuantumSprite(pAsset, city.getTile().posV, mousePos, ref pColor);
       }
     }
   }

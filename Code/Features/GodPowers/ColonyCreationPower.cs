@@ -17,66 +17,52 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower makeColony = new GodPower {
         id = makeColonyDrop.id,
         name = makeColonyDrop.id,
-        showToolSizes = false,
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = makeColonyDrop.id,
+        show_tool_sizes = false,
+        force_brush = "circ_0",
+        falling_chance = 0.03f,
+        hold_action = true,
+        unselect_when_window = true,
+        drop_id = makeColonyDrop.id,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
       return makeColony;
     }
     private static void ColonyCreationAction(WorldTile pTile = null, string pDropID = null) {
-      MapBox.instance.getObjectsInChunks(pTile, 4, MapObjectType.Actor);
-      List<BaseSimObject> tempMapObjects = MapBox.instance.temp_map_objects;
+      foreach (Actor actor in from Actor a in Finder.getUnitsFromChunk(pTile, 4) where a.isAlive() && !a.asset.is_boat select a) {
+        actor.startShake();
+        actor.startColorEffect();
 
-      foreach (Actor tempMapObject in from Actor tempMapObject in tempMapObjects where tempMapObject.base_data.alive && !tempMapObject.asset.isBoat select tempMapObject) {
-        tempMapObject.startShake();
-        tempMapObject.startColorEffect();
-
-        if (tempMapObject.currentTile.zone.city == null) {
-          if (tempMapObject.kingdom.isCiv() || tempMapObject.kingdom.isNomads()) {
+        if (actor.current_tile.zone.city == null) {
+          if (actor.kingdom.isCiv() || actor.kingdom.isNomads()) {
             
-            Kingdom kingdom = tempMapObject.kingdom;
+            Kingdom kingdom = actor.kingdom;
             MapBox world = MapBox.instance;
 
-            TileZone zone = tempMapObject.currentTile.zone;
+            TileZone zone = actor.current_tile.zone;
 
             if (kingdom != null && kingdom.isNomads())
               kingdom = null;
-
-            Race race = tempMapObject.race;
-
-            City city1 = world.cities.buildNewCity(zone, race, kingdom);
+            
+            City city1 = world.cities.buildNewCity(actor, zone);
 
             if (city1 == null)
               return;
 
-            city1.newCityEvent();
+            city1.newCityEvent(actor);
 
-            city1.race = race;
-
-
-            City city2 = tempMapObject.city;
-            if (city2 != null) {
-
-              tempMapObject.kingdom.newCityBuiltEvent(city1);
-              city2.removeCitizen(tempMapObject);
-              tempMapObject.removeFromCity();
-            }
-            tempMapObject.becomeCitizen(city1);
+            City city2 = actor.city;
+            city2?.eventUnitRemoved(actor);
+            actor.city = city1;
+            city1.eventUnitAdded(actor);
             WorldLog.logNewCity(city1);
           }
         } else {
-          if (pTile != null && tempMapObject.city != pTile.zone.city) {
-            if (tempMapObject.city != null) {
-              tempMapObject.city.removeCitizen(tempMapObject);
-              tempMapObject.removeFromCity();
-            }
-            tempMapObject.becomeCitizen(pTile.zone.city);
+          if (pTile != null && actor.city != pTile.zone.city) {
+            actor.city?.eventUnitRemoved(actor);
+            actor.city = pTile.zone.city;
+            pTile.zone.city.eventUnitAdded(actor);
             Kingdom kingdomN = pTile.zone.city.kingdom;
-            tempMapObject.kingdom = kingdomN;
+            actor.kingdom = kingdomN;
           }
         }
       }

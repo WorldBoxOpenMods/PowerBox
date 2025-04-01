@@ -7,10 +7,10 @@ namespace PowerBox.Code.Features.GodPowers {
         id = "powerbox_spawn_mush_animal",
         name = "powerbox_spawn_mush_animal",
         rank = PowerRank.Rank0_free,
-        unselectWhenWindow = true,
-        showSpawnEffect = true,
-        actorSpawnHeight = 3f,
-        spawnSound = "spawnZombie",
+        unselect_when_window = true,
+        show_spawn_effect = true,
+        actor_spawn_height = 3f,
+        sound_event = "spawnZombie",
         actor_asset_id = "mush_animal",
         click_action = (pTile, pPower) => AssetManager.powers.spawnUnit(pTile, pPower)
       };

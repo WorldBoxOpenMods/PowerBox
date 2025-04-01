@@ -16,14 +16,14 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower addToCulture = new GodPower {
         id = addToCultureDrop.id,
         name = addToCultureDrop.id,
-        showToolSizes = true,
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = addToCultureDrop.id,
-        force_map_text = MapMode.Cultures,
+        show_tool_sizes = true,
+        falling_chance = 0.03f,
+        hold_action = true,
+        unselect_when_window = true,
+        drop_id = addToCultureDrop.id,
+        force_map_mode = MetaType.Culture,
         click_power_action = (pTile, pPower) => _targetCulture != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetCulture(pTile, pPower),
-        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
+        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPowerForDropsFull
       };
 
       return addToCulture;
@@ -31,14 +31,15 @@ namespace PowerBox.Code.Features.GodPowers {
     
     private static Culture _targetCulture;
     private static bool TryGetCulture(WorldTile pTile = null, GodPower _ = null) {
-      if (pTile?.zone == null) return false;
-      _targetCulture = pTile.zone.culture;
+      Culture targetCulture = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasCulture()).Select(a => a.culture).FirstOrDefault();
+      if (targetCulture == null) return false;
+      _targetCulture = targetCulture;
       return true;
     }
     private static void AddUnitToCultureAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
       pTile.doUnits((a) => AddUnitToCulture(a));
-      if (World.world.dropManager._drops.Where(d => d._asset.id == pDropID).Count(d => !d._landed) <= 1) {
+      if (World.world.drop_manager._drops.Where(d => d._asset.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetCulture = null;
       }
     }

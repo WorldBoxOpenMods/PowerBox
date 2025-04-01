@@ -6,11 +6,11 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower expandCityBorders = new GodPower {
         id = "powerbox_expand_city_borders",
         name = "powerbox_expand_city_borders",
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        showToolSizes = false,
-        unselectWhenWindow = true,
+        force_brush = "circ_0",
+        falling_chance = 0.03f,
+        hold_action = true,
+        show_tool_sizes = false,
+        unselect_when_window = true,
         click_special_action = CityBorderExpansionAction
       };
       return expandCityBorders;

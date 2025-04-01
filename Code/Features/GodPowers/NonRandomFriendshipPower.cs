@@ -8,7 +8,7 @@ namespace PowerBox.Code.Features.GodPowers {
       return new GodPower() {
         id = "powerbox_non_random_friendship",
         name = "powerbox_non_random_friendship",
-        force_map_text = MapMode.Kingdoms,
+        force_map_mode = MetaType.Kingdom,
         select_button_action = _ => !WhisperUtils.TryResetWhisperKingdoms(),
         click_special_action = NonRandomFriendshipAction
       };
@@ -20,21 +20,21 @@ namespace PowerBox.Code.Features.GodPowers {
 
       Kingdom kingdom = pTile.zone.city.kingdom;
       
-      if (Config.whisperA == null) {
-        Config.whisperA = kingdom;
+      if (Config.whisper_A == null) {
+        Config.whisper_A = kingdom;
         return false;
       }
-      if (Config.whisperA.id == kingdom.id) {
+      if (Config.whisper_A.id == kingdom.id) {
         return false;
       }
-      if (!Config.whisperA.isAlive()) {
-        Config.whisperA = kingdom;
+      if (!Config.whisper_A.isAlive()) {
+        Config.whisper_A = kingdom;
         return false;
       }
-      Config.whisperB = kingdom;
-      World.world.wars.list.Where(w => w.isInWarWith(Config.whisperA, Config.whisperB)).ToList().ForEach(w => World.world.wars.endWar(w));
-      Config.whisperA = null;
-      Config.whisperB = null;
+      Config.whisper_B = kingdom;
+      World.world.wars.list.Where(w => w.isInWarWith(Config.whisper_A, Config.whisper_B)).ToList().ForEach(w => World.world.wars.endWar(w));
+      Config.whisper_A = null;
+      Config.whisper_B = null;
       return true;
     }
   }

@@ -6,7 +6,7 @@ namespace PowerBox.Code.LoadingSystem {
     internal override bool Init() {
       if (!base.Init()) return false;
       if (AddToLibrary) {
-        AssetLibrary<TAsset> library = AssetManager.instance.list.OfType<AssetLibrary<TAsset>>().FirstOrDefault();
+        AssetLibrary<TAsset> library = AssetManager._instance._list.OfType<AssetLibrary<TAsset>>().FirstOrDefault();
         if (library == null) throw new FeatureLoadException($"No library found for {typeof(TAsset).Name}");
         library.add(Object);
       }

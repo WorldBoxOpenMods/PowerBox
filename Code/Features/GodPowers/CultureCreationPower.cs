@@ -1,3 +1,4 @@
+using System.Linq;
 using PowerBox.Code.LoadingSystem;
 
 namespace PowerBox.Code.Features.GodPowers {
@@ -6,11 +7,11 @@ namespace PowerBox.Code.Features.GodPowers {
       return new GodPower {
         id = "powerbox_create_new_culture",
         name = "powerbox_create_new_culture",
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = false,
-        showToolSizes = false,
-        unselectWhenWindow = true,
+        force_brush = "circ_0",
+        falling_chance = 0.03f,
+        hold_action = false,
+        show_tool_sizes = false,
+        unselect_when_window = true,
         click_special_action = CultureCreationAction
       };
     }
@@ -18,10 +19,9 @@ namespace PowerBox.Code.Features.GodPowers {
     private static bool CultureCreationAction(WorldTile pTile = null, string pPowerId = null) {
       if (pTile?.zone?.city == null) return false;
       City targetCity = pTile.zone.city;
-      Culture newCulture = World.world.cultures.newCulture(targetCity.race, targetCity);
-      foreach (TileZone zone in targetCity.zones) {
-        newCulture.addZone(zone);
-      }
+      Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
+      if (targetUnit == null) return false;
+      Culture newCulture = World.world.cultures.newCulture(targetUnit);
       foreach (Actor actor in targetCity.units) {
         actor.setCulture(newCulture);
       }

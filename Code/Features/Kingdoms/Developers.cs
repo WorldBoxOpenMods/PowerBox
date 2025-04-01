@@ -13,7 +13,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       developersKingdom.addFriendlyTag("neutral");
       developersKingdom.addFriendlyTag("civ");
       developersKingdom.addEnemyTag("powerbox_burger_kingdom");
-      MapBox.instance.kingdoms.newHiddenKingdom(developersKingdom);
+      MapBox.instance.kingdoms_wild.newWildKingdom(developersKingdom);
       
       KingdomAsset human = AssetManager.kingdoms.get("human");
       human.addFriendlyTag(developersKingdom.id);

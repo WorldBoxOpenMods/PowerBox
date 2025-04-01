@@ -7,7 +7,7 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower assignKing = new GodPower() {
         id = "powerbox_assign_king",
         name = "powerbox_assign_king",
-        force_map_text = MapMode.Kingdoms,
+        force_map_mode = MetaType.Kingdom,
         click_special_action = KingAssignationAction
       };
       return assignKing;
@@ -18,8 +18,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (kingdom == null) {
         return false;
       }
-      MapBox.instance.getObjectsInChunks(pTile, 3, MapObjectType.Actor);
-      Actor newKing = MapBox.instance.temp_map_objects.FirstOrDefault(actor => actor.base_data.alive && actor.kingdom.isCiv() && actor.kingdom == kingdom)?.a;
+      Actor newKing = Finder.getUnitsFromChunk(pTile, 3).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv() && actor.kingdom == kingdom)?.a;
       if (newKing == null) {
         return false;
       }

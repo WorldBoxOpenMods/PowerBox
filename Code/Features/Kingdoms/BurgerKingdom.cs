@@ -16,7 +16,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       burgerKingdom.addEnemyTag("bandits");
       burgerKingdom.addEnemyTag("powerbox_developer_kingdom");
 
-      MapBox.instance.kingdoms.newHiddenKingdom(burgerKingdom);
+      MapBox.instance.kingdoms_wild.newWildKingdom(burgerKingdom);
 
       KingdomAsset human = AssetManager.kingdoms.get("human");
       human.addEnemyTag(burgerKingdom.id);

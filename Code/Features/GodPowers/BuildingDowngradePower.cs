@@ -16,14 +16,14 @@ namespace PowerBox.Code.Features.GodPowers {
       
       GodPower downgradeBuildingAdd = new GodPower {
         id = downgradeBuildingAddDrop.id,
-        holdAction = true,
-        showToolSizes = true,
-        unselectWhenWindow = true,
+        hold_action = true,
+        show_tool_sizes = true,
+        unselect_when_window = true,
         name = downgradeBuildingAddDrop.id,
-        dropID = downgradeBuildingAddDrop.id,
-        fallingChance = 0.01f,
+        drop_id = downgradeBuildingAddDrop.id,
+        falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
-        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
+        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
       };
 
       return downgradeBuildingAdd;
@@ -31,11 +31,10 @@ namespace PowerBox.Code.Features.GodPowers {
     
     private static void BuildingDowngradeAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile?.building != null) {
-        BuildingAsset pTemplate = AssetManager.buildings.list.FirstOrDefault(asset => asset.upgradeTo == pTile.building.asset.id);
+        BuildingAsset pTemplate = AssetManager.buildings.list.FirstOrDefault(asset => asset.upgrade_to == pTile.building.asset.id);
         if (pTemplate != null) {
-          pTile.building.city?.setBuildingDictID(pTile.building, false);
+          pTile.building.city?.setBuildingDictID(pTile.building);
           pTile.building.setTemplate(pTemplate);
-          pTile.building.city?.setBuildingDictID(pTile.building, true);
           pTile.building.initAnimationData();
           pTile.building.updateStats();
           pTile.building.data.health = pTile.building.getMaxHealth();

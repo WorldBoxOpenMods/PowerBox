@@ -31,20 +31,11 @@ using UnityEngine;
 namespace PowerBox.Code {
   public class PowerBox : BasicMod<PowerBox> {
     protected override void OnModLoad() {
-      try {
-        DisableLocaleLogs();
-      } catch (Exception) {
-        // this is fine
-      }
       Debug.Log("Loading PowerBox...");
       FeatureManager.Instance.Init();
       Debug.Log("PowerBox loaded!");
     }
-    
-    private static void DisableLocaleLogs() {
-      // this needs to be a separate method so that potential exceptions caused by changes to the WorldBox Assembly can be caught
-      Config.disableLocaleLogs = true;
-    }
+
 
     #region CollectionMod compatibility
     private bool _lateInitDone;

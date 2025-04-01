@@ -8,15 +8,15 @@ namespace PowerBox.Code.Features.Actors {
     protected override ActorAsset InitObject() {
       ActorAsset mastefCreature = AssetManager.actor_library.clone("powerbox_mastef", GetFeature<Maxim>().Object.id);
       mastefCreature.icon = "iconMastefCreature";
-      mastefCreature.texture_path = "t_MastefCreature";
-      mastefCreature.unit = false;
+      mastefCreature.texture_id = "t_MastefCreature";
+      mastefCreature.civ = false;
       mastefCreature.shadow = false;
       mastefCreature.traits = new List<string> {
         "immortal",
         "blessed",
         "fast"
       };
-      mastefCreature.nameTemplate = GetFeature<NameGenerators.Mastef>().Object.id;
+      mastefCreature.name_template_unit = GetFeature<NameGenerators.Mastef>().Object.id;
       return mastefCreature;
     }
   }

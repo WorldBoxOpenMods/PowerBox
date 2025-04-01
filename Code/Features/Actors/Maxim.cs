@@ -7,27 +7,24 @@ namespace PowerBox.Code.Features.Actors {
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", "whiteMage");
-      maximCreature.base_stats[S.max_age] = 1000;
+      maximCreature.base_stats[S.lifespan] = 1000;
       maximCreature.icon = "iconMaximCreature";
-      maximCreature.race = "good";
-      maximCreature.kingdom = GetFeature<Kingdoms.Developers>().Object.id;
-      maximCreature.unit = false;
-      maximCreature.canAttackBuildings = false;
-      maximCreature.canTurnIntoZombie = false;
-      maximCreature.canBeMovedByPowers = true;
-      maximCreature.canBeKilledByStuff = true;
-      maximCreature.canReceiveTraits = true;
-      maximCreature.canBeHurtByPowers = true;
-      maximCreature.canAttackBuildings = false;
+      maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
+      maximCreature.civ = false;
+      maximCreature.can_attack_buildings = false;
+      maximCreature.can_turn_into_zombie = false;
+      maximCreature.can_be_moved_by_powers = true;
+      maximCreature.can_be_killed_by_stuff = true;
+      maximCreature.can_receive_traits = true;
+      maximCreature.can_be_hurt_by_powers = true;
       maximCreature.shadow = false;
-      maximCreature.texture_path = "t_MaximCreature";
-      maximCreature.job = "white_mage";
-      maximCreature.diet_meat_same_race = false;
-      maximCreature.diet_meat = false;
+      maximCreature.texture_id = "t_MaximCreature";
+      maximCreature.job = new[] {"white_mage"};
+      maximCreature.addSubspeciesTrait("diet_cannibalism");
       maximCreature.base_stats[S.damage] = 100;
       maximCreature.base_stats[S.health] = 1000;
       maximCreature.use_items = false;
-      maximCreature.defaultWeapons = null;
+      maximCreature.default_weapons = null;
       maximCreature.source_meat = false;
       maximCreature.source_meat_insect = false;
       maximCreature.traits = new List<string> {
@@ -35,7 +32,7 @@ namespace PowerBox.Code.Features.Actors {
         "blessed",
         "wise"
       };
-      maximCreature.nameTemplate = GetFeature<NameGenerators.Maxim>().Object.id;
+      maximCreature.name_template_unit = GetFeature<NameGenerators.Maxim>().Object.id;
       return maximCreature;
     }
   }

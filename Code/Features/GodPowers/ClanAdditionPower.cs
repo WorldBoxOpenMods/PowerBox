@@ -16,14 +16,14 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower addToClan = new GodPower {
         id = addToClanDrop.id,
         name = addToClanDrop.id,
-        showToolSizes = true,
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
-        dropID = addToClanDrop.id,
-        force_map_text = MapMode.Clans,
+        show_tool_sizes = true,
+        falling_chance = 0.03f,
+        hold_action = true,
+        unselect_when_window = true,
+        drop_id = addToClanDrop.id,
+        force_map_mode = MetaType.Clan,
         click_power_action = (pTile, pPower) => _targetClan != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetClan(pTile, pPower),
-        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPower
+        click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPowerForDropsFull
       };
 
       return addToClan;
@@ -38,7 +38,7 @@ namespace PowerBox.Code.Features.GodPowers {
     private static void AddUnitToClanAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
       pTile.doUnits((a) => AddUnitToClan(a));
-      if (World.world.dropManager._drops.Where(d => d._asset.id == pDropID).Count(d => !d._landed) <= 1) {
+      if (World.world.drop_manager._drops.Where(d => d._asset.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetClan = null;
       }
     }
@@ -47,9 +47,10 @@ namespace PowerBox.Code.Features.GodPowers {
       if (actor == null) return;
       if (!actor.kingdom.isCiv() || actor.kingdom != _targetClan.getChief()?.kingdom) return;
       if (actor.hasClan()) {
-        actor.getClan().removeUnit(actor.data);
+        actor.clan.units.Remove(actor);
+        actor.clan.setUnitStatsDirty();
       }
-      _targetClan.addUnit(actor);
+      _targetClan.units.Add(actor);
 
       if (animate) {
         actor.startShake();

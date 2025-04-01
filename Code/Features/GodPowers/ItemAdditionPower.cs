@@ -9,14 +9,14 @@ namespace PowerBox.Code.Features.GodPowers {
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_add_items",
-        holdAction = true,
-        showToolSizes = true,
-        unselectWhenWindow = true,
+        hold_action = true,
+        show_tool_sizes = true,
+        unselect_when_window = true,
         name = "powerbox_add_items",
-        dropID = GetFeature<CommonItemDrop>().Object.id,
-        fallingChance = 0.01f,
+        drop_id = GetFeature<CommonItemDrop>().Object.id,
+        falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
-        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPower(pTile, pPower)
+        click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
       };
     }
   }

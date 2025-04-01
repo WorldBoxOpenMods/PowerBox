@@ -18,14 +18,14 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower spawnFishingBoat = new GodPower {
         id = spawnFishingBoatDrop.id,
         name = spawnFishingBoatDrop.id,
-        showSpawnEffect = true,
-        showToolSizes = false,
-        forceBrush = "circ_0",
-        fallingChance = 0.03f,
-        holdAction = true,
-        unselectWhenWindow = true,
+        show_spawn_effect = true,
+        show_tool_sizes = false,
+        force_brush = "circ_0",
+        falling_chance = 0.03f,
+        hold_action = true,
+        unselect_when_window = true,
         actor_asset_id = "boat_fishing",
-        dropID = spawnFishingBoatDrop.id,
+        drop_id = spawnFishingBoatDrop.id,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
 

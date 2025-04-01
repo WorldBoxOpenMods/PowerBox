@@ -7,7 +7,7 @@ namespace PowerBox.Code.Features.GodPowers {
       GodPower assignLeader = new GodPower() {
         id = "powerbox_assign_leader",
         name = "powerbox_assign_leader",
-        force_map_text = MapMode.Cities,
+        force_map_mode = MetaType.City,
         click_special_action = LeaderAssignationAction
       };
       return assignLeader;
@@ -18,15 +18,14 @@ namespace PowerBox.Code.Features.GodPowers {
       if (city == null) {
         return false;
       }
-      MapBox.instance.getObjectsInChunks(pTile, 3, MapObjectType.Actor);
-      Actor newLeader = MapBox.instance.temp_map_objects.FirstOrDefault(actor => actor.base_data.alive && actor.kingdom.isCiv() && actor.city == city)?.a;
+      Actor newLeader = Finder.getUnitsFromChunk(pTile, 3).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv() && actor.city == city)?.a;
       if (newLeader == null) {
         return false;
       }
       if (newLeader.isKing()) {
         newLeader.setProfession(UnitProfession.Unit);
         newLeader.kingdom.king = null;
-        newLeader.kingdom.data.kingID = null;
+        newLeader.kingdom.data.kingID = -1;
       }
       city.removeLeader();
       city.leader = newLeader;

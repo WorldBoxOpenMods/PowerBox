@@ -11,13 +11,12 @@ namespace PowerBox.Code.Features.GodPowers {
       };
     }
     private static bool ClanCreationAction(WorldTile pTile, string pPowerId) {
-      MapBox.instance.getObjectsInChunks(pTile, 3, MapObjectType.Actor);
-      Actor newClanLeader = MapBox.instance.temp_map_objects.FirstOrDefault(actor => actor.base_data.alive && actor.kingdom.isCiv())?.a;
+      Actor newClanLeader = Finder.getUnitsFromChunk(pTile, 3).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv())?.a;
       if (newClanLeader == null) {
         return false;
       }
       if (newClanLeader.hasClan()) {
-        newClanLeader.getClan().removeUnit(newClanLeader.data);
+        newClanLeader.clan.units.Remove(newClanLeader);
       }
       World.world.clans.newClan(newClanLeader);
       newClanLeader.startShake();
