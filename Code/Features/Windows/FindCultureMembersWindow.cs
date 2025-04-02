@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Scheduling;
 using PowerBox.Code.Utils;
@@ -10,6 +11,8 @@ using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
+    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
+
     protected override ScrollWindow InitObject() {
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_culture_members", "powerbox_find_culture_members");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_culture_members");
@@ -18,8 +21,7 @@ namespace PowerBox.Code.Features.Windows {
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
-
-      new HarmonyLib.Harmony("key.worldbox.powerbox").Patch(
+      GetFeature<Harmony>().Instance.Patch(
         AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
         postfix: new HarmonyMethod(typeof(FindCultureMembersWindow), nameof(HookUpMembersWindow))
       );
@@ -38,7 +40,10 @@ namespace PowerBox.Code.Features.Windows {
         editItemsRect.sizeDelta = new Vector2(32f, 36f);
         findCultureMembers.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
         findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
-        // TODO: unpatch this patch
+        GetFeature<Harmony>().Instance.Unpatch(
+          AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
+          AccessTools.Method(typeof(FindCultureMembersWindow), nameof(HookUpMembersWindow))
+        );
       }
     }
     private void FindCultureMembersButtonClick() {
