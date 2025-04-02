@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
 using NeoModLoader.General;
 using PowerBox.Code.Scheduling;
 using PowerBox.Code.Utils;
@@ -10,33 +11,35 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
     protected override ScrollWindow InitObject() {
-      GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
-      Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
-      cultureObject.SetActive(false);
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_culture_members", "powerbox_find_culture_members");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_culture_members");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
-
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
-
-      GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("powerbox_find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
-
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
-
-      findCultureMembers.transform.localPosition = new Vector3(116.5f, 16.0f, findCultureMembers.transform.localPosition.z);
-
-      Transform editItemsBtnIcon = findCultureMembers.transform.Find("Icon");
-      editItemsBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
-      editItemsBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
-
-      RectTransform editItemsRect = findCultureMembers.GetComponent<RectTransform>();
-      editItemsRect.sizeDelta = new Vector2(32f, 36f);
-      findCultureMembers.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
-      findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
+      new HarmonyLib.Harmony("key.worldbox.powerbox").Patch(
+        AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
+        postfix: new HarmonyMethod(typeof(FindCultureMembersWindow), nameof(HookUpMembersWindow))
+      );
       return window;
+    }
+    private void HookUpMembersWindow(StatsWindow __instance) {
+      if (__instance is CultureWindow cultureWindow) {
+        GameObject cultureObject = cultureWindow.gameObject;
+        Transform cultureContent = cultureObject.transform.FindRecursive("Background");
+        GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("powerbox_find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
+        findCultureMembers.transform.localPosition = new Vector3(116.5f, 16.0f, findCultureMembers.transform.localPosition.z);
+        Transform editItemsBtnIcon = findCultureMembers.transform.Find("Icon");
+        editItemsBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
+        editItemsBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
+        RectTransform editItemsRect = findCultureMembers.GetComponent<RectTransform>();
+        editItemsRect.sizeDelta = new Vector2(32f, 36f);
+        findCultureMembers.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
+        findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
+        // TODO: unpatch this patch
+      }
     }
     private void FindCultureMembersButtonClick() {
       InitFindCultureMembers(Window);

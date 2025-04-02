@@ -27,7 +27,7 @@ namespace PowerBox.Code.Features.Windows {
       editResourcesRect.sizeDelta = new Vector2(32f, 36f);
       editResources.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editResources.GetComponent<Button>().transition = Selectable.Transition.None;
-      new Harmony("key.worldbox.powerbox").Patch(
+      new HarmonyLib.Harmony("key.worldbox.powerbox").Patch(
         AccessTools.Method(typeof(CityWindow), nameof(CityWindow.OnDisable)),
         null,
         null,

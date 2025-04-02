@@ -102,6 +102,7 @@
       <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs" />
       <Compile Include="Code\Features\GodPowers\TumorCreatureSpawnPower.cs" />
+      <Compile Include="Code\Features\Harmony.cs" />
       <Compile Include="Code\Features\Kingdoms\BurgerKingdom.cs" />
       <Compile Include="Code\Features\Kingdoms\Developers.cs" />
       <Compile Include="Code\Features\MapIconAssets\WhisperOfAllianceLine.cs" />
@@ -191,9 +192,6 @@
       <Reference Include="UnityEngine.UIModule">
         <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
       </Reference>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Code\Features\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
