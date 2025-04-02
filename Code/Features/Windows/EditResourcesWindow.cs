@@ -15,24 +15,16 @@ namespace PowerBox.Code.Features.Windows {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
     
     protected override ScrollWindow InitObject() {
-      GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
-      inspectVillage.SetActive(false);
-      Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_resources", "powerbox_edit_resources");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_resources");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
-      GameObject editResources = PowerButtonCreator.CreateSimpleButton("powerbox_edit_resources_button", EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), inspectVillageBackground).gameObject;
-      editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
-      Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
-      editResourcesBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
-      editResourcesBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
-      RectTransform editResourcesRect = editResources.GetComponent<RectTransform>();
-      editResourcesRect.sizeDelta = new Vector2(32f, 36f);
-      editResources.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
-      editResources.GetComponent<Button>().transition = Selectable.Transition.None;
       GetFeature<Harmony>().Instance.Patch(
         AccessTools.Method(typeof(CityWindow), nameof(CityWindow.OnDisable)),
         transpiler: new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
+      );
+      GetFeature<Harmony>().Instance.Patch(
+        AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
+        postfix: new HarmonyMethod(typeof(EditResourcesWindow), nameof(HookUpMembersWindow))
       );
       return window;
     }
@@ -51,6 +43,26 @@ namespace PowerBox.Code.Features.Windows {
         yield return instruction;
       }
     }
+
+    private static void HookUpMembersWindow(StatsWindow __instance) {
+      if (__instance is CityWindow cityWindow) {
+        Transform cityWindowContent = cityWindow.transform.FindRecursive("Background");
+        GameObject editResources = PowerButtonCreator.CreateSimpleButton("powerbox_edit_resources_button", Instance.EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), cityWindowContent).gameObject;
+        editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
+        Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
+        editResourcesBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
+        editResourcesBtnIcon.transform.localScale = new Vector3(0.8f, 0.8f, 1);
+        RectTransform editResourcesRect = editResources.GetComponent<RectTransform>();
+        editResourcesRect.sizeDelta = new Vector2(32f, 36f);
+        editResources.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
+        editResources.GetComponent<Button>().transition = Selectable.Transition.None;
+        Instance.GetFeature<Harmony>().Instance.Unpatch(
+          AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
+          AccessTools.Method(typeof(EditResourcesWindow), nameof(HookUpMembersWindow))
+        );
+      }
+    }
+
     public void EditResourcesButtonClick() {
       Window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
       InitEditResources();
