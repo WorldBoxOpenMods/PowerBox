@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
+using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Utils;
 using UnityEngine;
@@ -11,6 +12,8 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
+    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
+    
     protected override ScrollWindow InitObject() {
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
@@ -27,11 +30,9 @@ namespace PowerBox.Code.Features.Windows {
       editResourcesRect.sizeDelta = new Vector2(32f, 36f);
       editResources.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
       editResources.GetComponent<Button>().transition = Selectable.Transition.None;
-      new HarmonyLib.Harmony("key.worldbox.powerbox").Patch(
+      GetFeature<Harmony>().Instance.Patch(
         AccessTools.Method(typeof(CityWindow), nameof(CityWindow.OnDisable)),
-        null,
-        null,
-        new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
+        transpiler: new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
       );
       return window;
     }
