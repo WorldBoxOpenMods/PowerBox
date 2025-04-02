@@ -27,11 +27,11 @@ namespace PowerBox.Code.Features.Windows {
       );
       return window;
     }
-    private void HookUpMembersWindow(StatsWindow __instance) {
+    private static void HookUpMembersWindow(StatsWindow __instance) {
       if (__instance is CultureWindow cultureWindow) {
         GameObject cultureObject = cultureWindow.gameObject;
         Transform cultureContent = cultureObject.transform.FindRecursive("Background");
-        GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("powerbox_find_culture_members", FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
+        GameObject findCultureMembers = PowerButtonCreator.CreateSimpleButton("powerbox_find_culture_members", Instance.FindCultureMembersButtonClick, Resources.Load<Sprite>("ui/icons/iconculturezones"), cultureContent).gameObject;
         findCultureMembers.transform.localPosition = new Vector3(116.5f, 16.0f, findCultureMembers.transform.localPosition.z);
         Transform editItemsBtnIcon = findCultureMembers.transform.Find("Icon");
         editItemsBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);
@@ -40,7 +40,7 @@ namespace PowerBox.Code.Features.Windows {
         editItemsRect.sizeDelta = new Vector2(32f, 36f);
         findCultureMembers.GetComponent<Image>().sprite = AssetUtils.LoadEmbeddedSprite("other/backgroundBackButtonRev");
         findCultureMembers.GetComponent<Button>().transition = Selectable.Transition.None;
-        GetFeature<Harmony>().Instance.Unpatch(
+        Instance.GetFeature<Harmony>().Instance.Unpatch(
           AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
           AccessTools.Method(typeof(FindCultureMembersWindow), nameof(HookUpMembersWindow))
         );
