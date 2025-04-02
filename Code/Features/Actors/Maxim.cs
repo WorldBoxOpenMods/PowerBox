@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.Actors {
     internal override FeatureRequirementList RequiredFeatures => new[] { typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim) };
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
-      ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", "whiteMage");
+      ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", SA.white_mage);
       maximCreature.base_stats[S.lifespan] = 1000;
       maximCreature.icon = "iconMaximCreature";
       maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
@@ -19,7 +19,6 @@ namespace PowerBox.Code.Features.Actors {
       maximCreature.can_be_hurt_by_powers = true;
       maximCreature.shadow = false;
       maximCreature.texture_id = "t_MaximCreature";
-      maximCreature.job = new[] {"white_mage"};
       maximCreature.addSubspeciesTrait("diet_cannibalism");
       maximCreature.base_stats[S.damage] = 100;
       maximCreature.base_stats[S.health] = 1000;
