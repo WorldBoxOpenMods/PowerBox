@@ -13,7 +13,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       burgerKingdom.addFriendlyTag("nature_creature");
       burgerKingdom.addFriendlyTag("neutral");
       burgerKingdom.addEnemyTag("civ");
-      burgerKingdom.addEnemyTag("bandits");
+      burgerKingdom.addEnemyTag("bandit");
       burgerKingdom.addEnemyTag("powerbox_developer_kingdom");
 
       MapBox.instance.kingdoms_wild.newWildKingdom(burgerKingdom);
@@ -26,7 +26,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       dwarf.addEnemyTag(burgerKingdom.id);
       KingdomAsset orc = AssetManager.kingdoms.get("orc");
       orc.addEnemyTag(burgerKingdom.id);
-      KingdomAsset bandit = AssetManager.kingdoms.get("bandits");
+      KingdomAsset bandit = AssetManager.kingdoms.get("bandit");
       bandit.addEnemyTag(burgerKingdom.id);
       return burgerKingdom;
     }

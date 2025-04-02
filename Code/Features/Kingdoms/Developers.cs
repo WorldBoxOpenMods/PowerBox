@@ -23,7 +23,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       dwarf.addFriendlyTag(developersKingdom.id);
       KingdomAsset orc = AssetManager.kingdoms.get("orc");
       orc.addFriendlyTag(developersKingdom.id);
-      KingdomAsset bandit = AssetManager.kingdoms.get("bandits");
+      KingdomAsset bandit = AssetManager.kingdoms.get("bandit");
       bandit.addFriendlyTag(developersKingdom.id);
       return developersKingdom;
     }
