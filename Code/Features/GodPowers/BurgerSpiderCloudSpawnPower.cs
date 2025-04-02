@@ -15,7 +15,9 @@ namespace PowerBox.Code.Features.GodPowers {
         path_texture = "drops/drop_blood",
         random_frame = true,
         default_scale = 0.2f,
-        sound_drop = "fallingWater",
+        sound_drop = "event:/SFX/DROPS/DropRain",
+        material = "mat_world_object_lit",
+        type = DropType.DropMagic,
         falling_height = new Vector2(30f, 45f),
         action_landed = BurgerSpiderSpawnAction
       };
@@ -31,27 +33,15 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       AssetManager.clouds.add(burgerSpiderCloud);
 
-      DropAsset burgerSpiderPowerDrop = new DropAsset {
-        id = "powerbox_spawn_burger_spider_cloud",
-        path_texture = "drops/drop_blood",
-        random_frame = true,
-        default_scale = 0.2f,
-        sound_drop = "fallingWater",
-        falling_height = new Vector2(0f, 0f),
-        action_landed = (pTile, pDropID) => EffectsLibrary.spawn("fx_cloud", pTile, pParam1: burgerSpiderCloud.id)
-      };
-      AssetManager.drops.add(burgerSpiderPowerDrop);
-      
       GodPower spawnBurgerSpiderCloud = new GodPower {
-        id = burgerSpiderPowerDrop.id,
-        name = burgerSpiderPowerDrop.id,
+        id = "powerbox_spawn_burger_spider_cloud",
+        name = "powerbox_spawn_burger_spider_cloud",
         force_brush = "circ_0",
         falling_chance = 0.03f,
         hold_action = true,
         show_tool_sizes = false,
         unselect_when_window = true,
-        drop_id = burgerSpiderPowerDrop.id,
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
+        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile, pParam1: burgerSpiderCloud.id)
       };
 
       burgerSpiderCloud.cached_sprites = burgerSpiderCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null).ToArray();

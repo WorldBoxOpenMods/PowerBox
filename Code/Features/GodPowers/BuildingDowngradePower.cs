@@ -1,5 +1,4 @@
 using System.Linq;
-using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
@@ -11,6 +10,8 @@ namespace PowerBox.Code.Features.GodPowers {
         animated = true,
         animation_speed = 0.03f,
         default_scale = 0.1f,
+        material = "mat_world_object_lit",
+        type = DropType.DropMagic,
         action_landed = BuildingDowngradeAction
       };
       AssetManager.drops.add(downgradeBuildingAddDrop);

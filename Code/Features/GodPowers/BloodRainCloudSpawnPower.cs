@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Linq;
-using NeoModLoader.api;
 using NeoModLoader.api.features;
 using UnityEngine;
 
@@ -12,7 +10,9 @@ namespace PowerBox.Code.Features.GodPowers {
         path_texture = "drops/drop_blood",
         random_frame = true,
         default_scale = 0.2f,
-        sound_drop = "fallingWater",
+        sound_drop = "event:/SFX/DROPS/DropRain",
+        material = "mat_world_object_lit",
+        type = DropType.DropMagic,
         falling_height = new Vector2(30f, 45f),
         action_landed = DropsLibrary.action_blood_rain
       };
@@ -28,27 +28,16 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       AssetManager.clouds.add(bloodRainCloud);
       
-      DropAsset bloodRainPowerDrop = new DropAsset {
-        id = "powerbox_spawn_blood_rain_cloud",
-        path_texture = "drops/drop_blood",
-        random_frame = true,
-        default_scale = 0.2f,
-        sound_drop = "fallingWater",
-        falling_height = new Vector2(0f, 0f),
-        action_landed = (pTile, pDropID) => EffectsLibrary.spawn("fx_cloud", pTile: pTile, pParam1: bloodRainCloud.id)
-      };
-      AssetManager.drops.add(bloodRainPowerDrop);
-      
       GodPower spawnBloodRainCloud = new GodPower {
-        id = bloodRainPowerDrop.id,
-        name = bloodRainPowerDrop.id,
+        id = "powerbox_spawn_blood_rain_cloud",
+        name = "powerbox_spawn_blood_rain_cloud",
         force_brush = "circ_0",
         falling_chance = 0.03f,
         hold_action = true,
         show_tool_sizes = false,
         unselect_when_window = true,
-        drop_id = bloodRainPowerDrop.id,
-        click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
+        drop_id = "powerbox_spawn_blood_rain_cloud",
+        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile: pTile, pParam1: bloodRainCloud.id)
       };
 
       bloodRainCloud.cached_sprites = bloodRainCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null).ToArray();
