@@ -6,9 +6,9 @@ namespace PowerBox.Code.Features.NameGenerators {
       NameGeneratorAsset burgerSpiderName = new NameGeneratorAsset {
         id = "powerbox_burger_spider_name"
       };
-      burgerSpiderName.part_groups.Add("Burger,Spider");
-      burgerSpiderName.part_groups.Add("-");
-      burgerSpiderName.part_groups.Add("spider,burger");
+      burgerSpiderName.addPartGroup("Burger,Spider");
+      burgerSpiderName.addPartGroup("-");
+      burgerSpiderName.addPartGroup("spider,burger");
       burgerSpiderName.addTemplate("part_group");
       return burgerSpiderName;
     }

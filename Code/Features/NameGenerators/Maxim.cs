@@ -6,9 +6,9 @@ namespace PowerBox.Code.Features.NameGenerators {
       NameGeneratorAsset maximCreatureName = new NameGeneratorAsset {
         id = "powerbox_maxim_creature_name"
       };
-      maximCreatureName.part_groups.Add("Maxim,Max,Greg,dev");
-      maximCreatureName.part_groups.Add(" ");
-      maximCreatureName.part_groups.Add("Karpenko,dev,greg");
+      maximCreatureName.addPartGroup("Maxim,Max,Greg,dev");
+      maximCreatureName.addPartGroup(" ");
+      maximCreatureName.addPartGroup("Karpenko,dev,greg");
       maximCreatureName.addTemplate("part_group");
       return maximCreatureName;
     }
