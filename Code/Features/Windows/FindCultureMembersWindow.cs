@@ -10,7 +10,6 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class FindCultureMembersWindow : WindowBase<FindCultureMembersWindow> {
     protected override ScrollWindow InitObject() {
-      ScrollWindow.checkWindowExist("culture");
       GameObject cultureObject = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/culture");
       Transform cultureContent = cultureObject.transform.Find("/Canvas Container Main/Canvas - Windows/windows/culture/Background");
       cultureObject.SetActive(false);

@@ -7,8 +7,6 @@ namespace PowerBox.Code.Features.Windows {
   public class EditFavoriteFoodWindow : WindowBase<EditFavoriteFoodWindow> {
     private Actor _targetUnit;
     protected override ScrollWindow InitObject() {
-      ScrollWindow.checkWindowExist("inspect_unit");
-
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_favorite_food", "powerbox_edit_favorite_food");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_favorite_food");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;

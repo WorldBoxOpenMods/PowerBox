@@ -12,7 +12,6 @@ namespace PowerBox.Code.Features.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
     protected override ScrollWindow InitObject() {
-      ScrollWindow.checkWindowExist("village");
       GameObject inspectVillage = ResourcesFinder.FindResource<GameObject>("village");
       inspectVillage.SetActive(false);
       Transform inspectVillageBackground = inspectVillage.transform.Find("Background");
