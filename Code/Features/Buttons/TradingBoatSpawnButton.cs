@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class TradingBoatSpawnButton : GodPowerButtonFeature<TradingBoatSpawnPower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(TransportBoatSpawnButton);
+  public class TradingBoatSpawnButton : ModGodPowerButtonFeature<TradingBoatSpawnPower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(TransportBoatSpawnButton);
     public override string SpritePath => "actors/boats/boat_trading_dwarf";
   }
 }

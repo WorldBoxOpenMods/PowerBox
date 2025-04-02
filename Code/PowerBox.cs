@@ -1,7 +1,8 @@
 ﻿using System;
 using NeoModLoader.api;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
 
@@ -30,11 +31,7 @@ using UnityEngine;
 
 namespace PowerBox.Code {
   public class PowerBox : BasicMod<PowerBox> {
-    protected override void OnModLoad() {
-      Debug.Log("Loading PowerBox...");
-      FeatureManager.Instance.Init();
-      Debug.Log("PowerBox loaded!");
-    }
+    protected override void OnModLoad() { }
 
 
     #region CollectionMod compatibility

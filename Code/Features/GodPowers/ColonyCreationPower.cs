@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class ColonyCreationPower : AssetFeature<GodPower> {
+  public class ColonyCreationPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset makeColonyDrop = new DropAsset {
         id = "powerbox_create_colony",

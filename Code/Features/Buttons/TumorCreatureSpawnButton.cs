@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class TumorCreatureSpawnButton : GodPowerButtonFeature<TumorCreatureSpawnPower, Tab> {
+  public class TumorCreatureSpawnButton : ModGodPowerButtonFeature<TumorCreatureSpawnPower, Tab> {
     public override string SpritePath => "powers/tumor_unit_icon";
-    internal override FeatureRequirementList OptionalFeatures => typeof(GregSpawnButton);
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(GregSpawnButton);
   }
 }

@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class ColonyCreationButton : GodPowerButtonFeature<ColonyCreationPower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(CultureAdditionButton);
+  public class ColonyCreationButton : ModGodPowerButtonFeature<ColonyCreationPower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(CultureAdditionButton);
     public override string SpritePath => "powers/colonies";
   }
 }

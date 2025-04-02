@@ -1,8 +1,9 @@
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class ClanAdditionPower : AssetFeature<GodPower> {
+  public class ClanAdditionPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset addToClanDrop = new DropAsset {
         id = "powerbox_add_unit_to_clan",

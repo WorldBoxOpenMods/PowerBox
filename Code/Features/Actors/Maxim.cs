@@ -1,9 +1,10 @@
 using System.Collections.Generic;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Actors {
-  public class Maxim : AssetFeature<ActorAsset> {
-    internal override FeatureRequirementList RequiredFeatures => new[] { typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim) };
+  public class Maxim : ModAssetFeature<ActorAsset> {
+    public override ModFeatureRequirementList RequiredModFeatures => new[] { typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim) };
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", SA.white_mage);

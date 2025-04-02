@@ -1,8 +1,9 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Actors {
-  public class BurgerSpider : AssetFeature<ActorAsset> {
-    internal override FeatureRequirementList RequiredFeatures => new[] { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
+  public class BurgerSpider : ModAssetFeature<ActorAsset> {
+    public override ModFeatureRequirementList RequiredModFeatures => new[] { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("powerbox_burger_spider", "wolf");

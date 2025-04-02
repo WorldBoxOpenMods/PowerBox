@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.NameGenerators {
-  public class Mastef : AssetFeature<NameGeneratorAsset> {
+  public class Mastef : ModAssetFeature<NameGeneratorAsset> {
     protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset mastefCreatureName = new NameGeneratorAsset {
         id = "powerbox_mastef_creature_name"

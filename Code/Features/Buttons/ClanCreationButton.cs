@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class ClanCreationButton : GodPowerButtonFeature<ClanCreationPower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(AssignCapitalButton);
+  public class ClanCreationButton : ModGodPowerButtonFeature<ClanCreationPower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(AssignCapitalButton);
     public override string SpritePath => "ui/icons/iconclanlist";
   }
 }

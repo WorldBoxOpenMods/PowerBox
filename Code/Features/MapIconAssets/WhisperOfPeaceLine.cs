@@ -1,9 +1,10 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.MapIconAssets {
-  public class WhisperOfPeaceLine : AssetFeature<QuantumSpriteAsset> {
-    internal override FeatureRequirementList RequiredFeatures => typeof(GodPowers.NonRandomFriendshipPower);
+  public class WhisperOfPeaceLine : ModAssetFeature<QuantumSpriteAsset> {
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(GodPowers.NonRandomFriendshipPower);
     protected override QuantumSpriteAsset InitObject() {
       return new QuantumSpriteAsset {
         id = "powerbox_whisper_of_peace_line",

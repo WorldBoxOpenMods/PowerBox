@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CityBorderReductionPower : AssetFeature<GodPower> {
+  public class CityBorderReductionPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower reduceCityBorders = new GodPower {
         id = "powerbox_reduce_city_borders",

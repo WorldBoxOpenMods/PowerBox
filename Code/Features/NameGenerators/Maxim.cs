@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.NameGenerators {
-  public class Maxim : AssetFeature<NameGeneratorAsset> {
+  public class Maxim : ModAssetFeature<NameGeneratorAsset> {
     protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset maximCreatureName = new NameGeneratorAsset {
         id = "powerbox_maxim_creature_name"

@@ -1,8 +1,9 @@
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BuildingDowngradePower : AssetFeature<GodPower> {
+  public class BuildingDowngradePower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset downgradeBuildingAddDrop = new DropAsset {
         id = "powerbox_downgrade_building",

@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class GregSpawnButton : GodPowerButtonFeature<GregSpawnPower, Tab> {
+  public class GregSpawnButton : ModGodPowerButtonFeature<GregSpawnPower, Tab> {
     public override string SpritePath => "ui/icons/icongreg";
-    internal override FeatureRequirementList OptionalFeatures => typeof(BurgerSpiderSpawnButton);
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(BurgerSpiderSpawnButton);
   }
 }

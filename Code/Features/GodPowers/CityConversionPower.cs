@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CityConversionPower : AssetFeature<GodPower> {
+  public class CityConversionPower : ModAssetFeature<GodPower> {
     public GodPower Power => Object;
     protected override GodPower InitObject() {
       return new GodPower() {

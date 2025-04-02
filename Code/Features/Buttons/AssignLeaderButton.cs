@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class AssignLeaderButton : GodPowerButtonFeature<AssignLeaderPower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(AssignKingButton);
+  public class AssignLeaderButton : ModGodPowerButtonFeature<AssignLeaderPower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(AssignKingButton);
     public override string SpritePath => "ui/icons/iconleaders";
   }
 }

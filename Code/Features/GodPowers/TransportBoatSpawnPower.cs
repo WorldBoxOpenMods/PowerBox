@@ -1,8 +1,9 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class TransportBoatSpawnPower : AssetFeature<GodPower> {
+  public class TransportBoatSpawnPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset spawnTransportBoatDrop = new DropAsset {
         id = "powerbox_spawn_boat_transport",

@@ -1,9 +1,10 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
-  public abstract class WindowBase<TWindow> : ObjectFeature<ScrollWindow> where TWindow : WindowBase<TWindow> {
+  public abstract class WindowBase<TWindow> : ModObjectFeature<ScrollWindow> where TWindow : WindowBase<TWindow> {
     protected ScrollWindow Window => Object;
     protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
@@ -16,7 +17,7 @@ namespace PowerBox.Code.Features.Windows {
       Instance = this as TWindow;
     }
 
-    internal override bool Init() {
+    public override bool Init() {
       SpriteHighlighter = new GameObject("sprite_highlighter") {
         transform = {
           localScale = new Vector2(1.0f, 1.0f)

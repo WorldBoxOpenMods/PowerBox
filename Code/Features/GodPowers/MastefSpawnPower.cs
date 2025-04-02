@@ -1,8 +1,9 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class MastefSpawnPower : AssetFeature<GodPower> {
-    internal override FeatureRequirementList RequiredFeatures => typeof(Actors.Mastef);
+  public class MastefSpawnPower : ModAssetFeature<GodPower> {
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(Actors.Mastef);
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_spawn_mastef",

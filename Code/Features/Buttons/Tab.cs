@@ -1,13 +1,14 @@
 using JetBrains.Annotations;
 using NeoModLoader.General;
 using NeoModLoader.General.UI.Tab;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using PowerBox.Code.Utils;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class Tab : PowerTabFeature {
+  public class Tab : ModPowerTabFeature {
     public GameObject PowerboxTabObject;
 
     private int _createdButtons;

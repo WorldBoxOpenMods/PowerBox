@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BloodRainCloudSpawnPower : AssetFeature<GodPower> {
+  public class BloodRainCloudSpawnPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset bloodRainCloudDrop = new DropAsset {
         id = "powerbox_blood_rain_cloud",

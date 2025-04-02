@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.NameGenerators {
-  public class BurgerSpider : AssetFeature<NameGeneratorAsset> {
+  public class BurgerSpider : ModAssetFeature<NameGeneratorAsset> {
     protected override NameGeneratorAsset InitObject() {
       NameGeneratorAsset burgerSpiderName = new NameGeneratorAsset {
         id = "powerbox_burger_spider_name"

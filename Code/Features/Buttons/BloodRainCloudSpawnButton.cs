@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class BloodRainCloudSpawnButton : GodPowerButtonFeature<BloodRainCloudSpawnPower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(TradingBoatSpawnButton);
+  public class BloodRainCloudSpawnButton : ModGodPowerButtonFeature<BloodRainCloudSpawnPower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(TradingBoatSpawnButton);
     public override string SpritePath => "powers/blood_rain";
   }
 }

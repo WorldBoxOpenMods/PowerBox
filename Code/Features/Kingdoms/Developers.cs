@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Kingdoms {
-  public class Developers : AssetFeature<KingdomAsset> {
+  public class Developers : ModAssetFeature<KingdomAsset> {
     protected override KingdomAsset InitObject() {
       KingdomAsset developersKingdom = new KingdomAsset {
         id = "powerbox_developer_kingdom",

@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class MushCreatureSpawnPower : AssetFeature<GodPower> {
+  public class MushCreatureSpawnPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_spawn_mush_creature",

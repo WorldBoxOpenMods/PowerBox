@@ -1,8 +1,9 @@
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureCreationPower : AssetFeature<GodPower> {
+  public class CultureCreationPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_create_new_culture",

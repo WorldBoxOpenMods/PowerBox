@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class MushAnimalSpawnButton : GodPowerButtonFeature<MushAnimalSpawnPower, Tab> {
+  public class MushAnimalSpawnButton : ModGodPowerButtonFeature<MushAnimalSpawnPower, Tab> {
     public override string SpritePath => "powers/mush_animal_icon";
-    internal override FeatureRequirementList OptionalFeatures => typeof(MushCreatureSpawnButton);
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(MushCreatureSpawnButton);
   }
 }

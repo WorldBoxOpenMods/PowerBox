@@ -1,9 +1,10 @@
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class NonRandomFriendshipPower : AssetFeature<GodPower> {
+  public class NonRandomFriendshipPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower() {
         id = "powerbox_non_random_friendship",

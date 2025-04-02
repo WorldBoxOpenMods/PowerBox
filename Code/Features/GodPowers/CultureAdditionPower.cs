@@ -1,8 +1,9 @@
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class CultureAdditionPower : AssetFeature<GodPower> {
+  public class CultureAdditionPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset addToCultureDrop = new DropAsset {
         id = "powerbox_add_unit_to_culture",

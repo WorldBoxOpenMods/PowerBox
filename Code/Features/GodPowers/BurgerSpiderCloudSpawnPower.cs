@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BurgerSpiderCloudSpawnPower : AssetFeature<GodPower> {
-    internal override FeatureRequirementList RequiredFeatures => new List<Type> { typeof(BurgerSpiderSpawnPower) };
+  public class BurgerSpiderCloudSpawnPower : ModAssetFeature<GodPower> {
+    public override ModFeatureRequirementList RequiredModFeatures => new List<Type> { typeof(BurgerSpiderSpawnPower) };
 
     protected override GodPower InitObject() {
       DropAsset burgerSpiderCloudDrop = new DropAsset {

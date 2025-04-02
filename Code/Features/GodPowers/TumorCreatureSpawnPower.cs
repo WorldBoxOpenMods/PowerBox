@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class TumorCreatureSpawnPower : AssetFeature<GodPower> {
+  public class TumorCreatureSpawnPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_spawn_tumor_creature",

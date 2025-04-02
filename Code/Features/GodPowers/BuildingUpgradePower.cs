@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class BuildingUpgradePower : AssetFeature<GodPower> {
+  public class BuildingUpgradePower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       DropAsset upgradeBuildingAddDrop = new DropAsset {
         id = "powerbox_upgrade_building",

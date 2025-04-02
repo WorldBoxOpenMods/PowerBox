@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using PowerBox.Code.Utils;
 
 namespace PowerBox.Code.Features.GodPowers {
-  public class AllianceCreationPower : AssetFeature<GodPower> {
+  public class AllianceCreationPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
       GodPower createAlliance = new GodPower() {
         id = "powerbox_create_alliance",

@@ -1,6 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
+
 namespace PowerBox.Code.Features {
-  public class Harmony : ObjectFeature<HarmonyLib.Harmony> {
+  public class Harmony : ModObjectFeature<HarmonyLib.Harmony> {
     public HarmonyLib.Harmony Instance => Object;
     protected override HarmonyLib.Harmony InitObject() {
       return new HarmonyLib.Harmony("key.worldbox.powerbox");

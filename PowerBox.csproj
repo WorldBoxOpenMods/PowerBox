@@ -49,7 +49,6 @@
       <Compile Include="Code\Features\Buttons\BuildingUpgradeButton.cs" />
       <Compile Include="Code\Features\Buttons\BurgerSpiderCloudSpawnButton.cs" />
       <Compile Include="Code\Features\Buttons\BurgerSpiderSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\ButtonFeature.cs" />
       <Compile Include="Code\Features\Buttons\CityBorderExpansionButton.cs" />
       <Compile Include="Code\Features\Buttons\CityBorderReductionButton.cs" />
       <Compile Include="Code\Features\Buttons\CityConversionButton.cs" />
@@ -116,16 +115,6 @@
       <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
       <Compile Include="Code\Features\Windows\WindowBase.cs" />
-      <Compile Include="Code\LoadingSystem\AssetFeature.cs" />
-      <Compile Include="Code\LoadingSystem\ButtonFeature.cs" />
-      <Compile Include="Code\LoadingSystem\Feature.cs" />
-      <Compile Include="Code\LoadingSystem\FeatureLoadException.cs" />
-      <Compile Include="Code\LoadingSystem\FeatureManager.cs" />
-      <Compile Include="Code\LoadingSystem\FeatureRequirementList.cs" />
-      <Compile Include="Code\LoadingSystem\GodPowerButtonFeature.cs" />
-      <Compile Include="Code\LoadingSystem\ObjectFeature.cs" />
-      <Compile Include="Code\LoadingSystem\PowerTabFeature.cs" />
-      <Compile Include="Code\LoadingSystem\WindowButtonFeature.cs" />
       <Compile Include="Code\Scheduling\Schedule.cs" />
       <Compile Include="Code\Scheduling\Scheduler.cs" />
       <Compile Include="Code\PowerBox.cs" />
@@ -192,6 +181,9 @@
       <Reference Include="UnityEngine.UIModule">
         <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Code\LoadingSystem\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

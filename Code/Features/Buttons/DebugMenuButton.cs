@@ -1,13 +1,14 @@
 using System.Linq;
 using NeoModLoader.General;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class DebugMenuButton : ButtonFeature<Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(AboutModButton);
-    internal override bool Init() {
+  public class DebugMenuButton : ModButtonFeature<Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(AboutModButton);
+    public override bool Init() {
       if (!base.Init()) return false;
       if (TryGetFeature<AboutModButton>(out _)) GetFeature<Tab>().AddHorizontalPadding(9.0f);
       return true;

@@ -1,9 +1,10 @@
 using PowerBox.Code.Features.GodPowers;
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class BuildingUpgradeButton : GodPowerButtonFeature<BuildingUpgradePower, Tab> {
-    internal override FeatureRequirementList OptionalFeatures => typeof(MushAnimalSpawnButton);
+  public class BuildingUpgradeButton : ModGodPowerButtonFeature<BuildingUpgradePower, Tab> {
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(MushAnimalSpawnButton);
     public override string SpritePath => "powers/upgrade_building_icon";
   }
 }

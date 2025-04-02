@@ -1,7 +1,8 @@
-using PowerBox.Code.LoadingSystem;
+using NeoModLoader.api;
+using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Kingdoms {
-  public class BurgerKingdom : AssetFeature<KingdomAsset> {
+  public class BurgerKingdom : ModAssetFeature<KingdomAsset> {
     protected override KingdomAsset InitObject() {
       KingdomAsset burgerKingdom = new KingdomAsset {
         id = "powerbox_burger_kingdom",
