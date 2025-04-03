@@ -116,6 +116,7 @@ namespace PowerBox.Code.Features.Windows {
         .FindRecursive("Mask")
         .FindRecursive(transform => transform.name.Contains("Avatar") /* exact name of this GO can differ post unit load because it gets renamed based on unit ID */)
         .GetComponent<Button>();
+      Debug.Log($"GameObject Button {unitInfoAvatarButton.name} for unit {index} has {unitInfoAvatarButton.onClick.GetPersistentEventCount()} listeners pre add");
       unitInfoAvatarButton.onClick.AddListener(() => {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
@@ -123,12 +124,7 @@ namespace PowerBox.Code.Features.Windows {
         SelectedUnit.select(unit);
         ScrollWindow.showWindow(S_Window.unit);
       });
-      unitInfoAvatarGameObject.transform.FindRecursive("Mask").GetComponent<Button>().onClick.RemoveAllListeners();
-      /*if (unit.asset.is_boat) {
-        unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
-      } else {
-        unitInfoAvatarGameObject.transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
-      }*/
+      Debug.Log($"GameObject Button {unitInfoAvatarButton.name} for unit {index} has {unitInfoAvatarButton.onClick.GetPersistentEventCount()} listeners post add");
       unitInfoAvatar.gameObject.SetActive(true);
     }
   }
