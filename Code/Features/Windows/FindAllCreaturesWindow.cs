@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Features.Prefabs;
@@ -25,18 +24,7 @@ namespace PowerBox.Code.Features.Windows {
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
-      new HarmonyLib.Harmony("idc").Patch(
-        AccessTools.Method(typeof(Button), "Press"),
-        finalizer: new HarmonyMethod(typeof(FindAllCreaturesWindow), nameof(Button_Press_Finalizer))
-      );
-
       return window;
-    }
-    
-    private static void Button_Press_Finalizer(Button __instance, Exception __exception) {
-      if (__exception != null) {
-        Debug.LogError($"Exception in Button of GameObject {__instance.gameObject.name}!");
-      }
     }
     
     public void FindAllCreaturesButtonClick() {
@@ -82,7 +70,7 @@ namespace PowerBox.Code.Features.Windows {
         return;
       }
       GameObject unitInfo = new GameObject {
-        name = "unit_" + index + "_info",
+        name = $"unit_{index}_info",
         transform = {
           parent = content.transform,
           // ReSharper disable once PossibleLossOfFraction
@@ -105,11 +93,7 @@ namespace PowerBox.Code.Features.Windows {
           objectsToCheck.AddRange(from Transform child in go.transform select child.gameObject);
           Button gob = go.GetComponent<Button>();
           if (gob != null) {
-            if (gob.onClick.GetPersistentEventCount() > 0) {
-              Debug.Log($"GameObject {go.name} for unit {index} has {gob.onClick.GetPersistentEventCount()} persistent events to disable");
-            }
             for (int i = 0; i < gob.onClick.GetPersistentEventCount(); i++) {
-              Debug.Log($"GameObject {go.name} for unit {index} has persistent event {i} with target {gob.onClick.GetPersistentTarget(i)} and method {gob.onClick.GetPersistentMethodName(i)}");
               gob.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
             }
             gob.onClick.RemoveAllListeners();
