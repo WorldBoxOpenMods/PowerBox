@@ -109,6 +109,7 @@
       <Compile Include="Code\Features\NameGenerators\BurgerSpider.cs" />
       <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
       <Compile Include="Code\Features\NameGenerators\Maxim.cs" />
+      <Compile Include="Code\Features\Prefabs\UnitAvatarElement.cs" />
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
