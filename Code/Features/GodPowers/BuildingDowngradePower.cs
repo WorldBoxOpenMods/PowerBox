@@ -23,6 +23,7 @@ namespace PowerBox.Code.Features.GodPowers {
         unselect_when_window = true,
         name = downgradeBuildingAddDrop.id,
         drop_id = downgradeBuildingAddDrop.id,
+        cached_drop_asset = downgradeBuildingAddDrop,
         falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
         click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
