@@ -86,6 +86,9 @@ namespace PowerBox.Code.Features.Windows {
       Image unitTypeBg = garbage.GetComponent<Image>();
       creatureInfo.unit_type_bg = unitTypeBg ?? garbage.AddComponent<Image>();
       creatureInfo.avatarLoader = creatureInfo.gameObject.AddComponent<UnitAvatarLoader>();
+      creatureInfo.avatarLoader._item_image = creatureInfo.unit_type_bg;
+      creatureInfo.avatarLoader._actor_image = followerInfoChild.GetComponent<Image>() ?? followerInfoChild.AddComponent<Image>();
+      creatureInfo.avatarLoader._actor_and_item_container = garbage.GetComponent<RectTransform>() ?? garbage.AddComponent<RectTransform>();
       creatureInfo.show_banner_kingdom = false;
       creatureInfo.show_banner_clan = false;
       creatureInfo.Start();
