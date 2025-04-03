@@ -33,11 +33,10 @@ namespace PowerBox.Code.Features.Windows {
       return window;
     }
     
-    private static Exception Button_Press_Finalizer(Button __instance, Exception __exception) {
+    private static void Button_Press_Finalizer(Button __instance, Exception __exception) {
       if (__exception != null) {
         Debug.LogError($"Exception in Button of GameObject {__instance.gameObject.name}!");
       }
-      return __exception;
     }
     
     public void FindAllCreaturesButtonClick() {
