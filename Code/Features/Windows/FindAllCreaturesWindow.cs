@@ -83,8 +83,9 @@ namespace PowerBox.Code.Features.Windows {
       unitInfoAvatar.show(unit);
       unitInfoAvatarGameObject.name = "unit_" + index + "_avatar";
       unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
-      unitInfoAvatarGameObject.GetComponent<Button>().onClick.RemoveAllListeners();
-      unitInfoAvatarGameObject.GetComponent<Button>().onClick.AddListener(() => {
+      Button unitInfoAvatarButton = unitInfoAvatarGameObject.transform.FindRecursive("Mask").FindRecursive("AvatarLoader").GetComponent<Button>();
+      unitInfoAvatarButton.onClick.RemoveAllListeners();
+      unitInfoAvatarButton.onClick.AddListener(() => {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
