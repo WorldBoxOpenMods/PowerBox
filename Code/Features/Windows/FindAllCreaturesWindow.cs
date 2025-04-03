@@ -92,11 +92,11 @@ namespace PowerBox.Code.Features.Windows {
         SelectedUnit.select(unit);
         ScrollWindow.showWindow(S_Window.unit);
       });
-      if (unit.asset.is_boat) {
+      /*if (unit.asset.is_boat) {
         unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
         unitInfoAvatarGameObject.transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
-      }
+      }*/
       unitInfoAvatar.gameObject.SetActive(true);
     }
   }
