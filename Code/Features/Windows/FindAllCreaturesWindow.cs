@@ -83,6 +83,22 @@ namespace PowerBox.Code.Features.Windows {
       unitInfoAvatar.show(unit);
       unitInfoAvatarGameObject.name = $"unit_{index}_avatar";
       unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
+      List<GameObject> objectsToCheck = new List<GameObject> { unitInfo };
+      {
+        GameObject go;
+        // ReSharper disable once AssignmentInConditionalExpression
+        while (go = objectsToCheck.FirstOrDefault()) {
+          objectsToCheck.Remove(go);
+          objectsToCheck.AddRange(from Transform child in go.transform select child.gameObject);
+          Button gob = go.GetComponent<Button>();
+          if (gob != null) {
+            if (gob.onClick.GetPersistentEventCount() > 0) {
+              Debug.Log($"GameObject {go.name} for unit {index} has {gob.onClick.GetPersistentEventCount()} listeners to remove");
+            }
+            gob.onClick.RemoveAllListeners();
+          }
+        }
+      }
       Button unitInfoAvatarButton = unitInfoAvatarGameObject.transform.FindRecursive("Mask").FindRecursive("AvatarLoader").GetComponent<Button>();
       unitInfoAvatarButton.onClick.RemoveAllListeners();
       unitInfoAvatarButton.onClick.AddListener(() => {
