@@ -4,7 +4,20 @@ namespace PowerBox.Code.Features.Prefabs {
   public class UnitAvatarElement : ModObjectFeature<GameObject> {
     public GameObject Prefab => Object;
     protected override GameObject InitObject() {
-      return GameObject.Find("/Canvas Container Main/Canvas - UI/General/CanvasBottom/BottomElements/BottomElementsMover/CanvasScrollView/Scroll View/Viewport/Content/buttons/Tab_SelectedUnit/actor_info/UnitAvatarElement");
+      return GameObject.Find("/Canvas Container Main").transform
+        .FindRecursive("Canvas - UI/General")
+        .FindRecursive("CanvasBottom")
+        .FindRecursive("BottomElements")
+        .FindRecursive("BottomElementsMover")
+        .FindRecursive("CanvasScrollView")
+        .FindRecursive("Scroll View")
+        .FindRecursive("Viewport")
+        .FindRecursive("Content")
+        .FindRecursive("buttons")
+        .FindRecursive("Tab_SelectedUnit")
+        .FindRecursive("actor_info")
+        .FindRecursive("UnitAvatarElement")
+        .gameObject;
     }
   }
 }
