@@ -104,8 +104,8 @@
       <Compile Include="Code\Features\Harmony.cs" />
       <Compile Include="Code\Features\Kingdoms\BurgerKingdom.cs" />
       <Compile Include="Code\Features\Kingdoms\Developers.cs" />
-      <Compile Include="Code\Features\MapIconAssets\WhisperOfAllianceLine.cs" />
-      <Compile Include="Code\Features\MapIconAssets\WhisperOfPeaceLine.cs" />
+      <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfAllianceLine.cs" />
+      <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfPeaceLine.cs" />
       <Compile Include="Code\Features\NameGenerators\BurgerSpider.cs" />
       <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
       <Compile Include="Code\Features\NameGenerators\Maxim.cs" />

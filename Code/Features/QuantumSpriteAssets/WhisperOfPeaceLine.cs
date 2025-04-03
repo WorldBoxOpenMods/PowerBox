@@ -1,8 +1,7 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
 using UnityEngine;
-
-namespace PowerBox.Code.Features.MapIconAssets {
+namespace PowerBox.Code.Features.QuantumSpriteAssets {
   public class WhisperOfPeaceLine : ModAssetFeature<QuantumSpriteAsset> {
     public override ModFeatureRequirementList RequiredModFeatures => typeof(GodPowers.NonRandomFriendshipPower);
     protected override QuantumSpriteAsset InitObject() {
