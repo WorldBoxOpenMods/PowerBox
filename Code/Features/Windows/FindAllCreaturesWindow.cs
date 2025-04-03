@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Features.Prefabs;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
@@ -106,7 +106,11 @@ namespace PowerBox.Code.Features.Windows {
           Button gob = go.GetComponent<Button>();
           if (gob != null) {
             if (gob.onClick.GetPersistentEventCount() > 0) {
-              Debug.Log($"GameObject {go.name} for unit {index} has {gob.onClick.GetPersistentEventCount()} listeners to remove");
+              Debug.Log($"GameObject {go.name} for unit {index} has {gob.onClick.GetPersistentEventCount()} persistent events to disable");
+            }
+            for (int i = 0; i < gob.onClick.GetPersistentEventCount(); i++) {
+              Debug.Log($"GameObject {go.name} for unit {index} has persistent event {i} with target {gob.onClick.GetPersistentTarget(i)} and method {gob.onClick.GetPersistentMethodName(i)}");
+              gob.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
             }
             gob.onClick.RemoveAllListeners();
           }
@@ -116,7 +120,6 @@ namespace PowerBox.Code.Features.Windows {
         .FindRecursive("Mask")
         .FindRecursive(transform => transform.name.Contains("Avatar") /* exact name of this GO can differ post unit load because it gets renamed based on unit ID */)
         .GetComponent<Button>();
-      Debug.Log($"GameObject Button {unitInfoAvatarButton.name} for unit {index} has {unitInfoAvatarButton.onClick.GetPersistentEventCount()} listeners pre add");
       unitInfoAvatarButton.onClick.AddListener(() => {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
@@ -124,7 +127,6 @@ namespace PowerBox.Code.Features.Windows {
         SelectedUnit.select(unit);
         ScrollWindow.showWindow(S_Window.unit);
       });
-      Debug.Log($"GameObject Button {unitInfoAvatarButton.name} for unit {index} has {unitInfoAvatarButton.onClick.GetPersistentEventCount()} listeners post add");
       unitInfoAvatar.gameObject.SetActive(true);
     }
   }
