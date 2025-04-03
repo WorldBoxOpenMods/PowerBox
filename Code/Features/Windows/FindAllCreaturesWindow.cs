@@ -6,6 +6,7 @@ using NeoModLoader.General;
 using PowerBox.Code.Features.Prefabs;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
@@ -76,29 +77,25 @@ namespace PowerBox.Code.Features.Windows {
           localScale = new Vector3(0.9f, 0.9f, 0.9f)
         }
       };
-      GameObject unitInfoButton = PowerButtonCreator.CreateSimpleButton("unit_" + index, () => {
-        if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
-          return;
-        }
-        SelectedUnit.select(unit);
-        ScrollWindow.showWindow(S_Window.unit);
-      }, null, unitInfo.transform).gameObject;
-      unitInfoButton.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
       GameObject unitInfoAvatarGameObject = UnityEngine.Object.Instantiate(GetFeature<UnitAvatarElement>().Prefab, unitInfo.transform);
       UiUnitAvatarElement unitInfoAvatar = unitInfoAvatarGameObject.GetComponent<UiUnitAvatarElement>();
       unitInfoAvatar.Start();
       unitInfoAvatar.show(unit);
       unitInfoAvatarGameObject.name = "unit_" + index + "_avatar";
       unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
+      unitInfoAvatarGameObject.GetComponent<Button>().onClick.RemoveAllListeners();
+      unitInfoAvatarGameObject.GetComponent<Button>().onClick.AddListener(() => {
+        if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
+          return;
+        }
+        SelectedUnit.select(unit);
+        ScrollWindow.showWindow(S_Window.unit);
+      });
       if (unit.asset.is_boat) {
         unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
         unitInfoAvatarGameObject.transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
       }
-      for (int j = 1; j < unitInfoButton.transform.childCount; j++) {
-        UnityEngine.Object.Destroy(unitInfoButton.transform.GetChild(j).gameObject);
-      }
-      LM.AddToCurrentLocale(unitInfoButton.name, unit.coloredName);
       unitInfoAvatar.gameObject.SetActive(true);
     }
   }
