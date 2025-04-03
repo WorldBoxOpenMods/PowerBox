@@ -78,7 +78,7 @@ namespace PowerBox.Code.Features.Windows {
           return;
         }
         SelectedUnit.select(unit);
-        ScrollWindow.showWindow("inspect_unit");
+        ScrollWindow.showWindow(S_Window.unit);
       }, null, unitInfo.transform).gameObject;
       followerInfoChild.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
       UiUnitAvatarElement creatureInfo = followerInfoChild.AddComponent<UiUnitAvatarElement>();
