@@ -81,7 +81,7 @@ namespace PowerBox.Code.Features.Windows {
       UiUnitAvatarElement unitInfoAvatar = unitInfoAvatarGameObject.GetComponent<UiUnitAvatarElement>();
       unitInfoAvatar.Start();
       unitInfoAvatar.show(unit);
-      unitInfoAvatarGameObject.name = "unit_" + index + "_avatar";
+      unitInfoAvatarGameObject.name = $"unit_{index}_avatar";
       unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
       Button unitInfoAvatarButton = unitInfoAvatarGameObject.transform.FindRecursive("Mask").FindRecursive("AvatarLoader").GetComponent<Button>();
       unitInfoAvatarButton.onClick.RemoveAllListeners();
@@ -92,6 +92,7 @@ namespace PowerBox.Code.Features.Windows {
         SelectedUnit.select(unit);
         ScrollWindow.showWindow(S_Window.unit);
       });
+      unitInfoAvatarGameObject.transform.FindRecursive("Mask").GetComponent<Button>().onClick.RemoveAllListeners();
       /*if (unit.asset.is_boat) {
         unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
