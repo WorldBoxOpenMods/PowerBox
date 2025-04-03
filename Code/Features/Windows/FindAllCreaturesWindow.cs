@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Features.Prefabs;
@@ -22,8 +24,20 @@ namespace PowerBox.Code.Features.Windows {
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
-      
+
+      new HarmonyLib.Harmony("idc").Patch(
+        AccessTools.Method(typeof(Button), "Press"),
+        finalizer: new HarmonyMethod(typeof(FindAllCreaturesWindow), nameof(Button_Press_Finalizer))
+      );
+
       return window;
+    }
+    
+    private static Exception Button_Press_Finalizer(Button __instance, Exception __exception) {
+      if (__exception != null) {
+        Debug.LogError($"Exception in Button of GameObject {__instance.gameObject.name}!");
+      }
+      return __exception;
     }
     
     public void FindAllCreaturesButtonClick() {
