@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NeoModLoader.api;
 using NeoModLoader.General;
+using PowerBox.Code.Features.Prefabs;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
+    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitAvatarElement);
+
     protected override ScrollWindow InitObject() {
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_all_creatures");
@@ -59,7 +62,7 @@ namespace PowerBox.Code.Features.Windows {
       }
       Scheduler.Instance.Schedule(new Schedule(10, uiActions.ToArray()));
     }
-    private static void CreateUnitButton(IReadOnlyList<Actor> units, int index, GameObject content) {
+    private void CreateUnitButton(IReadOnlyList<Actor> units, int index, GameObject content) {
       Actor unit = units[index];
       if (unit?.asset is null) {
         return;
@@ -73,40 +76,30 @@ namespace PowerBox.Code.Features.Windows {
           localScale = new Vector3(0.9f, 0.9f, 0.9f)
         }
       };
-      GameObject followerInfoChild = PowerButtonCreator.CreateSimpleButton("unit_" + index, () => {
+      GameObject unitInfoButton = PowerButtonCreator.CreateSimpleButton("unit_" + index, () => {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
         SelectedUnit.select(unit);
         ScrollWindow.showWindow(S_Window.unit);
       }, null, unitInfo.transform).gameObject;
-      followerInfoChild.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-      UiUnitAvatarElement creatureInfo = followerInfoChild.AddComponent<UiUnitAvatarElement>();
-      GameObject garbage = new GameObject();
-      Image unitTypeBg = garbage.GetComponent<Image>();
-      creatureInfo.unit_type_bg = unitTypeBg ?? garbage.AddComponent<Image>();
-      creatureInfo.avatarLoader = creatureInfo.gameObject.AddComponent<UnitAvatarLoader>();
-      creatureInfo.avatarLoader._item_image = creatureInfo.unit_type_bg;
-      creatureInfo.avatarLoader._actor_image = followerInfoChild.GetComponent<Image>() ?? followerInfoChild.AddComponent<Image>();
-      creatureInfo.avatarLoader._actor_and_item_container = garbage.GetComponent<RectTransform>() ?? garbage.AddComponent<RectTransform>();
-      creatureInfo.show_banner_kingdom = false;
-      creatureInfo.show_banner_clan = false;
-      creatureInfo.Start();
-      creatureInfo.show(unit);
-      creatureInfo.unit_type_bg = null;
-      UnityEngine.Object.Destroy(garbage);
-      followerInfoChild.transform.GetChild(0).name = "unit_" + index + "_avatar";
-      followerInfoChild.transform.GetChild(0).localPosition = new Vector3(0.0f, -10.0f, 0.0f);
+      unitInfoButton.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
+      GameObject unitInfoAvatarGameObject = UnityEngine.Object.Instantiate(GetFeature<UnitAvatarElement>().Prefab, unitInfo.transform);
+      UiUnitAvatarElement unitInfoAvatar = unitInfoAvatarGameObject.GetComponent<UiUnitAvatarElement>();
+      unitInfoAvatar.Start();
+      unitInfoAvatar.show(unit);
+      unitInfoAvatarGameObject.name = "unit_" + index + "_avatar";
+      unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
       if (unit.asset.is_boat) {
         unitInfo.transform.GetChild(0).localScale = new Vector3(1.5f, 1.5f, 1.5f);
       } else {
-        followerInfoChild.transform.GetChild(0).localScale = new Vector3(2.2f, 2.2f, 2.2f);
+        unitInfoAvatarGameObject.transform.localScale = new Vector3(2.2f, 2.2f, 2.2f);
       }
-      for (int j = 1; j < followerInfoChild.transform.childCount; j++) {
-        UnityEngine.Object.Destroy(followerInfoChild.transform.GetChild(j).gameObject);
+      for (int j = 1; j < unitInfoButton.transform.childCount; j++) {
+        UnityEngine.Object.Destroy(unitInfoButton.transform.GetChild(j).gameObject);
       }
-      LM.AddToCurrentLocale(followerInfoChild.name, unit.coloredName);
-      creatureInfo.gameObject.SetActive(true);
+      LM.AddToCurrentLocale(unitInfoButton.name, unit.coloredName);
+      unitInfoAvatar.gameObject.SetActive(true);
     }
   }
 }
