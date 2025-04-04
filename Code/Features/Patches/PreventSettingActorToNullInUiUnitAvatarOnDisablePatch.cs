@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using HarmonyLib;
 using NeoModLoader.api;
-using PowerBox.Code.Features.Windows;
+
 namespace PowerBox.Code.Features.Patches {
   public class PreventSettingActorToNullInUiUnitAvatarOnDisablePatch : ModFeature {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
     public override bool Init() {
       GetFeature<Harmony>().Instance.Patch(
         AccessTools.Method(typeof(UiUnitAvatarElement), nameof(UiUnitAvatarElement.OnDisable)),
-        transpiler: new HarmonyMethod(typeof(FindAllCreaturesWindow), nameof(UiUnitAvatarElement_OnDisable_PreventSettingActorToNull))
+        transpiler: new HarmonyMethod(typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch), nameof(UiUnitAvatarElement_OnDisable_PreventSettingActorToNull))
       );
       return true;
     }
