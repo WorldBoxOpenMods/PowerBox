@@ -3,7 +3,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.GodPowers {
   public class BuildingUpgradePower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      DropAsset upgradeBuildingAddDrop = new DropAsset {
+      DropAsset upgradeBuildingDrop = new DropAsset {
         id = "powerbox_upgrade_building",
         path_texture = "drops/drop_snow",
         animated = true,
@@ -13,22 +13,22 @@ namespace PowerBox.Code.Features.GodPowers {
         type = DropType.DropMagic,
         action_landed = BuildingUpgradeAction
       };
-      AssetManager.drops.add(upgradeBuildingAddDrop);
+      AssetManager.drops.add(upgradeBuildingDrop);
 
-      GodPower upgradeBuildingAdd = new GodPower {
-        id = upgradeBuildingAddDrop.id,
+      GodPower upgradeBuilding = new GodPower {
+        id = upgradeBuildingDrop.id,
         hold_action = true,
         show_tool_sizes = true,
         unselect_when_window = true,
-        name = upgradeBuildingAddDrop.id,
-        drop_id = upgradeBuildingAddDrop.id,
-        cached_drop_asset = upgradeBuildingAddDrop,
+        name = upgradeBuildingDrop.id,
+        drop_id = upgradeBuildingDrop.id,
+        cached_drop_asset = upgradeBuildingDrop,
         falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
         click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
       };
 
-      return upgradeBuildingAdd;
+      return upgradeBuilding;
     }
     
     private static void BuildingUpgradeAction(WorldTile pTile = null, string pDropID = null) {

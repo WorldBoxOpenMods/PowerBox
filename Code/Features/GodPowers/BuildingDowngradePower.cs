@@ -4,7 +4,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.GodPowers {
   public class BuildingDowngradePower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      DropAsset downgradeBuildingAddDrop = new DropAsset {
+      DropAsset downgradeBuildingDrop = new DropAsset {
         id = "powerbox_downgrade_building",
         path_texture = "drops/drop_snow",
         animated = true,
@@ -14,22 +14,22 @@ namespace PowerBox.Code.Features.GodPowers {
         type = DropType.DropMagic,
         action_landed = BuildingDowngradeAction
       };
-      AssetManager.drops.add(downgradeBuildingAddDrop);
+      AssetManager.drops.add(downgradeBuildingDrop);
       
-      GodPower downgradeBuildingAdd = new GodPower {
-        id = downgradeBuildingAddDrop.id,
+      GodPower downgradeBuilding = new GodPower {
+        id = downgradeBuildingDrop.id,
         hold_action = true,
         show_tool_sizes = true,
         unselect_when_window = true,
-        name = downgradeBuildingAddDrop.id,
-        drop_id = downgradeBuildingAddDrop.id,
-        cached_drop_asset = downgradeBuildingAddDrop,
+        name = downgradeBuildingDrop.id,
+        drop_id = downgradeBuildingDrop.id,
+        cached_drop_asset = downgradeBuildingDrop,
         falling_chance = 0.01f,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower),
         click_power_brush_action = (pTile, pPower) => AssetManager.powers.loopWithCurrentBrushPowerForDropsFull(pTile, pPower)
       };
 
-      return downgradeBuildingAdd;
+      return downgradeBuilding;
     }
     
     private static void BuildingDowngradeAction(WorldTile pTile = null, string pDropID = null) {
