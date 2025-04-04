@@ -27,6 +27,7 @@ namespace PowerBox.Code.Features.GodPowers {
         unselect_when_window = true,
         actor_asset_id = "boat_trading",
         drop_id = spawnTradingBoatDrop.id,
+        cached_drop_asset = spawnTradingBoatDrop,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
       
