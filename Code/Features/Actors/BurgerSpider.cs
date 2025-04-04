@@ -11,6 +11,8 @@ namespace PowerBox.Code.Features.Actors {
       burgerSpider.base_stats[S.lifespan] = 250;
       burgerSpider.kingdom_id_wild = GetFeature<Kingdoms.BurgerKingdom>().Object.id;
       burgerSpider.civ = false;
+      burgerSpider.default_animal = false;
+      burgerSpider.has_advanced_textures = false;
       burgerSpider.unit_other = true;
       burgerSpider.shadow = false;
       burgerSpider.can_attack_buildings = true;
