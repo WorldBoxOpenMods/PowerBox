@@ -18,6 +18,7 @@ namespace PowerBox.Code.Features.Actors {
         "fast"
       };
       mastefCreature.name_template_unit = GetFeature<NameGenerators.Mastef>().Object.id;
+      mastefCreature.texture_asset = null;
       AssetManager.actor_library.loadTexturesAndSprites(mastefCreature);
       return mastefCreature;
     }

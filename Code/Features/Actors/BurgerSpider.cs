@@ -26,6 +26,7 @@ namespace PowerBox.Code.Features.Actors {
       burgerSpider.traits.Add("ugly");
       burgerSpider.traits.Add("cursed");
       burgerSpider.name_template_unit = GetFeature<NameGenerators.BurgerSpider>().Object.id;
+      burgerSpider.texture_asset = null;
       AssetManager.actor_library.loadTexturesAndSprites(burgerSpider);
       return burgerSpider;
     }
