@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using UnityEngine;
 
 namespace PowerBox.Code.Features.Actors {
   public class Maxim : ModAssetFeature<ActorAsset> {
@@ -12,6 +14,7 @@ namespace PowerBox.Code.Features.Actors {
       maximCreature.icon = "iconMaximCreature";
       maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
       maximCreature.civ = false;
+      maximCreature.has_advanced_textures = false;
       maximCreature.unit_other = true;
       maximCreature.can_attack_buildings = false;
       maximCreature.can_turn_into_zombie = false;
