@@ -49,13 +49,13 @@ namespace PowerBox.Code.Features.Windows {
       }
     }
     private void FindCultureMembersButtonClick() {
-      InitFindCultureMembers(Window);
+      InitFindCultureMembers();
       Window.clickShow();
     }
     private static List<Actor> GetCultureFollowers(Culture selectedCulture) {
-      return World.world.units.getSimpleList().Where(unit => unit.data.culture == selectedCulture.data.id).ToList();
+      return World.world.units.getSimpleList().Where(unit => unit.culture?.id == selectedCulture.id).ToList();
     }
-    private void InitFindCultureMembers(ScrollWindow window, Culture selectedCulture = null, Action onFinishAction = null) {
+    private void InitFindCultureMembers(Culture selectedCulture = null, Action onFinishAction = null) {
       if (selectedCulture is null) {
         selectedCulture = Config.selected_culture;
       }
@@ -66,14 +66,14 @@ namespace PowerBox.Code.Features.Windows {
       RectTransform rt = SpriteHighlighter.GetComponent<RectTransform>();
       rt.sizeDelta = new Vector2(60f, 60f);
 
-      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + window.name + "/Background/Scroll View/Viewport/Content");
-      window.resetScroll();
+      GameObject content = Window.GetContentGameObject();
+      Window.resetScroll();
       List<Actor> cultureFollowers = GetCultureFollowers(selectedCulture);
       List<Action> uiActions = new List<Action>();
       content.GetComponent<RectTransform>().sizeDelta = new Vector2(0.0f, 40.0f);
-      uiActions.Add(window.resetScroll);
+      uiActions.Add(Window.resetScroll);
       uiActions.Add(content.transform.DetachChildren);
-      uiActions.Add(window.resetScroll);
+      uiActions.Add(Window.resetScroll);
       uiActions.AddRange(cultureFollowers.Select((unit, index) => (Action)(() => {
           GetFeature<UnitButtonCreator>().CreateUnitButton(unit, index, content);
           if (index % 5 == 0) {
