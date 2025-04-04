@@ -12,6 +12,7 @@ namespace PowerBox.Code.Features.Actors {
       maximCreature.icon = "iconMaximCreature";
       maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
       maximCreature.civ = false;
+      maximCreature.unit_other = true;
       maximCreature.can_attack_buildings = false;
       maximCreature.can_turn_into_zombie = false;
       maximCreature.can_be_moved_by_powers = true;
