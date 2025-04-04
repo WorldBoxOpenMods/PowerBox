@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
-using HarmonyLib;
 using NeoModLoader.api;
 using NeoModLoader.General;
+using PowerBox.Code.Features.Patches;
 using PowerBox.Code.Features.Prefabs;
 using PowerBox.Code.Scheduling;
 using UnityEngine;
@@ -13,7 +12,7 @@ using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
-    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitAvatarElement) + typeof(Harmony);
+    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitAvatarElement) + typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch);
 
     protected override ScrollWindow InitObject() {
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures");
@@ -25,24 +24,8 @@ namespace PowerBox.Code.Features.Windows {
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
-      
-      GetFeature<Harmony>().Instance.Patch(
-        AccessTools.Method(typeof(UiUnitAvatarElement), nameof(UiUnitAvatarElement.OnDisable)),
-        transpiler: new HarmonyMethod(typeof(FindAllCreaturesWindow), nameof(UiUnitAvatarElement_OnDisable_PreventSettingActorToNull))
-      );
 
       return window;
-    }
-
-    private static IEnumerable<CodeInstruction> UiUnitAvatarElement_OnDisable_PreventSettingActorToNull(IEnumerable<CodeInstruction> instructions) {
-      foreach (CodeInstruction instruction in instructions) {
-        if (instruction.opcode == OpCodes.Ldnull) {
-          yield return new CodeInstruction(OpCodes.Ldarg_0);
-          yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(UiUnitAvatarElement), nameof(UiUnitAvatarElement._actor)));
-        } else {
-          yield return instruction;
-        }
-      }
     }
     
     public void FindAllCreaturesButtonClick() {
