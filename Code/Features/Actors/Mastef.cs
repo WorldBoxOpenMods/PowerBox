@@ -11,6 +11,7 @@ namespace PowerBox.Code.Features.Actors {
       mastefCreature.icon = "iconMastefCreature";
       mastefCreature.texture_id = "t_MastefCreature";
       mastefCreature.civ = false;
+      mastefCreature.has_advanced_textures = false;
       mastefCreature.unit_other = true;
       mastefCreature.shadow = false;
       mastefCreature.traits = new List<string> {
