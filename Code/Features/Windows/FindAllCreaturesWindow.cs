@@ -100,11 +100,8 @@ namespace PowerBox.Code.Features.Windows {
           }
         }
       }
-      Button unitInfoAvatarButton = unitInfoAvatarGameObject.transform
-        .FindRecursive("Mask")
-        .FindRecursive(transform => transform.name.Contains("Avatar") /* exact name of this GO can differ post unit load because it gets renamed based on unit ID */)
-        .GetComponent<Button>();
-      unitInfoAvatarButton.onClick.AddListener(() => {
+      Button unitInfoButton = unitInfoAvatarGameObject.AddComponent<Button>();
+      unitInfoButton.onClick.AddListener(() => {
         if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
           return;
         }
