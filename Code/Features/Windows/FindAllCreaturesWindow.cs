@@ -4,15 +4,14 @@ using System.Linq;
 using NeoModLoader.api;
 using NeoModLoader.General;
 using PowerBox.Code.Features.Patches;
-using PowerBox.Code.Features.Prefabs;
+using PowerBox.Code.Features.UiHelpers;
 using PowerBox.Code.Scheduling;
+using PowerBox.Code.Utils;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public class FindAllCreaturesWindow : WindowBase<FindAllCreaturesWindow> {
-    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitAvatarElement) + typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch);
+    public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitButtonCreator) + typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch);
 
     protected override ScrollWindow InitObject() {
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures");
@@ -20,26 +19,26 @@ namespace PowerBox.Code.Features.Windows {
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
-      
+
       GameObject viewport = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport");
       RectTransform viewportRect = viewport.GetComponent<RectTransform>();
       viewportRect.sizeDelta = new Vector2(0, 17);
 
       return window;
     }
-    
+
     public void FindAllCreaturesButtonClick() {
       InitFindAllCreatures();
       Window.clickShow();
     }
-    
+
     private static List<Actor> GetAllUnits() {
       return World.world.units.getSimpleList().ToList();
     }
     private void InitFindAllCreatures(Action onFinishAction = null) {
       RectTransform rt = SpriteHighlighter.GetComponent<RectTransform>();
       rt.sizeDelta = new Vector2(60f, 60f);
-      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + Window.name + "/Background/Scroll View/Viewport/Content");
+      GameObject content = Window.GetContentGameObject();
       Window.resetScroll();
       List<Actor> units = GetAllUnits();
       List<Action> uiActions = new List<Action>();
@@ -47,9 +46,8 @@ namespace PowerBox.Code.Features.Windows {
       uiActions.Add(Window.resetScroll);
       uiActions.Add(content.transform.DetachChildren);
       uiActions.Add(Window.resetScroll);
-      uiActions.AddRange(units.Select((_, i) => i).
-        Select(index => (Action)(() => {
-          CreateUnitButton(units, index, content);
+      uiActions.AddRange(units.Select((unit, index) => (Action)(() => {
+          GetFeature<UnitButtonCreator>().CreateUnitButton(unit, index, content);
           if (index % 5 == 0) {
             // ReSharper disable once PossibleLossOfFraction
             content.GetComponent<RectTransform>().sizeDelta = new Vector2(0.0f, 40.0f * (index / 5 + 1));
@@ -64,52 +62,6 @@ namespace PowerBox.Code.Features.Windows {
         uiActions.Add(onFinishAction);
       }
       Scheduler.Instance.Schedule(new Schedule(10, uiActions.ToArray()));
-    }
-    private void CreateUnitButton(IReadOnlyList<Actor> units, int index, GameObject content) {
-      Actor unit = units[index];
-      if (unit?.asset is null) {
-        return;
-      }
-      GameObject unitInfo = new GameObject {
-        name = $"unit_{index}_info",
-        transform = {
-          parent = content.transform,
-          // ReSharper disable once PossibleLossOfFraction
-          localPosition = new Vector3(50.0f + 40 * (index % 5), -20.0f + (index / 5) * -40.0f, 0.0f),
-          localScale = new Vector3(0.9f, 0.9f, 0.9f)
-        }
-      };
-      GameObject unitInfoAvatarGameObject = UnityEngine.Object.Instantiate(GetFeature<UnitAvatarElement>().Prefab, unitInfo.transform);
-      UiUnitAvatarElement unitInfoAvatar = unitInfoAvatarGameObject.GetComponent<UiUnitAvatarElement>();
-      unitInfoAvatar.Start();
-      unitInfoAvatar.show(unit);
-      unitInfoAvatarGameObject.name = $"unit_{index}_avatar";
-      unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
-      List<GameObject> objectsToCheck = new List<GameObject> { unitInfo };
-      {
-        GameObject go;
-        // ReSharper disable once AssignmentInConditionalExpression
-        while (go = objectsToCheck.FirstOrDefault()) {
-          objectsToCheck.Remove(go);
-          objectsToCheck.AddRange(from Transform child in go.transform select child.gameObject);
-          Button gob = go.GetComponent<Button>();
-          if (gob != null) {
-            for (int i = 0; i < gob.onClick.GetPersistentEventCount(); i++) {
-              gob.onClick.SetPersistentListenerState(i, UnityEventCallState.Off);
-            }
-            gob.onClick.RemoveAllListeners();
-          }
-        }
-      }
-      Button unitInfoButton = unitInfoAvatarGameObject.AddComponent<Button>();
-      unitInfoButton.onClick.AddListener(() => {
-        if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
-          return;
-        }
-        SelectedUnit.select(unit);
-        ScrollWindow.showWindow(S_Window.unit);
-      });
-      unitInfoAvatar.gameObject.SetActive(true);
     }
   }
 }

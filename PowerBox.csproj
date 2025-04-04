@@ -111,6 +111,7 @@
       <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
       <Compile Include="Code\Features\NameGenerators\Maxim.cs" />
       <Compile Include="Code\Features\Prefabs\UnitAvatarElement.cs" />
+      <Compile Include="Code\Features\UiHelpers\UnitButtonCreator.cs" />
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
       <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
@@ -123,6 +124,7 @@
       <Compile Include="Code\Utils\AssetUtils.cs" />
       <Compile Include="Code\Utils\BoatUtils.cs" />
       <Compile Include="Code\Utils\PowerButtonUtils.cs" />
+      <Compile Include="Code\Utils\ScrollWindowUtils.cs" />
       <Compile Include="Code\Utils\WhisperUtils.cs" />
       <!--<Compile Include="OutdatedNml.cs" /> excluded from compilation so that it's only set off when the mod is loaded on old NML versions -->
     </ItemGroup>
