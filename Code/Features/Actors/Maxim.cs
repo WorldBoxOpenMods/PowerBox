@@ -33,6 +33,7 @@ namespace PowerBox.Code.Features.Actors {
         "wise"
       };
       maximCreature.name_template_unit = GetFeature<NameGenerators.Maxim>().Object.id;
+      AssetManager.actor_library.loadTexturesAndSprites(maximCreature);
       return maximCreature;
     }
   }
