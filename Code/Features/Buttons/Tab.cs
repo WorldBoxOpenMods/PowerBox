@@ -1,7 +1,6 @@
 using JetBrains.Annotations;
 using NeoModLoader.General;
 using NeoModLoader.General.UI.Tab;
-using NeoModLoader.api;
 using NeoModLoader.api.features;
 using PowerBox.Code.Utils;
 using UnityEngine;

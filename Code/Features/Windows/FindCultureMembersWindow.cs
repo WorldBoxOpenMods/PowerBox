@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using HarmonyLib;
 using NeoModLoader.api;
@@ -29,6 +30,8 @@ namespace PowerBox.Code.Features.Windows {
       );
       return window;
     }
+    
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     private static void HookUpMembersWindow(StatsWindow __instance) {
       if (__instance is CultureWindow cultureWindow) {
         GameObject cultureObject = cultureWindow.gameObject;

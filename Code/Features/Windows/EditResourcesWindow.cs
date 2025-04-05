@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -44,6 +45,7 @@ namespace PowerBox.Code.Features.Windows {
       }
     }
 
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
     private static void HookUpMembersWindow(StatsWindow __instance) {
       if (__instance is CityWindow cityWindow) {
         Transform cityWindowContent = cityWindow.transform.FindRecursive("Background");
