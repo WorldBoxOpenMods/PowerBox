@@ -28,7 +28,7 @@ namespace PowerBox.Code.Features.GodPowers {
       return makeColony;
     }
     private static void ColonyCreationAction(WorldTile pTile = null, string pDropID = null) {
-      foreach (Actor actor in from Actor a in Finder.getUnitsFromChunk(pTile, 4) where a.isAlive() && !a.asset.is_boat select a) {
+      foreach (Actor actor in from Actor a in Finder.getUnitsFromChunk(pTile, 1, 2) where a.isAlive() && !a.asset.is_boat select a) {
         actor.startShake();
         actor.startColorEffect();
 
@@ -57,11 +57,11 @@ namespace PowerBox.Code.Features.GodPowers {
             WorldLog.logNewCity(city1);
           }
         } else {
-          if (pTile != null && actor.city != pTile.zone.city) {
+          if (pTile != null && actor.city != actor.current_tile.zone.city) {
             actor.city?.eventUnitRemoved(actor);
-            actor.city = pTile.zone.city;
-            pTile.zone.city.eventUnitAdded(actor);
-            Kingdom kingdomN = pTile.zone.city.kingdom;
+            actor.city = actor.current_tile.zone.city;
+            actor.current_tile.zone.city.eventUnitAdded(actor);
+            Kingdom kingdomN = actor.current_tile.zone.city.kingdom;
             actor.kingdom = kingdomN;
           }
         }
