@@ -21,6 +21,7 @@ namespace PowerBox.Code.Features.GodPowers {
         hold_action = true,
         unselect_when_window = true,
         drop_id = addToClanDrop.id,
+        cached_drop_asset = addToClanDrop,
         force_map_mode = MetaType.Clan,
         click_power_action = (pTile, pPower) => _targetClan != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetClan(pTile, pPower),
         click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPowerForDropsFull

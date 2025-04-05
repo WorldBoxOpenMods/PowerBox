@@ -22,6 +22,7 @@ namespace PowerBox.Code.Features.GodPowers {
         hold_action = true,
         unselect_when_window = true,
         drop_id = makeColonyDrop.id,
+        cached_drop_asset = makeColonyDrop,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
       return makeColony;

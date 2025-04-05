@@ -21,6 +21,7 @@ namespace PowerBox.Code.Features.GodPowers {
         hold_action = true,
         unselect_when_window = true,
         drop_id = addToCultureDrop.id,
+        cached_drop_asset = addToCultureDrop,
         force_map_mode = MetaType.Culture,
         click_power_action = (pTile, pPower) => _targetCulture != null ? AssetManager.powers.spawnDrops(pTile, pPower) : TryGetCulture(pTile, pPower),
         click_power_brush_action = AssetManager.powers.loopWithCurrentBrushPowerForDropsFull
