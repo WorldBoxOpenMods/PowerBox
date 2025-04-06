@@ -11,7 +11,7 @@ namespace PowerBox.Code.Features.GodPowers {
       };
     }
     private static bool ClanCreationAction(WorldTile pTile, string pPowerId) {
-      Actor newClanLeader = Finder.getUnitsFromChunk(pTile, 3).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv())?.a;
+      Actor newClanLeader = Finder.getUnitsFromChunk(pTile, 1, 2).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv());
       if (newClanLeader == null) {
         return false;
       }

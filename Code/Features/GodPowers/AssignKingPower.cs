@@ -18,7 +18,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (kingdom == null) {
         return false;
       }
-      Actor newKing = Finder.getUnitsFromChunk(pTile, 3).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv() && actor.kingdom == kingdom)?.a;
+      Actor newKing = Finder.getUnitsFromChunk(pTile, 1, 2).FirstOrDefault(actor => actor.isAlive() && actor.kingdom.isCiv() && actor.kingdom == kingdom);
       if (newKing == null) {
         return false;
       }
