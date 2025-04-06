@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.Windows {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(UnitButtonCreator) + typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch);
 
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_all_creatures", "powerbox_find_all_creatures", "iconbrowse2");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_all_creatures");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
 

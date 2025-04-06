@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class AboutPowerboxWindow : WindowBase<AboutPowerboxWindow> {
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_about_mod", "powerbox_about_window");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_about_mod", "powerbox_about_window", "powerbox_icon");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_about_window");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);

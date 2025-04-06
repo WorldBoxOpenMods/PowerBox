@@ -17,7 +17,7 @@ namespace PowerBox.Code.Features.Windows {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony) + typeof(UnitButtonCreator) + typeof(PreventSettingActorToNullInUiUnitAvatarOnDisablePatch);
 
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_culture_members", "powerbox_find_culture_members");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_find_culture_members", "powerbox_find_culture_members", "iconculturezones");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_find_culture_members");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);

@@ -16,7 +16,7 @@ namespace PowerBox.Code.Features.Windows {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
     
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_resources", "powerbox_edit_resources");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_resources", "powerbox_edit_resources", "res_clear");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_resources");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       GetFeature<Harmony>().Instance.Patch(
