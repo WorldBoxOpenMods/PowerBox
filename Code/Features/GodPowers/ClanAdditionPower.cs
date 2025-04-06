@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     private static void AddUnitToClanAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
       pTile.doUnits((a) => AddUnitToClan(a));
-      if (World.world.drop_manager._drops.Where(d => d._asset.id == pDropID).Count(d => !d._landed) <= 1) {
+      if (World.world.drop_manager._drops.Where(d => d?._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetClan = null;
       }
     }
