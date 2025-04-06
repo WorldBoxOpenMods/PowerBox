@@ -113,7 +113,6 @@
       <Compile Include="Code\Features\Prefabs\UnitAvatarElement.cs" />
       <Compile Include="Code\Features\UiHelpers\UnitButtonCreator.cs" />
       <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
-      <Compile Include="Code\Features\Windows\EditFavoriteFoodWindow.cs" />
       <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
       <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
