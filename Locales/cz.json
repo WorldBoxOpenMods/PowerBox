@@ -109,5 +109,7 @@
   "powerbox_find_all_creatures": "查找所有生物",
   "powerbox_find_all_creatures Description": "可以查看此世界的所有生物",
   "powerbox_edit_culture_tech_button": "编辑文明知识",
-  "powerbox_edit_culture_tech_button Description": "为该文明选择知识"
+  "powerbox_edit_culture_tech_button Description": "为该文明选择知识",
+
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
 }

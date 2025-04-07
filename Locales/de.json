@@ -109,5 +109,7 @@
   "powerbox_find_all_creatures": "Fine alle Kreaturen",
   "powerbox_find_all_creatures Description": "Finde alle Kreaturen deiner Welt",
   "powerbox_edit_culture_tech_button": "Kulturtechnologie bearbeiten",
-  "powerbox_edit_culture_tech_button Description": "Bearbeite die Technologie einer Kultur"
+  "powerbox_edit_culture_tech_button Description": "Bearbeite die Technologie einer Kultur",
+
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
 }

@@ -109,5 +109,7 @@
   "powerbox_find_all_creatures": "Знайти всіх створінь",
   "powerbox_find_all_creatures Description": "Знайди всіх створінь у цьому світі.",
   "powerbox_edit_culture_tech_button": "Змінити технології культури",
-  "powerbox_edit_culture_tech_button Description": "Змінює технології культури на ваш вибір."
+  "powerbox_edit_culture_tech_button Description": "Змінює технології культури на ваш вибір.",
+
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
 }

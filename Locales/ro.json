@@ -109,5 +109,7 @@
   "powerbox_find_all_creatures": "Găsește Toate Creaturile",
   "powerbox_find_all_creatures Description": "Găsește toate creaturile în lumea ta",
   "powerbox_edit_culture_tech_button": "Editează tehnologia unei culturi",
-  "powerbox_edit_culture_tech_button Description": "Editează tehnologia unei culturi alese."
+  "powerbox_edit_culture_tech_button Description": "Editează tehnologia unei culturi alese.",
+
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
 }
