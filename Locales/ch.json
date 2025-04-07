@@ -1,4 +1,6 @@
 {
+  "This mod adds new powers to the new god's powers tab!_ch": "這個模組在新欄中添加了更多新權能！",
+
   "powerbox_change_modifier_0": "第一個修飾詞條: {0}",
   "powerbox_change_modifier_1": "第二個修飾詞條: {0}",
   "powerbox_change_modifier_2": "第三個修飾詞條: {0}",
@@ -111,5 +113,5 @@
   "powerbox_edit_culture_tech_button": "編輯文化知識",
   "powerbox_edit_culture_tech_button Description": "編輯該文化的知識",
 
-  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
+  "powerbox_edit_resources_no_storage_error": "選定城市無儲物建築，請靜待建造完畢"
 }
