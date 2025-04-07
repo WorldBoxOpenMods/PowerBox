@@ -20,29 +20,10 @@ namespace PowerBox.Code.Features.Windows {
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_resources");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       GetFeature<Harmony>().Instance.Patch(
-        AccessTools.Method(typeof(CityWindow), nameof(CityWindow.OnDisable)),
-        transpiler: new HarmonyMethod(AccessTools.Method(typeof(EditResourcesWindow), nameof(StopOnDisableFromSettingSelectedCityToNull)))
-      );
-      GetFeature<Harmony>().Instance.Patch(
         AccessTools.Method(typeof(StatsWindow), nameof(StatsWindow.create)),
         postfix: new HarmonyMethod(typeof(EditResourcesWindow), nameof(HookUpMembersWindow))
       );
       return window;
-    }
-    
-    private static IEnumerable<CodeInstruction> StopOnDisableFromSettingSelectedCityToNull(IEnumerable<CodeInstruction> instructions) {
-      bool foundNullSet = false;
-      foreach (CodeInstruction instruction in instructions) {
-        if (instruction.opcode == OpCodes.Ldnull) {
-          foundNullSet = true;
-          continue;
-        }
-        if (foundNullSet && instruction.opcode == OpCodes.Stsfld && (FieldInfo)instruction.operand == typeof(Config).GetField(nameof(Config.selected_city))) {
-          continue;
-        }
-        foundNullSet = false;
-        yield return instruction;
-      }
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
