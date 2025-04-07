@@ -109,7 +109,7 @@ namespace PowerBox.Code.Features.Windows {
 
     private static void CheckInput(NameInput text, Asset asset, List<Building> storages) {
       if (storages.Count == 0) {
-        WorldTip.showNow("powerbox_edit_resources_no_storage_error");
+        WorldTip.showNow("powerbox_edit_resources_no_storage_error", true, "top");
         return;
       }
       if (int.TryParse(text.textField.text, out int number)) {
