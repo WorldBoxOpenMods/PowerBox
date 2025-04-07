@@ -57,7 +57,7 @@ namespace PowerBox.Code.Features.Windows {
 
       rt.sizeDelta = new Vector2(60f, 60f);
 
-      GameObject content = GameObject.Find("/Canvas Container Main/Canvas - Windows/windows/" + Window.name + "/Background/Scroll View/Viewport/Content");
+      GameObject content = Window.GetContentGameObject();
 
       List<ResourceAsset> resourceArray = AssetManager.resources.dict.Values.ToList();
 
