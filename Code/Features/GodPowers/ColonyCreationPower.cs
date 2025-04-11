@@ -12,7 +12,7 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = ColonyCreationAction
       };
       AssetManager.drops.add(makeColonyDrop);
-      
+
       GodPower makeColony = new GodPower {
         id = makeColonyDrop.id,
         name = makeColonyDrop.id,
@@ -34,7 +34,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
         if (actor.current_tile.zone.city == null) {
           if (actor.kingdom.isCiv() || actor.kingdom.isNomads()) {
-            
+
             Kingdom kingdom = actor.kingdom;
             MapBox world = MapBox.instance;
 
@@ -42,7 +42,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
             if (kingdom != null && kingdom.isNomads())
               kingdom = null;
-            
+
             City city1 = world.cities.buildNewCity(actor, zone);
 
             if (city1 == null)

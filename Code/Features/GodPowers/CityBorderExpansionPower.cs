@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       return expandCityBorders;
     }
-    
+
     private static City _toCityZone;
     private static bool CityBorderExpansionAction(WorldTile pTile = null, string pPowerId = null) {
       if (pTile?.zone.city != null) {

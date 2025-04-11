@@ -12,7 +12,7 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = AddUnitToCultureAction
       };
       AssetManager.drops.add(addToCultureDrop);
-      
+
       GodPower addToCulture = new GodPower {
         id = addToCultureDrop.id,
         name = addToCultureDrop.id,
@@ -29,7 +29,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToCulture;
     }
-    
+
     private static Culture _targetCulture;
     private static bool TryGetCulture(WorldTile pTile = null, GodPower _ = null) {
       Culture targetCulture = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasCulture()).Select(a => a.culture).FirstOrDefault();

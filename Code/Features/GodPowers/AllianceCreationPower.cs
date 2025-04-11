@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       return createAlliance;
     }
-    
+
     private static bool AllianceCreationAction(WorldTile pTile, string pPowerID) {
       City city = pTile.zone.city;
       if (city == null) {

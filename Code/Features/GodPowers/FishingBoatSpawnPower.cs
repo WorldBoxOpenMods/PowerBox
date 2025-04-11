@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.GodPowers {
         sound_drop = "event:/SFX/DROPS/DropRainGamma"
       };
       AssetManager.drops.add(spawnFishingBoatDrop);
-      
+
       GodPower spawnFishingBoat = new GodPower {
         id = spawnFishingBoatDrop.id,
         name = spawnFishingBoatDrop.id,

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class BurgerSpiderCloudSpawnPower : ModAssetFeature<GodPower> {
-    public override ModFeatureRequirementList RequiredModFeatures => new List<Type> { typeof(BurgerSpiderSpawnPower) };
+    public override ModFeatureRequirementList RequiredModFeatures => new List<Type> {typeof(BurgerSpiderSpawnPower)};
 
     protected override GodPower InitObject() {
       DropAsset burgerSpiderCloudDrop = new DropAsset {
@@ -41,13 +41,13 @@ namespace PowerBox.Code.Features.GodPowers {
         hold_action = true,
         show_tool_sizes = false,
         unselect_when_window = true,
-        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile, pParam1: burgerSpiderCloud.id)
+        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile, burgerSpiderCloud.id)
       };
 
       burgerSpiderCloud.cached_sprites = burgerSpiderCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null).ToArray();
       return spawnBurgerSpiderCloud;
     }
-    
+
     private void BurgerSpiderSpawnAction(WorldTile pTile = null, string pDropID = null) {
       GetFeature<BurgerSpiderSpawnPower>().Object.click_action(pTile, GetFeature<BurgerSpiderSpawnPower>().Object.id);
     }

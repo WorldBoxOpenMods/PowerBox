@@ -30,7 +30,7 @@ namespace PowerBox.Code.Features.Windows {
       );
       return window;
     }
-    
+
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     private static void HookUpMembersWindow(StatsWindow __instance) {
       if (__instance is CultureWindow cultureWindow) {

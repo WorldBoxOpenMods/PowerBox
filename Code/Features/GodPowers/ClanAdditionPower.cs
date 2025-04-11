@@ -12,7 +12,7 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = AddUnitToClanAction
       };
       AssetManager.drops.add(addToClanDrop);
-      
+
       GodPower addToClan = new GodPower {
         id = addToClanDrop.id,
         name = addToClanDrop.id,
@@ -29,7 +29,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToClan;
     }
-    
+
     private static Clan _targetClan;
     private static bool TryGetClan(WorldTile pTile = null, GodPower _ = null) {
       if (pTile?.zone == null) return false;

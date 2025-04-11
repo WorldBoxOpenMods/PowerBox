@@ -4,7 +4,7 @@ namespace PowerBox.Code.Utils {
       Config.whisper_A = null;
       Config.whisper_B = null;
     }
-    
+
     public static bool TryResetWhisperKingdoms() {
       ResetWhisperKingdoms();
       return true;

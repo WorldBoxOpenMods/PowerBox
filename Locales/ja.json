@@ -110,6 +110,5 @@
   "powerbox_find_all_creatures Description": "世界のすべての生物を見つけます",
   "powerbox_edit_culture_tech_button": "文化技術を編集",
   "powerbox_edit_culture_tech_button Description": "文化の技術を編集します",
-
   "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
 }

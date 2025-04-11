@@ -13,13 +13,13 @@ namespace PowerBox.Code.Features.GodPowers {
         click_special_action = NonRandomFriendshipAction
       };
     }
-    
+
     private static bool NonRandomFriendshipAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile?.zone.city == null)
         return false;
 
       Kingdom kingdom = pTile.zone.city.kingdom;
-      
+
       if (Config.whisper_A == null) {
         Config.whisper_A = kingdom;
         return false;

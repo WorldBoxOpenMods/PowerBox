@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.GodPowers {
         sound_drop = "event:/SFX/DROPS/DropRainGamma"
       };
       AssetManager.drops.add(spawnTradingBoatDrop);
-      
+
       GodPower spawnTradingBoat = new GodPower {
         id = spawnTradingBoatDrop.id,
         name = spawnTradingBoatDrop.id,
@@ -29,7 +29,7 @@ namespace PowerBox.Code.Features.GodPowers {
         cached_drop_asset = spawnTradingBoatDrop,
         click_power_action = (pTile, pPower) => AssetManager.powers.spawnDrops(pTile, pPower)
       };
-      
+
       return spawnTradingBoat;
     }
   }

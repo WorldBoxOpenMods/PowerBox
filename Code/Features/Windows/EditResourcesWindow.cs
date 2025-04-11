@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.Windows {
 
   internal class EditResourcesWindow : WindowBase<EditResourcesWindow> {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(Harmony);
-    
+
     protected override ScrollWindow InitObject() {
       ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_edit_resources", "powerbox_edit_resources", "res_clear");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_edit_resources");
@@ -93,7 +93,7 @@ namespace PowerBox.Code.Features.Windows {
       ButtonResource resourceButton = UnityEngine.Object.Instantiate(resourceButtonPref, parent);
 
       List<Building> storages = Config.selected_city.storages.Where(s => s.isUsable()).ToList();
-      
+
       resourceButton.load(asset, storages.Select(s => s.resources.get(asset.id)).Sum());
       resourceButton.transform.Find("Text").gameObject.SetActive(false);
       resourceButton.transform.localPosition = Vector3.zero;

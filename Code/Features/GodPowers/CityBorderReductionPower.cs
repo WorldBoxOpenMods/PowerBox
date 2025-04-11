@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       return reduceCityBorders;
     }
-    
+
     private static bool CityBorderReductionAction(WorldTile pTile = null, string pPowerId = null) {
       pTile?.zone.city?.removeZone(pTile.zone);
       return true;

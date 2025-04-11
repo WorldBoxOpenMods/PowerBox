@@ -4,7 +4,7 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Actors {
   public class Mastef : ModAssetFeature<ActorAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => new[] { typeof(NameGenerators.Mastef), typeof(Maxim) };
+    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(NameGenerators.Mastef), typeof(Maxim)};
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset mastefCreature = AssetManager.actor_library.clone("powerbox_mastef", GetFeature<Maxim>().Object.id);

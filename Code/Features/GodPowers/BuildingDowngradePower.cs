@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
         action_landed = BuildingDowngradeAction
       };
       AssetManager.drops.add(downgradeBuildingDrop);
-      
+
       GodPower downgradeBuilding = new GodPower {
         id = downgradeBuildingDrop.id,
         hold_action = true,
@@ -31,7 +31,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return downgradeBuilding;
     }
-    
+
     private static void BuildingDowngradeAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile?.building != null) {
         BuildingAsset pTemplate = AssetManager.buildings.list.FirstOrDefault(asset => asset.upgrade_to == pTile.building.asset.id);

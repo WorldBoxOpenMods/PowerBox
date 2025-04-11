@@ -36,157 +36,157 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Include="Code\Features\Actors\BurgerSpider.cs" />
-      <Compile Include="Code\Features\Actors\Mastef.cs" />
-      <Compile Include="Code\Features\Actors\Maxim.cs" />
-      <Compile Include="Code\Features\Buttons\AboutModButton.cs" />
-      <Compile Include="Code\Features\Buttons\AllianceCreationButton.cs" />
-      <Compile Include="Code\Features\Buttons\AssignCapitalButton.cs" />
-      <Compile Include="Code\Features\Buttons\AssignKingButton.cs" />
-      <Compile Include="Code\Features\Buttons\AssignLeaderButton.cs" />
-      <Compile Include="Code\Features\Buttons\BloodRainCloudSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\BuildingDowngradeButton.cs" />
-      <Compile Include="Code\Features\Buttons\BuildingUpgradeButton.cs" />
-      <Compile Include="Code\Features\Buttons\BurgerSpiderCloudSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\BurgerSpiderSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\CityBorderExpansionButton.cs" />
-      <Compile Include="Code\Features\Buttons\CityBorderReductionButton.cs" />
-      <Compile Include="Code\Features\Buttons\CityConversionButton.cs" />
-      <Compile Include="Code\Features\Buttons\ClanAdditionButton.cs" />
-      <Compile Include="Code\Features\Buttons\ClanCreationButton.cs" />
-      <Compile Include="Code\Features\Buttons\ColonyCreationButton.cs" />
-      <Compile Include="Code\Features\Buttons\CultureAdditionButton.cs" />
-      <Compile Include="Code\Features\Buttons\CultureCreationButton.cs" />
-      <Compile Include="Code\Features\Buttons\CultureDuplicationButton.cs" />
-      <Compile Include="Code\Features\Buttons\DebugMenuButton.cs" />
-      <Compile Include="Code\Features\Buttons\FindAllCreaturesButton.cs" />
-      <Compile Include="Code\Features\Buttons\FishingBoatSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\GregSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\MastefSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\MaximSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\MushAnimalSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\MushCreatureSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\NonRandomFriendshipButton.cs" />
-      <Compile Include="Code\Features\Buttons\Tab.cs" />
-      <Compile Include="Code\Features\Buttons\TradingBoatSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\TumorAnimalSpawnButton.cs" />
-      <Compile Include="Code\Features\Buttons\TumorCreatureSpawnButton.cs" />
-      <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs" />
-      <Compile Include="Code\Features\GodPowers\AssignCapitalPower.cs" />
-      <Compile Include="Code\Features\GodPowers\AssignKingPower.cs" />
-      <Compile Include="Code\Features\GodPowers\AssignLeaderPower.cs" />
-      <Compile Include="Code\Features\GodPowers\BloodRainCloudSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\BuildingDowngradePower.cs" />
-      <Compile Include="Code\Features\GodPowers\BuildingUpgradePower.cs" />
-      <Compile Include="Code\Features\GodPowers\BurgerSpiderSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\BurgerSpiderCloudSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CityBorderExpansionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CityBorderReductionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CityConversionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\ClanAdditionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\ClanCreationPower.cs" />
-      <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CultureCreationPower.cs" />
-      <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs" />
-      <Compile Include="Code\Features\GodPowers\FishingBoatSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\GregSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\MastefSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\MaximSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\MushAnimalSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\MushCreatureSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\NonRandomFriendshipPower.cs" />
-      <Compile Include="Code\Features\GodPowers\TradingBoatSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs" />
-      <Compile Include="Code\Features\GodPowers\TumorCreatureSpawnPower.cs" />
-      <Compile Include="Code\Features\Harmony.cs" />
-      <Compile Include="Code\Features\Kingdoms\BurgerKingdom.cs" />
-      <Compile Include="Code\Features\Kingdoms\Developers.cs" />
-      <Compile Include="Code\Features\Patches\PreventSettingActorToNullInUiUnitAvatarOnDisablePatch.cs" />
-      <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfAllianceLine.cs" />
-      <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfPeaceLine.cs" />
-      <Compile Include="Code\Features\NameGenerators\BurgerSpider.cs" />
-      <Compile Include="Code\Features\NameGenerators\Mastef.cs" />
-      <Compile Include="Code\Features\NameGenerators\Maxim.cs" />
-      <Compile Include="Code\Features\Prefabs\UnitAvatarElement.cs" />
-      <Compile Include="Code\Features\UiHelpers\UnitButtonCreator.cs" />
-      <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
-      <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
-      <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
-      <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
-      <Compile Include="Code\Features\Windows\WindowBase.cs" />
-      <Compile Include="Code\Scheduling\Schedule.cs" />
-      <Compile Include="Code\Scheduling\Scheduler.cs" />
-      <Compile Include="Code\PowerBox.cs" />
-      <Compile Include="Code\Utils\AssetUtils.cs" />
-      <Compile Include="Code\Utils\BoatUtils.cs" />
-      <Compile Include="Code\Utils\PowerButtonUtils.cs" />
-      <Compile Include="Code\Utils\ScrollWindowUtils.cs" />
-      <Compile Include="Code\Utils\WhisperUtils.cs" />
-      <!--<Compile Include="OutdatedNml.cs" /> excluded from compilation so that it's only set off when the mod is loaded on old NML versions -->
+        <Compile Include="Code\Features\Actors\BurgerSpider.cs"/>
+        <Compile Include="Code\Features\Actors\Mastef.cs"/>
+        <Compile Include="Code\Features\Actors\Maxim.cs"/>
+        <Compile Include="Code\Features\Buttons\AboutModButton.cs"/>
+        <Compile Include="Code\Features\Buttons\AllianceCreationButton.cs"/>
+        <Compile Include="Code\Features\Buttons\AssignCapitalButton.cs"/>
+        <Compile Include="Code\Features\Buttons\AssignKingButton.cs"/>
+        <Compile Include="Code\Features\Buttons\AssignLeaderButton.cs"/>
+        <Compile Include="Code\Features\Buttons\BloodRainCloudSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\BuildingDowngradeButton.cs"/>
+        <Compile Include="Code\Features\Buttons\BuildingUpgradeButton.cs"/>
+        <Compile Include="Code\Features\Buttons\BurgerSpiderCloudSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\BurgerSpiderSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CityBorderExpansionButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CityBorderReductionButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CityConversionButton.cs"/>
+        <Compile Include="Code\Features\Buttons\ClanAdditionButton.cs"/>
+        <Compile Include="Code\Features\Buttons\ClanCreationButton.cs"/>
+        <Compile Include="Code\Features\Buttons\ColonyCreationButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CultureAdditionButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CultureCreationButton.cs"/>
+        <Compile Include="Code\Features\Buttons\CultureDuplicationButton.cs"/>
+        <Compile Include="Code\Features\Buttons\DebugMenuButton.cs"/>
+        <Compile Include="Code\Features\Buttons\FindAllCreaturesButton.cs"/>
+        <Compile Include="Code\Features\Buttons\FishingBoatSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\GregSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\MastefSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\MaximSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\MushAnimalSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\MushCreatureSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\NonRandomFriendshipButton.cs"/>
+        <Compile Include="Code\Features\Buttons\Tab.cs"/>
+        <Compile Include="Code\Features\Buttons\TradingBoatSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\TumorAnimalSpawnButton.cs"/>
+        <Compile Include="Code\Features\Buttons\TumorCreatureSpawnButton.cs"/>
+        <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\AssignCapitalPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\AssignKingPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\AssignLeaderPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\BloodRainCloudSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\BuildingDowngradePower.cs"/>
+        <Compile Include="Code\Features\GodPowers\BuildingUpgradePower.cs"/>
+        <Compile Include="Code\Features\GodPowers\BurgerSpiderSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\BurgerSpiderCloudSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CityBorderExpansionPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CityBorderReductionPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CityConversionPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\ClanAdditionPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\ClanCreationPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CultureCreationPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\FishingBoatSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\GregSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\MastefSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\MaximSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\MushAnimalSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\MushCreatureSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\NonRandomFriendshipPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\TradingBoatSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs"/>
+        <Compile Include="Code\Features\GodPowers\TumorCreatureSpawnPower.cs"/>
+        <Compile Include="Code\Features\Harmony.cs"/>
+        <Compile Include="Code\Features\Kingdoms\BurgerKingdom.cs"/>
+        <Compile Include="Code\Features\Kingdoms\Developers.cs"/>
+        <Compile Include="Code\Features\Patches\PreventSettingActorToNullInUiUnitAvatarOnDisablePatch.cs"/>
+        <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfAllianceLine.cs"/>
+        <Compile Include="Code\Features\QuantumSpriteAssets\WhisperOfPeaceLine.cs"/>
+        <Compile Include="Code\Features\NameGenerators\BurgerSpider.cs"/>
+        <Compile Include="Code\Features\NameGenerators\Mastef.cs"/>
+        <Compile Include="Code\Features\NameGenerators\Maxim.cs"/>
+        <Compile Include="Code\Features\Prefabs\UnitAvatarElement.cs"/>
+        <Compile Include="Code\Features\UiHelpers\UnitButtonCreator.cs"/>
+        <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs"/>
+        <Compile Include="Code\Features\Windows\EditResourcesWindow.cs"/>
+        <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs"/>
+        <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs"/>
+        <Compile Include="Code\Features\Windows\WindowBase.cs"/>
+        <Compile Include="Code\Scheduling\Schedule.cs"/>
+        <Compile Include="Code\Scheduling\Scheduler.cs"/>
+        <Compile Include="Code\PowerBox.cs"/>
+        <Compile Include="Code\Utils\AssetUtils.cs"/>
+        <Compile Include="Code\Utils\BoatUtils.cs"/>
+        <Compile Include="Code\Utils\PowerButtonUtils.cs"/>
+        <Compile Include="Code\Utils\ScrollWindowUtils.cs"/>
+        <Compile Include="Code\Utils\WhisperUtils.cs"/>
+        <!--<Compile Include="OutdatedNml.cs" /> excluded from compilation so that it's only set off when the mod is loaded on old NML versions -->
     </ItemGroup>
     <ItemGroup>
-      <Content Include=".editorconfig" />
-      <Content Include=".gitignore" />
-      <Content Include="assemble_mod_distributable.sh" />
-      <Content Include="EmbeddedResources\description.txt" />
-      <Content Include="Locales\ch.json" />
-      <Content Include="Locales\cz.json" />
-      <Content Include="Locales\de.json" />
-      <Content Include="Locales\en.json" />
-      <Content Include="Locales\es.json" />
-      <Content Include="Locales\fi.json" />
-      <Content Include="Locales\ja.json" />
-      <Content Include="Locales\ro.json" />
-      <Content Include="Locales\ru.json" />
-      <Content Include="Locales\ua.json" />
-      <Content Include="mod.json" />
+        <Content Include=".editorconfig"/>
+        <Content Include=".gitignore"/>
+        <Content Include="assemble_mod_distributable.sh"/>
+        <Content Include="EmbeddedResources\description.txt"/>
+        <Content Include="Locales\ch.json"/>
+        <Content Include="Locales\cz.json"/>
+        <Content Include="Locales\de.json"/>
+        <Content Include="Locales\en.json"/>
+        <Content Include="Locales\es.json"/>
+        <Content Include="Locales\fi.json"/>
+        <Content Include="Locales\ja.json"/>
+        <Content Include="Locales\ro.json"/>
+        <Content Include="Locales\ru.json"/>
+        <Content Include="Locales\ua.json"/>
+        <Content Include="mod.json"/>
     </ItemGroup>
     <ItemGroup>
-      <Reference Include="0Harmony">
-        <HintPath>..\Libraries\0Harmony.dll</HintPath>
-      </Reference>
-      <Reference Include="Assembly-CSharp">
-        <HintPath>..\Libraries\Assembly-CSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="DOTween">
-        <HintPath>..\Libraries\DOTween.dll</HintPath>
-      </Reference>
-      <Reference Include="NeoModLoader">
-        <HintPath>..\Libraries\NeoModLoader.dll</HintPath>
-      </Reference>
-      <Reference Include="Newtonsoft.Json">
-        <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine">
-        <HintPath>..\Libraries\UnityEngine.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.ImageConversionModule">
-        <HintPath>..\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.IMGUIModule">
-        <HintPath>..\Libraries\UnityEngine.IMGUIModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.InputLegacyModule">
-        <HintPath>..\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.TextRenderingModule">
-        <HintPath>..\Libraries\UnityEngine.TextRenderingModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.UI">
-        <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.UIModule">
-        <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
-      </Reference>
+        <Reference Include="0Harmony">
+            <HintPath>..\Libraries\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\Libraries\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="DOTween">
+            <HintPath>..\Libraries\DOTween.dll</HintPath>
+        </Reference>
+        <Reference Include="NeoModLoader">
+            <HintPath>..\Libraries\NeoModLoader.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\Libraries\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>..\Libraries\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\Libraries\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <HintPath>..\Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath>..\Libraries\UnityEngine.IMGUIModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath>..\Libraries\UnityEngine.InputLegacyModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath>..\Libraries\UnityEngine.TextRenderingModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath>..\Libraries\UnityEngine.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath>..\Libraries\UnityEngine.UIModule.dll</HintPath>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Code\LoadingSystem\" />
+        <Folder Include="Code\LoadingSystem\"/>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -197,6 +197,6 @@
     </Target>
     -->
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="sh ./assemble_mod_distributable.sh" Condition=" '$(OS)' == 'UNIX' " />
+        <Exec Command="sh ./assemble_mod_distributable.sh" Condition=" '$(OS)' == 'UNIX' "/>
     </Target>
 </Project>

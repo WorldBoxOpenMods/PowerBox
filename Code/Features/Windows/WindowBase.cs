@@ -46,7 +46,9 @@ namespace PowerBox.Code.Features.Windows {
       highLight.GetComponent<Image>().color = enable ? new Color(Red, Green, Blue, Alpha) : new Color(Red, Green, Blue, 0);
     }
 
-    protected static void HighlightButton(bool enable, GameObject highLight) => HighlightTrait(enable, highLight);
+    protected static void HighlightButton(bool enable, GameObject highLight) {
+      HighlightTrait(enable, highLight);
+    }
 
     protected void UnhighlightAll(GameObject content) {
       for (int i = 0; i < content.transform.childCount; i++) {
@@ -61,9 +63,9 @@ namespace PowerBox.Code.Features.Windows {
     protected float StartYPos = -22.5f;
     protected float YStep = -28.5f;
     protected Vector2 GetPosByIndex(int index) {
-      float x = (index % CountInRow) * XStep + StartXPos;
+      float x = index % CountInRow * XStep + StartXPos;
       // ReSharper disable once PossibleLossOfFraction
-      float y = (index / CountInRow * YStep) + StartYPos;
+      float y = index / CountInRow * YStep + StartYPos;
 
       return new Vector2(x, y);
     }

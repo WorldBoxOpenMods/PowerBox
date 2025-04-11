@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
         click_special_action = CultureDuplicationAction
       };
     }
-    
+
     private static bool CultureDuplicationAction(WorldTile pTile = null, string pPowerId = null) {
       City targetCity = pTile?.zone?.city;
       Culture oldCulture = targetCity?.getCulture();
@@ -23,7 +23,7 @@ namespace PowerBox.Code.Features.GodPowers {
       Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
       if (targetUnit == null) return false;
       Culture newCulture = World.world.cultures.newCulture(targetUnit);
-      foreach(CultureTrait trait in oldCulture._traits) newCulture.addTrait(trait);
+      foreach (CultureTrait trait in oldCulture._traits) newCulture.addTrait(trait);
       foreach (Actor actor in targetCity.units) {
         actor.setCulture(newCulture);
       }

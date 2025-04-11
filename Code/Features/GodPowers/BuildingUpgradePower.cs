@@ -30,7 +30,7 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return upgradeBuilding;
     }
-    
+
     private static void BuildingUpgradeAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile?.building != null && pTile.building.canBeUpgraded() && !string.IsNullOrWhiteSpace(pTile.building.asset.upgrade_to)) {
         BuildingAsset pTemplate = AssetManager.buildings.get(pTile.building.asset.upgrade_to);

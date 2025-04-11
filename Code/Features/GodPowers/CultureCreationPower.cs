@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.GodPowers {
         click_special_action = CultureCreationAction
       };
     }
-    
+
     private static bool CultureCreationAction(WorldTile pTile = null, string pPowerId = null) {
       if (pTile?.zone?.city == null) return false;
       City targetCity = pTile.zone.city;

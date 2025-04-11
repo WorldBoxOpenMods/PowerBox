@@ -87,7 +87,6 @@
   "powerbox_create_alliance_same_kingdom_selected_twice_error": "Seleccionado el mismo reino dos veces, inténtelo de nuevo.",
   "powerbox_create_alliance_already_allied_error": "Los reinos seleccionados ya están aliados, inténtalo de nuevo.",
   "powerbox_create_alliance_success": "Los reinos han logrado una alianza.",
-
   "powerbox_duplicate_culture": "Duplicate culture",
   "powerbox_duplicate_culture Description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
   "powerbox_edit_culture_tech": "Edit Culture Tech",

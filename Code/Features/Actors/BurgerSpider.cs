@@ -3,7 +3,7 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Actors {
   public class BurgerSpider : ModAssetFeature<ActorAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => new[] { typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom) };
+    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom)};
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("powerbox_burger_spider", "wolf");

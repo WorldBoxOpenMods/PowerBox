@@ -13,7 +13,7 @@ namespace PowerBox.Code.Features.UiHelpers {
     public override bool Init() {
       return true;
     }
-    
+
     public void CreateUnitButton(Actor unit, int index, GameObject content) {
       if (unit?.asset is null) {
         return;
@@ -23,7 +23,7 @@ namespace PowerBox.Code.Features.UiHelpers {
         transform = {
           parent = content.transform,
           // ReSharper disable once PossibleLossOfFraction
-          localPosition = new Vector3(50.0f + 40 * (index % 5), -20.0f + (index / 5) * -40.0f, 0.0f),
+          localPosition = new Vector3(50.0f + 40 * (index % 5), -20.0f + index / 5 * -40.0f, 0.0f),
           localScale = new Vector3(0.9f, 0.9f, 0.9f)
         }
       };
@@ -33,7 +33,7 @@ namespace PowerBox.Code.Features.UiHelpers {
       unitInfoAvatar.show(unit);
       unitInfoAvatarGameObject.name = $"unit_{index}_avatar";
       unitInfoAvatarGameObject.transform.localPosition = new Vector3(0.0f, -10.0f, 0.0f);
-      List<GameObject> objectsToCheck = new List<GameObject> { unitInfo };
+      List<GameObject> objectsToCheck = new List<GameObject> {unitInfo};
       {
         GameObject go;
         // ReSharper disable once AssignmentInConditionalExpression

@@ -27,7 +27,7 @@ namespace PowerBox.Code.Features.GodPowers {
         speed_max = 4f
       };
       AssetManager.clouds.add(bloodRainCloud);
-      
+
       GodPower spawnBloodRainCloud = new GodPower {
         id = "powerbox_spawn_blood_rain_cloud",
         name = "powerbox_spawn_blood_rain_cloud",
@@ -37,7 +37,7 @@ namespace PowerBox.Code.Features.GodPowers {
         show_tool_sizes = false,
         unselect_when_window = true,
         drop_id = "powerbox_spawn_blood_rain_cloud",
-        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile: pTile, pParam1: bloodRainCloud.id)
+        click_power_action = (pTile, pPower) => EffectsLibrary.spawn("fx_cloud", pTile, bloodRainCloud.id)
       };
 
       bloodRainCloud.cached_sprites = bloodRainCloud.path_sprites.Select(SpriteTextureLoader.getSprite).Where(sprite => sprite != null).ToArray();
