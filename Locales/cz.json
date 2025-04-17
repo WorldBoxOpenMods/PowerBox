@@ -1,4 +1,6 @@
 {
+  "This mod adds new powers to the new god's powers tab!_cz": "这个模组在新栏中添加了更多新权能！",
+
   "powerbox_change_modifier_0": "第一个修饰词条: {0}",
   "powerbox_change_modifier_1": "第二个修饰词条: {0}",
   "powerbox_change_modifier_2": "第三个修饰词条: {0}",
@@ -110,5 +112,6 @@
   "powerbox_find_all_creatures Description": "可以查看此世界的所有生物",
   "powerbox_edit_culture_tech_button": "编辑文明知识",
   "powerbox_edit_culture_tech_button Description": "为该文明选择知识",
-  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
+
+  "powerbox_edit_resources_no_storage_error": "选定城市中无储物建筑，请静待建造完毕"
 }
