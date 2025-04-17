@@ -21,7 +21,7 @@ namespace PowerBox.Code.Features.GodPowers {
       City targetCity = pTile.zone.city;
       Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
       if (targetUnit == null) return false;
-      Culture newCulture = World.world.cultures.newCulture(targetUnit);
+      Culture newCulture = World.world.cultures.newCulture(targetUnit, true);
       foreach (Actor actor in targetCity.units) {
         actor.setCulture(newCulture);
       }

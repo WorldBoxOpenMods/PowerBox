@@ -18,7 +18,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (newClanLeader.hasClan()) {
         newClanLeader.clan.units.Remove(newClanLeader);
       }
-      World.world.clans.newClan(newClanLeader);
+      World.world.clans.newClan(newClanLeader, true);
       newClanLeader.startShake();
       newClanLeader.startColorEffect();
       return true;

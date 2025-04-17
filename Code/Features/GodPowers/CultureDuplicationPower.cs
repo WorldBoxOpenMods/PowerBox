@@ -22,7 +22,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (oldCulture == null) return false;
       Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
       if (targetUnit == null) return false;
-      Culture newCulture = World.world.cultures.newCulture(targetUnit);
+      Culture newCulture = World.world.cultures.newCulture(targetUnit, false);
       foreach (CultureTrait trait in oldCulture._traits) newCulture.addTrait(trait);
       foreach (Actor actor in targetCity.units) {
         actor.setCulture(newCulture);
