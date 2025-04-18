@@ -10,6 +10,7 @@ namespace PowerBox.Code.Features.Actors {
       ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", SA.white_mage);
       maximCreature.base_stats[S.lifespan] = 1000;
       maximCreature.icon = "iconMaximCreature";
+      maximCreature.name_locale = "powerbox_spawn_maxim";
       maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
       maximCreature.civ = false;
       maximCreature.has_advanced_textures = false;

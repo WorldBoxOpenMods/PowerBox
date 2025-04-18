@@ -8,6 +8,7 @@ namespace PowerBox.Code.Features.Actors {
     protected override ActorAsset InitObject() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("powerbox_burger_spider", "wolf");
       burgerSpider.icon = "iconBurgerSpider";
+      burgerSpider.name_locale = "powerbox_spawn_burger_spider";
       burgerSpider.base_stats[S.lifespan] = 250;
       burgerSpider.kingdom_id_wild = GetFeature<Kingdoms.BurgerKingdom>().Object.id;
       burgerSpider.civ = false;
