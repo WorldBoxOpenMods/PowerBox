@@ -199,7 +199,7 @@
     -->
     <PropertyGroup Condition=" '$(OS)' == 'UNIX' ">
         <POWERBOX_PROJECT_PATH Condition=" '$(POWERBOX_PROJECT_PATH)' == '' ">$(MSBuildProjectDirectory)</POWERBOX_PROJECT_PATH>
-        <NML_MODS_FOLDER_PATH Condition=" '$(NML_MODS_FOLDER_PATH)' == '' ">~/Library/Application\ Support/Steam/steamapps/common/worldbox/Mods</NML_MODS_FOLDER_PATH>
+        <NML_MODS_FOLDER_PATH Condition=" '$(NML_MODS_FOLDER_PATH)' == '' ">~/Library/Application Support/Steam/steamapps/common/worldbox/Mods</NML_MODS_FOLDER_PATH>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(OS)' == 'WINDOWS' ">
         <POWERBOX_PROJECT_PATH Condition=" '$(POWERBOX_PROJECT_PATH)' == '' ">$(MSBuildProjectDirectory)</POWERBOX_PROJECT_PATH>
