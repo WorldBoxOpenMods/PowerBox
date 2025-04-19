@@ -32,9 +32,15 @@ mkdir "./PowerBox"
 # Copy build assets into distributable folder
 cd "$POWERBOX_PROJECT_PATH" || exit 1
 cp -R "./Code" "$NML_MODS_FOLDER_PATH/PowerBox/"
-cp -R "./Assemblies" "$NML_MODS_FOLDER_PATH/PowerBox/"
-cp -R "./EmbeddedResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
-cp -R "./GameResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
+if test -d "./Assemblies"; then
+  cp -R "./Assemblies" "$NML_MODS_FOLDER_PATH/PowerBox/"
+fi
+if test -d "./EmbeddedResources"; then
+  cp -R "./EmbeddedResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
+fi
+if test -d "./GameResources"; then
+  cp -R "./GameResources" "$NML_MODS_FOLDER_PATH/PowerBox/"
+fi
 cp -R "./Locales" "$NML_MODS_FOLDER_PATH/PowerBox/"
 cp -R "./icon.png" "$NML_MODS_FOLDER_PATH/PowerBox/icon.png"
 cp -R "./mod.json" "$NML_MODS_FOLDER_PATH/PowerBox/mod.json"
