@@ -207,6 +207,6 @@
     </PropertyGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="sh ./assemble_mod_distributable.sh &quot;$(POWERBOX_PROJECT_PATH)&quot; &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'UNIX' "/>
-        <Exec Command="powershell -ExecutionPolicy Bypass -File ./assemble_mod_distributable.ps1 &quot;$(POWERBOX_PROJECT_PATH)&quot; &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'WINDOWS' "/>
+        <Exec Command="powershell -ExecutionPolicy Bypass -File ./assemble_mod_distributable.ps1 -ModProjectPath &quot;$(POWERBOX_PROJECT_PATH)&quot; -NmlModsFolderPath &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'WINDOWS' "/>
     </Target>
 </Project>
