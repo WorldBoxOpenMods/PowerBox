@@ -8,7 +8,7 @@ if ($args.Count -eq 0) {
     Write-Host "No arguments supplied, using default paths. To see available paths, run with -h or --help."
     $MOD_PROJECT_PATH = "$env:USERPROFILE\RiderProjects\Modding\KeyMods\$MOD_NAME"
     $MOD_BINARY_PATH = "$MOD_PROJECT_PATH\bin\Release"
-    $NML_MODS_FOLDER_PATH = "$env:USERPROFILE\Library\Application Support\Steam\steamapps\common\worldbox\Mods"
+    $NML_MODS_FOLDER_PATH = "C:\Program Files (x86)\Steam\steamapps\common\worldbox\Mods"
     $DISTRIBUTABLE_ARCHIVE_PATH = "$NML_MODS_FOLDER_PATH\$MOD_NAME.zip"
 } elseif ($args[0] -eq "-h" -or $args[0] -eq "--help") {
     Write-Host "Usage: .\assemble_mod_distributable.ps1 [ModProjectPath] [ModBinaryPath] [NMLModsFolderPath] [(optional) DistributableArchivePath]"

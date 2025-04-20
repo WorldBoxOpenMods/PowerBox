@@ -205,10 +205,10 @@
     <PropertyGroup Condition=" '$(OS)' == 'WINDOWS' ">
         <POWERBOX_PROJECT_PATH Condition=" '$(POWERBOX_PROJECT_PATH)' == '' ">$(MSBuildProjectDirectory)</POWERBOX_PROJECT_PATH>
         <POWERBOX_BINARY_PATH Condition=" '$(POWERBOX_BINARY_PATH)' == '' ">$(MSBuildProjectDirectory)/$(OutDir)</POWERBOX_BINARY_PATH>
-        <NML_MODS_FOLDER_PATH Condition=" '$(NML_MODS_FOLDER_PATH)' == '' ">"C:\Program Files (x86)\Steam\steamapps\common\worldbox\Mods"</NML_MODS_FOLDER_PATH>
+        <NML_MODS_FOLDER_PATH Condition=" '$(NML_MODS_FOLDER_PATH)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\worldbox\Mods</NML_MODS_FOLDER_PATH>
     </PropertyGroup>
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="sh ./assemble_mod_distributable.sh &quot;$(POWERBOX_PROJECT_PATH)&quot; &quot;$(POWERBOX_BINARY_PATH)&quot; &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'UNIX' "/>
-        <Exec Command="powershell -ExecutionPolicy Bypass -File ./assemble_mod_distributable.ps1 -ModProjectPath &quot;$(POWERBOX_PROJECT_PATH)&quot; -NmlModsFolderPath &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'WINDOWS' "/>
+        <Exec Command="powershell -ExecutionPolicy Bypass -File ./assemble_mod_distributable.ps1 &quot;$(POWERBOX_PROJECT_PATH)&quot; &quot;$(POWERBOX_BINARY_PATH)&quot; &quot;$(NML_MODS_FOLDER_PATH)&quot;" Condition=" '$(OS)' == 'WINDOWS' "/>
     </Target>
 </Project>
