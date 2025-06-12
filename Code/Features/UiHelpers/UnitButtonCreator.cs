@@ -24,7 +24,7 @@ namespace PowerBox.Code.Features.UiHelpers {
         transform = {
           parent = content.transform,
           // ReSharper disable once PossibleLossOfFraction
-          localPosition = new Vector3(50.0f + 40 * (index % 5), -20.0f + index / 5 * -40.0f, 0.0f),
+          localPosition = new Vector3(30.0f + 40 * (index % 5), 10.0f + index / 5 * -40.0f, 0.0f),
           localScale = new Vector3(0.9f, 0.9f, 0.9f)
         }
       };
