@@ -5,7 +5,8 @@ namespace PowerBox.Code.Features.Prefabs {
   public class UnitAvatarElement : ModObjectFeature<GameObject> {
     public GameObject Prefab => Object;
     protected override GameObject InitObject() {
-      return GameObject.Find("/Canvas Container Main").transform
+      Transform canvasContainer = GameObject.Find("/Canvas Container Main").transform;
+      return canvasContainer
         .FindRecursive("Canvas - UI/General")
         .FindRecursive("CanvasBottom")
         .FindRecursive("BottomElements")
