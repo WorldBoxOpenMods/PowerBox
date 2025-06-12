@@ -24,7 +24,7 @@ namespace PowerBox.Code.Features.Windows {
         layer = 5
       };
       Image imageH = SpriteHighlighter.AddComponent<Image>();
-      Texture2D texture = Resources.Load<Texture2D>("ui/icons/iconbrush_circ_5");
+      Texture2D texture = Resources.Load<Texture2D>("ui/icons/brushes/brush_circ_5");
       imageH.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 1f);
       imageH.color = new Color(Red, Green, Blue, Alpha);
       imageH.raycastTarget = false;
