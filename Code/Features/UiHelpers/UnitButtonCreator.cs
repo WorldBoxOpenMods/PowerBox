@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.api;
 using PowerBox.Code.Features.Prefabs;
+using strings;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

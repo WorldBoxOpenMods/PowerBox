@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using strings;
 
 namespace PowerBox.Code.Features.Actors {
   public class Maxim : ModAssetFeature<ActorAsset> {

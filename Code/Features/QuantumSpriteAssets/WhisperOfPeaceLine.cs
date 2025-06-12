@@ -11,8 +11,8 @@ namespace PowerBox.Code.Features.QuantumSpriteAssets {
         id_prefab = "p_mapArrow_line",
         base_scale = 0.5f,
         draw_call = DrawWhisperOfPeaceLine,
-        render_on_map = true,
-        render_in_game = true,
+        render_map = true,
+        render_gameplay = true,
         color = new Color(0.4f, 0.4f, 1f, 0.9f)
       };
     }
