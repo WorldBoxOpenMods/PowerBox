@@ -21,8 +21,22 @@ namespace PowerBox.Code.Features.GodPowers {
       City targetCity = pTile.zone.city;
       Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
       if (targetUnit == null) return false;
+      Culture newCulture = null;
+      Language newLanguage = null;
       Religion newReligion = World.world.religions.newReligion(targetUnit, true);
       foreach (Actor actor in targetCity.units) {
+        if (!actor.hasCulture()) {
+          if (newCulture == null) {
+            newCulture = World.world.cultures.newCulture(targetUnit, true);
+          }
+          actor.setCulture(newCulture);
+        }
+        if (!actor.hasLanguage()) {
+          if (newLanguage == null) {
+            newLanguage = World.world.languages.newLanguage(targetUnit, true);
+          }
+          actor.setLanguage(newLanguage);
+        }
         actor.setReligion(newReligion);
       }
       return true;
