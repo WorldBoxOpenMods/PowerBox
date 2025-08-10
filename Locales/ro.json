@@ -110,6 +110,8 @@
   "powerbox_find_all_creatures_description": "Găsește toate creaturile în lumea ta",
   "powerbox_edit_culture_tech_button": "Editează tehnologia unei culturi",
   "powerbox_edit_culture_tech_button_description": "Editează tehnologia unei culturi alese.",
-  
-  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
+
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built.",
+  "powerbox_create_new_religion": "New Religion",
+  "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion."
 }

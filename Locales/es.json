@@ -87,6 +87,7 @@
   "powerbox_create_alliance_same_kingdom_selected_twice_error": "Seleccionado el mismo reino dos veces, inténtelo de nuevo.",
   "powerbox_create_alliance_already_allied_error": "Los reinos seleccionados ya están aliados, inténtalo de nuevo.",
   "powerbox_create_alliance_success": "Los reinos han logrado una alianza.",
+  
   "powerbox_duplicate_culture": "Duplicate culture",
   "powerbox_duplicate_culture_description": "Click a city where you want to create a duplicate culture, and the entire city will be overtaken by a duplicate of its previous culture with all tech carried over",
   "powerbox_edit_culture_tech": "Edit Culture Tech",
@@ -110,5 +111,7 @@
   "powerbox_find_all_creatures_description": "Find all creatures in your world",
   "powerbox_edit_culture_tech_button": "Edit Culture Tech",
   "powerbox_edit_culture_tech_button_description": "Edit the tech of a culture",
-  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built."
+  "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built.",
+  "powerbox_create_new_religion": "New Religion",
+  "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion."
 }
