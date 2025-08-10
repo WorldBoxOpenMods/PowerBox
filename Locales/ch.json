@@ -114,5 +114,7 @@
   "powerbox_edit_resources_no_storage_error": "選定城市無儲物建築，請靜待建造完畢",
 
   "powerbox_create_new_religion": "New Religion",
-  "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion."
+  "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion.",
+  "powerbox_create_new_language": "New Language",
+  "powerbox_create_new_language_description": "Click a city where you want to create a new language, and the entire city will be overtaken by that new language."
 }
