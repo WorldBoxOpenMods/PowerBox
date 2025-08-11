@@ -117,5 +117,7 @@
   "powerbox_create_new_language": "New Language",
   "powerbox_create_new_language_description": "Click a city where you want to create a new language, and the entire city will be overtaken by that new language.",
   "powerbox_duplicate_language": "Duplicate Language",
-  "powerbox_duplicate_language_description": "Click a city where you want to create a duplicate language, and the entire city will be overtaken by a duplicate of its previous language with all traits carried over"
+  "powerbox_duplicate_language_description": "Click a city where you want to create a duplicate language, and the entire city will be overtaken by a duplicate of its previous language with all traits carried over",
+  "powerbox_add_unit_to_language": "Add Unit To A Language",
+  "powerbox_add_unit_to_language_description": ""
 }
