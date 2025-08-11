@@ -56,6 +56,7 @@
     <Compile Include="Code\Features\Buttons\ColonyCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureAdditionButton.cs" />
     <Compile Include="Code\Features\Buttons\LanguageCreationButton.cs" />
+    <Compile Include="Code\Features\Buttons\LanguageDuplicationButton.cs" />
     <Compile Include="Code\Features\Buttons\ReligionCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureDuplicationButton.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs" />
     <Compile Include="Code\Features\GodPowers\LanguageCreationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\LanguageDuplicationPower.cs" />
     <Compile Include="Code\Features\GodPowers\ReligionCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs" />
