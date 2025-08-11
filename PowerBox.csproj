@@ -55,7 +55,10 @@
     <Compile Include="Code\Features\Buttons\ClanCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\ColonyCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureAdditionButton.cs" />
+    <Compile Include="Code\Features\Buttons\LanguageAdditionButton.cs" />
     <Compile Include="Code\Features\Buttons\LanguageCreationButton.cs" />
+    <Compile Include="Code\Features\Buttons\LanguageDuplicationButton.cs" />
+    <Compile Include="Code\Features\Buttons\ReligionAdditionButton.cs" />
     <Compile Include="Code\Features\Buttons\ReligionCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureCreationButton.cs" />
     <Compile Include="Code\Features\Buttons\CultureDuplicationButton.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Code\Features\Buttons\MushAnimalSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\MushCreatureSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\NonRandomFriendshipButton.cs" />
+    <Compile Include="Code\Features\Buttons\ReligionDuplicationButton.cs" />
     <Compile Include="Code\Features\Buttons\Tab.cs" />
     <Compile Include="Code\Features\Buttons\TradingBoatSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs" />
@@ -89,7 +93,10 @@
     <Compile Include="Code\Features\GodPowers\ClanCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\ColonyCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureAdditionPower.cs" />
+    <Compile Include="Code\Features\GodPowers\LanguageAdditionPower.cs" />
     <Compile Include="Code\Features\GodPowers\LanguageCreationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\LanguageDuplicationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\ReligionAdditionPower.cs" />
     <Compile Include="Code\Features\GodPowers\ReligionCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\CultureDuplicationPower.cs" />
@@ -100,6 +107,7 @@
     <Compile Include="Code\Features\GodPowers\MushAnimalSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\MushCreatureSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\NonRandomFriendshipPower.cs" />
+    <Compile Include="Code\Features\GodPowers\ReligionDuplicationPower.cs" />
     <Compile Include="Code\Features\GodPowers\TradingBoatSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs" />

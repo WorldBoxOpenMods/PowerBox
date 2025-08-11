@@ -116,5 +116,13 @@
   "powerbox_create_new_religion": "New Religion",
   "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion.",
   "powerbox_create_new_language": "New Language",
-  "powerbox_create_new_language_description": "Click a city where you want to create a new language, and the entire city will be overtaken by that new language."
+  "powerbox_create_new_language_description": "Click a city where you want to create a new language, and the entire city will be overtaken by that new language.",
+  "powerbox_duplicate_language": "Duplicate Language",
+  "powerbox_duplicate_language_description": "Click a city where you want to create a duplicate language, and the entire city will be overtaken by a duplicate of its previous language with all traits carried over",
+  "powerbox_add_unit_to_language": "Add Unit To A Language",
+  "powerbox_add_unit_to_language_description": "",
+  "powerbox_duplicate_religion": "Duplicate Religion",
+  "powerbox_duplicate_religion_description": "Click a city where you want to create a duplicate religion, and the entire city will be overtaken by a duplicate of its previous religion with all traits carried over",
+  "powerbox_add_unit_to_religion": "Add Unit To A Religion",
+  "powerbox_add_unit_to_religion_description": ""
 }
