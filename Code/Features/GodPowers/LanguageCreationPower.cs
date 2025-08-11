@@ -21,8 +21,9 @@ namespace PowerBox.Code.Features.GodPowers {
       City targetCity = pTile.zone.city;
       Actor targetUnit = targetCity.hasLeader() ? targetCity.leader : targetCity.units.FirstOrDefault();
       if (targetUnit == null) return false;
+      if (!targetUnit.subspecies.has_advanced_communication) return false;
       Language newLanguage = World.world.languages.newLanguage(targetUnit, true);
-      foreach (Actor actor in targetCity.units) {
+      foreach (Actor actor in targetCity.units.Where(actor => actor.subspecies.has_advanced_communication)) {
         actor.setLanguage(newLanguage);
       }
       return true;
