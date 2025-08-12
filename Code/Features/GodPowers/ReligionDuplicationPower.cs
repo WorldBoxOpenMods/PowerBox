@@ -7,6 +7,7 @@ namespace PowerBox.Code.Features.GodPowers {
       return new GodPower {
         id = "powerbox_duplicate_religion",
         name = "powerbox_duplicate_religion",
+        force_map_mode = MetaType.Religion,
         force_brush = "circ_0",
         falling_chance = 0.03f,
         hold_action = false,
