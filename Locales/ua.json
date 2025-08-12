@@ -123,5 +123,7 @@
   "powerbox_duplicate_religion": "Duplicate Religion",
   "powerbox_duplicate_religion_description": "Click a city where you want to create a duplicate religion, and the entire city will be overtaken by a duplicate of its previous religion with all traits carried over",
   "powerbox_add_unit_to_religion": "Add Unit To A Religion",
-  "powerbox_add_unit_to_religion_description": ""
+  "powerbox_add_unit_to_religion_description": "",
+  "powerbox_create_new_subspecies": "New Subspecies",
+  "powerbox_create_new_subspecies_description": "Click a unit that you want to make a new subspecies, and that unit will become its own subspecies."
 }
