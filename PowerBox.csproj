@@ -72,7 +72,9 @@
     <Compile Include="Code\Features\Buttons\MushCreatureSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\NonRandomFriendshipButton.cs" />
     <Compile Include="Code\Features\Buttons\ReligionDuplicationButton.cs" />
+    <Compile Include="Code\Features\Buttons\SubspeciesAdditionButton.cs" />
     <Compile Include="Code\Features\Buttons\SubspeciesCreationButton.cs" />
+    <Compile Include="Code\Features\Buttons\SubspeciesDuplicationButton.cs" />
     <Compile Include="Code\Features\Buttons\Tab.cs" />
     <Compile Include="Code\Features\Buttons\TradingBoatSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs" />
@@ -109,7 +111,9 @@
     <Compile Include="Code\Features\GodPowers\MushCreatureSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\NonRandomFriendshipPower.cs" />
     <Compile Include="Code\Features\GodPowers\ReligionDuplicationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\SubspeciesAdditionPower.cs" />
     <Compile Include="Code\Features\GodPowers\SubspeciesCreationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\SubspeciesDuplicationPower.cs" />
     <Compile Include="Code\Features\GodPowers\TradingBoatSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs" />

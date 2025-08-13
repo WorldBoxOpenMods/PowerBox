@@ -4,7 +4,7 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
   public class ColonyCreationButton : ModGodPowerButtonFeature<ColonyCreationPower, Tab> {
-    public override ModFeatureRequirementList OptionalModFeatures => typeof(SubspeciesCreationButton);
+    public override ModFeatureRequirementList OptionalModFeatures => typeof(SubspeciesAdditionButton);
     public override string SpritePath => "powers/colonies";
   }
 }

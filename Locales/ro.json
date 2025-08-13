@@ -125,5 +125,9 @@
   "powerbox_add_unit_to_religion": "Add Unit To A Religion",
   "powerbox_add_unit_to_religion_description": "",
   "powerbox_create_new_subspecies": "New Subspecies",
-  "powerbox_create_new_subspecies_description": "Click a unit that you want to make a new subspecies, and that unit will become its own subspecies."
+  "powerbox_create_new_subspecies_description": "Click a unit that you want to make a new subspecies, and that unit will become its own subspecies.",
+  "powerbox_duplicate_subspecies": "Duplicate Subspecies",
+  "powerbox_duplicate_subspecies_description": "Click a unit that you want to make a duplicate subspecies, and that unit will become a duplicate subspecies of its previous one.",
+  "powerbox_add_unit_to_subspecies": "Add Unit To A Subspecies",
+  "powerbox_add_unit_to_subspecies_description": ""
 }
