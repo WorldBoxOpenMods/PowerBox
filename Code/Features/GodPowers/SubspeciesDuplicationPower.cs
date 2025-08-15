@@ -23,7 +23,7 @@ namespace PowerBox.Code.Features.GodPowers {
       Subspecies oldSpecies = World.world.subspecies.getNearbySpecies(targetUnit.asset, targetUnit.current_tile, out targetUnit, true);
       Subspecies newSpecies = World.world.subspecies.newSpecies(targetUnit.asset, targetUnit.current_tile);
       foreach (SubspeciesTrait trait in oldSpecies._traits) newSpecies.addTrait(trait);
-      // TODO: make it also copy over genomes and birth traits
+      newSpecies.nucleus.cloneFrom(oldSpecies.nucleus);
       targetUnit.setSubspecies(newSpecies);
       return true;
     }
