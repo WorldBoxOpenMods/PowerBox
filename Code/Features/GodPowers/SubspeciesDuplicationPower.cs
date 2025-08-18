@@ -24,6 +24,7 @@ namespace PowerBox.Code.Features.GodPowers {
       Subspecies newSpecies = World.world.subspecies.newSpecies(targetUnit.asset, targetUnit.current_tile);
       foreach (SubspeciesTrait trait in oldSpecies._traits) newSpecies.addTrait(trait);
       newSpecies.nucleus.cloneFrom(oldSpecies.nucleus);
+      newSpecies._actor_birth_traits.reset();
       foreach (ActorTrait bTrait in oldSpecies._actor_birth_traits.getTraits()) newSpecies._actor_birth_traits.addTrait(bTrait);
       targetUnit.setSubspecies(newSpecies);
       return true;
