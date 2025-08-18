@@ -20,10 +20,11 @@ namespace PowerBox.Code.Features.GodPowers {
     private static bool SubspeciesDuplicationAction(WorldTile pTile = null, string pPowerId = null) {
       Actor targetUnit = Finder.getUnitsFromChunk(pTile, 1, 2).FirstOrDefault(actor => actor.isAlive());
       if (targetUnit == null) return false;
-      Subspecies oldSpecies = World.world.subspecies.getNearbySpecies(targetUnit.asset, targetUnit.current_tile, out targetUnit, true);
+      Subspecies oldSpecies = World.world.subspecies.getNearbySpecies(targetUnit.asset, targetUnit.current_tile, out targetUnit, false);
       Subspecies newSpecies = World.world.subspecies.newSpecies(targetUnit.asset, targetUnit.current_tile);
       foreach (SubspeciesTrait trait in oldSpecies._traits) newSpecies.addTrait(trait);
       newSpecies.nucleus.cloneFrom(oldSpecies.nucleus);
+      foreach (ActorTrait bTrait in oldSpecies._actor_birth_traits.getTraits()) newSpecies._actor_birth_traits.addTrait(bTrait);
       targetUnit.setSubspecies(newSpecies);
       return true;
     }
