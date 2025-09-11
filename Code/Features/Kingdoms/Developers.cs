@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       KingdomAsset developersKingdom = new KingdomAsset {
         id = "powerbox_developer_kingdom",
         mobs = true,
-        default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor()
+        default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor(null)
       };
       developersKingdom.addTag(developersKingdom.id);
       developersKingdom.addTag("good");

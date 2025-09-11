@@ -60,7 +60,7 @@ namespace PowerBox.Code.Features.Windows {
     }
     private void InitFindCultureMembers(Culture selectedCulture = null, Action onFinishAction = null) {
       if (selectedCulture is null) {
-        selectedCulture = Config.selected_culture;
+        selectedCulture = SelectedMetas.selected_culture;
       }
       if (selectedCulture is null) {
         PowerBox.LogWarning("InitFindCultureMembers() called with no culture selected");

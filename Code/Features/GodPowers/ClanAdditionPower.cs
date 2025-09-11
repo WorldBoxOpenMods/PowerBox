@@ -33,7 +33,7 @@ namespace PowerBox.Code.Features.GodPowers {
     private static Clan _targetClan;
     private static bool TryGetClan(WorldTile pTile = null, GodPower _ = null) {
       if (pTile?.zone == null) return false;
-      _targetClan = pTile.zone.getClanOnZone();
+      _targetClan = (pTile.zone.getClanOnZone(0) as Clan ?? pTile.zone.getClanOnZone(1) as Clan) ?? pTile.zone.getClanOnZone(-1) as Clan;
       return true;
     }
     private static void AddUnitToClanAction(WorldTile pTile = null, string pDropID = null) {

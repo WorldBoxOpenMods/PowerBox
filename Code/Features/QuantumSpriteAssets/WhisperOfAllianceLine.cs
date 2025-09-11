@@ -27,7 +27,7 @@ namespace PowerBox.Code.Features.QuantumSpriteAssets {
       }
       Vector2 mousePos = World.world.getMousePos();
       foreach (City city in whisperA.cities) {
-        Color pColor = whisperA.getColor().getColorMain2();
+        Color pColor = whisperA.getColor().getColorMain();
         QuantumSpriteLibrary.drawArrowQuantumSprite(pAsset, city.getTile().posV, mousePos, ref pColor);
       }
     }

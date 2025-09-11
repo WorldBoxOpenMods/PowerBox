@@ -6,7 +6,7 @@ namespace PowerBox.Code.Features.Kingdoms {
       KingdomAsset burgerKingdom = new KingdomAsset {
         id = "powerbox_burger_kingdom",
         mobs = true,
-        default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor()
+        default_kingdom_color = AssetManager.kingdom_colors_library.getNextColor(null)
       };
       burgerKingdom.addTag(burgerKingdom.id);
       burgerKingdom.addTag("nature_creature");

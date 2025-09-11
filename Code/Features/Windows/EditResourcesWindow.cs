@@ -92,7 +92,7 @@ namespace PowerBox.Code.Features.Windows {
     private static void LoadResourceButton(ResourceAsset asset, ButtonResource resourceButtonPref, Transform parent) {
       ButtonResource resourceButton = UnityEngine.Object.Instantiate(resourceButtonPref, parent);
 
-      List<Building> storages = Config.selected_city.storages.Where(s => s.isUsable()).ToList();
+      List<Building> storages = SelectedMetas.selected_city.storages.Where(s => s.isUsable()).ToList();
 
       resourceButton.load(asset, storages.Select(s => s.resources.get(asset.id)).Sum());
       resourceButton.transform.Find("Text").gameObject.SetActive(false);

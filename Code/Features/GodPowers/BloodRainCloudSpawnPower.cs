@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.GodPowers {
         material = "mat_world_object_lit",
         type = DropType.DropMagic,
         falling_height = new Vector2(30f, 45f),
-        action_landed = DropsLibrary.action_blood_rain
+        action_landed_drop = DropsLibrary.action_blood_rain
       };
       AssetManager.drops.add(bloodRainCloudDrop);
 
