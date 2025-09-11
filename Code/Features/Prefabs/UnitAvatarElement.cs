@@ -15,7 +15,7 @@ namespace PowerBox.Code.Features.Prefabs {
         .FindRecursive("Scroll View")
         .FindRecursive("Viewport")
         .FindRecursive("Content")
-        .FindRecursive("buttons")
+        .FindRecursive("Power Tabs")
         .FindRecursive("selected_unit")
         .FindRecursive("element_actor_info")
         .FindRecursive("UnitAvatarElement")
