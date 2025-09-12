@@ -66,6 +66,7 @@ Special thanks to translators:
     <color='yellow'>betogamer.</color>: Ukrainian
     <color='yellow'>ln_luascripts</color>: Spanish
     <color='yellow'>irinisikai</color>: Japanese
+    <color='yellow'>King_of_dongtan</color>: Korean
 
 Special thanks to other bug reporters:
     <color='yellow'>shadowblade6567</color>

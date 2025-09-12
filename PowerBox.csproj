@@ -156,6 +156,7 @@
     <Content Include="Locales\es.json" />
     <Content Include="Locales\fi.json" />
     <Content Include="Locales\ja.json" />
+    <Content Include="Locales\ko.json" />
     <Content Include="Locales\ro.json" />
     <Content Include="Locales\ru.json" />
     <Content Include="Locales\ua.json" />
