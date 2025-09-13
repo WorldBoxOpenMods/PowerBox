@@ -71,8 +71,6 @@
     <Compile Include="Code\Features\Buttons\GregSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\MastefSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\MaximSpawnButton.cs" />
-    <Compile Include="Code\Features\Buttons\MushAnimalSpawnButton.cs" />
-    <Compile Include="Code\Features\Buttons\MushCreatureSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\NonRandomFriendshipButton.cs" />
     <Compile Include="Code\Features\Buttons\ReligionDuplicationButton.cs" />
     <Compile Include="Code\Features\Buttons\SubspeciesAdditionButton.cs" />
@@ -81,8 +79,6 @@
     <Compile Include="Code\Features\Buttons\Tab.cs" />
     <Compile Include="Code\Features\Buttons\TradingBoatSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\TransportBoatSpawnButton.cs" />
-    <Compile Include="Code\Features\Buttons\TumorAnimalSpawnButton.cs" />
-    <Compile Include="Code\Features\Buttons\TumorCreatureSpawnButton.cs" />
     <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs" />
     <Compile Include="Code\Features\GodPowers\ArmyAdditionPower.cs" />
     <Compile Include="Code\Features\GodPowers\ArmyCreationPower.cs" />
@@ -113,8 +109,6 @@
     <Compile Include="Code\Features\GodPowers\GregSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\MastefSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\MaximSpawnPower.cs" />
-    <Compile Include="Code\Features\GodPowers\MushAnimalSpawnPower.cs" />
-    <Compile Include="Code\Features\GodPowers\MushCreatureSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\NonRandomFriendshipPower.cs" />
     <Compile Include="Code\Features\GodPowers\ReligionDuplicationPower.cs" />
     <Compile Include="Code\Features\GodPowers\SubspeciesAdditionPower.cs" />
@@ -122,8 +116,6 @@
     <Compile Include="Code\Features\GodPowers\SubspeciesDuplicationPower.cs" />
     <Compile Include="Code\Features\GodPowers\TradingBoatSpawnPower.cs" />
     <Compile Include="Code\Features\GodPowers\TransportBoatSpawnPower.cs" />
-    <Compile Include="Code\Features\GodPowers\TumorAnimalSpawnPower.cs" />
-    <Compile Include="Code\Features\GodPowers\TumorCreatureSpawnPower.cs" />
     <Compile Include="Code\Features\Harmony.cs" />
     <Compile Include="Code\Features\Kingdoms\BurgerKingdom.cs" />
     <Compile Include="Code\Features\Kingdoms\Developers.cs" />
@@ -138,7 +130,6 @@
     <Compile Include="Code\Features\Windows\AboutPowerboxWindow.cs" />
     <Compile Include="Code\Features\Windows\EditResourcesWindow.cs" />
     <Compile Include="Code\Features\Windows\FindAllCreaturesWindow.cs" />
-    <Compile Include="Code\Features\Windows\FindCultureMembersWindow.cs" />
     <Compile Include="Code\Features\Windows\WindowBase.cs" />
     <Compile Include="Code\Scheduling\Schedule.cs" />
     <Compile Include="Code\Scheduling\Scheduler.cs" />
