@@ -129,5 +129,11 @@
   "powerbox_duplicate_subspecies": "Duplicate Subspecies",
   "powerbox_duplicate_subspecies_description": "Click a unit that you want to make a duplicate subspecies, and that unit will become a duplicate subspecies of its previous one.", 
   "powerbox_add_unit_to_subspecies": "Add Unit To A Subspecies",
-  "powerbox_add_unit_to_subspecies_description": ""
+  "powerbox_add_unit_to_subspecies_description": "",
+  "powerbox_create_new_army": "New Army",
+  "powerbox_create_new_army_description": "Click a unit that you want to make the leader of a new army, and that unit will create a new army.",
+  "powerbox_add_unit_to_army": "Add Unit To An Army",
+  "powerbox_add_unit_to_army_description": "",
+  "powerbox_remove_unit_from_army": "Remove Unit From An Army",
+  "powerbox_remove_unit_from_army_description": ""
 }

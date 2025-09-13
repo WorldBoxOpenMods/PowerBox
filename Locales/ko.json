@@ -128,5 +128,12 @@
   "powerbox_duplicate_subspecies": "아종 복제",
   "powerbox_duplicate_subspecies_description": "유닛을 클릭하면 기존 아종을 복제합니다.",
   "powerbox_add_unit_to_subspecies": "유닛을 아종에 추가",
-  "powerbox_add_unit_to_subspecies_description": ""
+  "powerbox_add_unit_to_subspecies_description": "",
+  
+  "powerbox_create_new_army": "New Army",
+  "powerbox_create_new_army_description": "Click a unit that you want to make the leader of a new army, and that unit will create a new army.",
+  "powerbox_add_unit_to_army": "Add Unit To An Army",
+  "powerbox_add_unit_to_army_description": "",
+  "powerbox_remove_unit_from_army": "Remove Unit From An Army",
+  "powerbox_remove_unit_from_army_description": ""
 }

@@ -40,6 +40,9 @@
     <Compile Include="Code\Features\Actors\Maxim.cs" />
     <Compile Include="Code\Features\Buttons\AboutModButton.cs" />
     <Compile Include="Code\Features\Buttons\AllianceCreationButton.cs" />
+    <Compile Include="Code\Features\Buttons\ArmyAdditionButton.cs" />
+    <Compile Include="Code\Features\Buttons\ArmyCreationButton.cs" />
+    <Compile Include="Code\Features\Buttons\ArmyRemovalButton.cs" />
     <Compile Include="Code\Features\Buttons\AssignCapitalButton.cs" />
     <Compile Include="Code\Features\Buttons\AssignKingButton.cs" />
     <Compile Include="Code\Features\Buttons\AssignLeaderButton.cs" />
@@ -81,6 +84,9 @@
     <Compile Include="Code\Features\Buttons\TumorAnimalSpawnButton.cs" />
     <Compile Include="Code\Features\Buttons\TumorCreatureSpawnButton.cs" />
     <Compile Include="Code\Features\GodPowers\AllianceCreationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\ArmyAdditionPower.cs" />
+    <Compile Include="Code\Features\GodPowers\ArmyCreationPower.cs" />
+    <Compile Include="Code\Features\GodPowers\ArmyRemovalPower.cs" />
     <Compile Include="Code\Features\GodPowers\AssignCapitalPower.cs" />
     <Compile Include="Code\Features\GodPowers\AssignKingPower.cs" />
     <Compile Include="Code\Features\GodPowers\AssignLeaderPower.cs" />
