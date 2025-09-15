@@ -85,3 +85,4 @@ Special thanks to other bug reporters:
 
 Original Mod author: <color='yellow'>don_nikon</color>
 Current Mod owner/maintainer: <color='yellow'>keymasterer</color>
+Additional development: <color='yellow'>IFailedLife</color>
