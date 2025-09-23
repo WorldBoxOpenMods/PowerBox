@@ -24,6 +24,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (targetUnit.hasArmy()) targetUnit.army.units.Remove(targetUnit);
       Army newArmy = World.world.armies.newArmy(targetUnit, targetCity);
       targetUnit.setArmy(newArmy);
+      targetUnit.army.setCaptain(targetUnit);
       return true;
     }
   }

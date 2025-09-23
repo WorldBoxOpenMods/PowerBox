@@ -48,6 +48,7 @@ namespace PowerBox.Code.Features.GodPowers {
       if (_targetArmy == null) return;
       if (actor == null) return;
       actor.setArmy(_targetArmy);
+      actor.setProfession(UnitProfession.Warrior);
 
       if (animate) {
         actor.startShake();
