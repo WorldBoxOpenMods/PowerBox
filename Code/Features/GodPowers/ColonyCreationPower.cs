@@ -28,41 +28,28 @@ namespace PowerBox.Code.Features.GodPowers {
       return makeColony;
     }
     private static void ColonyCreationAction(WorldTile pTile = null, string pDropID = null) {
-      foreach (Actor actor in from Actor a in Finder.getUnitsFromChunk(pTile, 1, 2) where a.isAlive() && !a.asset.is_boat select a) {
+      foreach (Actor actor in from Actor a in Finder.getUnitsFromChunk(pTile, 1, 2) where a.isAlive() && !a.asset.is_boat && a.subspecies.isSapient() select a) {
         actor.startShake();
         actor.startColorEffect();
 
         if (actor.current_tile.zone.city == null) {
-          if (actor.kingdom.isCiv() || actor.kingdom.isNomads()) {
-
-            Kingdom kingdom = actor.kingdom;
-            MapBox world = MapBox.instance;
-
-            TileZone zone = actor.current_tile.zone;
-
-            if (kingdom != null && kingdom.isNomads())
-              kingdom = null;
-
-            City city1 = world.cities.buildNewCity(actor, zone);
-
-            if (city1 == null)
-              return;
-
-            city1.newCityEvent(actor);
-
-            City city2 = actor.city;
-            city2?.eventUnitRemoved(actor);
-            actor.city = city1;
-            city1.eventUnitAdded(actor);
-            WorldLog.logNewCity(city1);
+          if (actor.kingdom == null) {
+            World.world.kingdoms.makeNewCivKingdom(actor);
+            if (actor.kingdom == null)
+              continue;
+          } else if (actor.kingdom.isNomads()) {
+            World.world.kingdoms.makeNewCivKingdom(actor);
+          }
+          if (actor.kingdom.isCiv()) {
+            actor.city?.eventUnitRemoved(actor);
+            World.world.cities.buildNewCity(actor, actor.current_tile.zone);
           }
         } else {
           if (pTile != null && actor.city != actor.current_tile.zone.city) {
             actor.city?.eventUnitRemoved(actor);
             actor.city = actor.current_tile.zone.city;
-            actor.current_tile.zone.city.eventUnitAdded(actor);
-            Kingdom kingdomN = actor.current_tile.zone.city.kingdom;
-            actor.kingdom = kingdomN;
+            actor.city.eventUnitAdded(actor);
+            actor.kingdom = actor.city.kingdom;
           }
         }
       }
