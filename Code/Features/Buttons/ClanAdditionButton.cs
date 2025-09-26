@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class ClanAdditionButton : ModGodPowerButtonFeature<ClanAdditionPower, Tab> {
+  public class ClanAdditionButton : PowerboxGodPowerButtonFeature<ClanAdditionPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(ClanCreationButton);
     public override string SpritePath => "ui/icons/iconclanzones";
+
+    public override TabSection Section => TabSection.Metas;
   }
 }

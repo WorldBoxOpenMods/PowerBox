@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class CultureCreationButton : ModGodPowerButtonFeature<CultureCreationPower, Tab> {
+  public class CultureCreationButton : PowerboxGodPowerButtonFeature<CultureCreationPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(CityBorderReductionButton);
     public override string SpritePath => "ui/icons/iconculture";
+
+    public override TabSection Section => TabSection.Metas;
   }
 }

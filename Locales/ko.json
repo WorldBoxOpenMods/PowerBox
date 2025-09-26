@@ -134,5 +134,12 @@
   "powerbox_add_unit_to_army": "유닛을 군대에 추가",
   "powerbox_add_unit_to_army_description": "",
   "powerbox_remove_unit_from_army": "유닛을 군대에서 제거",
-  "powerbox_remove_unit_from_army_description": ""
+  "powerbox_remove_unit_from_army_description": "",
+
+  "powerbox_info_section_button": "Info",
+  "powerbox_info_section_button_description": "View general mod information",
+  "powerbox_spawns_section_button": "Spawns",
+  "powerbox_spawns_section_button_description": "Powers for spawning creatures and other objects",
+  "powerbox_metas_section_button": "Metas",
+  "powerbox_metas_section_button_description": "Powers for manipulating meta objects"
 }

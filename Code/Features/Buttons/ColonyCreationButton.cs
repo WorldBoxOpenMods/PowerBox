@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class ColonyCreationButton : ModGodPowerButtonFeature<ColonyCreationPower, Tab> {
+  public class ColonyCreationButton : PowerboxGodPowerButtonFeature<ColonyCreationPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(ArmyRemovalButton);
     public override string SpritePath => "powers/colonies";
+
+    public override TabSection Section => TabSection.Metas;
   }
 }

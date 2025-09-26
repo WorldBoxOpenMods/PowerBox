@@ -111,7 +111,6 @@
   "powerbox_edit_culture_tech_button": "Edit Culture Tech",
   "powerbox_edit_culture_tech_button_description": "Edit the tech of a culture",
   "powerbox_edit_resources_no_storage_error": "No storage found in the selected city, try waiting until one is built.",
-
   "powerbox_create_new_religion": "New Religion",
   "powerbox_create_new_religion_description": "Click a city where you want to create a new religion, and the entire city will be overtaken by that new religion.",
   "powerbox_create_new_language": "New Language",
@@ -135,5 +134,12 @@
   "powerbox_add_unit_to_army": "Add Unit To An Army",
   "powerbox_add_unit_to_army_description": "",
   "powerbox_remove_unit_from_army": "Remove Unit From An Army",
-  "powerbox_remove_unit_from_army_description": ""
+  "powerbox_remove_unit_from_army_description": "",
+  
+  "powerbox_info_section_button": "Info",
+  "powerbox_info_section_button_description": "View general mod information",
+  "powerbox_spawns_section_button": "Spawns",
+  "powerbox_spawns_section_button_description": "Powers for spawning creatures and other objects",
+  "powerbox_metas_section_button": "Metas",
+  "powerbox_metas_section_button_description": "Powers for manipulating meta objects"
 }

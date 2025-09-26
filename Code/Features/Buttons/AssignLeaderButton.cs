@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class AssignLeaderButton : ModGodPowerButtonFeature<AssignLeaderPower, Tab> {
+  public class AssignLeaderButton : PowerboxGodPowerButtonFeature<AssignLeaderPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(AssignKingButton);
     public override string SpritePath => "ui/icons/iconleaders";
+
+    public override TabSection Section => TabSection.Metas;
   }
 }

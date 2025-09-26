@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class AllianceCreationButton : ModGodPowerButtonFeature<AllianceCreationPower, Tab> {
+  public class AllianceCreationButton : PowerboxGodPowerButtonFeature<AllianceCreationPower> {
     public override string SpritePath => "ui/icons/iconalliance";
     public override ModFeatureRequirementList OptionalModFeatures => typeof(BurgerSpiderCloudSpawnButton);
+
+    public override TabSection Section => TabSection.Metas;
   }
 }

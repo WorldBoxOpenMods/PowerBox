@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class DebugMenuButton : ModButtonFeature<Tab> {
+  public class DebugMenuButton : PowerboxButtonFeature {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(AboutModButton);
 
     protected override PowerButton InitObject() {
@@ -22,5 +22,7 @@ namespace PowerBox.Code.Features.Buttons {
     private static void DebugButtonClick() {
       ResourcesFinder.FindResources<GameObject>("DebugButton").FirstOrDefault()?.GetComponent<Button>().onClick.Invoke();
     }
+
+    public override TabSection Section => TabSection.Info;
   }
 }

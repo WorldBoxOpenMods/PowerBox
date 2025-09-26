@@ -1,0 +1,24 @@
+using NeoModLoader.api.features;
+using UnityEngine;
+
+namespace PowerBox.Code.Features.Prefabs {
+  public class TabSpacer : ModObjectFeature<GameObject> {
+    public GameObject Prefab => Object;
+    protected override GameObject InitObject() {
+      Transform canvasContainer = GameObject.Find("/Canvas Container Main").transform;
+      return canvasContainer
+        .FindRecursive("Canvas - UI/General")
+        .FindRecursive("CanvasBottom")
+        .FindRecursive("BottomElements")
+        .FindRecursive("BottomElementsMover")
+        .FindRecursive("CanvasScrollView")
+        .FindRecursive("Scroll View")
+        .FindRecursive("Viewport")
+        .FindRecursive("Content")
+        .FindRecursive("Power Tabs")
+        .FindRecursive("main")
+        .FindRecursive("_line")
+        .gameObject;
+    }
+  }
+}

@@ -3,8 +3,10 @@ using NeoModLoader.api;
 using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.Buttons {
-  public class TransportBoatSpawnButton : ModGodPowerButtonFeature<TransportBoatSpawnPower, Tab> {
+  public class TransportBoatSpawnButton : PowerboxGodPowerButtonFeature<TransportBoatSpawnPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(FishingBoatSpawnButton);
     public override string SpritePath => "actors/boats/boat_transport_dwarf";
+
+    public override TabSection Section => TabSection.Spawns;
   }
 }

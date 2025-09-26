@@ -135,5 +135,11 @@
   "powerbox_add_unit_to_army": "Add Unit To An Army",
   "powerbox_add_unit_to_army_description": "",
   "powerbox_remove_unit_from_army": "Remove Unit From An Army",
-  "powerbox_remove_unit_from_army_description": ""
+  "powerbox_remove_unit_from_army_description": "",
+  "powerbox_info_section_button": "Info",
+  "powerbox_info_section_button_description": "View general mod information",
+  "powerbox_spawns_section_button": "Spawns",
+  "powerbox_spawns_section_button_description": "Powers for spawning creatures and other objects",
+  "powerbox_metas_section_button": "Metas",
+  "powerbox_metas_section_button_description": "Powers for manipulating meta objects"
 }
