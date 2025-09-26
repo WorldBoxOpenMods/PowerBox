@@ -112,6 +112,7 @@
   "powerbox_edit_culture_tech_button": "编辑文化知识",
   "powerbox_edit_culture_tech_button_description": "为该文化选择知识",
   "powerbox_edit_resources_no_storage_error": "选定城市中无储物建筑，请静待建造完毕",
+
   "powerbox_create_new_religion": "创建新宗教(归零)",
   "powerbox_create_new_religion_description": "选定城市，指定其创建新宗教并覆盖全体居民",
   "powerbox_create_new_language": "创建新语言(归零)",
@@ -136,11 +137,11 @@
   "powerbox_add_unit_to_army_description": "选择单位，让其成为家乡士兵的一份子",
   "powerbox_remove_unit_from_army": "让士兵退伍",
   "powerbox_remove_unit_from_army_description": "选择士兵，让其退出当前军队",
-
-  "powerbox_info_section_button": "Info",
-  "powerbox_info_section_button_description": "View general mod information",
-  "powerbox_spawns_section_button": "Spawns",
-  "powerbox_spawns_section_button_description": "Powers for spawning creatures and other objects",
-  "powerbox_metas_section_button": "Metas",
-  "powerbox_metas_section_button_description": "Powers for manipulating meta objects"
+  
+  "powerbox_info_section_button": "信息",
+  "powerbox_info_section_button_description": "查看模组的大致说明",
+  "powerbox_spawns_section_button": "投放功能",
+  "powerbox_spawns_section_button_description": "用于投放生物或其他东西的一系列权能",
+  "powerbox_metas_section_button": "编辑功能",
+  "powerbox_metas_section_button_description": "用于操作各类元数据的一系列功能"
 }
