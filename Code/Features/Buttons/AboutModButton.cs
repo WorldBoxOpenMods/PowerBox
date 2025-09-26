@@ -9,6 +9,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override UnityAction WindowOpenAction => () => GetFeature<AboutPowerboxWindow>().Object.clickShow();
     public override string SpritePath => "ui/icons/iconabout";
 
-    public override TabSection Section => TabSection.Info;
+    public override TabSection Section => TabSection.All;
   }
 }

@@ -23,6 +23,6 @@ namespace PowerBox.Code.Features.Buttons {
       ResourcesFinder.FindResources<GameObject>("DebugButton").FirstOrDefault()?.GetComponent<Button>().onClick.Invoke();
     }
 
-    public override TabSection Section => TabSection.Info;
+    public override TabSection Section => TabSection.All;
   }
 }

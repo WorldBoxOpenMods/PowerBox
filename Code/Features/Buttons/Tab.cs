@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace PowerBox.Code.Features.Buttons {
   public enum TabSection {
+    All,
     Info,
     Spawns,
     Metas,
@@ -33,9 +34,9 @@ namespace PowerBox.Code.Features.Buttons {
     }
     protected override PowersTab InitObject() {
       PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
-      PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), Resources.Load<Sprite>("ui/icons/iconabout"), tab.transform);
-      PowerButtonCreator.CreateSimpleButton("powerbox_spawns_section_button", () => SwitchSection(TabSection.Spawns), Resources.Load<Sprite>("ui/icons/icondebug"), tab.transform);
-      PowerButtonCreator.CreateSimpleButton("powerbox_metas_section_button", () => SwitchSection(TabSection.Metas), Resources.Load<Sprite>("ui/icons/iconbrowse2"), tab.transform);
+      PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("powers/flags"), tab.transform);
+      PowerButtonCreator.CreateSimpleButton("powerbox_spawns_section_button", () => SwitchSection(TabSection.Spawns), AssetUtils.LoadEmbeddedSprite("powers/spawn_section"), tab.transform);
+      PowerButtonCreator.CreateSimpleButton("powerbox_metas_section_button", () => SwitchSection(TabSection.Metas), Resources.Load<Sprite>("ui/icons/iconbrowse1"), tab.transform);
       UnityEngine.Object.Instantiate(GetFeature<TabSpacer>().Prefab, tab.transform);
       return tab;
     }
@@ -50,7 +51,9 @@ namespace PowerBox.Code.Features.Buttons {
           _sectionButtons[section.Key] = new List<PowerButton>();
         }
         _sectionButtons[section.Key].Add(button);
-        display = true;
+        if (section.Key == TabSection.All) {
+          display = true;
+        }
       }
       button.transform.SetParent(display ? Object.transform : _unusedButtonPit.transform);
       return true;
@@ -66,7 +69,9 @@ namespace PowerBox.Code.Features.Buttons {
       World.world.selected_buttons.unselectAll();
       foreach (KeyValuePair<TabSection, List<PowerButton>> sectionButtons in _sectionButtons) {
         foreach (PowerButton button in sectionButtons.Value) {
-          if (sectionButtons.Key != section && button.transform.parent != _unusedButtonPit.transform) {
+          if (sectionButtons.Key == TabSection.All) {
+            button.transform.SetParent(Object.transform);
+          } else if (sectionButtons.Key != section && button.transform.parent != _unusedButtonPit.transform) {
             button.transform.SetParent(_unusedButtonPit.transform);
           } else if (sectionButtons.Key == section && button.transform.parent == _unusedButtonPit.transform) {
             button.transform.SetParent(Object.transform);
