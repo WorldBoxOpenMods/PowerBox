@@ -141,7 +141,7 @@
   "powerbox_info_section_button": "信息",
   "powerbox_info_section_button_description": "查看模組的大致説明",
   "powerbox_spawns_section_button": "投放功能",
-  "powerbox_spawns_section_button_description": "用於投放或其他東西的一系列權能",
+  "powerbox_spawns_section_button_description": "用於投放生物或其他東西的一系列權能",
   "powerbox_metas_section_button": "編輯功能",
   "powerbox_metas_section_button_description": "用於操作各類元數據的一系列功能"
 }
