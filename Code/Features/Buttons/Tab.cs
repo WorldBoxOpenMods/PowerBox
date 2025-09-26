@@ -20,18 +20,11 @@ namespace PowerBox.Code.Features.Buttons {
 
     private readonly Dictionary<TabSection, List<PowerButton>> _sectionButtons = new Dictionary<TabSection, List<PowerButton>>();
     private readonly Dictionary<TabSection, List<ModButtonFeature<Tab>>> _sectionButtonFeatures = new Dictionary<TabSection, List<ModButtonFeature<Tab>>>();
-    private readonly GameObject _unusedButtonPit;
     private int _createdButtons;
     private const float StartX = 72f;
     private const float PlusX = 18f;
     private const float EvenY = 18f;
     private const float OddY = -18f;
-
-    public Tab() {
-      _unusedButtonPit = new GameObject("PowerBox_UnusedButtons");
-      UnityEngine.Object.DontDestroyOnLoad(_unusedButtonPit);
-      _unusedButtonPit.SetActive(false);
-    }
     protected override PowersTab InitObject() {
       PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
       PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("powers/flags"), tab.transform);
@@ -55,7 +48,7 @@ namespace PowerBox.Code.Features.Buttons {
           display = true;
         }
       }
-      button.transform.SetParent(display ? Object.transform : _unusedButtonPit.transform);
+      button.gameObject.SetActive(display);
       return true;
     }
     public void RegisterFeatureForTabSection(ModButtonFeature<Tab> feature, TabSection section) {
@@ -70,11 +63,11 @@ namespace PowerBox.Code.Features.Buttons {
       foreach (KeyValuePair<TabSection, List<PowerButton>> sectionButtons in _sectionButtons) {
         foreach (PowerButton button in sectionButtons.Value) {
           if (sectionButtons.Key == TabSection.All) {
-            button.transform.SetParent(Object.transform);
-          } else if (sectionButtons.Key != section && button.transform.parent != _unusedButtonPit.transform) {
-            button.transform.SetParent(_unusedButtonPit.transform);
-          } else if (sectionButtons.Key == section && button.transform.parent == _unusedButtonPit.transform) {
-            button.transform.SetParent(Object.transform);
+            button.gameObject.SetActive(true);
+          } else if (sectionButtons.Key != section && button.gameObject.activeSelf) {
+            button.gameObject.SetActive(false);
+          } else if (sectionButtons.Key == section && !button.gameObject.activeSelf) {
+            button.gameObject.SetActive(true);
           }
         }
       }
