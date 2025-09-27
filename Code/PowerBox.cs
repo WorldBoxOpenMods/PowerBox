@@ -28,13 +28,6 @@ using UnityEngine;
 
 namespace PowerBox.Code {
   public class PowerBox : BasicMod<PowerBox> {
-    protected override void OnModLoad() { }
-
-
-    #region CollectionMod compatibility
-    private bool _lateInitDone;
-    private short _lateInitCounter;
-    #endregion
     private void Update() {
       #region CollectionMod compatibility
       if (!_lateInitDone) {
@@ -47,5 +40,12 @@ namespace PowerBox.Code {
       #endregion
       Scheduler.Instance.Run();
     }
+    protected override void OnModLoad() { }
+
+
+    #region CollectionMod compatibility
+    private bool _lateInitDone;
+    private short _lateInitCounter;
+    #endregion
   }
 }

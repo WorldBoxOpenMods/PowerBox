@@ -1,10 +1,11 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.GodPowers;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.QuantumSpriteAssets {
   public class WhisperOfAllianceLine : ModAssetFeature<QuantumSpriteAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => typeof(GodPowers.AllianceCreationPower);
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(AllianceCreationPower);
     protected override QuantumSpriteAsset InitObject() {
       return new QuantumSpriteAsset {
         id = "powerbox_whisper_of_alliance_line",
@@ -18,7 +19,7 @@ namespace PowerBox.Code.Features.QuantumSpriteAssets {
     }
 
     private void DrawWhisperOfAllianceLine(QuantumSpriteAsset pAsset) {
-      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<GodPowers.AllianceCreationPower>().Object.id)) {
+      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<AllianceCreationPower>().Object.id)) {
         return;
       }
       Kingdom whisperA = Config.whisper_A;

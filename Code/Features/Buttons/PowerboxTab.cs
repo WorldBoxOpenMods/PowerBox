@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NeoModLoader.api;
-using NeoModLoader.General.UI.Tab;
 using NeoModLoader.api.features;
 using NeoModLoader.General;
+using NeoModLoader.General.UI.Tab;
 using PowerBox.Code.Features.Prefabs;
 using PowerBox.Code.Utils;
 using UnityEngine;
@@ -13,13 +13,13 @@ namespace PowerBox.Code.Features.Buttons {
     All,
     Info,
     Spawns,
-    Metas,
+    Metas
   }
   public class PowerboxTab : ModPowerTabFeature {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(TabSpacer);
 
-    private readonly Dictionary<TabSection, List<PowerButton>> _sectionButtons = new Dictionary<TabSection, List<PowerButton>>();
     private readonly Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>> _sectionButtonFeatures = new Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>>();
+    private readonly Dictionary<TabSection, List<PowerButton>> _sectionButtons = new Dictionary<TabSection, List<PowerButton>>();
     protected override PowersTab InitObject() {
       PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("ui/tab_icon"));
       PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("ui/info_section"), tab.transform);
@@ -64,7 +64,7 @@ namespace PowerBox.Code.Features.Buttons {
       }
     }
   }
-  
+
   public abstract class PowerboxButtonFeature : ModButtonFeature<PowerboxTab> {
     protected abstract TabSection Section { get; }
     public override bool Init() {

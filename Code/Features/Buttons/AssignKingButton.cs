@@ -1,6 +1,5 @@
-using PowerBox.Code.Features.GodPowers;
 using NeoModLoader.api;
-using NeoModLoader.api.features;
+using PowerBox.Code.Features.GodPowers;
 
 namespace PowerBox.Code.Features.Buttons {
   public class AssignKingButton : PowerboxGodPowerButtonFeature<AssignKingPower> {

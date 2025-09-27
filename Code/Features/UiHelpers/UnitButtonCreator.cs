@@ -52,7 +52,7 @@ namespace PowerBox.Code.Features.UiHelpers {
       }
       Button unitInfoButton = unitInfoAvatarGameObject.AddComponent<Button>();
       unitInfoButton.onClick.AddListener(() => {
-        if (unit.isAlive() == false || World.world.units.getSimpleList().Contains(unit) == false) {
+        if (!unit.isAlive() || !World.world.units.getSimpleList().Contains(unit)) {
           return;
         }
         SelectedUnit.select(unit);

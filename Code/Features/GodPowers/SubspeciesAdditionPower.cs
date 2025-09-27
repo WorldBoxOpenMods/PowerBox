@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class SubspeciesAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Subspecies _targetSubspecies;
     protected override GodPower InitObject() {
       DropAsset addToSubspeciesDrop = new DropAsset {
         id = "powerbox_add_unit_to_subspecies",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToSubspecies;
     }
-
-    private static Subspecies _targetSubspecies;
     private static bool TryGetSubspecies(WorldTile pTile = null, GodPower _ = null) {
       Subspecies targetSubspecies = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasSubspecies()).Select(a => a.subspecies).FirstOrDefault();
       if (targetSubspecies == null) return false;
@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToSubspeciesAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToSubspecies(a));
+      pTile.doUnits(a => AddUnitToSubspecies(a));
       if (World.world.drop_manager._drops.Where(d => d._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetSubspecies = null;
       }

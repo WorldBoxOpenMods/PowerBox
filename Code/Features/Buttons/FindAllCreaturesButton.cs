@@ -1,6 +1,5 @@
-using PowerBox.Code.Features.Windows;
 using NeoModLoader.api;
-using NeoModLoader.api.features;
+using PowerBox.Code.Features.Windows;
 using UnityEngine.Events;
 
 namespace PowerBox.Code.Features.Buttons {

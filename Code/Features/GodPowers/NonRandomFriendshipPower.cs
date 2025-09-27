@@ -5,7 +5,7 @@ using PowerBox.Code.Utils;
 namespace PowerBox.Code.Features.GodPowers {
   public class NonRandomFriendshipPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      return new GodPower() {
+      return new GodPower {
         id = "powerbox_non_random_friendship",
         name = "powerbox_non_random_friendship",
         force_map_mode = MetaType.Kingdom,

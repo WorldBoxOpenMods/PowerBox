@@ -1,18 +1,19 @@
 using System.Collections.Generic;
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.Kingdoms;
 using strings;
 
 namespace PowerBox.Code.Features.Actors {
   public class Maxim : ModAssetFeature<ActorAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(Kingdoms.Developers), typeof(NameGenerators.Maxim)};
+    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(Developers), typeof(NameGenerators.Maxim)};
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset maximCreature = AssetManager.actor_library.clone("powerbox_maxim", SA.white_mage);
       maximCreature.base_stats[S.lifespan] = 1000;
       maximCreature.icon = "maxim_creature";
       maximCreature.name_locale = "powerbox_spawn_maxim";
-      maximCreature.kingdom_id_wild = GetFeature<Kingdoms.Developers>().Object.id;
+      maximCreature.kingdom_id_wild = GetFeature<Developers>().Object.id;
       maximCreature.civ = false;
       maximCreature.has_advanced_textures = false;
       maximCreature.unit_other = true;

@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class ClanAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Clan _targetClan;
     protected override GodPower InitObject() {
       DropAsset addToClanDrop = new DropAsset {
         id = "powerbox_add_unit_to_clan",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToClan;
     }
-
-    private static Clan _targetClan;
     private static bool TryGetClan(WorldTile pTile = null, GodPower _ = null) {
       if (pTile?.zone == null) return false;
       _targetClan = (pTile.zone.getClanOnZone(0) as Clan ?? pTile.zone.getClanOnZone(1) as Clan) ?? pTile.zone.getClanOnZone(-1) as Clan;
@@ -38,7 +38,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToClanAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToClan(a));
+      pTile.doUnits(a => AddUnitToClan(a));
       if (World.world.drop_manager._drops.Where(d => d?._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetClan = null;
       }

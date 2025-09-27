@@ -54,6 +54,5 @@ namespace PowerBox.Code.Features.GodPowers {
         }
       }
     }
-
   }
 }

@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class ReligionAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Religion _targetReligion;
     protected override GodPower InitObject() {
       DropAsset addToReligionDrop = new DropAsset {
         id = "powerbox_add_unit_to_religion",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToReligion;
     }
-
-    private static Religion _targetReligion;
     private static bool TryGetReligion(WorldTile pTile = null, GodPower _ = null) {
       Religion targetReligion = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasReligion()).Select(a => a.religion).FirstOrDefault();
       if (targetReligion == null) return false;
@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToReligionAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToReligion(a));
+      pTile.doUnits(a => AddUnitToReligion(a));
       if (World.world.drop_manager._drops.Where(d => d._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetReligion = null;
       }

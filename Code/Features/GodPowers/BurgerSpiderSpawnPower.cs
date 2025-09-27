@@ -1,9 +1,10 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.Actors;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class BurgerSpiderSpawnPower : ModAssetFeature<GodPower> {
-    public override ModFeatureRequirementList RequiredModFeatures => typeof(Actors.BurgerSpider);
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(BurgerSpider);
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_spawn_burger_spider",
@@ -13,7 +14,7 @@ namespace PowerBox.Code.Features.GodPowers {
         actor_spawn_height = 3f,
         name = "powerbox_spawn_burger_spider",
         sound_event = "spawnAnt",
-        actor_asset_id = GetFeature<Actors.BurgerSpider>().Object.id,
+        actor_asset_id = GetFeature<BurgerSpider>().Object.id,
         click_action = (pTile, pPower) => AssetManager.powers.spawnUnit(pTile, pPower)
       };
     }

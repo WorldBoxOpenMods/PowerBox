@@ -1,3 +1,4 @@
+using System.Text;
 using NeoModLoader.General;
 using PowerBox.Code.Utils;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace PowerBox.Code.Features.Windows {
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
       GameObject aboutPowerBoxContent = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport/Content");
-      string description = System.Text.Encoding.Default.GetString(AssetUtils.LoadEmbeddedResource("other/description.txt"));
+      string description = Encoding.Default.GetString(AssetUtils.LoadEmbeddedResource("other/description.txt"));
       GameObject name = window.transform.Find("Background").Find("Name").gameObject;
       Text nameText = name.GetComponent<Text>();
       nameText.text = description;

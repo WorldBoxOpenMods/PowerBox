@@ -1,6 +1,5 @@
-﻿using PowerBox.Code.Features.GodPowers;
-using NeoModLoader.api;
-using NeoModLoader.api.features;
+﻿using NeoModLoader.api;
+using PowerBox.Code.Features.GodPowers;
 
 namespace PowerBox.Code.Features.Buttons {
   public class LanguageAdditionButton : PowerboxGodPowerButtonFeature<LanguageAdditionPower> {

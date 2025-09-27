@@ -3,7 +3,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.GodPowers {
   public class AssignCapitalPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      GodPower assignCapital = new GodPower() {
+      GodPower assignCapital = new GodPower {
         id = "powerbox_assign_capital",
         name = "powerbox_assign_capital",
         force_map_mode = MetaType.City,

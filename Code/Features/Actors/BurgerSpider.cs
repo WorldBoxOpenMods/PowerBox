@@ -1,17 +1,18 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.Kingdoms;
 using strings;
 
 namespace PowerBox.Code.Features.Actors {
   public class BurgerSpider : ModAssetFeature<ActorAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(NameGenerators.BurgerSpider), typeof(Kingdoms.BurgerKingdom)};
+    public override ModFeatureRequirementList RequiredModFeatures => new[] {typeof(NameGenerators.BurgerSpider), typeof(BurgerKingdom)};
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset burgerSpider = AssetManager.actor_library.clone("powerbox_burger_spider", "wolf");
       burgerSpider.icon = "burger_spider";
       burgerSpider.name_locale = "powerbox_spawn_burger_spider";
       burgerSpider.base_stats[S.lifespan] = 250;
-      burgerSpider.kingdom_id_wild = GetFeature<Kingdoms.BurgerKingdom>().Object.id;
+      burgerSpider.kingdom_id_wild = GetFeature<BurgerKingdom>().Object.id;
       burgerSpider.civ = false;
       burgerSpider.default_animal = false;
       burgerSpider.has_advanced_textures = false;

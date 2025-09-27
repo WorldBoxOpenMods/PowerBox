@@ -1,10 +1,11 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.GodPowers;
 using UnityEngine;
 
 namespace PowerBox.Code.Features.QuantumSpriteAssets {
   public class WhisperOfPeaceLine : ModAssetFeature<QuantumSpriteAsset> {
-    public override ModFeatureRequirementList RequiredModFeatures => typeof(GodPowers.NonRandomFriendshipPower);
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(NonRandomFriendshipPower);
     protected override QuantumSpriteAsset InitObject() {
       return new QuantumSpriteAsset {
         id = "powerbox_whisper_of_peace_line",
@@ -18,7 +19,7 @@ namespace PowerBox.Code.Features.QuantumSpriteAssets {
     }
 
     private void DrawWhisperOfPeaceLine(QuantumSpriteAsset pAsset) {
-      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<GodPowers.NonRandomFriendshipPower>().Object.id)) {
+      if (!Input.mousePresent || World.world.isBusyWithUI() || !World.world.isSelectedPower(GetFeature<NonRandomFriendshipPower>().Object.id)) {
         return;
       }
       Kingdom whisperA = Config.whisper_A;

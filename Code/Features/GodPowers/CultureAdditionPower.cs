@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class CultureAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Culture _targetCulture;
     protected override GodPower InitObject() {
       DropAsset addToCultureDrop = new DropAsset {
         id = "powerbox_add_unit_to_culture",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToCulture;
     }
-
-    private static Culture _targetCulture;
     private static bool TryGetCulture(WorldTile pTile = null, GodPower _ = null) {
       Culture targetCulture = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasCulture()).Select(a => a.culture).FirstOrDefault();
       if (targetCulture == null) return false;
@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToCultureAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToCulture(a));
+      pTile.doUnits(a => AddUnitToCulture(a));
       if (World.world.drop_manager._drops.Where(d => d._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetCulture = null;
       }

@@ -6,7 +6,7 @@ using PowerBox.Code.Utils;
 namespace PowerBox.Code.Features.GodPowers {
   public class AllianceCreationPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      GodPower createAlliance = new GodPower() {
+      GodPower createAlliance = new GodPower {
         id = "powerbox_create_alliance",
         name = "powerbox_create_alliance",
         force_map_mode = MetaType.Kingdom,
@@ -97,6 +97,5 @@ namespace PowerBox.Code.Features.GodPowers {
       ForceIntoAlliance(alliance, kingdomB);
       WorldLog.logAllianceCreated(alliance);
     }
-
   }
 }

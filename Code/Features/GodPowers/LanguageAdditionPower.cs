@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class LanguageAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Language _targetLanguage;
     protected override GodPower InitObject() {
       DropAsset addToLanguageDrop = new DropAsset {
         id = "powerbox_add_unit_to_language",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToLanguage;
     }
-
-    private static Language _targetLanguage;
     private static bool TryGetLanguage(WorldTile pTile = null, GodPower _ = null) {
       Language targetLanguage = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasLanguage()).Select(a => a.language).FirstOrDefault();
       if (targetLanguage == null) return false;
@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToLanguageAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToLanguage(a));
+      pTile.doUnits(a => AddUnitToLanguage(a));
       if (World.world.drop_manager._drops.Where(d => d._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetLanguage = null;
       }

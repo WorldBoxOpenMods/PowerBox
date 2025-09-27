@@ -1,9 +1,10 @@
 using NeoModLoader.api;
 using NeoModLoader.api.features;
+using PowerBox.Code.Features.Actors;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class MaximSpawnPower : ModAssetFeature<GodPower> {
-    public override ModFeatureRequirementList RequiredModFeatures => typeof(Actors.Maxim);
+    public override ModFeatureRequirementList RequiredModFeatures => typeof(Maxim);
     protected override GodPower InitObject() {
       return new GodPower {
         id = "powerbox_spawn_maxim",
@@ -13,7 +14,7 @@ namespace PowerBox.Code.Features.GodPowers {
         actor_spawn_height = 3f,
         name = "powerbox_spawn_maxim",
         sound_event = "spawnHuman",
-        actor_asset_id = GetFeature<Actors.Maxim>().Object.id,
+        actor_asset_id = GetFeature<Maxim>().Object.id,
         click_action = (pTile, pPower) => AssetManager.powers.spawnUnit(pTile, pPower)
       };
     }

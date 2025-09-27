@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace PowerBox.Code.Scheduling {
   public class Scheduler {
-    private Scheduler() { }
     private static Scheduler _instance;
-    public static Scheduler Instance => _instance ?? (_instance = new Scheduler());
     private readonly List<Schedule> _schedules = new List<Schedule>();
+    private Scheduler() { }
+    public static Scheduler Instance => _instance ?? (_instance = new Scheduler());
     public void Schedule(Schedule schedule) {
       _schedules.Add(schedule);
     }

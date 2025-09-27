@@ -2,9 +2,11 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class CityConversionPower : ModAssetFeature<GodPower> {
+    private City _targetCity;
+    private Kingdom _targetKingdom;
     public GodPower Power => Object;
     protected override GodPower InitObject() {
-      return new GodPower() {
+      return new GodPower {
         id = "powerbox_convert_city",
         name = "powerbox_convert_city",
         force_map_mode = MetaType.City,
@@ -12,8 +14,6 @@ namespace PowerBox.Code.Features.GodPowers {
         click_special_action = CityConversionAction
       };
     }
-    private City _targetCity;
-    private Kingdom _targetKingdom;
     private bool CityConversionAction(WorldTile pTile, string pPowerId) {
       if (_targetCity == null) {
         _targetCity = pTile.zone.city;

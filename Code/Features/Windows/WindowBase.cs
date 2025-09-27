@@ -4,17 +4,24 @@ using UnityEngine.UI;
 
 namespace PowerBox.Code.Features.Windows {
   public abstract class WindowBase<TWindow> : ModObjectFeature<ScrollWindow> where TWindow : WindowBase<TWindow> {
-    protected ScrollWindow Window => Object;
-    protected GameObject SpriteHighlighter { get; private set; }
     protected const float Red = 0.314f;
     protected const float Green = 0.78f;
     protected const float Blue = 0;
     protected const float Alpha = 0.565f;
+    protected int CountInRow = 7;
 
-    public static TWindow Instance { get; private set; }
+
+    protected float StartXPos = 44.4f;
+    protected float StartYPos = -22.5f;
+    protected float XStep = 28f;
+    protected float YStep = -28.5f;
     public WindowBase() {
       Instance = this as TWindow;
     }
+    protected ScrollWindow Window => Object;
+    protected GameObject SpriteHighlighter { get; private set; }
+
+    public static TWindow Instance { get; private set; }
 
     public override bool Init() {
       SpriteHighlighter = new GameObject("sprite_highlighter") {
@@ -55,13 +62,6 @@ namespace PowerBox.Code.Features.Windows {
         HighlightButton(false, content.transform.GetChild(i).gameObject);
       }
     }
-
-
-    protected float StartXPos = 44.4f;
-    protected float XStep = 28f;
-    protected int CountInRow = 7;
-    protected float StartYPos = -22.5f;
-    protected float YStep = -28.5f;
     protected Vector2 GetPosByIndex(int index) {
       float x = index % CountInRow * XStep + StartXPos;
       // ReSharper disable once PossibleLossOfFraction

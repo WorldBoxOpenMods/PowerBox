@@ -4,7 +4,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.GodPowers {
   public class AssignLeaderPower : ModAssetFeature<GodPower> {
     protected override GodPower InitObject() {
-      GodPower assignLeader = new GodPower() {
+      GodPower assignLeader = new GodPower {
         id = "powerbox_assign_leader",
         name = "powerbox_assign_leader",
         force_map_mode = MetaType.City,

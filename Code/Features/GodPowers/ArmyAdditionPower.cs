@@ -3,6 +3,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class ArmyAdditionPower : ModAssetFeature<GodPower> {
+
+    private static Army _targetArmy;
     protected override GodPower InitObject() {
       DropAsset addToArmyDrop = new DropAsset {
         id = "powerbox_add_unit_to_army",
@@ -29,8 +31,6 @@ namespace PowerBox.Code.Features.GodPowers {
 
       return addToArmy;
     }
-
-    private static Army _targetArmy;
     private static bool TryGetArmy(WorldTile pTile = null, GodPower _ = null) {
       Army targetArmy = Finder.getUnitsFromChunk(pTile, 1).Where(a => a.hasArmy()).Select(a => a.army).FirstOrDefault();
       if (targetArmy == null) return false;
@@ -39,7 +39,7 @@ namespace PowerBox.Code.Features.GodPowers {
     }
     private static void AddUnitToArmyAction(WorldTile pTile = null, string pDropID = null) {
       if (pTile == null) return;
-      pTile.doUnits((a) => AddUnitToArmy(a));
+      pTile.doUnits(a => AddUnitToArmy(a));
       if (World.world.drop_manager._drops.Where(d => d._asset?.id == pDropID).Count(d => !d._landed) <= 1) {
         _targetArmy = null;
       }

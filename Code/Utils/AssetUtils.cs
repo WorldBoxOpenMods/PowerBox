@@ -6,7 +6,7 @@ using UnityEngine;
 namespace PowerBox.Code.Utils {
   public static class AssetUtils {
     /// <summary>
-    /// Loads the byte contents of a file from the EmbeddedResources directory of PowerBox.
+    ///   Loads the byte contents of a file from the EmbeddedResources directory of PowerBox.
     /// </summary>
     /// <param name="path">A path pointing to a file in the EmbeddedResources directory of PowerBox, in the form of e.g. actors/maxim_spider.png. The path to EmbeddedResources is automatically appended.</param>
     /// <returns>The bytes stored at that path. Throws an exception if literally anything goes wrong in this process (there's 0 exception handling present).</returns>
@@ -14,7 +14,7 @@ namespace PowerBox.Code.Utils {
       return File.ReadAllBytes(PowerBox.Instance.GetDeclaration().FolderPath + "/EmbeddedResources/" + path);
     }
     /// <summary>
-    /// Loads a sprite from a PNG from the EmbeddedResources directory of PowerBox.
+    ///   Loads a sprite from a PNG from the EmbeddedResources directory of PowerBox.
     /// </summary>
     /// <param name="path">A path pointing to a PNG in the EmbeddedResources directory of PowerBox, in the form of e.g. actors/maxim_spider. The path to EmbeddedResources and the .png are automatically appended.</param>
     /// <returns>A Sprite representing the PNG file loaded at that path. Throws an exception if literally anything goes wrong in this process (there's 0 exception handling present).</returns>
@@ -27,7 +27,7 @@ namespace PowerBox.Code.Utils {
       return Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), new Vector2(0.5f, 0.5f));
     }
     /// <summary>
-    /// Creates a clone of the given object via Reflection.
+    ///   Creates a clone of the given object via Reflection.
     /// </summary>
     /// <param name="original">The object to clone.</param>
     /// <param name="deep">Whether or not field/property values of the object should be cloned recursively.</param>

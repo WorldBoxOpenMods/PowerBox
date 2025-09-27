@@ -2,6 +2,8 @@ using NeoModLoader.api.features;
 
 namespace PowerBox.Code.Features.GodPowers {
   public class CityBorderExpansionPower : ModAssetFeature<GodPower> {
+
+    private static City _toCityZone;
     protected override GodPower InitObject() {
       GodPower expandCityBorders = new GodPower {
         id = "powerbox_expand_city_borders",
@@ -15,8 +17,6 @@ namespace PowerBox.Code.Features.GodPowers {
       };
       return expandCityBorders;
     }
-
-    private static City _toCityZone;
     private static bool CityBorderExpansionAction(WorldTile pTile = null, string pPowerId = null) {
       if (pTile?.zone.city != null) {
         _toCityZone = pTile.zone.city;
