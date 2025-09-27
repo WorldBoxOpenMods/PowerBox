@@ -5,7 +5,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.Buttons {
   public class BuildingUpgradeButton : PowerboxGodPowerButtonFeature<BuildingUpgradePower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(GregSpawnButton);
-    public override string SpritePath => "powers/upgrade_building_icon";
+    public override string SpritePath => "powers/upgrade_building";
 
     protected override TabSection Section => TabSection.Spawns;
   }

@@ -5,7 +5,7 @@ using NeoModLoader.api.features;
 namespace PowerBox.Code.Features.Buttons {
   public class MastefSpawnButton : PowerboxGodPowerButtonFeature<MastefSpawnPower> {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(MaximSpawnButton);
-    public override string SpritePath => "ui/icons/iconMastefCreature";
+    public override string SpritePath => "ui/icons/mastef_creature";
 
     protected override TabSection Section => TabSection.Spawns;
   }

@@ -146,7 +146,7 @@
     <Content Include=".gitignore" />
     <Content Include="assemble_mod_distributable.ps1" />
     <Content Include="assemble_mod_distributable.sh" />
-    <Content Include="EmbeddedResources\description.txt" />
+    <Content Include="EmbeddedResources\other\description.txt" />
     <Content Include="Locales\ch.json" />
     <Content Include="Locales\cz.json" />
     <Content Include="Locales\de.json" />

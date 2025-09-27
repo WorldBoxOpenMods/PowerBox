@@ -21,9 +21,9 @@ namespace PowerBox.Code.Features.Buttons {
     private readonly Dictionary<TabSection, List<PowerButton>> _sectionButtons = new Dictionary<TabSection, List<PowerButton>>();
     private readonly Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>> _sectionButtonFeatures = new Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>>();
     protected override PowersTab InitObject() {
-      PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
-      PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("powers/flags"), tab.transform);
-      PowerButtonCreator.CreateSimpleButton("powerbox_spawns_section_button", () => SwitchSection(TabSection.Spawns), AssetUtils.LoadEmbeddedSprite("powers/spawn_section"), tab.transform);
+      PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("ui/tab_icon"));
+      PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("ui/info_section"), tab.transform);
+      PowerButtonCreator.CreateSimpleButton("powerbox_spawns_section_button", () => SwitchSection(TabSection.Spawns), AssetUtils.LoadEmbeddedSprite("ui/spawn_section"), tab.transform);
       PowerButtonCreator.CreateSimpleButton("powerbox_metas_section_button", () => SwitchSection(TabSection.Metas), Resources.Load<Sprite>("ui/icons/iconbrowse1"), tab.transform);
       UnityEngine.Object.Instantiate(GetFeature<TabSpacer>().Prefab, tab.transform);
       return tab;

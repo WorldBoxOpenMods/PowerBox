@@ -8,7 +8,7 @@ namespace PowerBox.Code.Features.Actors {
     protected override bool AddToLibrary => false;
     protected override ActorAsset InitObject() {
       ActorAsset mastefCreature = AssetManager.actor_library.clone("powerbox_mastef", GetFeature<Maxim>().Object.id);
-      mastefCreature.icon = "iconMastefCreature";
+      mastefCreature.icon = "mastef_creature";
       mastefCreature.name_locale = "powerbox_spawn_mastef";
       mastefCreature.texture_id = "t_MastefCreature";
       mastefCreature.civ = false;

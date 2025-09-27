@@ -6,12 +6,12 @@ using UnityEngine.UI;
 namespace PowerBox.Code.Features.Windows {
   public class AboutPowerboxWindow : WindowBase<AboutPowerboxWindow> {
     protected override ScrollWindow InitObject() {
-      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_about_mod", "powerbox_about_window", "powerbox_icon");
+      ScrollWindow window = WindowCreator.CreateEmptyWindow("powerbox_about_mod", "powerbox_about_window", "powerbox");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().setKeyAndUpdate("powerbox_about_window");
       window.gameObject.transform.Find("Background/Title").GetComponent<LocalizedText>().autoField = false;
       window.transform.Find("Background").Find("Scroll View").gameObject.SetActive(true);
       GameObject aboutPowerBoxContent = GameObject.Find($"/Canvas Container Main/Canvas - Windows/windows/{window.name}/Background/Scroll View/Viewport/Content");
-      string description = System.Text.Encoding.Default.GetString(AssetUtils.LoadEmbeddedResource("description.txt"));
+      string description = System.Text.Encoding.Default.GetString(AssetUtils.LoadEmbeddedResource("other/description.txt"));
       GameObject name = window.transform.Find("Background").Find("Name").gameObject;
       Text nameText = name.GetComponent<Text>();
       nameText.text = description;
