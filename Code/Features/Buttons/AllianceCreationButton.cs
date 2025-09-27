@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override string SpritePath => "ui/icons/iconalliance";
     public override ModFeatureRequirementList OptionalModFeatures => typeof(BurgerSpiderCloudSpawnButton);
 
-    public override TabSection Section => TabSection.Metas;
+    protected override TabSection Section => TabSection.Metas;
   }
 }

@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(ClanAdditionButton);
     public override string SpritePath => "ui/icons/iconfriendship";
 
-    public override TabSection Section => TabSection.Metas;
+    protected override TabSection Section => TabSection.Metas;
   }
 }

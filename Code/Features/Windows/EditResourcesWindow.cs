@@ -30,7 +30,7 @@ namespace PowerBox.Code.Features.Windows {
     private static void HookUpMembersWindow(StatsWindow __instance) {
       if (__instance is CityWindow cityWindow) {
         Transform cityWindowContent = cityWindow.transform.FindRecursive("Background");
-        GameObject editResources = PowerButtonCreator.CreateSimpleButton("powerbox_edit_resources_button", Instance.EditResourcesButtonClick, AssetUtils.LoadEmbeddedSprite("powers/res_clear"), cityWindowContent).gameObject;
+        GameObject editResources = PowerButtonCreator.CreateSimpleButton("powerbox_edit_resources_button", Instance.EditResourcesButtonClick, Resources.Load<Sprite>("ui/icons/res_clear"), cityWindowContent).gameObject;
         editResources.transform.localPosition = new Vector3(116.50f, 3.0f, editResources.transform.localPosition.z);
         Transform editResourcesBtnIcon = editResources.transform.Find("Icon");
         editResourcesBtnIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(28f, 28f);

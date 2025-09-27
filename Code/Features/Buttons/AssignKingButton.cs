@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(ColonyCreationButton);
     public override string SpritePath => "ui/icons/iconkings";
 
-    public override TabSection Section => TabSection.Metas;
+    protected override TabSection Section => TabSection.Metas;
   }
 }

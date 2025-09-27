@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(TradingBoatSpawnButton);
     public override string SpritePath => "powers/blood_rain";
 
-    public override TabSection Section => TabSection.Spawns;
+    protected override TabSection Section => TabSection.Spawns;
   }
 }

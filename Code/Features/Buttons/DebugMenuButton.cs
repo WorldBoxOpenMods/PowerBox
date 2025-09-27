@@ -14,7 +14,7 @@ namespace PowerBox.Code.Features.Buttons {
         "powerbox_debug_button",
         DebugButtonClick,
         Resources.Load<Sprite>("ui/icons/icondebug"),
-        GetFeature<Tab>().Object.transform
+        GetFeature<PowerboxTab>().Object.transform
       );
       return debugButton;
     }
@@ -23,6 +23,6 @@ namespace PowerBox.Code.Features.Buttons {
       ResourcesFinder.FindResources<GameObject>("DebugButton").FirstOrDefault()?.GetComponent<Button>().onClick.Invoke();
     }
 
-    public override TabSection Section => TabSection.All;
+    protected override TabSection Section => TabSection.All;
   }
 }

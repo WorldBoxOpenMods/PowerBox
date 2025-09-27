@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(AssignLeaderButton);
     public override string SpritePath => "ui/icons/iconcityselect";
 
-    public override TabSection Section => TabSection.Metas;
+    protected override TabSection Section => TabSection.Metas;
   }
 }

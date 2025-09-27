@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(CityBorderExpansionButton);
     public override string SpritePath => "powers/borders2";
 
-    public override TabSection Section => TabSection.Metas;
+    protected override TabSection Section => TabSection.Metas;
   }
 }

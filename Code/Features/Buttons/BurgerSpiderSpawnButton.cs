@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override string SpritePath => "ui/icons/iconBurgerSpider";
     public override ModFeatureRequirementList OptionalModFeatures => typeof(MastefSpawnButton);
 
-    public override TabSection Section => TabSection.Spawns;
+    protected override TabSection Section => TabSection.Spawns;
   }
 }

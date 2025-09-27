@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(NonRandomFriendshipButton);
     public override string SpritePath => "actors/boats/boat_fishing";
 
-    public override TabSection Section => TabSection.Spawns;
+    protected override TabSection Section => TabSection.Spawns;
   }
 }

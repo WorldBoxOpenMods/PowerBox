@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(BloodRainCloudSpawnButton);
     public override string SpritePath => "powers/burgerspider_rain";
 
-    public override TabSection Section => TabSection.Spawns;
+    protected override TabSection Section => TabSection.Spawns;
   }
 }

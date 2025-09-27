@@ -7,6 +7,6 @@ namespace PowerBox.Code.Features.Buttons {
     public override ModFeatureRequirementList OptionalModFeatures => typeof(FishingBoatSpawnButton);
     public override string SpritePath => "actors/boats/boat_transport_dwarf";
 
-    public override TabSection Section => TabSection.Spawns;
+    protected override TabSection Section => TabSection.Spawns;
   }
 }

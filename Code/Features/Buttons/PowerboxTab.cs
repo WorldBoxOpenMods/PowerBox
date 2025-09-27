@@ -15,16 +15,11 @@ namespace PowerBox.Code.Features.Buttons {
     Spawns,
     Metas,
   }
-  public class Tab : ModPowerTabFeature {
+  public class PowerboxTab : ModPowerTabFeature {
     public override ModFeatureRequirementList RequiredModFeatures => base.RequiredModFeatures + typeof(TabSpacer);
 
     private readonly Dictionary<TabSection, List<PowerButton>> _sectionButtons = new Dictionary<TabSection, List<PowerButton>>();
-    private readonly Dictionary<TabSection, List<ModButtonFeature<Tab>>> _sectionButtonFeatures = new Dictionary<TabSection, List<ModButtonFeature<Tab>>>();
-    private int _createdButtons;
-    private const float StartX = 72f;
-    private const float PlusX = 18f;
-    private const float EvenY = 18f;
-    private const float OddY = -18f;
+    private readonly Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>> _sectionButtonFeatures = new Dictionary<TabSection, List<ModButtonFeature<PowerboxTab>>>();
     protected override PowersTab InitObject() {
       PowersTab tab = TabManager.CreateTab("PowerBox", "powerbox_tab", "powerbox_tab_desc", AssetUtils.LoadEmbeddedSprite("powers/tabIcon"));
       PowerButtonCreator.CreateSimpleButton("powerbox_info_section_button", () => SwitchSection(TabSection.Info), AssetUtils.LoadEmbeddedSprite("powers/flags"), tab.transform);
@@ -34,12 +29,8 @@ namespace PowerBox.Code.Features.Buttons {
       return tab;
     }
     public override bool PositionButton(PowerButton button) {
-      float x = StartX + (_createdButtons != 0 ? PlusX * (_createdButtons % 2 == 0 ? _createdButtons : _createdButtons - 1) : 0);
-      float y = _createdButtons % 2 == 0 ? EvenY : OddY;
-      button.transform.localPosition = new Vector3(x, y);
-      _createdButtons++;
       bool display = false;
-      foreach (KeyValuePair<TabSection, List<ModButtonFeature<Tab>>> section in _sectionButtonFeatures.Where(section => section.Value.Any(f => f.Object == button))) {
+      foreach (KeyValuePair<TabSection, List<ModButtonFeature<PowerboxTab>>> section in _sectionButtonFeatures.Where(section => section.Value.Any(f => f.Object == button))) {
         if (!_sectionButtons.ContainsKey(section.Key)) {
           _sectionButtons[section.Key] = new List<PowerButton>();
         }
@@ -51,9 +42,9 @@ namespace PowerBox.Code.Features.Buttons {
       button.gameObject.SetActive(display);
       return true;
     }
-    public void RegisterFeatureForTabSection(ModButtonFeature<Tab> feature, TabSection section) {
+    public void RegisterFeatureForTabSection(ModButtonFeature<PowerboxTab> feature, TabSection section) {
       if (!_sectionButtonFeatures.ContainsKey(section)) {
-        _sectionButtonFeatures[section] = new List<ModButtonFeature<Tab>>();
+        _sectionButtonFeatures[section] = new List<ModButtonFeature<PowerboxTab>>();
       }
       _sectionButtonFeatures[section].Add(feature);
     }
@@ -74,26 +65,26 @@ namespace PowerBox.Code.Features.Buttons {
     }
   }
   
-  public abstract class PowerboxButtonFeature : ModButtonFeature<Tab> {
-    public abstract TabSection Section { get; }
+  public abstract class PowerboxButtonFeature : ModButtonFeature<PowerboxTab> {
+    protected abstract TabSection Section { get; }
     public override bool Init() {
-      GetFeature<Tab>().RegisterFeatureForTabSection(this, Section);
+      GetFeature<PowerboxTab>().RegisterFeatureForTabSection(this, Section);
       base.Init();
       return true;
     }
   }
-  public abstract class PowerboxGodPowerButtonFeature<TGodPowerFeature> : ModGodPowerButtonFeature<TGodPowerFeature, Tab> where TGodPowerFeature : ModAssetFeature<GodPower> {
-    public abstract TabSection Section { get; }
+  public abstract class PowerboxGodPowerButtonFeature<TGodPowerFeature> : ModGodPowerButtonFeature<TGodPowerFeature, PowerboxTab> where TGodPowerFeature : ModAssetFeature<GodPower> {
+    protected abstract TabSection Section { get; }
     public override bool Init() {
-      GetFeature<Tab>().RegisterFeatureForTabSection(this, Section);
+      GetFeature<PowerboxTab>().RegisterFeatureForTabSection(this, Section);
       base.Init();
       return true;
     }
   }
-  public abstract class PowerboxWindowButtonFeature<TWindowFeature> : ModWindowButtonFeature<TWindowFeature, Tab> where TWindowFeature : ModObjectFeature<ScrollWindow> {
-    public abstract TabSection Section { get; }
+  public abstract class PowerboxWindowButtonFeature<TWindowFeature> : ModWindowButtonFeature<TWindowFeature, PowerboxTab> where TWindowFeature : ModObjectFeature<ScrollWindow> {
+    protected abstract TabSection Section { get; }
     public override bool Init() {
-      GetFeature<Tab>().RegisterFeatureForTabSection(this, Section);
+      GetFeature<PowerboxTab>().RegisterFeatureForTabSection(this, Section);
       base.Init();
       return true;
     }
