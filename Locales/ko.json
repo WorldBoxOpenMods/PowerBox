@@ -135,11 +135,10 @@
   "powerbox_add_unit_to_army_description": "",
   "powerbox_remove_unit_from_army": "유닛을 군대에서 제거",
   "powerbox_remove_unit_from_army_description": "",
-
-  "powerbox_info_section_button": "Info",
-  "powerbox_info_section_button_description": "View general mod information",
-  "powerbox_spawns_section_button": "Spawns",
-  "powerbox_spawns_section_button_description": "Powers for spawning creatures and other objects",
-  "powerbox_metas_section_button": "Metas",
-  "powerbox_metas_section_button_description": "Powers for manipulating meta objects"
+  "powerbox_info_section_button": "정보",
+  "powerbox_info_section_button_description": "모드의 일반 정보를 확인합니다.",
+  "powerbox_spawns_section_button": "생성",
+  "powerbox_spawns_section_button_description": "생명체 및 기타 개체를 소환하는 기능들입니다",
+  "powerbox_metas_section_button": "메타",
+  "powerbox_metas_section_button_description": "지적 생명체를 조작하는 기능들입니다"
 }
