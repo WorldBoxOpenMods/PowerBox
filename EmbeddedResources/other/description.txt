@@ -74,6 +74,7 @@ Special thanks to translators:
     <color='yellow'>daybreak1929</color>: Chinese
     <color='yellow'>imemiwarcraft</color>: Romanian
     <color='yellow'>lord_schrott</color>: German
+    <color='yellow'>keymasterer</color>: German    
     <color='yellow'>jupeowl</color>: Finnish
     <color='yellow'>betogamer.</color>: Ukrainian
     <color='yellow'>ln_luascripts</color>: Spanish
