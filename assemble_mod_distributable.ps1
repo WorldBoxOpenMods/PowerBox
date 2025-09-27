@@ -7,7 +7,7 @@ param (
 
 # Define basic info about mod to distribute
 $MOD_NAME = "PowerBox"
-$NML_AUTO_UNZIP_OUTPUT_FOLDER_NAME = "KEYMASTERER__DON_NIKON_POWERBOX"
+$NML_AUTO_UNZIP_OUTPUT_FOLDER_NAME = "KEYMASTERER__IFAILEDLIFE__DON_NIKON_POWERBOX"
 $DISTRIBUTION_KIND = "source"  # "source" or "binary"
 
 # Init mod related path variables

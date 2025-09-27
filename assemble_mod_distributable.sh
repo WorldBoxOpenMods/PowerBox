@@ -1,7 +1,7 @@
 #!/bin/sh
 # Define basic info about mod to distribute
 MOD_NAME="PowerBox" # mod name, must be what the mod DLL is named if you're using binary distribution, otherwise can be whatever you want the mod folder/zip to be called
-NML_AUTO_UNZIP_OUTPUT_FOLDER_NAME="KEYMASTERER__DON_NIKON_POWERBOX" # if the mod.zip is placed in the NML Mods folder, NML will automatically unzip it upon opening the name with an auto generated folder name, specify said name here
+NML_AUTO_UNZIP_OUTPUT_FOLDER_NAME="KEYMASTERER__IFAILEDLIFE__DON_NIKON_POWERBOX" # if the mod.zip is placed in the NML Mods folder, NML will automatically unzip it upon opening the name with an auto generated folder name, specify said name here
 DISTRIBUTION_KIND="source" # "source" or "binary", depending on whether mod should be distributed as source code of as DLL/PDB files
 
 # Init mod related path variables
