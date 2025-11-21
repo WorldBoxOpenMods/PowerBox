@@ -71,6 +71,7 @@ Special thanks to beta-testers:
     
 Special thanks to translators:
     <color='yellow'>le_ombre</color>: Russian
+    <color='yellow'>pon2014</color>: Russian
     <color='yellow'>daybreak1929</color>: Chinese
     <color='yellow'>imemiwarcraft</color>: Romanian
     <color='yellow'>lord_schrott</color>: German
