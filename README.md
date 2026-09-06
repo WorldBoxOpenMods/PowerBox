@@ -1,6 +1,6 @@
 # PowerBox
 
-PowerBox is a QoL mod made for WorldBox using NML as its modloader which focuses on adding many of the most widely demanded QoL features by the community to teh game in a highly stable way.
+PowerBox is a QoL mod made for WorldBox using NML as its modloader which focuses on adding many of the most widely demanded QoL features by the community to the game in a highly stable way.
 
 ## Building
 
